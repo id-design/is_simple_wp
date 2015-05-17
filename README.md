@@ -1,6 +1,6 @@
 # IS Simple WP
 Tema IS Simple para [WordPress](https://br.wordpress.org/)
-* [GitHub](https://github.com/ivanildodias/is_simple_wp)
+* [GitHub](https://github.com/id-design/is_simple_wp)
 
 ## Descrição do projeto
 O IS Simple é um tema desenvolvido para [WordPress](https://br.wordpress.org/), com diversas funcionalidades já inclusas para evitar o uso desnecessário de inúmeros plugins.
@@ -28,9 +28,9 @@ Envie a pasta "is_simple_wp" para a pasta de temas padrão do WordPress **"wp-co
 O IS Simple WP é um projeto **Open Source**. Qualquer pessoa pode ajudar a melhorá-lo contribuindo com as suas opiniões, sugestões ou reportando erros!
 
 Para contribuir basta clicar no botão **Fork**, criar um *Branch*, arrumar o código e enviá-lo com um **Pull Request**.
-Reporte erros ou faça suas sugestões utilizando o [Issues](https://github.com/ivanildodias/is_simple_wp/issues)
+Reporte erros ou faça suas sugestões utilizando o [Issues](https://github.com/id-design/is_simple_wp/issues)
 
 ## Copyright e Licença
-&copy; Copyright 2013 - 2015 | **[ID Design](https://github.com/ivanildodias)**.
+&copy; Copyright 2013 - 2015 | **[ID Design](https://github.com/id-design)**.
 
 O código PHP esta licenciado sob a Licença [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt). Todos os arquivos CSS, JS, imagens e outros que não incluam arquivos PHP estão licenciados como [MIT](http://opensource.org/licenses/MIT) ou pela licença especificada dentro de seus próprios arquivos.
