@@ -25,7 +25,7 @@
  * @since IS Simple 1.0
  */
 
-// Definindo constantes
+// Setting Constants
 defined( 'THEME_PATH' ) or define( 'THEME_PATH', get_template_directory() );
 defined( 'THEME_URI' ) or define( 'THEME_URI', get_template_directory_uri() );
 define( 'INCLUDES_PATH', THEME_PATH . '/inc' );
@@ -49,16 +49,16 @@ define( 'SCRIPT_URI', THEME_URI . '/js' );
 if ( ! isset( $content_width ) ) $content_width = 740;
 
 
-if ( ! function_exists( 'viking_setup' ) ) :
+if ( ! function_exists( 'issimple_setup' ) ) :
 /**
  * Setup de Features suportadas pelo tema
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function viking_setup() {
+function issimple_setup() {
 	// Suporte a idiomas
-	load_theme_textdomain( 'viking-theme', THEME_PATH . '/languages' );
+	load_theme_textdomain( 'issimple', THEME_PATH . '/languages' );
 	
 	// Habilita RSS feed links de postagens e comentários para o <head>
 	add_theme_support( 'automatic-feed-links' );
@@ -79,8 +79,8 @@ function viking_setup() {
 	
 	// Registro dos menus de navegação usados nesse tema
 	register_nav_menus( array(
-		'header-menu' => __( 'Header Menu', 'viking-theme' ),
-		'social-menu' => __( 'Social Menu', 'viking-theme' ),
+		'header-menu' => __( 'Header Menu', 'issimple' ),
+		'social-menu' => __( 'Social Menu', 'issimple' ),
 	) );
 	
 	// Suporte aos formatos de post
@@ -108,11 +108,11 @@ function viking_setup() {
 	// Estilo personalizado para o editor
 	add_editor_style( array(
 		'css/editor-style.css',
-		'http://fonts.googleapis.com/css?family=Metamorphous&subset=latin,latin-ext'
+		'http://fonts.googleapis.com/css?family=Oswald|Roboto:400,400italic,700,700italic'
 	) );
 }
-endif; // viking_setup
-add_action( 'after_setup_theme', 'viking_setup' );
+endif; // issimple_setup
+add_action( 'after_setup_theme', 'issimple_setup' );
 
 
 /**
@@ -123,19 +123,19 @@ add_action( 'after_setup_theme', 'viking_setup' );
  * @link https://codex.wordpress.org/Function_Reference/register_sidebar
  * ----------------------------------------------------------------------------
  */
-function viking_widgets_init() {
+function issimple_widgets_init() {
 	// Define Sidebar Widget Area
 	register_sidebar( array(
-		'name'			=> __( 'Widget Area', 'viking-theme' ),
+		'name'			=> __( 'Widget Area', 'issimple' ),
 		'id'			=> 'widget-area',
-		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'viking-theme' ),
+		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
 		'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
 		'before_title'	=> '<h2 class="widget-title inner">',
 		'after_title'	=> '</h2><div class="widget-content inner">',
 		'after_widget'	=> '</div></aside>'
 	) );
 }
-add_action( 'widgets_init', 'viking_widgets_init' );
+add_action( 'widgets_init', 'issimple_widgets_init' );
 
 
 /**
@@ -144,7 +144,7 @@ add_action( 'widgets_init', 'viking_widgets_init' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function viking_styles() {
+function issimple_styles() {
 	// Reset
 	wp_enqueue_style( 'reset', STYLES_URI . '/reset.css', array(), '2.0', 'all' );
 	
@@ -154,16 +154,16 @@ function viking_styles() {
 	// Font-Awesome
 	wp_enqueue_style( 'font-awesome', THEME_URI . '/font-awesome/css/font-awesome.min.css', array(), '4.3.0', 'all' );
 	
-	// Font Metamorphous
-	wp_enqueue_style( 'font-metamorphous', 'http://fonts.googleapis.com/css?family=Metamorphous&subset=latin,latin-ext', array(), '1.0', 'all' );
+	// Fonts Oswald and Roboto
+	wp_enqueue_style( 'font-metamorphous', 'http://fonts.googleapis.com/css?family=Oswald|Roboto:400,400italic,700,700italic', array(), '1.0', 'all' );
 	
 	// CSS Principal
-	wp_enqueue_style( 'viking_style', THEME_URI . '/style.css', array(), '2.0', 'all' );
+	wp_enqueue_style( 'issimple_style', THEME_URI . '/style.css', array(), '2.0', 'all' );
 	
 	// LightBox
-	wp_enqueue_style( 'viking_lightbox', STYLES_URI . '/lightbox.css', array(), '2.7.1', 'all' );
+	wp_enqueue_style( 'issimple_lightbox', STYLES_URI . '/lightbox.css', array(), '2.7.1', 'all' );
 }
-add_action( 'wp_enqueue_scripts', 'viking_styles' );
+add_action( 'wp_enqueue_scripts', 'issimple_styles' );
 
 
 /**
@@ -172,26 +172,25 @@ add_action( 'wp_enqueue_scripts', 'viking_styles' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function viking_header_scripts() {
+function issimple_header_scripts() {
 	if ( ! is_admin() ) :
 		// JQuery
-		wp_enqueue_script( 'viking_jquery', SCRIPT_URI . '/lib/jquery.js', array(), '2.1.3' );
-		//wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'issimple_jquery', SCRIPT_URI . '/lib/jquery.js', array(), '2.1.3' );
 		
 		// JCycle 2
-		wp_enqueue_script( 'viking_jcycle2', SCRIPT_URI . '/lib/jcycle2.js', array(), '2.1.5' );
+		wp_enqueue_script( 'issimple_jcycle2', SCRIPT_URI . '/lib/jcycle2.js', array(), '2.1.5' );
 		
 		// Lightbox 2
-		wp_enqueue_script( 'viking_lightbox', SCRIPT_URI . '/lib/lightbox.js', array(), '2.7.1' );
+		wp_enqueue_script( 'issimple_lightbox', SCRIPT_URI . '/lib/lightbox.js', array(), '2.7.1' );
 		
 		// Modernizr
-		wp_enqueue_script( 'viking_modernizr', SCRIPT_URI . '/lib/modernizr.js', array(), '2.8.3' );
+		wp_enqueue_script( 'issimple_modernizr', SCRIPT_URI . '/lib/modernizr.js', array(), '2.8.3' );
 		
 		// Scripts personalizados do tema
-		wp_enqueue_script( 'viking_scripts', SCRIPT_URI . '/geral.js', array(), '2.0' );
+		wp_enqueue_script( 'issimple_scripts', SCRIPT_URI . '/geral.js', array(), '2.0' );
 	endif;
 }
-add_action( 'init', 'viking_header_scripts');
+add_action( 'init', 'issimple_header_scripts');
 
 
 /**
@@ -201,7 +200,7 @@ add_action( 'init', 'viking_header_scripts');
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function viking_post_nav_background() {
+function issimple_post_nav_background() {
 	if ( ! is_single() ) return;
 	
 	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
@@ -230,9 +229,9 @@ function viking_post_nav_background() {
 		';
 	endif; // $next
 
-	wp_add_inline_style( 'viking_style', $css );
+	wp_add_inline_style( 'issimple_style', $css );
 }
-add_action( 'wp_enqueue_scripts', 'viking_post_nav_background' );
+add_action( 'wp_enqueue_scripts', 'issimple_post_nav_background' );
 
 
 /**
@@ -256,12 +255,12 @@ function get_slider() {
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function viking_gravatar( $avatar_defaults ) {
+function issimple_gravatar( $avatar_defaults ) {
 	$my_avatar = IMAGES_URI . '/gravatar.png';
 	$avatar_defaults[ $my_avatar ] = "Viking Gravatar";
 	return $avatar_defaults;
 }
-add_filter( 'avatar_defaults', 'viking_gravatar' );
+add_filter( 'avatar_defaults', 'issimple_gravatar' );
 
 
 /**
@@ -286,14 +285,14 @@ add_action( 'get_header', 'enable_threaded_comments' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function viking_nav_description( $item_output, $item, $depth, $args ) {
+function issimple_nav_description( $item_output, $item, $depth, $args ) {
 	if ( 'header-menu' == $args->theme_location && $item->description ) :
 		$item_output = str_replace( $args->link_after . '</a>', '<div class="menu-item-desc">' . $item->description . '</div>' . $args->link_after . '</a>', $item_output );
 	endif;
 	
 	return $item_output;
 }
-add_filter( 'walker_nav_menu_start_el', 'viking_nav_description', 10, 4 );
+add_filter( 'walker_nav_menu_start_el', 'issimple_nav_description', 10, 4 );
 
 
 /**
@@ -347,6 +346,6 @@ require_once INCLUDES_PATH . '/utilities.php';
 // Funções exclusivas do tema
 require_once INCLUDES_PATH . '/template-tags.php';
 // Funções para incrementar o formulário de contato no tema ou post
-require_once INCLUDES_PATH . '/viking-contact-form.php';
+require_once INCLUDES_PATH . '/issimple-contact-form.php';
 // Funções para incrementar o seletor de idioma no tema
 require_once INCLUDES_PATH . '/polylang-support.php';

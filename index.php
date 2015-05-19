@@ -20,7 +20,7 @@ get_header();
 <main id="principal" class="col_8" role="main">
 
 	<header id="page-header">
-		<h1 id="page-title"><?php _e( 'Latest Posts', 'viking-theme' ); ?></h1>
+		<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1>
 	</header><!-- #page-header -->
 	
 	<?php
