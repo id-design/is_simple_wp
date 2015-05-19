@@ -43,7 +43,7 @@ define( 'SCRIPT_URI', THEME_URI . '/js' );
 /**
  * Configura o valor da largura do conteúdo baseado no design do tema
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 if ( ! isset( $content_width ) ) $content_width = 740;
@@ -53,7 +53,7 @@ if ( ! function_exists( 'viking_setup' ) ) :
 /**
  * Setup de Features suportadas pelo tema
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function viking_setup() {
@@ -103,7 +103,7 @@ function viking_setup() {
 	) );
 
 	// Inclui o arquivo que dá suporte a cabeçalho personalizado
-    require INCLUDES_PATH . '/custom-header.php';
+    //require INCLUDES_PATH . '/custom-header.php';
 	
 	// Estilo personalizado para o editor
 	add_editor_style( array(
@@ -118,7 +118,7 @@ add_action( 'after_setup_theme', 'viking_setup' );
 /**
  * Registro da áreas de widgets
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * 
  * @link https://codex.wordpress.org/Function_Reference/register_sidebar
  * ----------------------------------------------------------------------------
@@ -141,7 +141,7 @@ add_action( 'widgets_init', 'viking_widgets_init' );
 /**
  * Carrega as folhas de estilo do tema na tag <head>
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function viking_styles() {
@@ -169,7 +169,7 @@ add_action( 'wp_enqueue_scripts', 'viking_styles' );
 /**
  * Carregar os scripts do tema
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function viking_header_scripts() {
@@ -198,7 +198,7 @@ add_action( 'init', 'viking_header_scripts');
  * Adiciona a imagem destacada dos artigos como background nos elementos
  * da navegação dos posts
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function viking_post_nav_background() {
@@ -238,7 +238,7 @@ add_action( 'wp_enqueue_scripts', 'viking_post_nav_background' );
 /**
  * Chamada para o slider
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function get_slider() {
@@ -253,7 +253,7 @@ function get_slider() {
  * Obs.: Não funciona com imagens em servidor local (wampserver, xamp, etc..).
  * Quando o tema estiver online irá funcionar.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function viking_gravatar( $avatar_defaults ) {
@@ -267,7 +267,7 @@ add_filter( 'avatar_defaults', 'viking_gravatar' );
 /**
  * Comentários 'Threaded'
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function enable_threaded_comments() {
@@ -283,7 +283,7 @@ add_action( 'get_header', 'enable_threaded_comments' );
 /**
  * Descrição para os itens dos Nav Menus
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function viking_nav_description( $item_output, $item, $depth, $args ) {
@@ -299,7 +299,7 @@ add_filter( 'walker_nav_menu_start_el', 'viking_nav_description', 10, 4 );
 /**
  * Classe para os links dos Nav Menus
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function classes_nav_item( $classes, $item, $args, $depth ) {
@@ -313,7 +313,7 @@ add_filter( 'nav_menu_css_class', 'classes_nav_item', 10, 4 );
 /**
  * Classe para os links dos Nav Menus
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function class_nav_link( $atts, $item, $args, $depth  ) {
@@ -327,7 +327,7 @@ add_filter( 'nav_menu_link_attributes', 'class_nav_link', 10, 4 );
 /**
  * Remove o "id" dos itens dos Nav Menus
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 add_filter( 'nav_menu_item_id', '__return_false' );
@@ -335,9 +335,9 @@ add_filter( 'nav_menu_item_id', '__return_false' );
 /**
  * Inclusão de recursos ao tema
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- */
+ *//*
 // Limpeza e otimização do tema
 require_once INCLUDES_PATH . '/cleanup.php';
 // Shortcodes úteis no tema

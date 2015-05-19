@@ -21,8 +21,6 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
-			<div id="grid" style="display: none;"><div class="conteiner"></div></div>
-			
 			<div id="page" class="conteiner site">
 				<div class="linha">
 					

@@ -15,48 +15,15 @@
 /**
  * 	Notes
  * ============================================================================
- * Essa folha de estilos usa valores rem com pixel como reserva para
- * navegadores que não suportam o rem.
- * Essa configuração é feita no arquivo "reset.css" que se encontra na pasta
- * "css" no tema.
+ * This stylesheet uses "rem" values with a "pixel" fallback for browsers that
+ * do not support the "rem".
  * 
- * Os valores rem são calculados tendo como base a seguinte variável:
- * $rembase = 10;
- * 
- * => Exemplo
- * Use um valor em pixel, que ficará como reserva, e logo após coloque
- * o valor rem para: font-size, padding, margins, etc.
- * 		padding: 5px 0;
- * 		padding: 0.5rem 0; ( 5 / $rembase )
- * 
- * Defina um font-size e em seguida defina um line-height baseado no font-size
- * 		font-size: 20px;
- * 		font-size: 2rem; ( 20 / $rembase )
- * 		line-height: 1.5; ( 30 / 20(font-size) )
- * 
- * Se no seletor não estiver sendo definido o font-size, defina o line-height
- * em pixels e em seguida em rem.
- * 		.nova-div {
- * 			line-height: 30px;
- * 			line-height: 3rem; ( 30 / $rembase )
- * 		}
- * 
- * => Espaçamento
- * Para espaçamento use os valores 10px ou 20px
- * para manter o ritmo no layout:
- * 		.nova-div {
- * 			margin: 10px 0;
- * 			margin: 1rem 0; ( 10 / $rembase )
- * 		}
- * 
- * => Leitura Complementar
- * http://snook.ca/archives/html_and_css/font-size-with-rem
- * http://blog.typekit.com/2011/11/09/type-study-sizing-the-legible-letter/
+ * This is configured in "reset.css" file in "css" folder.
  */
 
 
 /**
- * Tipografia
+ * Typography
  * ============================================================================
  */
 body {
