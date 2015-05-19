@@ -1,0 +1,317 @@
+/**
+ * Theme Name: IS Simple
+ * Description: Adjustments to optimize theme view in multiple browsers.
+ * Based on resets:
+ * Eric Meyer v2.0: http://meyerweb.com/eric/tools/css/reset/
+ * Normalize v3.0.3: https://github.com/necolas/normalize.css
+ * 
+ * Version: 1.0
+ * 
+ * License: MIT
+ * License URI: http://opensource.org/licenses/mit-license.php
+ */
+
+/**
+ * 	Notes
+ * ============================================================================
+ * This stylesheet uses "rem" values with a "pixel" fallback for browsers that
+ * do not support the "rem".
+ * 
+ * The "rem" values are calculated using the following variable: 
+ * $rembase = 10;
+ * 
+ * => Example
+ * Use "pixel" as fallback to "rem" for font-size, padding, margins, etc.
+ * 		padding: 5px 0;
+ * 		padding: 0.5rem 0; ( 5 / $rembase )
+ * 
+ * Set a "font-size" and then set a "line-height" based on the "font-size":
+ * 		font-size: 20px;
+ * 		font-size: 2rem; ( 20 / $rembase )
+ * 		line-height: 1.5; ( 30 / 20(font-size) )
+ * 
+ * If the "font-size" is not set in the selector, set "line-height" value in
+ * "pixels" and soon after in "rem":
+ * 		.selector {
+ * 			line-height: 30px;
+ * 			line-height: 3rem; ( 30 / $rembase )
+ * 		}
+ * 
+ * => Vertical Spacing
+ * Vertical spacing between most elements should use 10px or 20px to maintain
+ * vertical rhythm:
+ * 		.new-div {
+ * 			margin: 10px 0;
+ * 			margin: 1rem 0; ( 10 / $rembase )
+ * 		}
+ * 
+ * => Further Reading
+ * http://snook.ca/archives/html_and_css/font-size-with-rem
+ * http://blog.typekit.com/2011/11/09/type-study-sizing-the-legible-letter/
+ */
+
+
+/**
+ * Cleaning Presets
+ * ============================================================================
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, input, textarea,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+
+/**
+ * General Settings
+ * ============================================================================
+ */
+
+/** 
+ * *box-sizing
+ * The width and height properties (and min/max properties) includes content,
+ * padding and border, but not the margin.
+ * http://www.w3schools.com/cssref/css3_pr_box-sizing.asp
+ * 
+ * Set "sans-serif" as default font.
+ * 
+ * <html> element with 62.5% in "font-size" to use "rem"
+ * REM*10 = PX - Ex.: 1.4rem = 14px
+ * 
+ * *-text-size-adjust
+ * Prevent iOS and IE text size adjust after device orientation change,
+ * without disabling user zoom.
+ * ----------------------------------------------------------------------------
+ */
+html {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	font-size: 62.5%;	/* 10px */
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	line-height: 1;
+}
+
+/**
+ * It makes all the elements have the same "box-sizing" of the parent element.
+ * ----------------------------------------------------------------------------
+ */
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+:focus {
+	outline: 0;
+}
+
+
+/**
+ * HTML5 Display Definitions
+ * ============================================================================
+ */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main,
+menu, nav, section, summary	{
+	display: block;
+}
+
+audio, canvas, progress, video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+[hidden], template {
+	display: none;
+}
+
+
+/**
+ * Links
+ * ============================================================================
+ */
+a {
+	background: transparent;
+}
+
+a:active, a:hover {
+	outline: 0;
+}
+
+
+/**
+ * Text-level Semantics
+ * ============================================================================
+ */
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+abbr[title], time[title] {
+	cursor: help;
+}
+
+b, strong {
+	font-weight: bold;
+}
+
+dfn {
+	font-style: italic;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+blockquote, q {
+	-webkit-hyphens: none;
+	   -moz-hyphens: none;
+		-ms-hyphens: none;
+			hyphens: none;
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+/**
+ * Embedded Contents
+ * ============================================================================
+ */
+svg:not(:root) {
+	overflow: hidden;
+}
+
+
+/**
+ * Grouping Contents
+ * ============================================================================
+ */
+hr {
+	height: 0;
+}
+
+pre {
+	overflow: auto;
+}
+
+code, kbd, pre, samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+
+/**
+ * Forms
+ * ============================================================================
+ */
+button, input, optgroup,
+select, textarea {
+	color: inherit;
+	font: inherit;
+}
+
+button, html input[type="button"],
+input[type="reset"], input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+button[disabled], html input[disabled] {
+	cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+textarea {
+	overflow: auto;
+}
+
+optgroup {
+	font-style: italic;
+	font-weight: bold;
+}
+
+
+/**
+ * Tables
+ * ============================================================================
+ */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}

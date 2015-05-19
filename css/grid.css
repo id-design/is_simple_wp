@@ -1,0 +1,137 @@
+/**
+ * Theme Name: IS Simple
+ * Description: Adjustments to flexible theme.
+ * 
+ * Version: 1.0
+ * 
+ * License: MIT
+ * License URI: http://opensource.org/licenses/mit-license.php	
+ */
+
+.container, .row, [class^="col_"] {
+    margin: 0 auto 20px;
+    margin: 0 auto 2rem;	/* 20 / $rembase */
+}
+
+.container {
+	width: 97%;
+	position: relative;
+}
+
+.container:last-child, .row:last-child,
+[class^="col_"]:last-child,
+.container:only-child, .row:only-child,
+[class^="col_"]:only-child { margin-bottom: 0; }
+
+.row { width: 100%; }
+
+.row:before, .row:after {
+    content: " ";
+    display: table;
+}
+
+.row:after { clear: both; }
+
+[class^="col_"] {
+    float: left;
+    position: relative;
+}
+
+[class^="col_"]:first-child { margin-left: 0 !important; }
+
+
+
+/* Grid 2 Colunas ( 0 - 480px ) */
+@media screen and ( min-width: 0px ) and ( max-width: 480px ) {
+	.container {
+		width: 95%;
+		max-width: 45em;
+		max-width: 450px;
+	}
+
+	/* Grid a definir */
+}
+
+/* Grid 6 Colunas ( 481px - 900px ) */
+@media screen and ( min-width: 481px ) and ( max-width: 900px ) {
+	.container {
+		max-width: 88em;
+		max-width: 880px;
+	}
+	
+	/* Grid a definir
+	[class^="col_"] {
+		margin-left: 2.8572%;	/ 20px /
+	}
+	
+	.col_1, .col_2 {
+		width: 14.2857%;
+	}
+	.col_3, .col_4 {
+		width: 31.4285%;
+	}
+	.col_5, .col_6 {
+		width: 48.5714%;
+	}
+	.col_7, .col_8 {
+		width: 65.7142%;
+	}
+	.col_9, .col_10 {
+		width: 82.8571%;
+	}
+	.col_11, .col_12 {
+		width: 100%;
+		margin-left: 0;
+	}
+	*/
+}
+
+/* Grid 12 Colunas ( 901px - Infinito ) */
+@media screen and ( min-width: 901px ) {
+	.container {
+		max-width: 118em;
+		max-width: 1180px;
+	}
+	
+	[class^="col_"] {
+		margin-left: 1.695%;	/* 20px */
+	}
+
+	.col_1 {
+		width: 6.7796%;		/* 80px */
+	}
+	.col_2 {
+		width: 15.2542%;	/* 180px */
+	}
+	.col_3 {
+		width: 23.7288%;	/* 280px */
+	}
+	.col_4 {
+		width: 32.2033%;	/* 380px */
+	}
+	.col_5 {
+		width: 40.6779%;	/* 480px */
+	}
+	.col_6 {
+		width: 49.1525%;	/* 580px */
+	}
+	.col_7 {
+		width: 57.6271%;	/* 680px */
+	}
+	.col_8 {
+		width: 66.1016%;	/* 780px */
+	}
+	.col_9 {
+		width: 74.5762%;	/* 880px */
+	}
+	.col_10 {
+		width: 83.0508%;	/* 980px */
+	}
+	.col_11 {
+		width: 91.5254%;	/* 1080px */
+	}
+	.col_12 {
+		width: 100%;
+		margin-left: 0;
+	}
+}
