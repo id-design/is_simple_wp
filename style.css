@@ -28,11 +28,15 @@
  */
 body {
 	color: #420;
-	font-family: Georgia, serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 18px;
 	font-size: 1.8rem;
 	line-height: 1.6666;	/* 30px */
 	text-align: justify;
+}
+
+b, strong {
+	font-weight: 700;
 }
 
 pre {
@@ -64,14 +68,14 @@ blockquote {
  * ----------------------------------------------------------------------------
  */
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Metamorphous', cursive;
+	font-family: 'Oswald', cursive;
 	clear: both;
 }
 
 h1, h2, h3, h4, h5, h6,
 h1 a:hover, h2 a:hover, h3 a:hover,
 h4 a:hover, h5 a:hover, h6 a:hover {
-	font-weight: normal;
+	font-weight: 400;
 }
 
 h3, h4, h6 {
@@ -160,7 +164,7 @@ dl {
 }
 
 dt {
-	font-weight: bold;
+	font-weight: 700;
 }
 
 
@@ -221,7 +225,7 @@ th {
 
 th, tfoot td {
 	font-style: italic;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 
@@ -290,7 +294,7 @@ label {
 	font-size: 18px;
 	font-size: 1.8rem;
 	line-height: 1.6666;	/* 30px */
-	font-weight: bold;
+	font-weight: 700;
 	display: block;
 	margin-bottom: 5px;
 	margin-bottom: 0.5rem;
@@ -301,7 +305,7 @@ label.error {
 	font-size: 14px;
 	font-size: 1.4rem;
 	line-height: 1.4285;	/* 20px */
-	font-weight: bold;
+	font-weight: 700;
 }
 
 input, textarea {
@@ -414,7 +418,7 @@ form li {
 
 form span.required {
 	color: #d33;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 ::-webkit-input-placeholder {
@@ -774,7 +778,7 @@ ul ul, ol ol,
  * ----------------------------------------------------------------------------
  */
 #header-menu > li > a {
-	font-family: "Metamorphous", cursive;
+	font-family: 'Oswald', sans-serif;
 	text-transform: uppercase;
 }
 
@@ -1135,7 +1139,7 @@ main > hr:last-child { display: none; }
  */
 .post-navigation {
 	background-color: #fff;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 .post-navigation .meta-nav,
@@ -1191,7 +1195,7 @@ main > hr:last-child { display: none; }
 }
 
 #principal .post-navigation .post-title {
-	font-family: "Metamorphous", cursive;
+	font-family: 'Oswald', sans-serif;
 	font-size: 24px;
 	font-size: 2.4rem;
 	line-height: 1.6666;	/* 40px */
