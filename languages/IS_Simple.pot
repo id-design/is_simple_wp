@@ -1,0 +1,296 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Estúdio Viking WordPress Theme v1.0\n"
+"POT-Creation-Date: 2015-05-08 14:05-0300\n"
+"PO-Revision-Date: 2015-05-08 14:05-0300\n"
+"Last-Translator: Ivanildo Dias <ivanildodias@estudioviking.com>\n"
+"Language-Team: Ivanildo Dias <ivanildodias@estudioviking.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:22
+msgid "Sorry, nothing to display."
+msgstr ""
+
+#: 404.php:23
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+
+#: 404.php:26 content-none.php:34
+msgid "Return home?"
+msgstr ""
+
+#: author-info.php:12
+msgid "Published by:"
+msgstr ""
+
+#: author-info.php:30
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: comments.php:20
+msgid "Post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: comments.php:31 comments.php:64 inc/template-tags.php:295
+msgid "Leave your thoughts"
+msgstr ""
+
+#: comments.php:31 inc/template-tags.php:296
+msgid "1 comment"
+msgstr ""
+
+#: comments.php:31 inc/template-tags.php:297
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: comments.php:32
+msgid "on"
+msgstr ""
+
+#: comments.php:55
+msgid "Comments are closed here."
+msgstr ""
+
+#: comments.php:66
+msgid "Comment"
+msgstr ""
+
+#: comments.php:69 inc/viking-contact-form.php:18
+msgid "Name"
+msgstr ""
+
+#: comments.php:71 inc/viking-contact-form.php:22
+msgid "Email"
+msgstr ""
+
+#: comments.php:73
+msgid "Website"
+msgstr ""
+
+#: content-none.php:13
+msgid "Nothing found"
+msgstr ""
+
+#: content-none.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: content-none.php:24
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: content-none.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: content-page.php:18 inc/template-tags.php:249 page-example.php:21
+msgid "Edit"
+msgstr ""
+
+#: content.php:48
+msgid "This post was written by "
+msgstr ""
+
+#: content.php:48
+msgid " in "
+msgstr ""
+
+#: content.php:49
+msgid "Categorised in: "
+msgstr ""
+
+#: content.php:50
+msgid "Tags: "
+msgstr ""
+
+#: footer.php:15
+msgid "All rights reserved."
+msgstr ""
+
+#: footer.php:17
+#, php-format
+msgid ""
+"Powered by <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">Estúdio Viking</"
+"a> on <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
+msgstr ""
+
+#: functions.php:65
+msgid "Header Menu"
+msgstr ""
+
+#: functions.php:66
+msgid "Social Menu"
+msgstr ""
+
+#: functions.php:112
+msgid "Widget Area"
+msgstr ""
+
+#: functions.php:114
+msgid "Add widgets here to appear in your sidebar."
+msgstr ""
+
+#: header.php:48
+msgid "Click on the button to display the menu."
+msgstr ""
+
+#: inc/custom-header.php:52
+msgctxt "header image description"
+msgid "Estúdio Viking Brand"
+msgstr ""
+
+#: inc/polylang-support.php:23
+msgid "Language Switcher"
+msgstr ""
+
+#: inc/polylang-support.php:42
+msgid "Choose the website language:"
+msgstr ""
+
+#: inc/template-tags.php:136
+#, php-format
+msgid "Posts in category: %s"
+msgstr ""
+
+#: inc/template-tags.php:138
+#, php-format
+msgid "Posts in tag: %s"
+msgstr ""
+
+#: inc/template-tags.php:140
+#, php-format
+msgid "Posts of the author: %s"
+msgstr ""
+
+#: inc/template-tags.php:142
+#, php-format
+msgid "Posts of the day: %s"
+msgstr ""
+
+#: inc/template-tags.php:144
+#, php-format
+msgid "Posts of the month: %s"
+msgstr ""
+
+#: inc/template-tags.php:146
+#, php-format
+msgid "Posts of the year: %s"
+msgstr ""
+
+#: inc/template-tags.php:162
+msgid "Previous page"
+msgstr ""
+
+#: inc/template-tags.php:163
+msgid "Next page"
+msgstr ""
+
+#: inc/template-tags.php:164
+msgid "Page"
+msgstr ""
+
+#: inc/template-tags.php:272 inc/template-tags.php:273
+#: inc/template-tags.php:274
+#, php-format
+msgid "Posts of %s"
+msgstr ""
+
+#: inc/template-tags.php:279
+#, php-format
+msgid "%s of %s of %s"
+msgstr ""
+
+#: inc/template-tags.php:378
+msgid "Comment navigation"
+msgstr ""
+
+#: inc/template-tags.php:381
+msgid "Older comments"
+msgstr ""
+
+#: inc/template-tags.php:385
+msgid "Newer comments"
+msgstr ""
+
+#: inc/viking-contact-form.php:19
+msgid "Your name"
+msgstr ""
+
+#: inc/viking-contact-form.php:26
+msgid "Subject"
+msgstr ""
+
+#: inc/viking-contact-form.php:27
+msgid "What is the subject of the message?"
+msgstr ""
+
+#: inc/viking-contact-form.php:30
+msgid "Message"
+msgstr ""
+
+#: inc/viking-contact-form.php:31
+msgid "Enter your message here."
+msgstr ""
+
+#: inc/viking-contact-form.php:33
+msgid "Send"
+msgstr ""
+
+#: inc/viking-contact-form.php:73
+msgid "Thanks for contacting us, expect a response soon."
+msgstr ""
+
+#: inc/viking-contact-form.php:74
+msgid "An unexpected error occurred. Try again later."
+msgstr ""
+
+#: index.php:20
+msgid "Latest Posts"
+msgstr ""
+
+#: search.php:16
+#, php-format
+msgid "Search results for: %s"
+msgstr ""
+
+#: searchform.php:13 searchform.php:15
+msgid "Search"
+msgstr ""
+
+#: single.php:30
+msgid "Next"
+msgstr ""
+
+#: single.php:31
+msgid "Next post:"
+msgstr ""
+
+#: single.php:33
+msgid "Previous"
+msgstr ""
+
+#: single.php:34
+msgid "Previous post:"
+msgstr ""

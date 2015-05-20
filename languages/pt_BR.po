@@ -1,0 +1,686 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Estúdio Viking WordPress Theme v1.0\n"
+"POT-Creation-Date: 2015-05-08 14:05-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ivanildo Dias <ivanildodias@estudioviking.com>\n"
+"Language-Team: Ivanildo Dias <ivanildodias@estudioviking.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../404.php:17
+msgid "Page not found"
+msgstr "Página não encontrada"
+
+#: ../404.php:22
+msgid "Sorry, nothing to display."
+msgstr ""
+"Desculpe, não encontramos nada que corresponda aos critérios da sua pesquisa."
+
+#: ../404.php:23
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Nada foi encontrado neste local. Quer tentar uma pesquisa?"
+
+#: ../404.php:26 ../content-none.php:34
+msgid "Return home?"
+msgstr "Voltar para a página inicial?"
+
+#: ../author-info.php:12
+msgid "Published by:"
+msgstr "Publicado por:"
+
+#: ../author-info.php:30
+#, php-format
+msgid "View all posts by %s"
+msgstr "Ver todos os artigos de %s"
+
+#: ../comments.php:20
+msgid "Post is password protected. Enter the password to view any comments."
+msgstr ""
+"Este artigo é protegido por senha. Para ver os comentários, a senha deve ser "
+"digitada."
+
+#: ../comments.php:31 ../comments.php:64 ../inc/template-tags.php:295
+msgid "Leave your thoughts"
+msgstr "Deixe seus comentários"
+
+#: ../comments.php:31 ../inc/template-tags.php:296
+msgid "1 comment"
+msgstr "1 comentário"
+
+#: ../comments.php:31 ../inc/template-tags.php:297
+#, php-format
+msgid "% comments"
+msgstr "% comentários"
+
+#: ../comments.php:32
+msgid "on"
+msgstr "em"
+
+#: ../comments.php:55
+msgid "Comments are closed here."
+msgstr "Comentários estão fechados."
+
+#: ../comments.php:66
+msgid "Comment"
+msgstr "Comentário"
+
+#: ../comments.php:69 ../inc/viking-contact-form.php:18
+msgid "Name"
+msgstr "Nome"
+
+#: ../comments.php:71 ../inc/viking-contact-form.php:22
+msgid "Email"
+msgstr "E-mail"
+
+#: ../comments.php:73
+msgid "Website"
+msgstr "Site"
+
+#: ../content-none.php:13
+msgid "Nothing found"
+msgstr "Nada encontrado"
+
+#: ../content-none.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Preparado para publicar seu primeiro post? <a href=\"%1$s\">Começe aqui</a>."
+
+#: ../content-none.php:24
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Desculpe, nada foi encontrado com os termos de busca. Por favor, tente "
+"novamente com outras palavras-chave."
+
+#: ../content-none.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Parece que não pudemos encontrar o que você está procurando. Talvez a "
+"pesquisa possa ajudar."
+
+#: ../content-page.php:18 ../inc/template-tags.php:249 ../page-example.php:21
+msgid "Edit"
+msgstr "Editar"
+
+#: ../content.php:48
+msgid "This post was written by "
+msgstr "Este artigo foi escrito por "
+
+#: ../content.php:48
+msgid " in "
+msgstr " em "
+
+#: ../content.php:49
+msgid "Categorised in: "
+msgstr "Categorizado em: "
+
+#: ../content.php:50
+msgid "Tags: "
+msgstr "Tags: "
+
+#: ../footer.php:15
+msgid "All rights reserved."
+msgstr "Todos os direitos reservados."
+
+#: ../footer.php:17
+#, php-format
+msgid ""
+"Powered by <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">Estúdio Viking</"
+"a> on <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
+msgstr ""
+"Desenvolvido pelo <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">Estúdio "
+"Viking</a> em <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</"
+"a>."
+
+#: ../functions.php:65
+msgid "Header Menu"
+msgstr "Menu do cabeçalho"
+
+#: ../functions.php:66
+msgid "Social Menu"
+msgstr "Menu Social"
+
+#: ../functions.php:112
+msgid "Widget Area"
+msgstr "Área de Widgets"
+
+#: ../functions.php:114
+msgid "Add widgets here to appear in your sidebar."
+msgstr "Adicione widgets aqui para aparecer em sua barra lateral."
+
+#: ../header.php:48
+msgid "Click on the button to display the menu."
+msgstr "Clique no botão para exibir o menu."
+
+#: ../inc/custom-header.php:52
+msgctxt "header image description"
+msgid "Estúdio Viking Brand"
+msgstr "Marca do Estúdio Viking"
+
+#: ../inc/polylang-support.php:23
+msgid "Language Switcher"
+msgstr "Seletor de idioma"
+
+#: ../inc/polylang-support.php:42
+msgid "Choose the website language:"
+msgstr "Escolha o idioma do site:"
+
+#: ../inc/template-tags.php:136
+#, php-format
+msgid "Posts in category: %s"
+msgstr "Artigos na categoria: %s"
+
+#: ../inc/template-tags.php:138
+#, php-format
+msgid "Posts in tag: %s"
+msgstr "Artigos na tag: %s"
+
+#: ../inc/template-tags.php:140
+#, php-format
+msgid "Posts of the author: %s"
+msgstr "Artigos do autor: %s"
+
+#: ../inc/template-tags.php:142
+#, php-format
+msgid "Posts of the day: %s"
+msgstr "Artigos do dia: %s"
+
+#: ../inc/template-tags.php:144
+#, php-format
+msgid "Posts of the month: %s"
+msgstr "Artigos do mês: %s"
+
+#: ../inc/template-tags.php:146
+#, php-format
+msgid "Posts of the year: %s"
+msgstr "Artigos do ano: %s"
+
+#: ../inc/template-tags.php:162
+msgid "Previous page"
+msgstr "Página anterior"
+
+#: ../inc/template-tags.php:163
+msgid "Next page"
+msgstr "Próxima página"
+
+#: ../inc/template-tags.php:164
+msgid "Page"
+msgstr "Página"
+
+#: ../inc/template-tags.php:272 ../inc/template-tags.php:273
+#: ../inc/template-tags.php:274
+#, php-format
+msgid "Posts of %s"
+msgstr "Artigos de %s"
+
+#: ../inc/template-tags.php:279
+#, php-format
+msgid "%s of %s of %s"
+msgstr "%s de %s de %s"
+
+#: ../inc/template-tags.php:378
+msgid "Comment navigation"
+msgstr "Navegação de comentários"
+
+#: ../inc/template-tags.php:381
+msgid "Older comments"
+msgstr "Comentários anteriores"
+
+#: ../inc/template-tags.php:385
+msgid "Newer comments"
+msgstr "Comentários recentes"
+
+#: ../inc/viking-contact-form.php:19
+msgid "Your name"
+msgstr "Seu nome"
+
+#: ../inc/viking-contact-form.php:26
+msgid "Subject"
+msgstr "Assunto"
+
+#: ../inc/viking-contact-form.php:27
+msgid "What is the subject of the message?"
+msgstr "Qual o assunto da mensagem?"
+
+#: ../inc/viking-contact-form.php:30
+msgid "Message"
+msgstr "Mensagem"
+
+#: ../inc/viking-contact-form.php:31
+msgid "Enter your message here."
+msgstr "Digite sua mensagem aqui."
+
+#: ../inc/viking-contact-form.php:33
+msgid "Send"
+msgstr "Enviar"
+
+#: ../inc/viking-contact-form.php:73
+msgid "Thanks for contacting us, expect a response soon."
+msgstr "Obrigado por entrar em contato conosco, aguarde uma resposta em breve."
+
+#: ../inc/viking-contact-form.php:74
+msgid "An unexpected error occurred. Try again later."
+msgstr "Ocorreu um erro inesperado. Tente novamente mais tarde."
+
+#: ../index.php:20
+msgid "Latest Posts"
+msgstr "Últimos Artigos"
+
+#: ../search.php:16
+#, php-format
+msgid "Search results for: %s"
+msgstr "Resultados da pesquisa para: %s"
+
+#: ../searchform.php:13 ../searchform.php:15
+msgid "Search"
+msgstr "Pesquisar"
+
+#: ../single.php:30
+msgid "Next"
+msgstr "Próximo"
+
+#: ../single.php:31
+msgid "Next post:"
+msgstr "Próximo artigo:"
+
+#: ../single.php:33
+msgid "Previous"
+msgstr "Anterior"
+
+#: ../single.php:34
+msgid "Previous post:"
+msgstr "Artigo anterior:"
+
+#~ msgid "Posts for category: "
+#~ msgstr "Artigos para categoria: "
+
+#~ msgid "Posts for tag: "
+#~ msgstr "Artigos para a tag: "
+
+#~ msgid "Author Archives: "
+#~ msgstr "Artigos do autor: "
+
+#~ msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+#~ msgstr "<cite class=\"fn\">%s</cite> <span class=\"says\">disse:</span>"
+
+#~ msgid "Your comment is awaiting moderation."
+#~ msgstr "Seu comentário está esperando por moderação."
+
+#~ msgid "%1$s at %2$s"
+#~ msgstr "%1$s em %2$s"
+
+#~ msgid "[Edit]"
+#~ msgstr "[Editar]"
+
+#~ msgid "Archives of:"
+#~ msgstr "Arquivos de:"
+
+#~ msgid "of"
+#~ msgstr "de"
+
+#~ msgid "Page %s"
+#~ msgstr "Página %s"
+
+#~ msgid "Archives of: "
+#~ msgstr "Arquivos de: "
+
+#~ msgid " of "
+#~ msgstr " de "
+
+#~ msgid "Tag Archive: "
+#~ msgstr "Artigos da tag: "
+
+#~ msgid "Categories for: "
+#~ msgstr "Artigos para a categoria: "
+
+#~ msgid "Older Comments"
+#~ msgstr "Comentários anteriores"
+
+#~ msgid "Newer Comments"
+#~ msgstr "Comentários recentes"
+
+#~ msgid "1 Comment"
+#~ msgstr "1 Comentário"
+
+#~ msgid "% Comments"
+#~ msgstr "% Comentários"
+
+#~ msgid "%s search results for: "
+#~ msgstr "%s resultados ao pesquisar por: "
+
+#~ msgid "%s search result for: "
+#~ msgstr "%s resultado ao pesquisar por: "
+
+#~ msgid "%s Search Results for: "
+#~ msgstr "%s resultados ao pesquisar: "
+
+#~ msgid "About "
+#~ msgstr "Sobre "
+
+#~ msgid "Sidebar Menu"
+#~ msgstr "Menu lateral"
+
+#~ msgid "Extra Menu"
+#~ msgstr "Menu extra"
+
+#~ msgid "Widget Area 1"
+#~ msgstr "Área do Widget 1"
+
+#~ msgid "Description for this widget-area..."
+#~ msgstr "Descrição para esta área de widgets ..."
+
+#~ msgid "Widget Area 2"
+#~ msgstr "Área do Widget 2"
+
+#~ msgid "View all posts by %s."
+#~ msgstr "Ver todos os artigos de %s."
+
+#, fuzzy
+#~ msgid ""
+#~ "Warning- This options panel will not work properly without javascript!"
+#~ msgstr ""
+#~ "Aviso - Este painel de opções não funcionará corretamente sem javascript!"
+
+#, fuzzy
+#~ msgid "Options"
+#~ msgstr "Resetar opções"
+
+#, fuzzy
+#~ msgid "Options Object"
+#~ msgstr "Resetar opções"
+
+#, fuzzy
+#~ msgid "Background Position"
+#~ msgstr "Opções de Backup"
+
+#~ msgid "Right"
+#~ msgstr "Direita"
+
+#~ msgid "Left"
+#~ msgstr "Esquerda"
+
+#, fuzzy
+#~ msgid "Height"
+#~ msgstr "Direita"
+
+#, fuzzy
+#~ msgid "Add More"
+#~ msgstr "Adicionar novo"
+
+#, fuzzy
+#~ msgid "Select an item"
+#~ msgstr "Escolha uma página:"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Opções de Restauração"
+
+#, fuzzy
+#~ msgid "Add %s"
+#~ msgstr "Adicionar novo"
+
+#, fuzzy
+#~ msgid "Import / Export Options"
+#~ msgstr "Opções de Importação"
+
+#~ msgid "Import Options"
+#~ msgstr "Opções de Importação"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Opções de Importação"
+
+#, fuzzy
+#~ msgid "Export Options"
+#~ msgstr "Opções de Importação"
+
+#, fuzzy
+#~ msgid "Import / Export"
+#~ msgstr "Opções de Importação"
+
+#, fuzzy
+#~ msgid "Welcome to the Redux Demo Panel"
+#~ msgstr "Bem-vindo ao Painel de Opções do Tema."
+
+#, fuzzy
+#~ msgid "description"
+#~ msgstr "Opções do Slider"
+
+#, fuzzy
+#~ msgid "Additional Updates"
+#~ msgstr "Opções Atualizadas"
+
+#, fuzzy
+#~ msgid "Full Changelog"
+#~ msgstr "Salvar todas as alterações"
+
+#, fuzzy
+#~ msgid "Save Changes"
+#~ msgstr "Salvar todas as alterações"
+
+#, fuzzy
+#~ msgid "Reset Section"
+#~ msgstr "Opções de Restauração"
+
+#~ msgid "Expand"
+#~ msgstr "Expandir"
+
+#~ msgid "Home Settings"
+#~ msgstr "Configurações Iniciais"
+
+#~ msgid "Example Text"
+#~ msgstr "Exemplo de Texto"
+
+#~ msgid "Example description."
+#~ msgstr "Exemplo de descrição."
+
+#~ msgid "Example subtitle."
+#~ msgstr "Exemplo de sub-título."
+
+#~ msgid "Theme Information 1"
+#~ msgstr "Informações do Tema 1"
+
+#~ msgid "Theme Information 2"
+#~ msgstr "Informações do Tema 2"
+
+#, fuzzy
+#~ msgid "Sample Options"
+#~ msgstr "Opções de Exemplo"
+
+#, fuzzy
+#~ msgid "Tags"
+#~ msgstr "Tags: "
+
+#, fuzzy
+#~ msgid "Media Options"
+#~ msgstr "Opções do Tema"
+
+#, fuzzy
+#~ msgid "Select a background pattern."
+#~ msgstr "Escolha uma categoria:"
+
+#, fuzzy
+#~ msgid "Slides Options"
+#~ msgstr "Opções do Slider"
+
+#, fuzzy
+#~ msgid "This is a title"
+#~ msgstr "Este artigo foi escrito por "
+
+#~ msgid "General Settings"
+#~ msgstr "Configurações Gerais"
+
+#, fuzzy
+#~ msgid "Styling Options"
+#~ msgstr "Opções do Slider"
+
+#, fuzzy
+#~ msgid "Links Color Option"
+#~ msgstr "Opções de Restauração"
+
+#, fuzzy
+#~ msgid "Header Border Option"
+#~ msgstr "Opções de Restauração"
+
+#, fuzzy
+#~ msgid "Text Option - URL Validated"
+#~ msgstr "Opções Atualizadas"
+
+#, fuzzy
+#~ msgid "Checkbox Option"
+#~ msgstr "Opções do Tema"
+
+#, fuzzy
+#~ msgid "Radio Option"
+#~ msgstr "Opções de Restauração"
+
+#~ msgid "Images Option"
+#~ msgstr "Opções de Imagens"
+
+#~ msgid "Select Option"
+#~ msgstr "Opções de Seleção"
+
+#~ msgid "Multi Select Option"
+#~ msgstr "Opções de Multi Seleção"
+
+#~ msgid "Select Image"
+#~ msgstr "Selecione uma Imagem"
+
+#~ msgid "Categories Select Option"
+#~ msgstr "Opções de Seleção de Categorias"
+
+#~ msgid "Pages Select Option"
+#~ msgstr "Opções de Seleção de Páginas"
+
+#~ msgid "Tags Select Option"
+#~ msgstr "Opções de Seleção de Tags"
+
+#~ msgid "Menus Select Option"
+#~ msgstr "Opções de Seleção de Menus"
+
+#~ msgid "Date Option"
+#~ msgstr "Opções de Data"
+
+#~ msgid "Button Set Option"
+#~ msgstr "Opções de Configuração de Botões"
+
+#~ msgid "Theme Information"
+#~ msgstr "Informações do Tema"
+
+#~ msgid "To search, type and hit enter."
+#~ msgstr "Para pesquisar, digite e tecle enter."
+
+#~ msgid "in "
+#~ msgstr "in "
+
+#~ msgid "No backups yet"
+#~ msgstr "Ainda não há backups"
+
+#~ msgid "Last Backup : "
+#~ msgstr "Último backup: "
+
+#~ msgid "Options Reseted"
+#~ msgstr "Opções Resetadas"
+
+#~ msgid "Error!"
+#~ msgstr "Erro!"
+
+#~ msgid "Select a number:"
+#~ msgstr "Escolha um número:"
+
+#~ msgid "Center"
+#~ msgstr "Centro"
+
+#~ msgid "The Image"
+#~ msgstr "A Imagem"
+
+#~ msgid "The Post"
+#~ msgstr "O Artigo"
+
+#~ msgid "Here you find the basic settings of your theme."
+#~ msgstr "Aqui você encontra as configurações básicas do seu tema."
+
+#~ msgid "View Article"
+#~ msgstr "Ver Artigo"
+
+#~ msgid "Backup and Restore Options"
+#~ msgstr "Opções de Backup e Restauração"
+
+#~ msgid ""
+#~ "You can use the two buttons below to backup your current options, and "
+#~ "then restore it back at a later time. This is useful if you want to "
+#~ "experiment on the options but would like to keep the old settings in case "
+#~ "you need it back."
+#~ msgstr ""
+#~ "Você pode usar os dois botões abaixo para fazer backup de suas opções "
+#~ "atuais, em seguida, restaurá-lo de volta em um momento posterior. Isso é "
+#~ "útil se você quiser experimentar as opções, mas gostaria de manter as "
+#~ "configurações antigas no caso de você precisar restaurá-las."
+
+#~ msgid "Transfer Theme Options Data"
+#~ msgstr "Transferência de Dados de Opções de Tema"
+
+#~ msgid ""
+#~ "You can transfer the saved options data between different installs by "
+#~ "copying the text inside the text box. To import data from another "
+#~ "install, replace the data in the text box with the one from another "
+#~ "install and click \"Import Options\"."
+#~ msgstr ""
+#~ "Você pode transferir os dados das opções salvas entre as diferentes "
+#~ "instalações copiando o texto de dentro da caixa de texto. Para importar "
+#~ "dados de uma outra instalação, substitua os dados na caixa de texto com o "
+#~ "de outra instalação e clique em \"Opções de Importação \"."
+
+#~ msgid "Published by"
+#~ msgstr "Publicado por"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Configurações Avançadas"
+
+#~ msgid "(Edit)"
+#~ msgstr "(Editar)"
+
+#~ msgid "Powered by"
+#~ msgstr "Desenvolvido por"
+
+#~ msgid "HTML5 Blank Custom Post"
+#~ msgstr "HTML5 Blank Custom Post"
+
+#~ msgid "Add New HTML5 Blank Custom Post"
+#~ msgstr "Adicionar novo HTML5 Blank Custom Post"
+
+#~ msgid "Edit HTML5 Blank Custom Post"
+#~ msgstr "Editar HTML5 Blank Custom Post"
+
+#~ msgid "New HTML5 Blank Custom Post"
+#~ msgstr "Novo HTML5 Blank Custom Post"
+
+#~ msgid "View HTML5 Blank Custom Post"
+#~ msgstr "Ver HTML5 Blank Custom Post"
+
+#~ msgid "Search HTML5 Blank Custom Post"
+#~ msgstr "Pesquisar HTML5 Blank Custom Post"
+
+#~ msgid "No HTML5 Blank Custom Posts found"
+#~ msgstr "Nenhum HTML5 Blank Custom Post encontrado"
+
+#~ msgid "No HTML5 Blank Custom Posts found in Trash"
+#~ msgstr "Nenhum HTML5 Blank Custom Post na lixeira"
+
+#~ msgid "%s results for "
+#~ msgstr "%s Ergebnisse für "
