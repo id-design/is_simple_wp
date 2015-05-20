@@ -21,37 +21,38 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
-			<div id="page" class="conteiner site">
-				<div class="linha">
+		<div id="page" class="site">
+			
+			<header id="header" class="container" role="banner">
+				<div class="row">
 					
-					<section id="sidebar" class="col_4">
+					<hgroup id="brand" class="col_12">
+						<a id="logo-header" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 						
-						<header id="header" role="banner">
-							<hgroup id="brand">
-								<a id="logo-header" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-								
-								<div id="head-txt">
-									<?php if ( is_home() || is_front_page() || is_archive() ) : ?>
-										<h1 id="name"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-									<?php else : ?>
-										<p id="name"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></p>
-									<?php endif;
-									
-									$description = get_bloginfo( 'description', 'display' ); ?>
-									<p id="desc" class="sub-title"><?php echo $description; ?></p>
-								</div><!-- #head-txt -->
-							</hgroup><!-- #brand -->
+						<div id="head-txt">
+							<?php if ( is_home() || is_front_page() || is_archive() ) : ?>
+								<h1 id="name"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							<?php else : ?>
+								<p id="name"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></p>
+							<?php endif;
 							
-							<div id="toggle-container">
-								<span class="screen-reader-text">
-									<?php _e( 'Click on the button to display the menu.', 'viking-theme' ); ?>
-								</span>
-								<button id="toggle" type="button"><i class="fa fa-bars"></i></button>
-							</div><!-- #toggle-container -->
-						</header><!-- #header -->
-						
-						<?php get_sidebar(); ?>
+							$description = get_bloginfo( 'description', 'display' ); ?>
+							<p id="desc" class="sub-title"><?php echo $description; ?></p>
+						</div><!-- #head-txt -->
+					</hgroup><!-- #brand -->
 					
-					</section><!-- #sidebar -->
+					<div id="toggle-container">
+						<span class="screen-reader-text">
+							<?php _e( 'Click on the button to display the menu.', 'viking-theme' ); ?>
+						</span>
+						<button id="toggle" type="button"><i class="fa fa-bars"></i></button>
+					</div><!-- #toggle-container -->
 					
+				</div>
+			</header><!-- #header -->
+			
+			<div id="main" class="container">
+				<div class="row">
 					<?php //get_slider(); ?>
+					
+					<?php get_sidebar(); ?>

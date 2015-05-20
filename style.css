@@ -28,7 +28,7 @@
  */
 body {
 	color: #420;
-	font-family: 'Roboto', sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-size: 18px;
 	font-size: 1.8rem;
 	line-height: 1.6666;	/* 30px */
@@ -67,8 +67,9 @@ blockquote {
  * Títulos
  * ----------------------------------------------------------------------------
  */
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Oswald', cursive;
+h1, h2, h3, h4, h5, h6,
+#name, #desc {
+	font-family: "Oswald", sans-serif;
 	clear: both;
 }
 
@@ -583,18 +584,8 @@ ul ul, ol ol,
 	margin-bottom: 0;
 }
 
-
-#principal, #viking-slider {
-	margin-top: 20px;
-	margin-top: 2rem;
-}
-
-.conteiner {
-	position: static;
-}
-
-#principal, #footer, #viking-slider {
-	margin-left: 33.8984%;
+#principal {
+	float: right;
 }
 
 #sidebar, #principal, #footer, #viking-slider {
@@ -619,13 +610,14 @@ ul ul, ol ol,
  * ----------------------------------------------------------------------------
  */
 #sidebar {
-	background: url( img/bg_sidebar.jpg ) top center;
+	background: url( "img/bg_sidebar.jpg" ) top center;
 	color: #fc6;
-	padding-top: 0;
 	max-width: 380px;
 	max-width: 38rem;
 	margin-bottom: 0;
+	margin-left: 0;
 	position: absolute;
+	top: 0;
 	text-shadow: 2px 2px 2px #000;
 	text-shadow: 2px 2px 2px rgba( 0, 0, 0, 0.75 );
 }
@@ -778,7 +770,7 @@ ul ul, ol ol,
  * ----------------------------------------------------------------------------
  */
 #header-menu > li > a {
-	font-family: 'Oswald', sans-serif;
+	font-family: "Oswald", sans-serif;
 	text-transform: uppercase;
 }
 
@@ -864,7 +856,7 @@ ul ul, ol ol,
  * ----------------------------------------------------------------------------
  */
 .search-submit {
-	font-family: 'FontAwesome';
+	font-family: "FontAwesome";
 	font-weight: normal;
 }
 
@@ -1195,7 +1187,7 @@ main > hr:last-child { display: none; }
 }
 
 #principal .post-navigation .post-title {
-	font-family: 'Oswald', sans-serif;
+	font-family: "Oswald", sans-serif;
 	font-size: 24px;
 	font-size: 2.4rem;
 	line-height: 1.6666;	/* 40px */

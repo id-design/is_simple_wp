@@ -39,7 +39,7 @@ get_header();
 			endwhile;
 			
 			// Post pagination
-			//issimple_post_pagination();
+			issimple_post_pagination();
 			
 		else:
 			// If no content, include the "No posts found" template.

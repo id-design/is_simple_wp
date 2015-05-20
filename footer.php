@@ -10,17 +10,21 @@
  */
 ?>
 
-				<footer id="footer" class="col_8" role="contentinfo">
-					<p id="copyright">
+				</div><!-- .row -->
+			</div><!-- #main -->
+			
+			<footer id="footer" class="container" role="contentinfo">
+				<div class="row">
+					<p id="copyright" class="col_12">
 						&copy; <?php echo date( 'Y' ) . ' ' . do_shortcode( '[home-link]' ) . ' - ' . __( 'All rights reserved.', 'issimple' ) . ' ' .
 						sprintf(
 							__( 'Powered by <a href="%s" rel="nofollow" target="_blank">ID Design</a> on <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'issimple' ),
 							'https://github.com/id-design/is_simple_wp',
 							'http://wordpress.org/' ); ?>
 					</p><!-- #copyright -->
-				</footer><!-- #footer -->
-				
-			</div>
+				</div>
+			</footer><!-- #footer -->
+			
 		</div><!-- #page -->
 
 		<?php wp_footer(); ?>

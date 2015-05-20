@@ -95,15 +95,12 @@ function issimple_setup() {
 	
 	// Suporte a background personalizado
 	add_theme_support( 'custom-background', array(
-		'default-color'			=> 'fff',
-		'default-image'			=> THEME_URI . '/img/bg_site.jpg',
-		'default-repeat'		=> 'repeat',
-		'default-position-x'	=> 'center',
+		'default-color'			=> 'eee',
 		'default-attachment'	=> 'scroll'
 	) );
 
 	// Inclui o arquivo que dá suporte a cabeçalho personalizado
-    //require INCLUDES_PATH . '/custom-header.php';
+    require INCLUDES_PATH . '/custom-header.php';
 	
 	// Estilo personalizado para o editor
 	add_editor_style( array(
@@ -336,7 +333,7 @@ add_filter( 'nav_menu_item_id', '__return_false' );
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- *//*
+ */
 // Limpeza e otimização do tema
 require_once INCLUDES_PATH . '/cleanup.php';
 // Shortcodes úteis no tema
@@ -347,5 +344,3 @@ require_once INCLUDES_PATH . '/utilities.php';
 require_once INCLUDES_PATH . '/template-tags.php';
 // Funções para incrementar o formulário de contato no tema ou post
 require_once INCLUDES_PATH . '/issimple-contact-form.php';
-// Funções para incrementar o seletor de idioma no tema
-require_once INCLUDES_PATH . '/polylang-support.php';
