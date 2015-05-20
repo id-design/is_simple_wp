@@ -685,6 +685,7 @@ ul ul, ol ol,
  */
 #header {
 	position: relative;
+	background-color: #d33;
 }
 
 #logo-header {

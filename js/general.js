@@ -18,16 +18,23 @@
 	function scroll() {
 		windowWidth		 = $window.width();
 		windowHeight	 = $window.height();
+        windowPos        = $window.scrollTop();
 		bodyHeight		 = $body.height();
+		headerHeight     = $header.height();
 		sidebarHeight	 = $sidebar.height();
-		windowPos		 = $window.scrollTop();
 		mainOffset		 = $( '#main' ).offset().top;
+        footerHeight     = $footer.height();
 		sidebarTopOffset = $sidebar.offset().top;
 		scrollUp		 = windowPos > lastWindowPos ? true : false;
 		scrollDown		 = windowPos < lastWindowPos ? true : false;
 		
 		if ( 900 > windowWidth ) {
 			return;
+		}
+		
+		if ( windowPos ) {
+		    $header.attr( 'style', 'position: fixed; top: 0; width: 100%; z-index: 9999;' );
+		    $( '#main' ).attr( 'style', 'margin-top: ' + mainOffset + 'px;' );
 		}
 		
 		// Se a sidebar for maior que o tamanho da janela...
@@ -39,16 +46,17 @@
 					$sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
 				} else if ( ! bottom && windowPos + windowHeight > sidebarHeight + sidebarTopOffset && sidebarHeight + mainOffset < bodyHeight ) {
 					bottom = true;
-					$sidebar.attr( 'style', 'position: fixed; bottom: 0;' );
+					$sidebar.attr( 'style', 'position: fixed; bottom: ' + footerHeight + 'px;' );
 				}
 			} else if ( scrollDown ) {
 				if ( bottom ) {
 					bottom = false;
 					topOffset = ( sidebarTopOffset > 0 ) ? sidebarTopOffset - mainOffset : 0;
 					$sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
-				} else if ( ! top && windowPos + mainOffset < sidebarTopOffset ) {
+				} else if ( ! top && windowPos + headerHeight < sidebarTopOffset ) {
 					top = true;
-					$sidebar.attr( 'style', 'position: fixed;' );
+					topOffset = ( sidebarTopOffset - mainOffset > 0 ) ? mainOffset : headerHeigth;
+					$sidebar.attr( 'style', 'position: fixed; top: ' + topOffset + 'px;' );
 				}
 			} else {
 				top = bottom = false;
@@ -72,7 +80,9 @@
 	$( document ).ready( function() {
 		$window	 = $( window );
 		$body	 = $( document.body );
+		$header  = $( '#header' ).first();
 		$sidebar = $( '#sidebar' ).first();
+		$footer  = $( '#footer' ).first();
 		
 		// Executando a função resize_and_scroll
 		resize_and_scroll();

@@ -23,7 +23,8 @@
 	<body <?php body_class(); ?>>
 		<div id="page" class="site">
 			
-			<header id="header" class="container" role="banner">
+			<header id="header" role="banner">
+				<div class="container">
 				<div class="row">
 					
 					<hgroup id="brand" class="col_12">
@@ -48,6 +49,7 @@
 						<button id="toggle" type="button"><i class="fa fa-bars"></i></button>
 					</div><!-- #toggle-container -->
 					
+				</div>
 				</div>
 			</header><!-- #header -->
 			

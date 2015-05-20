@@ -184,7 +184,7 @@ function issimple_header_scripts() {
 		wp_enqueue_script( 'issimple_modernizr', SCRIPT_URI . '/lib/modernizr.js', array(), '2.8.3' );
 		
 		// Scripts personalizados do tema
-		wp_enqueue_script( 'issimple_scripts', SCRIPT_URI . '/geral.js', array(), '2.0' );
+		wp_enqueue_script( 'issimple_scripts', SCRIPT_URI . '/general.js', array(), '2.0' );
 	endif;
 }
 add_action( 'init', 'issimple_header_scripts');
