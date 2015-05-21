@@ -595,7 +595,7 @@ ul ul, ol ol,
 			box-shadow: 2px 5px 10px 0px rgba( 0, 0, 0, 0.5 );
 }
 
-#sidebar, .slider-caption, #page-title,
+#sidebar-content, .slider-caption, #page-title,
 #principal .post-title, #author-bio,
 #principal .post-content, .post-footer,
 #comments, .pagination, #copyright {
@@ -617,9 +617,12 @@ ul ul, ol ol,
 	margin-bottom: 0;
 	margin-left: 0;
 	position: absolute;
-	top: 0;
 	text-shadow: 2px 2px 2px #000;
 	text-shadow: 2px 2px 2px rgba( 0, 0, 0, 0.75 );
+}
+
+#sidebar-content {
+	position: relative;
 }
 
 #sidebar a {
