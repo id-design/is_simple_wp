@@ -90,13 +90,15 @@
 			} else if ( scrollDown ) {
 				if ( bottom ) {
 					bottom = false;
-					topOffset = ( sidebarOffsetTop > 0 ) ? sidebarOffsetTop - mainOffsetTop : 0;
-					$sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
-				} else if ( ! top && windowPos >= margin ) {
+					$sidebar.attr( 'style', 'bottom: 0;' );
+				} else if ( ! top && windowPos < mainHeight - sidebarHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
 					top = true;
-					topOffset = headerHeigth;
+					topOffset = mainOffsetTop;
 					$sidebar.attr( 'style', 'position: fixed; top: ' + topOffset + 'px;' );
-				}
+				} else if ( top && windowPos < mainHeight - sidebarHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
+                    topOffset = windowPos;
+                    $sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
+                }
 			} else {
 				top = bottom = false;
 				topOffset = ( sidebarOffsetTop > mainOffsetTop ) ? sidebarOffsetTop - mainOffsetTop : 0;
