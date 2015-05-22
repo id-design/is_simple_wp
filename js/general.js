@@ -35,8 +35,8 @@
 		margin				= mainOffsetTop - headerHeight;
 		offsetTop			= mainOffsetTop - margin - headerHeight;
 		
-		scrollUp			= windowPos > lastWindowPos ? true : false;
-		scrollDown			= windowPos < lastWindowPos ? true : false;
+		scrollUp			= windowPos < lastWindowPos ? true : false;
+		scrollDown			= windowPos > lastWindowPos ? true : false;
 		
 		if ( 900 > windowWidth ) {
 			return;
@@ -68,37 +68,36 @@
 				'mainHeight = ' + mainHeight
 			);
 		
-		if ( windowPos ) {
+		if ( windowPos > 0 ) {
 		    $header.attr( 'style', 'position: fixed; top: 0; width: 100%; z-index: 9999;' );
-		    $( '#main' ).attr( 'style', 'margin-top: ' + mainOffsetTop + 'px;' );
+		    $main.attr( 'style', 'margin-top: ' + mainOffsetTop + 'px;' );
+		} else {
+			$header.removeAttr( 'style' );
+			$main.removeAttr( 'style' );
 		}
 		
 		// Se a sidebar for maior que o tamanho da janela...
 		if ( mainHeight > windowHeight ) {
-			if ( scrollUp ) {
+			if ( scrollDown ) {
 				if ( top ) {
 					top = false;
-					topOffset = ( windowPos > margin ) ? mainOffsetTop : 0;
+					topOffset = ( sidebarOffsetTop > mainOffsetTop ) ? sidebarOffsetTop - mainOffsetTop : 0;
 					$sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
 				} else if ( ! bottom && windowPos > sidebarHeight + mainOffsetTop - windowHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
 					bottom = true;
 					$sidebar.attr( 'style', 'position: fixed; bottom: 0;' );
 				} else if ( bottom && windowPos > mainHeight + mainOffsetTop - windowHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
-					bottomOffset = mainHeight - windowPos;
-					$sidebar.attr( 'style', 'bottom: ' + topOffset + 'px;' );
+					$sidebar.attr( 'style', 'bottom: 0;' );
 				}
-			} else if ( scrollDown ) {
+			} else if ( scrollUp ) {
 				if ( bottom ) {
 					bottom = false;
-					$sidebar.attr( 'style', 'bottom: 0;' );
-				} else if ( ! top && windowPos < mainHeight - sidebarHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
+					topOffset = ( sidebarOffsetTop > mainOffsetTop ) ? sidebarOffsetTop - mainOffsetTop : 0;
+					$sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
+				} else if ( ! top && windowPos + mainOffsetTop < sidebarHeight + sidebarOffsetTop - windowHeight && sidebarOffsetTop > mainOffsetTop ) {
 					top = true;
-					topOffset = mainOffsetTop;
-					$sidebar.attr( 'style', 'position: fixed; top: ' + topOffset + 'px;' );
-				} else if ( top && windowPos < mainHeight - sidebarHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
-                    topOffset = windowPos;
-                    $sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
-                }
+					$sidebar.attr( 'style', 'position: fixed; top: ' + mainOffsetTop + 'px;' );
+				}
 			} else {
 				top = bottom = false;
 				topOffset = ( sidebarOffsetTop > mainOffsetTop ) ? sidebarOffsetTop - mainOffsetTop : 0;
