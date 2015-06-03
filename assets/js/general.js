@@ -83,7 +83,7 @@
 					top = false;
 					topOffset = ( sidebarOffsetTop > mainOffsetTop ) ? sidebarOffsetTop - mainOffsetTop : 0;
 					$sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
-				} else if ( ! bottom && windowPos > sidebarHeight + mainOffsetTop - windowHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
+				} else if ( ! bottom && windowPos > sidebarHeight + sidebarOffsetTop - windowHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
 					bottom = true;
 					$sidebar.attr( 'style', 'position: fixed; bottom: 0;' );
 				} else if ( bottom && windowPos > mainHeight + mainOffsetTop - windowHeight && sidebarHeight + mainOffsetTop < bodyHeight ) {
@@ -94,7 +94,7 @@
 					bottom = false;
 					topOffset = ( sidebarOffsetTop > mainOffsetTop ) ? sidebarOffsetTop - mainOffsetTop : 0;
 					$sidebar.attr( 'style', 'top: ' + topOffset + 'px;' );
-				} else if ( ! top && windowPos + mainOffsetTop < sidebarHeight + sidebarOffsetTop - windowHeight && sidebarOffsetTop > mainOffsetTop ) {
+				} else if ( ! top && windowPos + mainOffsetTop < sidebarOffsetTop && sidebarOffsetTop > mainOffsetTop ) {
 					top = true;
 					$sidebar.attr( 'style', 'position: fixed; top: ' + mainOffsetTop + 'px;' );
 				}
@@ -165,7 +165,7 @@
 			
 			if ( img.hasClass( 'alignright' ) ) {
 				img.removeClass( 'alignright' );
-				link.addClass( 'alignriht' );
+				link.addClass( 'alignright' );
 			}
 		} );
 		

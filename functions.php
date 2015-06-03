@@ -28,16 +28,18 @@
 // Setting Constants
 defined( 'THEME_PATH' ) or define( 'THEME_PATH', get_template_directory() );
 defined( 'THEME_URI' ) or define( 'THEME_URI', get_template_directory_uri() );
+define( 'ASSETS_PATH', THEME_PATH . '/assets' );
+define( 'ASSETS_URI', THEME_URI . '/assets' );
+define( 'STYLES_PATH', ASSETS_PATH . '/css' );
+define( 'STYLES_URI', ASSETS_URI . '/css' );
+define( 'IMAGES_PATH', ASSETS_PATH . '/img' );
+define( 'IMAGES_URI', ASSETS_URI . '/img' );
+define( 'ICONS_PATH', ASSETS_PATH . '/icon' );
+define( 'ICONS_URI', ASSETS_URI . '/icon' );
+define( 'SCRIPT_PATH', ASSETS_PATH . '/js' );
+define( 'SCRIPT_URI', ASSETS_URI . '/js' );
 define( 'INCLUDES_PATH', THEME_PATH . '/inc' );
 define( 'INCLUDES_URI', THEME_URI . '/inc' );
-define( 'STYLES_PATH', THEME_PATH . '/css' );
-define( 'STYLES_URI', THEME_URI . '/css' );
-define( 'IMAGES_PATH', THEME_PATH . '/img' );
-define( 'IMAGES_URI', THEME_URI . '/img' );
-define( 'ICONS_PATH', IMAGES_PATH . '/icon' );
-define( 'ICONS_URI', IMAGES_URI . '/icon' );
-define( 'SCRIPT_PATH', THEME_PATH . '/js' );
-define( 'SCRIPT_URI', THEME_URI . '/js' );
 
 
 /**
@@ -149,7 +151,7 @@ function issimple_styles() {
 	wp_enqueue_style( 'grid', STYLES_URI . '/grid.css', array(), '2.0', 'all' );
 	
 	// Font-Awesome
-	wp_enqueue_style( 'font-awesome', THEME_URI . '/font-awesome/css/font-awesome.min.css', array(), '4.3.0', 'all' );
+	wp_enqueue_style( 'font-awesome', ASSETS_URI . '/fonts/font-awesome/css/font-awesome.min.css', array(), '4.3.0', 'all' );
 	
 	// Fonts Oswald and Roboto
 	wp_enqueue_style( 'font-metamorphous', 'http://fonts.googleapis.com/css?family=Oswald|Roboto:400,400italic,700,700italic', array(), '1.0', 'all' );
