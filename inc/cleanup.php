@@ -59,7 +59,7 @@ add_action( 'init', 'issimple_cleanup_head' );
 add_filter( 'the_generator', '__return_false' );
 
 // Remove barra de administração
-add_filter( 'show_admin_bar', '__return_false' );
+//add_filter( 'show_admin_bar', '__return_false' );
 
 // Permite que Shortcodes sejam executados nos resumos (apenas para resumos manuais)
 add_filter( 'the_excerpt', 'do_shortcode' );

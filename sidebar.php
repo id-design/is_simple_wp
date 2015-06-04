@@ -12,16 +12,6 @@
 	<div id="sidebar-content">
 		<div id="nav-header">
 			<?php
-				if ( has_nav_menu( 'header-menu' ) ) :
-				wp_nav_menu( array(
-					'theme_location'	=> 'header-menu',
-					'container'			=> 'nav',
-					'container_id'		=> 'header-menu-nav',
-					'menu_id'			=> 'header-menu'
-				) );
-				echo '<!-- #header-menu-nav -->';
-				endif;
-				
 				if ( has_nav_menu( 'social-menu' ) ) :
 					wp_nav_menu( array(
 						'theme_location'	=> 'social-menu',
