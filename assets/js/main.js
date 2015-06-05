@@ -139,10 +139,10 @@
 		$window.resize( navbar_resize );
 		
 		// Ajustes dos ícones para os post-details
-		$( '.post-categ > a' ).prepend( '<i class="fa fa-folder-open"></i> ' );
-		$( '.post-author > a' ).prepend( '<i class="fa fa-user"></i> ' );
-		$( '.post-date > time' ).prepend( '<i class="fa fa-clock-o"></i> ' );
-		$( '.post-comments > a' ).prepend( '<i class="fa fa-comments"></i> ' );
+		//$( '.post-categ > a' ).prepend( '<i class="fa fa-folder-open"></i> ' );
+		//$( '.post-author > a' ).prepend( '<i class="fa fa-user"></i> ' );
+		//$( '.post-date > time' ).prepend( '<i class="fa fa-clock-o"></i> ' );
+		//$( '.post-comments > a' ).prepend( '<i class="fa fa-comments"></i> ' );
 		$( '.edit-link > a' ).prepend( '<i class="fa fa-pencil"></i> ' );
 		
 		// Ajustes para o lightbox

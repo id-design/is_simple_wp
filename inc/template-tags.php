@@ -196,25 +196,28 @@ function issimple_get_thumb_meta( $thumbnail_id, $meta ) {
  * @since Estúdio Viking 1.0
  * ----------------------------------------------------------------------------
  */
-function issimple_post_thumb( $size = 'post-size' ) {
+function issimple_post_thumb( $size = 'featured-size' ) {
 	$thumb_id = get_post_thumbnail_id();
 	
 	$thumb_link_full = wp_get_attachment_image_src( $thumb_id, 'full' );
 	$thumb_link_full = $thumb_link_full[0];
 	
 	$thumb_caption = issimple_get_thumb_meta( $thumb_id, 'caption' );
-	?>
 	
-	<figure class="post-thumb<?php if ( is_page() ) : echo ' col_4'; endif; ?>">
-		<a class="link-thumb img-link"
-		   href="<?php if ( is_single() ) : echo $thumb_link_full; else : the_permalink(); endif; ?>"
-		   title="<?php the_title(); ?>"
-		   <?php if ( is_single() ) : ?>data-lightbox="post-<?php the_ID(); ?>" data-title="<?php echo $thumb_caption; ?>"<?php endif; ?>>
-			<?php the_post_thumbnail( $size, array( 'class' => 'img-thumb' ) ); ?>
-		</a>
-	</figure><!-- .post thumbnail -->
-	
-	<?php
+	if ( has_post_thumbnail() ) :
+		?>
+		
+		<figure class="post-thumb<?php if ( is_page() ) : echo ' col_4'; endif; ?>">
+			<a class="featured-link img-link"
+			   href="<?php if ( is_single() ) : echo $thumb_link_full; else : the_permalink(); endif; ?>"
+			   title="<?php the_title(); ?>"
+			   <?php if ( is_single() ) : ?>data-lightbox="post-<?php the_ID(); ?>" data-title="<?php echo $thumb_caption; ?>"<?php endif; ?>>
+				<?php the_post_thumbnail( $size, array( 'class' => 'featured-img' ) ); ?>
+			</a>
+		</figure><!-- .post thumbnail -->
+		
+		<?php
+	endif;
 }
 
 
@@ -235,13 +238,13 @@ function issimple_post_details() {
 	<section class="post-details">
 		<?php issimple_post_thumb(); ?>
 		
-		<span class="post-categ shadow categ-<?php echo $categ_slug; ?>"><?php the_category( ', ' ); ?></span>
+		<span class="post-categ shadow categ-<?php echo $categ_slug; ?>"><i class="fa fa-folder-open"></i> <?php the_category( ', ' ); ?></span>
 		
 		<?php if ( is_single() ) : ?>
 			<div class="post-details-bar">
-				<span class="post-author"><?php the_author_posts_link(); ?></span> | 
-				<span class="post-date"><?php issimple_date_link(); ?></span> | 
-				<span class="post-comments"><?php issimple_comment_link(); ?></span>
+				<span class="post-author"><i class="fa fa-user"></i> <?php the_author_posts_link(); ?></span> | 
+				<span class="post-date"><i class="fa fa-clock-o"></i> <?php issimple_date_link(); ?></span> | 
+				<span class="post-comments"><i class="fa fa-comments"></i> <?php issimple_comment_link(); ?></span>
 			</div>
 		<?php endif; ?>
 	</section><!-- .post details -->
