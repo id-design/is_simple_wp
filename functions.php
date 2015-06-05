@@ -48,7 +48,7 @@ define( 'INCLUDES_URI', THEME_URI . '/inc' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-if ( ! isset( $content_width ) ) $content_width = 740;
+if ( ! isset( $content_width ) ) $content_width = 770;
 
 
 /**
@@ -80,13 +80,17 @@ function issimple_setup() {
 	// Suporte a miniaturas
     add_theme_support( 'post-thumbnails' );
 		// Miniatura grande
-		add_image_size( 'large', 740, '', true );
+		add_image_size( 'large', 750, '', true );
 		// Miniatura média
-		add_image_size( 'medium', 250, '', true );
+		add_image_size( 'medium', 500, '', true );
 		// Miniatura pequena
-		add_image_size( 'small', 120, '', true );
-		// Miniatura personalizada. Uso: the_post_thumbnail( 'post-size' );
-		add_image_size( 'post-size', 780, 300, true );
+		add_image_size( 'small', 250, '', true );
+		// Miniatura personalizada. Uso: the_post_thumbnail( 'featured-size' );
+		add_image_size( 'featured-size', 770, 300, true );
+		// Miniatura personalizada. Uso: the_post_thumbnail( 'full-page-size' );
+		add_image_size( 'full-page-size', 1200, 300, true );
+		// Miniatura personalizada. Uso: the_post_thumbnail( 'featured-slider-size' );
+		add_image_size( 'featured-slider-size', 1920, 500, true );
 	
 	// Registro dos menus de navegação usados nesse tema
 	register_nav_menus( array(

@@ -4,6 +4,10 @@
  * Version: 1.0
  */
 
+.container-fluid {
+	max-width: 1200px;
+}
+
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	overflow: hidden;
