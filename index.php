@@ -17,7 +17,7 @@
 get_header();
 ?>
 	
-<main id="principal" class="col_8" role="main">
+<main id="principal" class="col-sm-8 col-md-8 col-lg-8" role="main">
 
 	<header id="page-header">
 		<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1>
@@ -49,6 +49,6 @@ get_header();
 	?>
 	
 </main><!-- #principal -->
-
+<?php get_sidebar(); ?>
 <?php
 get_footer();

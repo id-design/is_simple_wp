@@ -1,0 +1,18 @@
+/**
+ * Theme Name: IS Simple WordPress
+ * Description: IS Simple theme for WordPress.
+ * Version: 1.0
+ */
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+}
+
+#header-txt > * {
+	margin-top: 0;
+	margin-bottom: 0;
+}

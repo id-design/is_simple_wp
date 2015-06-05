@@ -51,6 +51,15 @@ define( 'INCLUDES_URI', THEME_URI . '/inc' );
 if ( ! isset( $content_width ) ) $content_width = 740;
 
 
+/**
+ * Load IS Simple Classes
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+require_once INCLUDES_PATH . '/classes/class-bootstrap-nav.php';
+
+
 if ( ! function_exists( 'issimple_setup' ) ) :
 /**
  * Setup de Features suportadas pelo tema
@@ -92,7 +101,7 @@ function issimple_setup() {
 	
 	// Suporte a elementos HTML5
 	add_theme_support( 'html5', array(
-		'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'
+		'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widget'
 	) );
 	
 	// Suporte a background personalizado
@@ -105,10 +114,7 @@ function issimple_setup() {
     require INCLUDES_PATH . '/custom-header.php';
 	
 	// Estilo personalizado para o editor
-	add_editor_style( array(
-		'css/editor-style.css',
-		'http://fonts.googleapis.com/css?family=Oswald|Roboto:400,400italic,700,700italic'
-	) );
+	add_editor_style( array( 'css/editor-style.css', ) );
 }
 endif; // issimple_setup
 add_action( 'after_setup_theme', 'issimple_setup' );
@@ -138,7 +144,7 @@ add_action( 'widgets_init', 'issimple_widgets_init' );
 
 
 /**
- * Carrega as folhas de estilo do tema na tag <head>
+ * Print stylesheets in the tag <head>
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -150,17 +156,20 @@ function issimple_styles() {
 	// Bootstrap theme
 	wp_enqueue_style( 'bootstrap-theme', STYLES_URI . '/bootstrap-theme.min.css', array(), null, 'all' );
 	
-	// CSS Principal
-	wp_enqueue_style( 'issimple_style', THEME_URI . '/style.css', array(), null, 'all' );
-	
 	// LightBox
 	wp_enqueue_style( 'lightbox', STYLES_URI . '/lightbox.css', array(), null, 'all' );
+	
+	// Font Awesome
+	wp_enqueue_style( 'font-awesome', ASSETS_URI . '/fonts/font-awesome/css/font-awesome.min.css', array(), null, 'all' );
+	
+	// CSS Principal
+	wp_enqueue_style( 'issimple_style', STYLES_URI . '/style.css', array(), null, 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'issimple_styles' );
 
 
 /**
- * Carregar os scripts do tema
+ * Print scripts
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -186,6 +195,7 @@ function issimple_header_scripts() {
 		
 		// Scripts personalizados do tema
 		//wp_enqueue_script( 'issimple_scripts', SCRIPT_URI . '/general.js', array(), null, true );
+		wp_enqueue_script( 'issimple_scripts', SCRIPT_URI . '/main.js', array(), null, true );
 	endif;
 }
 add_action( 'init', 'issimple_header_scripts');
@@ -304,7 +314,7 @@ function classes_nav_item( $classes, $item, $args, $depth ) {
 	
 	return $classes;
 }
-add_filter( 'nav_menu_css_class', 'classes_nav_item', 10, 4 );
+//add_filter( 'nav_menu_css_class', 'classes_nav_item', 10, 4 );
 
 
 /**
@@ -318,7 +328,7 @@ function class_nav_link( $atts, $item, $args, $depth  ) {
 	
 	return $atts;
 }
-add_filter( 'nav_menu_link_attributes', 'class_nav_link', 10, 4 );
+//add_filter( 'nav_menu_link_attributes', 'class_nav_link', 10, 4 );
 
 
 /**

@@ -17,16 +17,16 @@ function issimple_custom_header_setup() {
 	add_theme_support( 'custom-header', array(
 		// Imagem e cor de texto padrão
 		//'default-image'          => $headers_uri . 'logo_header.png',
-		'default-text-color'     => '000',
+		//'default-text-color'     => '000',
 		
 		// Tamanho padrão para as imagens
 		'width'                  => 340,
-		'height'                 => 120,
+		'height'                 => 50,
 		
 		// Opções extras
 		'random-default'         => false,	// Cabeçalho aleatório
-		'flex-height'            => true,	// Altura flexível
-		'flex-width'             => false,	// Largura flexível
+		'flex-height'            => false,	// Altura flexível
+		'flex-width'             => true,	// Largura flexível
 		'header-text'            => true,	// Habilita suporte a personalização do texto
 		'uploads'                => true,	// Permite upload de imagens
 		
@@ -98,32 +98,19 @@ function issimple_header_style() {
 		// Se o texto está sendo exibido...
 		if ( display_header_text() ) :
 	?>
-		#head-txt {
-			padding: 5px 0;
-			padding: 0.5rem 0;
-		}
-		#name, #name a {
-			font-size: 45px;
-			font-size: 4.5rem;		/* 45 / $rembase */
-			line-height: 1.1111em; 	/* 50 / font-size */
-		}
 		#name a { color: #<?php echo esc_attr( $text_color ); ?>; }
-		#name a:hover { font-weight: normal; }
 	<?php endif;
 		
 		// Se o texto e a imagem estiverem sendo exibidos...
 		if ( display_header_text() && ! empty( $header_image ) ) :
 	?>
-		#name, #desc {
-			margin-left: 20px;
-			margin-left: 2rem;
-		}
+		
 	<?php endif;
 		
 		// Se apenas o texto estiver sendo exibido...
 		if ( display_header_text() && empty( $header_image ) ) :
 	?>
-		#head-txt { text-align: center; }
+		
 	<?php endif;
 		
 		// Se não estiver sendo exibida a imagem...
@@ -138,7 +125,7 @@ function issimple_header_style() {
 		// Se não estiver sendo exibida o texto...
 		if ( ! display_header_text() ) :
 	?>
-		#head-txt {
+		#header-txt {
 			clip: rect(1px, 1px, 1px, 1px);
 			position: absolute !important;
 		}

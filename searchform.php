@@ -8,14 +8,12 @@
  */
 ?>
 
-<aside id="search" class="widget inner">
-	<form id="search-form" class="search" method="get" action="<?php echo home_url(); ?>" role="search">
-		<div class="form-group">
-			<label for="s"><span class="screen-reader-text"><?php _e( 'Search', 'issimple' ); ?></span></label>
-			<div class="input-group">
-				<input class="search-input" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
-				<span class="input-group-addon-right"><button class="search-submit button" type="submit" role="button"><i class="fa fa-search"></i></button></span>
-			</div>
-		</div>
-	</form>
-</aside><!-- #search -->
+<form id="search-form" class="navbar-form navbar-right" method="get" action="<?php echo home_url(); ?>" role="search">
+	<label for="s" class="screen-reader-text"><?php _e( 'Search', 'issimple' ); ?></label>
+	<div class="input-group">
+		<input class="form-control" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="submit" role="button"><span class="screen-reader-text"><?php _e( 'Search', 'issimple' ); ?></span> <i class="fa fa-search"></i></button>
+		</span>
+	</div>
+</form><!-- #search-form -->

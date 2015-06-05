@@ -25,49 +25,51 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
-		<div id="page" class="container-fluid">
-			
-			<header id="header" role="banner">
-				<nav class="navbar navbar-inverse">
-					<div class="container">
-						<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'issimple' ); ?>"><?php _e( 'Skip to content', 'issimple' ); ?></a>
-						<hgroup id="brand" class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-menu-nav" aria-controls="navbar">
-								<span class="sr-only"><?php _e( 'Click on the button to display the menu.', 'issimple' ); ?></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							
-							<a id="logo-header" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-							
-							<div id="head-txt">
-								<?php if ( is_home() ) : ?>
-									<h1 id="name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-									<h2 id="desc" class="sub-title"><?php bloginfo( 'description' ); ?></h2>
-								<?php else : ?>
-									<p id="name"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></p>
-									<p id="desc" class="sub-title"><?php bloginfo( 'description' ); ?></p>
-								<?php endif; ?>
-							</div><!-- #head-txt -->
-						</hgroup><!-- #brand -->
-						
-						<?php
-							wp_nav_menu( array(
-								'theme_location'	=> 'header-menu',
-								'container_id'		=> 'header-menu-nav',
-								'menu_id'			=> 'header-menu'
-							) );
-							echo '<!-- #header-menu-nav -->';
-						?>
-						
-					</div>
-				</nav>
-				
-			</header><!-- #header -->
-			
-			<div id="main" class="container">
-				<div class="row">
-					<?php //get_slider(); ?>
+		
+		<nav id="fixed-nav-header" class="navbar navbar-inverse navbar-fixed-top">
+			<header id="header" class="container-fluid" role="banner">
+				<a class="screen-reader-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'issimple' ); ?>"><?php _e( 'Skip to content', 'issimple' ); ?></a>
+				<hgroup id="brand" class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-menu-nav" aria-controls="navbar">
+						<span class="sr-only"><?php _e( 'Click on the button to display the menu.', 'issimple' ); ?></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 					
-					<?php get_sidebar(); ?>
+					<a id="logo-header" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					
+					<div id="header-txt">
+						<?php if ( is_home() || is_front_page() ) : ?>
+							<h1 id="name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							<h2 id="desc" class="screen-reader-text"><?php bloginfo( 'description' ); ?></h2>
+						<?php else : ?>
+							<p id="name" class="h1"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></p>
+							<p id="desc" class="h2 screen-reader-text"><?php bloginfo( 'description' ); ?></p>
+						<?php endif; ?>
+					</div><!-- #head-txt -->
+				</hgroup><!-- #brand -->
+				
+				<div id="header-menu-nav" class="collapse navbar-collapse">
+					<?php
+						wp_nav_menu( array(
+							'theme_location'	=> 'header-menu',
+							'container'			=> false,
+							'menu_id'			=> 'header-menu',
+							'menu_class'		=> 'nav navbar-nav',
+							'depth'				=> 2,
+							'fallback_cb'		=> 'ISSimple_WP_Bootstrap_Nav_Walker::fallback',
+							'walker'			=> new ISSimple_WP_Bootstrap_Nav_Walker()
+						) );
+						echo '<!-- #header-menu-nav -->';
+						
+						get_search_form();
+					?>
+				</div>
+			
+			</header><!-- #header -->
+		</nav><!-- #fixed-nav-header -->
+		
+		<div id="main" class="container-fluid">
+			<div class="row">
+				<?php //get_slider(); ?>

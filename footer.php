@@ -13,9 +13,9 @@
 				</div><!-- .row -->
 			</div><!-- #main -->
 			
-			<footer id="footer" class="container" role="contentinfo">
+			<footer id="footer" class="container-fluid" role="contentinfo">
 				<div class="row">
-					<p id="copyright" class="col_12">
+					<p id="copyright" class="col-md-12">
 						&copy; <?php echo date( 'Y' ) . ' ' . do_shortcode( '[home-link]' ) . ' - ' . __( 'All rights reserved.', 'issimple' ) . ' ' .
 						sprintf(
 							__( 'Powered by <a href="%s" rel="nofollow" target="_blank">ID Design</a> on <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'issimple' ),
@@ -24,8 +24,6 @@
 					</p><!-- #copyright -->
 				</div>
 			</footer><!-- #footer -->
-			
-		</div><!-- #page -->
 
 		<?php wp_footer(); ?>
 
