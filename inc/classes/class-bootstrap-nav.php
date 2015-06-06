@@ -109,9 +109,9 @@ class ISSimple_WP_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			 * if there is a value in the attr_title property. If the attr_title
 			 * property is NOT null we apply it as the class name for the glyphicon or font awesome.
 			 */
-			if ( ! empty( $item->attr_title ) && strpos( $item->attr_title, 'glyphicon' ) ) {
+			if ( ! empty( $item->attr_title ) && false !== stripos( $item->attr_title, 'glyphicon' ) ) {
 				$item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
-			} elseif ( ! empty( $item->attr_title ) && strpos( $item->attr_title, 'fa-' ) ) {
+			} elseif ( ! empty( $item->attr_title ) && false !== stripos( $item->attr_title, 'fa-' ) ) {
 				$item_output .= '<a'. $attributes .'><i class="fa ' . esc_attr( $item->attr_title ) . '"></i>&nbsp;';
 			} else {
 				$item_output .= '<a'. $attributes .'>';
