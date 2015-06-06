@@ -12,37 +12,40 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
-	<header class="post-header">
+	<header class="entry-header">
 		
 		<?php
 			if ( is_single() ) :
-				the_title( '<h1 class="post-title">', '</h1>' );
+				the_title( '<h1 class="entry-title">', '</h1>' );
 			else :
 				?>
-				<h2 class="post-title">
+				<h3 class="entry-title">
 					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-				</h2>
+				</h3>
 				<?php
 			endif;
 			
-			// Display post details
-			issimple_post_details();
+			// Display entry meta
+			issimple_entry_meta();
+			
+			// Diplay post featured thumb
+			issimple_post_featured_thumb();
 		?>
 	
-	</header><!-- .post-header -->
-	
-	<section class="post-content">
-		<?php
-			if ( is_single() ) :
-				the_content();
-			else :
-				issimple_excerpt( 'issimple_index' );
-			endif;
-		?>
-	</section><!-- .post-content -->
+	</header><!-- .entry-header -->
 	
 	<?php if ( is_single() ) : ?>
-		<footer class="post-footer">
+		<div class="entry-content">
+			<?php the_content(); ?>
+		</div><!-- .entry-content -->
+	<?php else : ?>
+		<div class="entry-summary">
+			<?php issimple_excerpt( 'issimple_index' ); ?>
+		</div><!-- .entry-summary -->
+	<?php endif; ?>
+	
+	<?php if ( is_single() ) : ?>
+		<footer class="entry-footer">
 			<?php if ( get_the_author_meta( 'description' ) ) get_template_part( 'author-info' ); ?>
 			
 			<p>
@@ -50,10 +53,9 @@
 				<i class="fa fa-folder-open"></i> <?php _e( 'Categorised in: ', 'issimple' ); the_category( ', ' ); // Separado por vírgula ?>.<br />
 				<i class="fa fa-tags"></i> <?php the_tags( __( 'Tags: ', 'issimple' ) ); ?>.
 			</p>
-		</footer><!-- .post-footer -->
+		</footer><!-- .entry-footer -->
 	<?php endif; ?>
 	
-</article>
-<!-- #post## -->
+</article><!-- #post## -->
 
 <hr />

@@ -139,8 +139,8 @@ function issimple_widgets_init() {
 		'id'			=> 'widget-area',
 		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
 		'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-		'before_title'	=> '<h2 class="widget-title inner">',
-		'after_title'	=> '</h2><div class="widget-content inner">',
+		'before_title'	=> '<h3 class="widget-title inner">',
+		'after_title'	=> '</h3><div class="widget-content inner">',
 		'after_widget'	=> '</div></aside>'
 	) );
 }

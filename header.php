@@ -28,7 +28,7 @@
 		
 		<nav id="fixed-nav-header" class="navbar navbar-inverse navbar-fixed-top">
 			<header id="header" class="container-fluid" role="banner">
-				<a class="screen-reader-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'issimple' ); ?>"><?php _e( 'Skip to content', 'issimple' ); ?></a>
+				<a class="sr-only" href="#content" title="<?php esc_attr_e( 'Skip to content', 'issimple' ); ?>"><?php _e( 'Skip to content', 'issimple' ); ?></a>
 				<hgroup id="brand" class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-menu-nav" aria-controls="navbar">
 						<span class="sr-only"><?php _e( 'Click on the button to display the menu.', 'issimple' ); ?></span>
@@ -42,10 +42,10 @@
 					<div id="header-txt">
 						<?php if ( is_home() || is_front_page() ) : ?>
 							<h1 id="name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-							<h2 id="desc" class="screen-reader-text"><?php bloginfo( 'description' ); ?></h2>
+							<h2 id="desc" class="sr-only"><?php bloginfo( 'description' ); ?></h2>
 						<?php else : ?>
 							<p id="name" class="h1"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></p>
-							<p id="desc" class="h2 screen-reader-text"><?php bloginfo( 'description' ); ?></p>
+							<p id="desc" class="h2 sr-only"><?php bloginfo( 'description' ); ?></p>
 						<?php endif; ?>
 					</div><!-- #head-txt -->
 				</hgroup><!-- #brand -->
@@ -72,4 +72,3 @@
 		
 		<div id="main" class="container-fluid">
 			<div class="row">
-				<?php //get_slider(); ?>

@@ -143,7 +143,7 @@
 		//$( '.post-author > a' ).prepend( '<i class="fa fa-user"></i> ' );
 		//$( '.post-date > time' ).prepend( '<i class="fa fa-clock-o"></i> ' );
 		//$( '.post-comments > a' ).prepend( '<i class="fa fa-comments"></i> ' );
-		$( '.edit-link > a' ).prepend( '<i class="fa fa-pencil"></i> ' );
+		//$( '.edit-link > a' ).prepend( '<i class="fa fa-pencil"></i> ' );
 		
 		// Ajustes para o lightbox
 		var content_id = $( 'article.page, article.post' ).attr( 'id' );
