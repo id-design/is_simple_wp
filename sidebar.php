@@ -8,7 +8,7 @@
  */
 ?>
 
-<section id="sidebar" class="col-sm-4 col-md-4 col-lg-4" role="complementary">
+<section id="sidebar" class="col-sm-4 col-md-4" role="complementary">
 	<div id="sidebar-content">
 		<div id="nav-header">
 			<?php

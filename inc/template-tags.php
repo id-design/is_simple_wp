@@ -5,7 +5,7 @@
  * Eventualmente, algumas das funcionalidades aqui poderia ser substituída
  * por características do wordpress
  * 
- * @package Estúdio Viking
+ * @package IS Simple
  * @since 1.0
  */
 
@@ -13,7 +13,7 @@
 /**
  * Favicon personalizado
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function my_favicon(){
@@ -48,7 +48,7 @@ function my_favicon(){
 /**
  * Ícone personalizado para a tela de login
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_login_icon(){
@@ -75,7 +75,7 @@ add_action( 'login_enqueue_scripts', 'issimple_login_icon' );
 /**
  * Título das páginas
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function my_wp_title( $title, $sep ) {
@@ -93,7 +93,7 @@ add_filter( 'wp_title', 'my_wp_title', 10, 2 );
  * Adiciona o nome da página como classe no elemento <body>
  * Créditos: Starkers Wordpress Theme
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function add_name_to_body_class( $classes ) {
@@ -114,7 +114,7 @@ add_filter( 'body_class', 'add_name_to_body_class' );
 /**
  * Adiciona o atributo 'role' aos menus de navegação
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function add_role_navigation_to_nav_menu( $nav_menu, $args ) {
@@ -126,9 +126,23 @@ add_filter( 'wp_nav_menu', 'add_role_navigation_to_nav_menu', 10, 2 );
 
 
 /**
+ * Primary class based on page template
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_primary_class() {
+	if ( is_page_template( 'full-width.php' ) ) :
+		echo 'col-sm-12 col-md-12';
+	else:
+		echo 'col-sm-8 col-md-8';
+	endif;
+}
+
+/**
  * Títulos personalizados para páginas arquivos
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function my_archive_title( $title ) {
@@ -154,14 +168,14 @@ add_filter( 'get_the_archive_title', 'my_archive_title' );
 /**
  * Paginação de Artigos
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_post_pagination() {
 	the_posts_pagination( array(
-		'prev_text'          => '<i class="fa fa-arrow-left"></i> ' . '<span class="meta-nav screen-reader-text">' . __( 'Previous page', 'issimple' ) . ' </span>',
-		'next_text'          => '<span class="meta-nav screen-reader-text">' . __( 'Next page', 'issimple' ) . ' </span>' . ' <i class="fa fa-arrow-right"></i>',
-		'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'issimple' ) . ' </span>',
+		'prev_text'          => '<i class="fa fa-arrow-left"></i> ' . '<span class="meta-nav sr-only">' . __( 'Previous page', 'issimple' ) . ' </span>',
+		'next_text'          => '<span class="meta-nav sr-only">' . __( 'Next page', 'issimple' ) . ' </span>' . ' <i class="fa fa-arrow-right"></i>',
+		'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'issimple' ) . ' </span>',
 	) );
 	
 	echo '<!-- .pagination -->';
@@ -171,7 +185,7 @@ function issimple_post_pagination() {
 /**
  * Coleta informações da imagem destacada da postagem
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_get_thumb_meta( $thumbnail_id, $meta ) {
@@ -193,7 +207,7 @@ function issimple_get_thumb_meta( $thumbnail_id, $meta ) {
 /**
  * Miniaturas personalizadas para as postagens
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_post_featured_thumb( $size = 'featured-size' ) {
@@ -224,7 +238,7 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 /**
  * Detalhes personalizadas para as postagens
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_entry_meta() {
@@ -245,7 +259,7 @@ function issimple_entry_meta() {
 /**
  * Cria datas como links
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_date_link() {
@@ -278,7 +292,7 @@ function issimple_date_link() {
 /**
  * Link para os comentários
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_comment_link() {
@@ -294,7 +308,7 @@ function issimple_comment_link() {
 /**
  * Criar resumos personalizados
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_excerpt( $length_callback = '', $more_callback = '' ) {
@@ -316,7 +330,7 @@ function issimple_excerpt( $length_callback = '', $more_callback = '' ) {
  * Tamanho em palavras para os resumos personalizados.
  * Uso: issimple_excerpt( 'issimple_index' );
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_index( $length ) {
@@ -328,7 +342,7 @@ function issimple_index( $length ) {
  * Tamanho em palavras para os resumos personalizados do slider.
  * Uso: issimple_excerpt( 'issimple_length_slider' );
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_length_slider( $lenght ) {
@@ -339,35 +353,35 @@ function issimple_length_slider( $lenght ) {
 /**
  * Cria link Ver Artigo personalizado para a postagem
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function issimple_view_article( $more ) {
+function issimple_read_more( $more ) {
 	global $post;
 	
 	$tagmore  = '...</p><p class="view-article">';
-	$tagmore .= '<a class="button" ';
+	$tagmore .= '<a class="btn btn-info" ';
 	$tagmore .= 'href="' . get_permalink( $post->ID ) . '" ';
-	$tagmore .= 'title ="Ver artigo: ' . get_the_title() . '">';
-	$tagmore .= 'Ver artigo';
+	$tagmore .= 'title ="' . __( 'View post:', 'issimple' ) . ' ' . get_the_title() . '">';
+	$tagmore .= __( 'View post', 'issimple' );
 	$tagmore .= '</a>';
 	
 	return $tagmore;
 }
-add_filter( 'excerpt_more', 'issimple_view_article' );
+add_filter( 'excerpt_more', 'issimple_read_more' );
 
 
 /**
  * Navegação dos comentários
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_comment_nav() {
 	// Há comentários para navegação?
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<nav class="nav comment-nav" role="navigation">
-			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'issimple' ); ?></h2>
+			<h2 class="sr-only"><?php _e( 'Comment navigation', 'issimple' ); ?></h2>
 			<div class="nav-links">
 				<?php
 					if ( $prev_link = get_previous_comments_link( __( 'Older comments', 'issimple' ) ) ) :
