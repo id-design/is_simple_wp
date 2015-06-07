@@ -119,10 +119,14 @@
 	
 	function navbar_resize() {
 		if ( $wpadminbar.height() ) {
-			$fixed_navbar_header.attr( 'style', 'top: ' + $wpadminbar.height() + 'px' );
+			$fixed_navbar_header.attr( 'style', 'top: ' + $wpadminbar.height() + 'px;' );
+			
+			if ( 600 >= $window.width() ) {
+				$fixed_navbar_header.attr( 'style', 'position: absolute; top: ' + $wpadminbar.height() + 'px;' );
+			}
 		}
 		
-		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() + 20 ) + 'px' );
+		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() + 20 ) + 'px;' );
 	}
 	
 	$( document ).ready( function() {
