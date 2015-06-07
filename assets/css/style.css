@@ -28,3 +28,7 @@ img, picture, figure, embed, iframe, object, video {
 .entry-meta > span:last-child {
 	margin-right: 0;
 }
+
+.post-featured-thumb {
+	margin-bottom: 10px;
+}
