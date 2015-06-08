@@ -193,65 +193,140 @@ add_filter( 'get_the_archive_title', 'my_archive_title' );
 
 
 /**
- * Paginação de Artigos
+ * Posts Pagination
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_post_pagination() {
-	issimple_posts_pagination( array(
-		'screen_reader_text' => __( 'Posts navigation', 'issimple' ),
-		'prev_text'          => '<i class="fa fa-arrow-left"></i> ' . '<span class="meta-nav sr-only">' . __( 'Previous page', 'issimple' ) . ' </span>',
-		'next_text'          => '<span class="meta-nav sr-only">' . __( 'Next page', 'issimple' ) . ' </span>' . ' <i class="fa fa-arrow-right"></i>',
-		'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'issimple' ) . ' </span>',
-		'type'				 => 'list'
-	) );
+	issimple_wp_bootstrap_pagination( array( 'type' => 'pager' ) );
 	
-	echo '<!-- .pagination -->';
+	echo '<!-- .post-pagination -->';
 }
 
 
-function issimple_posts_pagination( $args = array() ) {
-	$navigation = '';
+/**
+ * Custom Bootstrap Posts Pagination
+ * 
+ * A custom WordPress numbered pagination function to fully implement the
+ * Bootstrap 3.x pagination/pager style in a custom theme.
+ * Inspired by the function wp_bootstrap_pagination
+ * (@link https://github.com/talentedaamer/Bootstrap-wordpress-pagination),
+ * created by OOPThemes and with the licence GPLv2.
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_wp_bootstrap_pagination( $args = array() ) {
+	global $wp_query;
 	
-	// Don't print empty markup if there's only one page.
-	if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
-		$args = wp_parse_args( $args, array(
-			'mid_size'           => 1,
-			'prev_text'          => __( 'Previous' ),
-			'next_text'          => __( 'Next' ),
-			'screen_reader_text' => __( 'Posts navigation' ),
-		) );
+	// Prevent show pagination number if Infinite Scroll of JetPack is active.
+	if ( ! isset( $_GET[ 'infinity' ] ) ) {
 		
-		// Make sure we get a string back. Plain is the next best thing.
-		if ( isset( $args['type'] ) && 'array' == $args['type'] ) {
-			$args['type'] = 'plain';
+		// Sets the pagination args.
+		$defaults = array(
+			'container'				=> 'nav',
+			'container_id'			=> '',
+			'container_class'		=> 'post-pagination',
+			'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
+			'type'					=> 'pagination',
+			'pagination_id'			=> '',
+			'pagination_class'		=> '',
+			'range'					=> 5,
+			'custom_query'			=> false,
+			'echo'					=> true,
+			'previous_text'			=> __( '<i class="glyphicon glyphicon-chevron-left"></i> <span class="sr-only">Previous</span>', 'issimple' ),
+			'next_text'				=> __( '<span class="sr-only">Next</span> <i class="glyphicon glyphicon-chevron-right"></i>', 'issimple' ),
+			'first_link_text'		=> __( 'First', 'issimple' ),
+			'last_link_text'		=> __( 'Last', 'issimple' )
+		);
+		
+		$args = wp_parse_args( $args, apply_filters( 'issimple_wp_bootstrap_pagination_defaults', $defaults ) );
+		
+		$args['range'] = (int) $args['range'] - 1;
+		
+		if ( ! $args['custom_query'] ) $args['custom_query'] = $wp_query;
+		
+		$count = (int) $args['custom_query']->max_num_pages;
+		$page  = intval( get_query_var( 'paged' ) );
+		$ceil  = ceil( $args['range'] / 2 );
+		
+		if ( $count <= 1 ) return false;
+		
+		if ( ! $page ) $page = 1;
+		
+		if ( $count > $args['range'] ) {
+			if ( $page <= $args['range'] ) {
+				$min = 1;
+				$max = $args['range'] + 1;
+			} elseif ( $page >= ( $count - $ceil ) ) {
+				$min = $count - $args['range'];
+				$max = $count;
+			} elseif ( $page >= $args['range'] && $page < ( $count - $ceil ) ) {
+				$min = $page - $ceil;
+				$max = $page + $ceil;
+			}
+		} else {
+			$min = 1;
+			$max = $count;
 		}
 		
-		// Set up paginated links.
-		$links = paginate_links( $args );
+		$output = '';
 		
-		if ( $links ) {
-			$navigation = issimple_navigation_markup( $links, 'pagination', $args['screen_reader_text'] );
+		if ( isset( $args['screen_reader_text'] ) ) {
+			$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>';
 		}
 		
+		$pagination_id = ( $args['pagination_id'] ) ? ' id="' . $args['pagination_id'] . '"' : '';
+		
+		$pagination_class = ( ! empty( $args['pagination_class'] ) ) ? $args['type'] . ' ' . $args['pagination_class'] : $args['type'];
+		$pagination_class = ' class="' . $pagination_class . '"';
+		
+		$output .= '<ul' . $pagination_id . $pagination_class . '>';
+		
+		$previous = intval( $page ) - 1;
+		$previous = esc_attr( get_pagenum_link( $previous ) );
+		if ( $previous && ( 1 != $page ) )
+			$output .= '<li class="previous"><a href="' . $previous . '" title="' . __( 'Previous page', 'issimple') . '">' . $args['previous_text'] . '</a></li>';
+		
+		$firstpage = esc_attr( get_pagenum_link( 1 ) );
+		if ( $firstpage && ( 1 != $page ) )
+			$output .= '<li><a href="' . $firstpage . '" title="' . __( 'Go to first page', 'issimple') . '">' . 1 . '</a></li>';
+		
+		if ( ! empty( $min ) && ! empty( $max ) ) {
+			for( $i = $min; $i <= $max; $i++ ) {
+				if ( $page == $i ) {
+					$output .= '<li class="active"><span class="active">' . (int) $i . '</span></li>';
+				} else {
+					$output .= sprintf( '<li><a href="%1$s" title="' . __( 'Go to page %2$d', 'issimple') . '">%2$d</a></li>', esc_attr( get_pagenum_link( $i ) ), $i );
+				}
+			}
+		}
+		
+		$lastpage = esc_attr( get_pagenum_link( $count ) );
+		if ( $lastpage )
+			$output .= '<li><a href="' . $lastpage . '" title="' . __( 'Go to last page', 'issimple') . '">' . $count . '</a></li>';
+		
+		$next = intval( $page ) + 1;
+		$next = esc_attr( get_pagenum_link( $next ) );
+		if ( $next && ( $count != $page ) )
+			$output .= '<li class="next"><a href="' . $next . '" title="' . __( 'Next page', 'issimple') . '">' . $args['next_text'] . '</a></li>';
+		
+		$output .= '</ul>';
+		
+		if ( isset( $args['container'] ) ) {
+			$container_id = ( ! empty( $args['container_id'] ) ) ? ' id="' . $args['container_id'] . '"' : '';
+			$container_class = ( ! empty( $args['container_class'] ) ) ? ' class="' . $args['container_class'] . '"' : '';
+			
+			$output = '<' . $args['container'] . $container_id . $container_class . '>' . $output . '</' . $args['container'] . '>';
+		}
+		
+		if ( $args['echo'] ) {
+			echo $output;
+		} else {
+			return $output;
+		}
 	}
-	
-	echo $navigation;
-}
-
-function issimple_navigation_markup( $links, $class = 'posts-navigation', $screen_reader_text = '' ) {
-	if ( empty( $screen_reader_text ) ) {
-		$screen_reader_text = __( 'Posts navigation' );
-	}
-	
-	$template = '
-	<nav class="navigation %1$s" role="navigation">
-		<h2 class="sr-only">%2$s</h2>
-		<div class="nav-links">%3$s</div>
-	</nav>';
-	
-	return sprintf( $template, sanitize_html_class( $class ), esc_html( $screen_reader_text ), $links );
 }
 
 

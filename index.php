@@ -44,7 +44,7 @@ get_header();
 				// Post pagination
 				issimple_post_pagination();
 				
-			else:
+			else :
 				// If no content, include the "No posts found" template.
 				get_template_part( 'content', 'none' );
 				
