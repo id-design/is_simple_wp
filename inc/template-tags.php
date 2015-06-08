@@ -286,22 +286,33 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 		
 		$previous = intval( $page ) - 1;
 		$previous = esc_attr( get_pagenum_link( $previous ) );
-		if ( $previous && ( 1 != $page ) )
+		if ( $previous && ( 1 != $page ) ) {
 			$output .= '<li class="previous"><a href="' . $previous . '" title="' . __( 'Previous page', 'issimple') . '">' . $args['previous_text'] . '</a></li>';
+		} else {
+			$output .= '<li class="previous disabled"><span>' . $args['previous_text'] . '</span></li>';
+		}
 		
 		$firstpage = esc_attr( get_pagenum_link( 1 ) );
 		if ( $firstpage && ( 1 != $page ) )
 			$output .= '<li><a href="' . $firstpage . '" title="' . __( 'Go to first page', 'issimple') . '">' . 1 . '</a></li>';
 		
+		//if ( $page > $min )
+		//	$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
+		
 		if ( ! empty( $min ) && ! empty( $max ) ) {
 			for( $i = $min; $i <= $max; $i++ ) {
-				if ( $page == $i ) {
-					$output .= '<li class="active"><span class="active">' . (int) $i . '</span></li>';
-				} else {
-					$output .= sprintf( '<li><a href="%1$s" title="' . __( 'Go to page %2$d', 'issimple') . '">%2$d</a></li>', esc_attr( get_pagenum_link( $i ) ), $i );
-				}
+				//if ( $i > 1 && $i < $count ) {
+					if ( $page == $i ) {
+						$output .= '<li class="active"><span class="active">' . (int) $i . '</span></li>';
+					} else {
+						$output .= sprintf( '<li><a href="%1$s" title="' . __( 'Go to page %2$d', 'issimple') . '">%2$d</a></li>', esc_attr( get_pagenum_link( $i ) ), $i );
+					}
+				//}
 			}
 		}
+		
+		//if ( $page < $max )
+		//	$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
 		
 		$lastpage = esc_attr( get_pagenum_link( $count ) );
 		if ( $lastpage )
@@ -309,8 +320,11 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 		
 		$next = intval( $page ) + 1;
 		$next = esc_attr( get_pagenum_link( $next ) );
-		if ( $next && ( $count != $page ) )
+		if ( $next && ( $count != $page ) ) {
 			$output .= '<li class="next"><a href="' . $next . '" title="' . __( 'Next page', 'issimple') . '">' . $args['next_text'] . '</a></li>';
+		} else {
+			$output .= '<li class="next disabled"><span>' . $args['next_text'] . '</span></li>';
+		}
 		
 		$output .= '</ul>';
 		
