@@ -15,6 +15,9 @@
 	<header class="entry-header">
 		
 		<?php
+			// Diplay post featured thumb
+			issimple_post_featured_thumb();
+			
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
 			else :
@@ -27,9 +30,6 @@
 			
 			// Display entry meta
 			issimple_entry_meta();
-			
-			// Diplay post featured thumb
-			issimple_post_featured_thumb();
 		?>
 	
 	</header><!-- .entry-header -->

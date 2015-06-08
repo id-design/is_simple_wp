@@ -48,8 +48,15 @@ define( 'INCLUDES_URI', THEME_URI . '/inc' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-if ( ! isset( $content_width ) ) $content_width = 770;
+if ( ! isset( $content_width ) ) $content_width = 770;	/* pixels */
 
+function issimple_content_width() {
+	if ( is_page_template( 'full-width.php' ) ) :
+		global $content_width;
+		$content_width = 1170;	/* pixels */
+	endif;
+}
+add_action( 'template_redirect', 'issimple_content_width' );
 
 /**
  * Load IS Simple Classes
@@ -110,7 +117,7 @@ function issimple_setup() {
 	
 	// Suporte a background personalizado
 	add_theme_support( 'custom-background', array(
-		'default-color'			=> 'eee',
+		'default-color'			=> '',
 		'default-attachment'	=> 'scroll'
 	) );
 

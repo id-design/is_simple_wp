@@ -63,7 +63,7 @@
 						) );
 						echo '<!-- #header-menu-nav -->';
 						
-						get_search_form();
+						issimple_content_search_form( 'navbar', 'navbar-form navbar-right' );
 					?>
 				</div>
 			

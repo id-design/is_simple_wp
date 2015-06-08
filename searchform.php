@@ -1,6 +1,6 @@
 <?php
 /**
- * O template para exibir o formulário de pesquisa
+ * The template for displaying search forms
  *
  * @package WordPress
  * @subpackage IS Simple
@@ -8,12 +8,14 @@
  */
 ?>
 
-<form id="search-form" class="navbar-form navbar-right" method="get" action="<?php echo home_url(); ?>" role="search">
-	<label for="s" class="sr-only"><?php _e( 'Search', 'issimple' ); ?></label>
-	<div class="input-group">
-		<input class="form-control" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
-		<span class="input-group-btn">
-			<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <i class="fa fa-search"></i></button>
-		</span>
+<form id="search-form" method="get" action="<?php echo home_url( '/' ); ?>" role="search">
+	<div class="form-group">
+		<label for="s" class="control-label sr-only"><?php _e( 'Search', 'issimple' ); ?></label>
+		<div class="input-group">
+			<input class="form-control" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <i class="fa fa-search"></i></button>
+			</span>
+		</div>
 	</div>
 </form><!-- #search-form -->

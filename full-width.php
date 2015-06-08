@@ -13,7 +13,7 @@ get_header();
 ?>
 
 <?php if ( is_home() || is_front_page() || is_archive() ) : ?>
-	<header id="page-header">
+	<header id="page-header" class="col-sm-12 col-md-12">
 		<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1>
 	</header><!-- #page-header -->
 <?php endif; ?>

@@ -126,6 +126,33 @@ add_filter( 'wp_nav_menu', 'add_role_navigation_to_nav_menu', 10, 2 );
 
 
 /**
+ * Display a search form with custom attributes "id" and "class"
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_content_search_form( $form_id = false, $form_class = false ) {
+	$search_form_id = ( false !== $form_id ) ? $form_id . '-search-form' : 'search-form';
+	$search_form_class = ( false !== $form_class ) ? ' class="' . $form_class . '"' : '';
+	?>
+	
+	<form id="<?php echo $search_form_id; ?>"<?php echo $search_form_class; ?> method="get" action="<?php echo home_url( '/' ); ?>" role="search">
+		<div class="form-group">
+			<label for="s" class="control-label sr-only"><?php _e( 'Search', 'issimple' ); ?></label>
+			<div class="input-group">
+				<input class="form-control" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <i class="fa fa-search"></i></button>
+				</span>
+			</div>
+		</div>
+	</form><!-- #<?php echo $search_form_id; ?> -->
+	
+	<?php
+}
+
+
+/**
  * Primary class based on page template
  * 
  * @since IS Simple 1.0
@@ -172,13 +199,59 @@ add_filter( 'get_the_archive_title', 'my_archive_title' );
  * ----------------------------------------------------------------------------
  */
 function issimple_post_pagination() {
-	the_posts_pagination( array(
+	issimple_posts_pagination( array(
+		'screen_reader_text' => __( 'Posts navigation', 'issimple' ),
 		'prev_text'          => '<i class="fa fa-arrow-left"></i> ' . '<span class="meta-nav sr-only">' . __( 'Previous page', 'issimple' ) . ' </span>',
 		'next_text'          => '<span class="meta-nav sr-only">' . __( 'Next page', 'issimple' ) . ' </span>' . ' <i class="fa fa-arrow-right"></i>',
 		'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'issimple' ) . ' </span>',
+		'type'				 => 'list'
 	) );
 	
 	echo '<!-- .pagination -->';
+}
+
+
+function issimple_posts_pagination( $args = array() ) {
+	$navigation = '';
+	
+	// Don't print empty markup if there's only one page.
+	if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
+		$args = wp_parse_args( $args, array(
+			'mid_size'           => 1,
+			'prev_text'          => __( 'Previous' ),
+			'next_text'          => __( 'Next' ),
+			'screen_reader_text' => __( 'Posts navigation' ),
+		) );
+		
+		// Make sure we get a string back. Plain is the next best thing.
+		if ( isset( $args['type'] ) && 'array' == $args['type'] ) {
+			$args['type'] = 'plain';
+		}
+		
+		// Set up paginated links.
+		$links = paginate_links( $args );
+		
+		if ( $links ) {
+			$navigation = issimple_navigation_markup( $links, 'pagination', $args['screen_reader_text'] );
+		}
+		
+	}
+	
+	echo $navigation;
+}
+
+function issimple_navigation_markup( $links, $class = 'posts-navigation', $screen_reader_text = '' ) {
+	if ( empty( $screen_reader_text ) ) {
+		$screen_reader_text = __( 'Posts navigation' );
+	}
+	
+	$template = '
+	<nav class="navigation %1$s" role="navigation">
+		<h2 class="sr-only">%2$s</h2>
+		<div class="nav-links">%3$s</div>
+	</nav>';
+	
+	return sprintf( $template, sanitize_html_class( $class ), esc_html( $screen_reader_text ), $links );
 }
 
 
@@ -226,7 +299,7 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 			   href="<?php if ( is_single() ) : echo $thumb_link_full; else : the_permalink(); endif; ?>"
 			   title="<?php the_title(); ?>"
 			   <?php if ( is_single() ) : ?>data-lightbox="post-<?php the_ID(); ?>" data-title="<?php echo $thumb_caption; ?>"<?php endif; ?>>
-				<?php the_post_thumbnail( $size, array( 'class' => 'featured-img', 'alt' => get_the_title() ) ); ?>
+				<?php the_post_thumbnail( $size, array( 'class' => 'featured-img img-thumbnail', 'alt' => get_the_title() ) ); ?>
 			</a>
 		</figure><!-- .post-featured-thumb -->
 		
@@ -244,7 +317,7 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 function issimple_entry_meta() {
 	if ( 'post' == get_post_type() ) :
 		?>
-		<p class="entry-meta">
+		<p class="entry-meta bg-info">
 			<span class="entry-author"><i class="fa fa-user"></i> <?php the_author_posts_link(); ?></span>
 			<span class="entry-categ"><i class="fa fa-folder-open"></i> <?php the_category( ', ' ); ?></span> 
 			<span class="entry-date"><i class="fa fa-clock-o"></i> <?php issimple_date_link(); ?></span>

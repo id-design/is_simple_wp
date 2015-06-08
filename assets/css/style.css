@@ -3,17 +3,13 @@
  * Description: IS Simple theme for WordPress.
  * Version: 1.0
  */
-
+/*
 img, picture, figure, embed, iframe, object, video {
 	max-width: 100%;
 }
-
+*/
 .container-fluid {
 	max-width: 1200px;
-}
-
-.img-link img {
-	display: block;
 }
 
 #header-txt > * {
@@ -21,12 +17,12 @@ img, picture, figure, embed, iframe, object, video {
 	margin-bottom: 0;
 }
 
+.entry-meta {
+	padding: 10px 0;
+}
 .entry-meta > span {
 	display: inline-block;
-	margin-right: 10px;
-}
-.entry-meta > span:last-child {
-	margin-right: 0;
+	padding: 0 10px;
 }
 
 .post-featured-thumb {
