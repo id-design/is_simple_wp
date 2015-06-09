@@ -126,7 +126,7 @@
 			}
 		}
 		
-		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() + 20 ) + 'px;' );
+		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() + 30 ) + 'px;' );
 	}
 	
 	$( document ).ready( function() {
