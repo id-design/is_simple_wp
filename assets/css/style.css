@@ -3,11 +3,7 @@
  * Description: IS Simple theme for WordPress.
  * Version: 1.0
  */
-/*
-img, picture, figure, embed, iframe, object, video {
-	max-width: 100%;
-}
-*/
+
 .container-fluid {
 	max-width: 1200px;
 }
