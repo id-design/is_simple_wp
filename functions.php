@@ -59,7 +59,7 @@ function issimple_content_width() {
 add_action( 'template_redirect', 'issimple_content_width' );
 
 /**
- * Load IS Simple Classes
+ * Require IS Simple Classes
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -69,62 +69,64 @@ require_once INCLUDES_PATH . '/classes/class-bootstrap-nav.php';
 
 if ( ! function_exists( 'issimple_setup' ) ) :
 /**
- * Setup de Features suportadas pelo tema
+ * IS Simple Features Support
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_setup() {
-	// Suporte a idiomas
+	// Language Support
 	load_theme_textdomain( 'issimple', THEME_PATH . '/languages' );
 	
 	// Habilita RSS feed links de postagens e comentários para o <head>
 	add_theme_support( 'automatic-feed-links' );
 	
-	// Habilita a tag <title>
+	// Enable tag <title> in wp_head
 	add_theme_support( 'title-tag' );
 	
-	// Suporte a miniaturas
+	// Thumbnails Support
     add_theme_support( 'post-thumbnails' );
-		// Miniatura grande
-		add_image_size( 'large', 750, '', true );
-		// Miniatura média
+		// Large Thumbnail to Full Page Template
+		add_image_size( 'large-full-page', 1130, '', true );
+		// Large Thumbnail
+		add_image_size( 'large', 730, '', true );
+		// Medium Thumbnail
 		add_image_size( 'medium', 500, '', true );
-		// Miniatura pequena
+		// Small Thumbnail
 		add_image_size( 'small', 250, '', true );
 		// Miniatura personalizada. Uso: the_post_thumbnail( 'featured-size' );
 		add_image_size( 'featured-size', 770, 300, true );
 		// Miniatura personalizada. Uso: the_post_thumbnail( 'full-page-size' );
-		add_image_size( 'full-page-size', 1200, 300, true );
+		add_image_size( 'featured-full-page-size', 1200, 500, true );
 		// Miniatura personalizada. Uso: the_post_thumbnail( 'featured-slider-size' );
 		add_image_size( 'featured-slider-size', 1920, 500, true );
 	
-	// Registro dos menus de navegação usados nesse tema
+	// Register Nav Menus
 	register_nav_menus( array(
 		'header-menu' => __( 'Header Menu', 'issimple' ),
 		'social-menu' => __( 'Social Menu', 'issimple' ),
 	) );
 	
-	// Suporte aos formatos de post
+	// Post Formats Support
 	//add_theme_support( 'post-formats', array(
 	//	'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'
 	//) );
 	
-	// Suporte a elementos HTML5
+	// HTML5 Support
 	add_theme_support( 'html5', array(
 		'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widget'
 	) );
 	
-	// Suporte a background personalizado
+	// Set Custom Background Supporte
 	add_theme_support( 'custom-background', array(
-		'default-color'			=> '',
+		'default-color'			=> 'eee',
 		'default-attachment'	=> 'scroll'
 	) );
 
-	// Inclui o arquivo que dá suporte a cabeçalho personalizado
+	// Require to Custom Header Support
     require INCLUDES_PATH . '/custom-header.php';
 	
-	// Estilo personalizado para o editor
+	// Custom Editor Style
 	add_editor_style( array( 'css/editor-style.css', ) );
 }
 endif; // issimple_setup
