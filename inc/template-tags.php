@@ -232,7 +232,7 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 			'type'					=> 'pagination',
 			'pagination_id'			=> '',
 			'pagination_class'		=> '',
-			'range'					=> 5,
+			'range'					=> 4,
 			'custom_query'			=> false,
 			'echo'					=> true,
 			'previous_text'			=> __( '<i class="glyphicon glyphicon-chevron-left"></i> <span class="sr-only">Previous</span>', 'issimple' ),
@@ -293,29 +293,27 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 		}
 		
 		$firstpage = esc_attr( get_pagenum_link( 1 ) );
-		if ( $firstpage && ( 1 != $page ) )
+		if ( $firstpage && ( 1 != $page ) && ( 1 < $min ) ) 
 			$output .= '<li><a href="' . $firstpage . '" title="' . __( 'Go to first page', 'issimple') . '">' . 1 . '</a></li>';
 		
-		//if ( $page > $min )
-		//	$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
-		
 		if ( ! empty( $min ) && ! empty( $max ) ) {
-			for( $i = $min; $i <= $max; $i++ ) {
-				//if ( $i > 1 && $i < $count ) {
-					if ( $page == $i ) {
-						$output .= '<li class="active"><span class="active">' . (int) $i . '</span></li>';
-					} else {
-						$output .= sprintf( '<li><a href="%1$s" title="' . __( 'Go to page %2$d', 'issimple') . '">%2$d</a></li>', esc_attr( get_pagenum_link( $i ) ), $i );
-					}
-				//}
+			if ( ( $min - 1 ) > 1 )
+				$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
+			
+			for( $i = 1; $i <= $count; $i++ ) {
+				if ( $page == $i ) {
+					$output .= '<li class="active"><span class="active">' . $i . '</span></li>';
+				} elseif ( $i >= $min && $i <= $max ) {
+					$output .= sprintf( '<li><a href="%1$s" title="' . __( 'Go to page %2$d', 'issimple') . '">%2$d</a></li>', esc_attr( get_pagenum_link( $i ) ), $i );
+				}
 			}
+			
+			if ( ( $max + 1 ) < $count )
+				$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
 		}
 		
-		//if ( $page < $max )
-		//	$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
-		
 		$lastpage = esc_attr( get_pagenum_link( $count ) );
-		if ( $lastpage )
+		if ( $lastpage && ( $max < $count ) )
 			$output .= '<li><a href="' . $lastpage . '" title="' . __( 'Go to last page', 'issimple') . '">' . $count . '</a></li>';
 		
 		$next = intval( $page ) + 1;
