@@ -227,7 +227,7 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 		$defaults = array(
 			'container'				=> 'nav',
 			'container_id'			=> '',
-			'container_class'		=> 'post-pagination',
+			'container_class'		=> '',
 			'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
 			'type'					=> 'pagination',
 			'pagination_id'			=> '',
@@ -328,7 +328,7 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 		
 		if ( isset( $args['container'] ) ) {
 			$container_id = ( ! empty( $args['container_id'] ) ) ? ' id="' . $args['container_id'] . '"' : '';
-			$container_class = ( ! empty( $args['container_class'] ) ) ? ' class="' . $args['container_class'] . '"' : '';
+			$container_class = ( ! empty( $args['container_class'] ) ) ? ' class="post-pagination ' . $args['container_class'] . '"' : ' class="post-pagination"';
 			
 			$output = '<' . $args['container'] . $container_id . $container_class . '>' . $output . '</' . $args['container'] . '>';
 		}
