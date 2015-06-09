@@ -142,7 +142,7 @@ function issimple_content_search_form( $form_id = false, $form_class = false ) {
 			<div class="input-group">
 				<input class="form-control" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <i class="fa fa-search"></i></button>
+					<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <span class="glyphicon glyphicon-search"></span></button>
 				</span>
 			</div>
 		</div>
@@ -386,7 +386,7 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 			   href="<?php if ( is_single() ) : echo $thumb_link_full; else : the_permalink(); endif; ?>"
 			   title="<?php the_title(); ?>"
 			   <?php if ( is_single() ) : ?>data-lightbox="post-<?php the_ID(); ?>" data-title="<?php echo $thumb_caption; ?>"<?php endif; ?>>
-				<?php the_post_thumbnail( $size, array( 'class' => 'featured-img img-thumbnail', 'alt' => get_the_title() ) ); ?>
+				<?php the_post_thumbnail( $size, array( 'class' => 'featured-img img-responsive', 'alt' => get_the_title() ) ); ?>
 			</a>
 		</figure><!-- .post-featured-thumb -->
 		
@@ -405,12 +405,41 @@ function issimple_entry_meta() {
 	if ( 'post' == get_post_type() ) :
 		?>
 		<p class="entry-meta bg-info">
-			<span class="entry-author"><i class="fa fa-user"></i> <?php the_author_posts_link(); ?></span>
-			<span class="entry-categ"><i class="fa fa-folder-open"></i> <?php the_category( ', ' ); ?></span> 
-			<span class="entry-date"><i class="fa fa-clock-o"></i> <?php issimple_date_link(); ?></span>
-			<span class="entry-comments"><i class="fa fa-comments"></i> <?php issimple_comment_link(); ?></span>
-			<?php edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><i class="fa fa-pencil"></i> ', '</span>' ); ?>
+			<span class="entry-author"><span class="glyphicon glyphicon-user"></span> <?php the_author_posts_link(); ?></span>
+			<span class="entry-categ"><span class="glyphicon glyphicon-folder-open"></span> <?php the_category( ', ' ); ?></span> 
+			<span class="entry-date"><span class="glyphicon glyphicon-calendar"></span> <?php issimple_date_link(); ?></span>
+			<span class="entry-comments"><span class="glyphicon glyphicon-comment"></span> <?php issimple_comment_link(); ?></span>
+			<?php edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' ); ?>
 		</p><!-- .entry-meta -->
+		<?php
+	endif;
+}
+
+
+/**
+ * Footer Post Info
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_entry_footer() {
+	if ( 'post' == get_post_type() && is_single() ) :
+		?>
+		<footer class="entry-footer bg-info">
+			<?php if ( get_the_author_meta( 'description' ) ) get_template_part( 'author-info' ); ?>
+			
+			<p><?php _e( 'This post was written by ', 'issimple' ); the_author_posts_link(); _e( ' in ', 'issimple' ); issimple_date_link(); ?>.</p>
+			<p>
+				<?php if ( get_the_category() ) : ?>
+					<span class="glyphicon glyphicon-folder-open"></span> <?php _e( 'Categorised in: ', 'issimple' ); the_category( ', ' ); // Separed by commas ?>.
+				<?php endif; ?>
+			</p>
+			<p>
+				<?php if ( get_the_tags() ) : ?>
+					<span class="glyphicon glyphicon-tags"></span> <?php the_tags( __( 'Tags: ', 'issimple' ) . '<span class="label label-info">', '</span><span class="label label-info">', '</span>' ); ?>
+				<?php endif; ?>
+			</p>
+		</footer><!-- .entry-footer -->
 		<?php
 	endif;
 }

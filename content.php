@@ -44,18 +44,7 @@
 		</div><!-- .entry-summary -->
 	<?php endif; ?>
 	
-	<?php if ( is_single() ) : ?>
-		<footer class="entry-footer">
-			<?php if ( get_the_author_meta( 'description' ) ) get_template_part( 'author-info' ); ?>
-			
-			<p>
-				<?php _e( 'This post was written by ', 'issimple' ); the_author_posts_link(); _e( ' in ', 'issimple' ); issimple_date_link(); ?>.<br />
-				<i class="fa fa-folder-open"></i> <?php _e( 'Categorised in: ', 'issimple' ); the_category( ', ' ); // Separado por vírgula ?>.<br />
-				<i class="fa fa-tags"></i> <?php the_tags( __( 'Tags: ', 'issimple' ) ); ?>.
-			</p>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+	<?php // Display entry footer
+		issimple_entry_footer(); ?>
 	
 </article><!-- #post## -->
-
-<hr />

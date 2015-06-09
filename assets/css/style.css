@@ -8,19 +8,82 @@
 	max-width: 1200px;
 }
 
+.label > a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.entry-meta .glyphicon,
+.entry-footer .glyphicon,
+.entry-footer .label {
+	margin-right: 5px;
+}
+
+*:last-child {
+	margin-bottom: 0;
+}
+
+#main,
+#page-header,
+article.hentry,
+.post-featured-thumb,
+.entry-title,
+.entry-meta,
+.entry-content {
+	margin-bottom: 20px;
+}
+
 #header-txt > * {
 	margin-top: 0;
 	margin-bottom: 0;
 }
 
+article.hentry,
 .entry-meta {
-	padding: 10px 0;
-}
-.entry-meta > span {
-	display: inline-block;
-	padding: 0 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
-.post-featured-thumb {
-	margin-bottom: 10px;
+article.hentry {
+	background-color: #fff;
 }
+
+.single-post article.hentry {
+	padding-bottom: 0;
+}
+
+article.hentry.has-post-thumbnail {
+	padding-top: 0;
+}
+
+.entry-title,
+.entry-summary,
+.entry-content {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.entry-title {
+	margin-top: 0;
+}
+
+.entry-meta {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.entry-meta > span {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.entry-footer {
+	padding: 20px;
+}
+
+.entry-footer .label:hover {
+	opacity: 0.8;
+}
+
+

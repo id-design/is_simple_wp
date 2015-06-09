@@ -14,7 +14,7 @@
 		<div class="input-group">
 			<input class="form-control" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
 			<span class="input-group-btn">
-				<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <i class="fa fa-search"></i></button>
+				<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <span class="glyphicon glyphicon-search"></span></button>
 			</span>
 		</div>
 	</div>
