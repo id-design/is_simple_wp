@@ -58,6 +58,7 @@ function issimple_content_width() {
 }
 add_action( 'template_redirect', 'issimple_content_width' );
 
+
 /**
  * Require IS Simple Classes
  * 
@@ -65,6 +66,21 @@ add_action( 'template_redirect', 'issimple_content_width' );
  * ----------------------------------------------------------------------------
  */
 require_once INCLUDES_PATH . '/classes/class-bootstrap-nav.php';
+
+
+/**
+ * IS Simple Widgets
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-recent-posts.php';
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-recent-comments.php';
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-categories.php';
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-pages.php';
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-archives.php';
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-meta.php';
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-calendar.php';
 
 
 if ( ! function_exists( 'issimple_setup' ) ) :
@@ -147,10 +163,10 @@ function issimple_widgets_init() {
 		'name'			=> __( 'Widget Area', 'issimple' ),
 		'id'			=> 'widget-area',
 		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
-		'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-		'before_title'	=> '<h3 class="widget-title inner">',
-		'after_title'	=> '</h3><div class="widget-content inner">',
-		'after_widget'	=> '</div></aside>'
+		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
+		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+		'after_title'	=> '</h3></div>',
+		'after_widget'	=> '</aside>'
 	) );
 }
 add_action( 'widgets_init', 'issimple_widgets_init' );

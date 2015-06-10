@@ -13,6 +13,10 @@
 	text-decoration: none;
 }
 
+.bg-default {
+	background-color: #f5f5f5;
+}
+
 .entry-meta .glyphicon,
 .entry-footer .glyphicon,
 .entry-footer .label {
@@ -26,11 +30,20 @@
 #main,
 #page-header,
 article.hentry,
+aside.widget {
+	margin-bottom: 30px;
+}
+
 .post-featured-thumb,
 .entry-title,
 .entry-meta,
 .entry-content {
 	margin-bottom: 20px;
+}
+
+
+.entry-footer {
+	padding: 20px;
 }
 
 #header-txt > * {
@@ -44,16 +57,13 @@ article.hentry,
 	padding-bottom: 20px;
 }
 
-article.hentry {
-	background-color: #fff;
-}
-
 .single-post article.hentry {
 	padding-bottom: 0;
 }
 
 article.hentry.has-post-thumbnail {
 	padding-top: 0;
+	overflow: hidden;
 }
 
 .entry-title,
@@ -76,10 +86,6 @@ article.hentry.has-post-thumbnail {
 	display: inline-block;
 	margin-left: 10px;
 	margin-right: 10px;
-}
-
-.entry-footer {
-	padding: 20px;
 }
 
 .entry-footer .label:hover {

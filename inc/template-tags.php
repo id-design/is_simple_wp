@@ -404,7 +404,7 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 function issimple_entry_meta() {
 	if ( 'post' == get_post_type() ) :
 		?>
-		<p class="entry-meta bg-info">
+		<p class="entry-meta bg-default">
 			<span class="entry-author"><span class="glyphicon glyphicon-user"></span> <?php the_author_posts_link(); ?></span>
 			<span class="entry-categ"><span class="glyphicon glyphicon-folder-open"></span> <?php the_category( ', ' ); ?></span> 
 			<span class="entry-date"><span class="glyphicon glyphicon-calendar"></span> <?php issimple_date_link(); ?></span>
@@ -425,7 +425,7 @@ function issimple_entry_meta() {
 function issimple_entry_footer() {
 	if ( 'post' == get_post_type() && is_single() ) :
 		?>
-		<footer class="entry-footer bg-info">
+		<footer class="entry-footer bg-default">
 			<?php if ( get_the_author_meta( 'description' ) ) get_template_part( 'author-info' ); ?>
 			
 			<p><?php _e( 'This post was written by ', 'issimple' ); the_author_posts_link(); _e( ' in ', 'issimple' ); issimple_date_link(); ?>.</p>
@@ -436,7 +436,7 @@ function issimple_entry_footer() {
 			</p>
 			<p>
 				<?php if ( get_the_tags() ) : ?>
-					<span class="glyphicon glyphicon-tags"></span> <?php the_tags( __( 'Tags: ', 'issimple' ) . '<span class="label label-info">', '</span><span class="label label-info">', '</span>' ); ?>
+					<span class="glyphicon glyphicon-tags"></span> <?php the_tags( __( 'Tags: ', 'issimple' ) . '<span class="label label-default">', '</span><span class="label label-default">', '</span>' ); ?>
 				<?php endif; ?>
 			</p>
 		</footer><!-- .entry-footer -->

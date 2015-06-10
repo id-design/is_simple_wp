@@ -8,7 +8,7 @@
  */
 ?>
 
-<div id="secondary" class="col-sm-4 col-md-4" role="complementary">
+<div id="secondary" class="col-sm-4 col-md-4 hidden-xs" role="complementary">
 	<div id="sidebar-content">
 		<?php
 			if ( has_nav_menu( 'social-menu' ) ) :
@@ -19,7 +19,7 @@
 					'menu_id'			=> 'social-menu',
 					'menu_class'		=> 'nav-menu',
 					'depth'				=> 1,
-					'link_before'		=> '<span class="screen-reader-text">',
+					'link_before'		=> '<span class="sr-only">',
 					'link_after'		=> '</span>'
 				) );
 				echo '<!-- #social-menu-nav -->';
@@ -30,6 +30,12 @@
 			<div class="widget-area" role="complementary">
 				<?php dynamic_sidebar( 'widget-area' ); ?>
 			</div><!-- .widget-area -->
+		<?php else : ?>
+			<?php
+				the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 10 ) );
+				the_widget( 'WP_Widget_Archives', array( 'count' => 0, 'dropdown' => 1 ) );
+				the_widget( 'WP_Widget_Tag_Cloud' );
+			?>
 		<?php endif; ?>
-	</div>
+	</div><!-- #sidebar-content -->
 </div><!-- #secondary -->
