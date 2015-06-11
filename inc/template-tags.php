@@ -199,9 +199,14 @@ add_filter( 'get_the_archive_title', 'my_archive_title' );
  * ----------------------------------------------------------------------------
  */
 function issimple_post_pagination() {
-	issimple_wp_bootstrap_pagination( array( 'type' => 'pager' ) );
+	issimple_wp_bootstrap_pagination( array(
+		'type' => 'pager',
+		'container_id' => 'post-pagination',
+		'container_class' => 'panel panel-default',
+		'div_class' => 'panel-body'
+	) );
 	
-	echo '<!-- .post-pagination -->';
+	echo '<!-- #post-pagination -->';
 }
 
 
@@ -228,6 +233,7 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 			'container'				=> 'nav',
 			'container_id'			=> '',
 			'container_class'		=> '',
+			'div_class'				=> '',
 			'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
 			'type'					=> 'pagination',
 			'pagination_id'			=> '',
@@ -272,6 +278,9 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 		}
 		
 		$output = '';
+		
+		$div_class = ( ! empty( $args['div_class'] ) ) ? ' class="post-pagination ' . $args['div_class'] . '"' : ' class="post-pagination"';
+		$output .= '<div' . $div_class . '>';
 		
 		if ( isset( $args['screen_reader_text'] ) ) {
 			$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>';
@@ -324,11 +333,11 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 			$output .= '<li class="next disabled"><span>' . $args['next_text'] . '</span></li>';
 		}
 		
-		$output .= '</ul>';
+		$output .= '</ul></div>';
 		
 		if ( isset( $args['container'] ) ) {
 			$container_id = ( ! empty( $args['container_id'] ) ) ? ' id="' . $args['container_id'] . '"' : '';
-			$container_class = ( ! empty( $args['container_class'] ) ) ? ' class="post-pagination ' . $args['container_class'] . '"' : ' class="post-pagination"';
+			$container_class = ( ! empty( $args['container_class'] ) ) ? ' class="' . $args['container_class'] . '"' : '';
 			
 			$output = '<' . $args['container'] . $container_id . $container_class . '>' . $output . '</' . $args['container'] . '>';
 		}
