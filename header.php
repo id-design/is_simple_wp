@@ -2,7 +2,7 @@
 /**
  * The template for displaying the header
  *
- * Displays all of the head element and everything up until the "principal" section.
+ * Displays all of the head element and everything up until the "page-header" section.
  *
  * @package WordPress
  * @subpackage IS Simple
@@ -69,6 +69,3 @@
 			
 			</header><!-- #header -->
 		</nav><!-- #fixed-nav-header -->
-		
-		<div id="main" class="container-fluid">
-			<div class="row">

@@ -160,11 +160,23 @@ function issimple_content_search_form( $form_id = false, $form_class = false ) {
  */
 function issimple_primary_class() {
 	if ( is_page_template( 'full-width.php' ) ) :
-		echo 'col-sm-12 col-md-12';
+		echo 'col-md-12';
 	else:
 		echo 'col-sm-8 col-md-8';
 	endif;
 }
+
+
+/**
+ * Secondary class
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_secondary_class() {
+	echo 'col-sm-4 col-md-4 hidden-xs';
+}
+
 
 /**
  * Títulos personalizados para páginas arquivos

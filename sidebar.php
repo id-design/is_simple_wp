@@ -8,7 +8,7 @@
  */
 ?>
 
-<div id="secondary" class="col-sm-4 col-md-4 hidden-xs" role="complementary">
+<div id="secondary" class="<?php issimple_secondary_class(); ?>" role="complementary">
 	<div id="sidebar-content">
 		<?php
 			if ( has_nav_menu( 'social-menu' ) ) :
@@ -26,16 +26,32 @@
 			endif;
 		?>
 		
-		<?php if ( is_active_sidebar( 'widget-area' ) ) : ?>
-			<div class="widget-area" role="complementary">
-				<?php dynamic_sidebar( 'widget-area' ); ?>
-			</div><!-- .widget-area -->
-		<?php else : ?>
+		
+		<div class="sidebar-widget-area" role="complementary">
 			<?php
-				the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 10 ) );
-				the_widget( 'WP_Widget_Archives', array( 'count' => 0, 'dropdown' => 1 ) );
-				the_widget( 'WP_Widget_Tag_Cloud' );
+				if ( is_active_sidebar( 'sidebar-widget-area' ) ) :
+					dynamic_sidebar( 'sidebar-widget-area' );
+				else :
+					the_widget( 'ISSimple_Recent_Posts', array( 'number' => 10 ), array(
+						'before_widget'	=> '<aside class="widget panel panel-default widget_recent_entries">',
+						'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+						'after_title'	=> '</h3></div>',
+						'after_widget'	=> '</aside>'
+					) );
+					the_widget( 'ISSimple_Archives', array( 'count' => 0 ), array(
+						'before_widget'	=> '<aside class="widget panel panel-default widget_archive">',
+						'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+						'after_title'	=> '</h3></div>',
+						'after_widget'	=> '</aside>'
+					) );
+					the_widget( 'ISSimple_Tag_Cloud', array(), array(
+						'before_widget'	=> '<aside class="widget panel panel-default widget_tag_cloud">',
+						'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+						'after_title'	=> '</h3></div>',
+						'after_widget'	=> '</aside>'
+					) );
+				endif;
 			?>
-		<?php endif; ?>
+		</div><!-- .widget-area -->
 	</div><!-- #sidebar-content -->
 </div><!-- #secondary -->

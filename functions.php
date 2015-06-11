@@ -81,6 +81,7 @@ require_once INCLUDES_PATH . '/widgets/class-widget-issimple-pages.php';
 require_once INCLUDES_PATH . '/widgets/class-widget-issimple-archives.php';
 require_once INCLUDES_PATH . '/widgets/class-widget-issimple-meta.php';
 require_once INCLUDES_PATH . '/widgets/class-widget-issimple-calendar.php';
+require_once INCLUDES_PATH . '/widgets/class-widget-issimple-tag-cloud.php';
 
 
 if ( ! function_exists( 'issimple_setup' ) ) :
@@ -173,8 +174,41 @@ add_action( 'after_setup_theme', 'issimple_setup' );
 function issimple_widgets_init() {
 	// Define Sidebar Widget Area
 	register_sidebar( array(
-		'name'			=> __( 'Widget Area', 'issimple' ),
-		'id'			=> 'widget-area',
+		'name'			=> __( 'Sidebar Widget Area', 'issimple' ),
+		'id'			=> 'sidebar-widget-area',
+		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
+		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
+		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+		'after_title'	=> '</h3></div>',
+		'after_widget'	=> '</aside>'
+	) );
+	
+	// Define Footer Widget Area 1
+	register_sidebar( array(
+		'name'			=> __( 'Footer Widget Area 1', 'issimple' ),
+		'id'			=> 'footer-widget-area-1',
+		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
+		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
+		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+		'after_title'	=> '</h3></div>',
+		'after_widget'	=> '</aside>'
+	) );
+	
+	// Define Footer Widget Area 2
+	register_sidebar( array(
+		'name'			=> __( 'Footer Widget Area 2', 'issimple' ),
+		'id'			=> 'footer-widget-area-2',
+		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
+		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
+		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+		'after_title'	=> '</h3></div>',
+		'after_widget'	=> '</aside>'
+	) );
+	
+	// Define Footer Widget Area 3
+	register_sidebar( array(
+		'name'			=> __( 'Footer Widget Area 3', 'issimple' ),
+		'id'			=> 'footer-widget-area-3',
 		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
 		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
 		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',

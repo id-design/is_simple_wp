@@ -10,18 +10,24 @@
  */
 ?>
 
-				</div><!-- .row -->
+					</div><!-- .row -->
+				</div><!-- .container-fluid -->
 			</div><!-- #main -->
 			
-			<footer id="footer" class="container-fluid" role="contentinfo">
-				<div class="row">
-					<p id="copyright" class="col-md-12">
-						&copy; <?php echo date( 'Y' ) . ' ' . do_shortcode( '[home-link]' ) . ' - ' . __( 'All rights reserved.', 'issimple' ) . ' ' .
-						sprintf(
-							__( 'Powered by <a href="%s" rel="nofollow" target="_blank">ID Design</a> on <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'issimple' ),
-							'https://github.com/id-design/is_simple_wp',
-							'http://wordpress.org/' ); ?>
-					</p><!-- #copyright -->
+			<footer id="footer" role="contentinfo">
+				<div class="container-fluid">
+					<div class="row">
+						
+						<div id="copyright" class="col-md-12">
+							<p>
+								&copy; <?php echo date( 'Y' ) . ' ' . do_shortcode( '[home-link]' ) . ' - ' . __( 'All rights reserved.', 'issimple' ) . ' ' .
+								sprintf(
+									__( 'Powered by <a href="%s" rel="nofollow" target="_blank">ID Design</a> on <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'issimple' ),
+									'https://github.com/id-design/is_simple_wp',
+									'http://wordpress.org/' ); ?>
+							</p>
+						</div><!-- #copyright -->
+					</div>
 				</div>
 			</footer><!-- #footer -->
 
