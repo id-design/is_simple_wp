@@ -8,6 +8,15 @@
 	max-width: 1200px;
 }
 
+.container .jumbotron,
+.container-fluid .jumbotron {
+	padding: 40px 30px;
+}
+
+.jumbotron {
+	background-color: #ddd;
+}
+
 .label > a {
 	color: #fff;
 	text-decoration: none;
@@ -64,6 +73,10 @@ aside.widget {
 #header-txt > * {
 	margin-top: 0;
 	margin-bottom: 0;
+}
+
+#page-title {
+	margin-top: 0;
 }
 
 article.hentry,
