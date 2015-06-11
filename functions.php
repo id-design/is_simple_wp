@@ -123,6 +123,19 @@ function issimple_setup() {
 		'social-menu' => __( 'Social Menu', 'issimple' ),
 	) );
 	
+	// Add support for Infinite Scroll of JetPack.
+	add_theme_support(
+		'infinite-scroll',
+		array(
+			'type'           => 'scroll',
+			'footer_widgets' => false,
+			'container'      => 'main-content',
+			'wrapper'        => false,
+			'render'         => false,
+			'posts_per_page' => get_option( 'posts_per_page' )
+		)
+	);
+	
 	// Post Formats Support
 	//add_theme_support( 'post-formats', array(
 	//	'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'
