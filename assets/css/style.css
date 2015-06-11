@@ -119,13 +119,14 @@
  * ============================================================================
  */
 *:last-child {
-	margin-bottom: 0;
+	margin-bottom: 0 !important;
 }
 
 #main,
 #page-header,
 article.hentry,
-aside.widget {
+aside.widget,
+#footer-widget-area {
 	margin-bottom: 30px;
 }
 
@@ -199,4 +200,22 @@ article.hentry.has-post-thumbnail {
 	text-transform: uppercase;
 }
 
+#footer {
+	background-color: #222;
+	padding-top: 30px;
+}
 
+#copyright {
+	color: #9d9d9d;
+	text-align: center;
+	border-top: 1px solid #333;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+
+@media screen and ( max-width: 767px ) {
+	#footer .widget-area {
+		margin-bottom: 30px;
+	}
+}
