@@ -130,9 +130,9 @@ aside.widget,
 	margin-bottom: 30px;
 }
 
+.entry-header,
 .post-featured-thumb,
 .entry-title,
-.entry-meta,
 .entry-content {
 	margin-bottom: 20px;
 }
@@ -215,7 +215,12 @@ article.hentry.has-post-thumbnail {
 
 
 @media screen and ( max-width: 767px ) {
+	#main,
+	#page-header,
+	article.hentry,
+	aside.widget,
+	#footer-widget-area,
 	#footer .widget-area {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 }
