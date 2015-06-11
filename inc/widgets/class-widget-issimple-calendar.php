@@ -50,7 +50,7 @@ class ISSimple_Calendar extends WP_Widget {
 
 
 function issimple_get_calendar( $calendar_output ) {
-	return str_replace( '<table id="wp-calendar">', '<table id="wp-calendar" class="table table-hover table-responsive">', $calendar_output );
+	return str_replace( '<table id="wp-calendar">', '<table id="wp-calendar" class="table table-hover">', $calendar_output );
 }
 
 add_filter( 'get_calendar', 'issimple_get_calendar' );

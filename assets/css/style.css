@@ -41,6 +41,10 @@
 	margin: 0;
 }
 
+.table-hover > tbody > tr > td:hover {
+	background-color: #e8e8e8;
+}
+
 .entry-meta .glyphicon,
 .entry-footer .glyphicon,
 .entry-footer .label {
@@ -118,6 +122,18 @@ article.hentry.has-post-thumbnail {
 
 .entry-footer .label:hover {
 	opacity: 0.8;
+}
+
+#wp-calendar caption,
+#wp-calendar thead th,
+#wp-calendar tbody,
+#wp-calendar tfoot {
+	text-align: center;
+}
+
+#wp-calendar caption,
+#wp-calendar tfoot {
+	text-transform: uppercase;
 }
 
 
