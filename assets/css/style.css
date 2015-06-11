@@ -4,6 +4,11 @@
  * Version: 1.0
  */
 
+
+/**
+ * Bootstrap Adjustments
+ * ============================================================================
+ */
 .container-fluid {
 	max-width: 1200px;
 }
@@ -15,11 +20,6 @@
 
 .jumbotron {
 	background-color: #ddd;
-}
-
-.label > a {
-	color: #fff;
-	text-decoration: none;
 }
 
 .bg-default {
@@ -51,6 +51,73 @@
 	margin-right: 5px;
 }
 
+.label-has-badge {
+	padding: 0.5em 0.6em;
+}
+
+.label .badge {
+	background-color: #fff;
+}
+
+.label-default .badge {
+	color: #777;
+}
+
+.label-default[href]:hover .badge,
+.label-default[href]:focus .badge {
+	color: #5e5e5e;
+}
+
+.label-primary .badge {
+	color: #337ab7;
+}
+
+.label-primary[href]:hover .badge,
+.label-primary[href]:focus .badge {
+	color: #286090;
+}
+
+.label-success .badge {
+	color: #5cb85c;
+}
+
+.label-success[href]:hover .badge,
+.label-success[href]:focus .badge {
+	color: #449d44;
+}
+
+.label-info .badge {
+	color: #5bc0de;
+}
+
+.label-info[href]:hover .badge,
+.label-info[href]:focus .badge {
+	color: #31b0d5;
+}
+
+.label-warning .badge {
+	color: #f0ad4e;
+}
+
+.label-warning[href]:hover .badge,
+.label-warning[href]:focus .badge {
+	color: #ec971f;
+}
+
+.label-danger .badge {
+	color: #d9534f;
+}
+
+.label-danger[href]:hover .badge,
+.label-danger[href]:focus .badge {
+	color: #c9302c;
+}
+
+
+/**
+ * Layout Adjustments
+ * ============================================================================
+ */
 *:last-child {
 	margin-bottom: 0;
 }
@@ -118,10 +185,6 @@ article.hentry.has-post-thumbnail {
 	display: inline-block;
 	margin-left: 10px;
 	margin-right: 10px;
-}
-
-.entry-footer .label:hover {
-	opacity: 0.8;
 }
 
 #wp-calendar caption,

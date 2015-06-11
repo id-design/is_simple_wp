@@ -457,7 +457,7 @@ function issimple_entry_footer() {
 			</p>
 			<p>
 				<?php if ( get_the_tags() ) : ?>
-					<span class="glyphicon glyphicon-tags"></span> <?php the_tags( __( 'Tags: ', 'issimple' ) . '<span class="label label-default">', '</span><span class="label label-default">', '</span>' ); ?>
+					<span class="glyphicon glyphicon-tags"></span> <?php the_tags( __( 'Tags: ', 'issimple' ), '' ); ?>
 				<?php endif; ?>
 			</p>
 		</footer><!-- .entry-footer -->

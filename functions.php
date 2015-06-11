@@ -421,6 +421,8 @@ add_filter( 'nav_menu_item_id', '__return_false' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
+// Bootstrap functions
+require_once INCLUDES_PATH . '/bootstrap-functions.php';
 // Limpeza e otimização do tema
 require_once INCLUDES_PATH . '/cleanup.php';
 // Shortcodes úteis no tema
