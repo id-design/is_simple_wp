@@ -17,6 +17,16 @@
 	background-color: #f5f5f5;
 }
 
+.panel .nav > li {
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: #ddd;
+	margin-bottom: -1px;
+}
+.panel .nav > li {
+	border-top-width: 0;
+}
+
 .entry-meta .glyphicon,
 .entry-footer .glyphicon,
 .entry-footer .label {

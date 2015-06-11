@@ -69,7 +69,7 @@ function issimple_login_icon(){
 	
 	echo $output;
 }
-add_action( 'login_enqueue_scripts', 'issimple_login_icon' );
+//add_action( 'login_enqueue_scripts', 'issimple_login_icon' );
 
 
 /**
