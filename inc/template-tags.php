@@ -211,7 +211,7 @@ function issimple_content_search_form( $form_id = false, $form_class = false ) {
  * ----------------------------------------------------------------------------
  */
 function issimple_primary_class() {
-	if ( is_page_template( 'full-width.php' ) ) :
+	if ( is_page_template( 'page-templates/full-width.php' ) ) :
 		echo 'col-md-12';
 	else:
 		echo 'col-sm-8 col-md-8';
