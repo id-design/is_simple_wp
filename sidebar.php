@@ -52,6 +52,6 @@
 					) );
 				endif;
 			?>
-		</div><!-- .widget-area -->
+		</div><!-- #sidebr-widget-area -->
 	</div><!-- #sidebar-content -->
 </div><!-- #secondary -->
