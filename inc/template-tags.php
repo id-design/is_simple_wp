@@ -1,9 +1,9 @@
 <?php
 /**
- * Tags de modelo personalizadas para este tema
+ * Custom Template Tags
  * 
- * Eventualmente, algumas das funcionalidades aqui poderia ser substituída
- * por características do wordpress
+ * Eventually, some of the functionality here could be replaced by
+ * core features.
  * 
  * @package IS Simple
  * @since 1.0
@@ -11,12 +11,12 @@
 
 
 /**
- * Favicon personalizado
+ * Custom Favicon
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function my_favicon(){
+function custom_favicon(){
 	$favicon 			= ICONS_URI . '/favicon.ico';
 	$apple_icons 		= issimple_readdir( ICONS_PATH, 'png' );
 	$apple_icons_name 	= array_keys( $apple_icons );
@@ -27,7 +27,7 @@ function my_favicon(){
 	$favicons  = '<!-- Favicon IE 9 -->';
 	$favicons .= '<!--[if lte IE 9]><link rel="icon" type="image/x-icon" href="' . $favicon . '" /> <![endif]-->';
 	
-	$favicons .= '<!-- Favicon Outros Navegadores -->';
+	$favicons .= '<!-- Favicon Other Browses -->';
 	$favicons .= '<link rel="shortcut icon" type="image/png" href="' . $favicon . '" />';
 	
 	$favicons .='<!-- Favicon Apple -->';
@@ -40,13 +40,13 @@ function my_favicon(){
 	
 	echo $favicons;
 }
-//add_action( 'wp_head', 'my_favicon' );
-//add_action( 'admin_head', 'my_favicon' );
-//add_action( 'login_head', 'my_favicon' );
+//add_action( 'wp_head', 'custom_favicon' );
+//add_action( 'admin_head', 'custom_favicon' );
+//add_action( 'login_head', 'custom_favicon' );
 
 
 /**
- * Ícone personalizado para a tela de login
+ * Custom icon to login screen
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -73,12 +73,12 @@ function issimple_login_icon(){
 
 
 /**
- * Título das páginas
+ * Head titles adjustments
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function my_wp_title( $title, $sep ) {
+function custom_wp_title( $title, $sep ) {
 	$site_name = get_bloginfo( 'name', 'display' );
 	$site_description = get_bloginfo( 'description', 'display' );
 	
@@ -86,33 +86,32 @@ function my_wp_title( $title, $sep ) {
 	
 	return str_replace( "$site_name $sep $site_description", "$site_name - $site_description", $title );
 }
-add_filter( 'wp_title', 'my_wp_title', 10, 2 );
+add_filter( 'wp_title', 'custom_wp_title', 10, 2 );
 
 
 /**
- * Adiciona o nome da página como classe no elemento <body>
- * Créditos: Starkers Wordpress Theme
+ * Add page/post slug as class in <body>
+ * Credits: Starkers Wordpress Theme
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function add_name_to_body_class( $classes ) {
+function add_slug_to_body_class( $classes ) {
 	global $post;
 	
-	if ( is_home() || is_page( 'home' ) ) {
-		$key = array_search( 'blog', $classes );
-		if ( $key > -1 ) unset( $classes[$key] );
-	} elseif ( is_page() || is_singular() ) {
+	if ( is_page() ) {
+		$classes[] = sanitize_html_class( $post->post_name );
+	} elseif ( is_singular() ) {
 		$classes[] = sanitize_html_class( $post->post_name );
 	}
 	
 	return $classes;
 }
-add_filter( 'body_class', 'add_name_to_body_class' );
+add_filter( 'body_class', 'add_slug_to_body_class' );
 
 
 /**
- * Adiciona o atributo 'role' aos menus de navegação
+ * Add attribute 'role="navigation"' to Nav Menus
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -123,6 +122,59 @@ function add_role_navigation_to_nav_menu( $nav_menu, $args ) {
 	return str_replace( '<'. $args->container, '<'. $args->container . ' role="navigation"', $nav_menu );
 }
 add_filter( 'wp_nav_menu', 'add_role_navigation_to_nav_menu', 10, 2 );
+
+
+/**
+ * Description to Nav Menu Itens
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_nav_description( $item_output, $item, $depth, $args ) {
+	if ( 'header-menu' == $args->theme_location && $item->description ) :
+		$item_output = str_replace( $args->link_after . '</a>', '<div class="menu-item-desc">' . $item->description . '</div>' . $args->link_after . '</a>', $item_output );
+	endif;
+	
+	return $item_output;
+}
+add_filter( 'walker_nav_menu_start_el', 'issimple_nav_description', 10, 4 );
+
+
+/**
+ * Custom class to Nav Menu Itens
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function classes_to_nav_item( $classes, $item, $args, $depth ) {
+	$classes[] = ( $depth > 0 ) ? 'sub-menu-item' : '';
+	
+	return $classes;
+}
+//add_filter( 'nav_menu_css_class', 'classes_to_nav_item', 10, 4 );
+
+
+/**
+ * Custom class to Nav Menu Links
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function class_to_nav_link( $atts, $item, $args, $depth  ) {
+	$atts['class']  = ( $depth <= 0 ) ? 'menu-link' : 'menu-link sub-menu-link';
+	
+	return $atts;
+}
+//add_filter( 'nav_menu_link_attributes', 'class_nav_to_link', 10, 4 );
+
+
+/**
+ * Remove "id" attribute to Nav Menus Itens
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+add_filter( 'nav_menu_item_id', '__return_false' );
 
 
 /**
@@ -179,12 +231,12 @@ function issimple_secondary_class() {
 
 
 /**
- * Títulos personalizados para páginas arquivos
+ * Custom title to Archive Pages
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function my_archive_title( $title ) {
+function custom_archive_title( $title ) {
 	if ( is_category() ) :
 		$title = sprintf( __( 'Posts in category: %s', 'issimple' ), single_cat_title( '', false ) );
 	elseif ( is_tag() ) :
@@ -201,7 +253,7 @@ function my_archive_title( $title ) {
 	
 	return $title;
 }
-add_filter( 'get_the_archive_title', 'my_archive_title' );
+add_filter( 'get_the_archive_title', 'custom_archive_title' );
 
 
 /**
@@ -219,147 +271,6 @@ function issimple_post_pagination() {
 	) );
 	
 	echo '<!-- #post-pagination -->';
-}
-
-
-/**
- * Custom Bootstrap Posts Pagination
- * 
- * A custom WordPress numbered pagination function to fully implement the
- * Bootstrap 3.x pagination/pager style in a custom theme.
- * Inspired by the function wp_bootstrap_pagination
- * (@link https://github.com/talentedaamer/Bootstrap-wordpress-pagination),
- * created by OOPThemes and with the licence GPLv2.
- * 
- * @since IS Simple 1.0
- * ----------------------------------------------------------------------------
- */
-function issimple_wp_bootstrap_pagination( $args = array() ) {
-	global $wp_query;
-	
-	// Prevent show pagination number if Infinite Scroll of JetPack is active.
-	if ( ! isset( $_GET[ 'infinity' ] ) ) {
-		
-		// Sets the pagination args.
-		$defaults = array(
-			'container'				=> 'nav',
-			'container_id'			=> '',
-			'container_class'		=> '',
-			'div_class'				=> '',
-			'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
-			'type'					=> 'pagination',
-			'pagination_id'			=> '',
-			'pagination_class'		=> '',
-			'range'					=> 4,
-			'custom_query'			=> false,
-			'echo'					=> true,
-			'previous_text'			=> __( '<i class="glyphicon glyphicon-chevron-left"></i> <span class="sr-only">Previous</span>', 'issimple' ),
-			'next_text'				=> __( '<span class="sr-only">Next</span> <i class="glyphicon glyphicon-chevron-right"></i>', 'issimple' ),
-			'first_link_text'		=> __( 'First', 'issimple' ),
-			'last_link_text'		=> __( 'Last', 'issimple' )
-		);
-		
-		$args = wp_parse_args( $args, apply_filters( 'issimple_wp_bootstrap_pagination_defaults', $defaults ) );
-		
-		$args['range'] = (int) $args['range'] - 1;
-		
-		if ( ! $args['custom_query'] ) $args['custom_query'] = $wp_query;
-		
-		$count = (int) $args['custom_query']->max_num_pages;
-		$page  = intval( get_query_var( 'paged' ) );
-		$ceil  = ceil( $args['range'] / 2 );
-		
-		if ( $count <= 1 ) return false;
-		
-		if ( ! $page ) $page = 1;
-		
-		if ( $count > $args['range'] ) {
-			if ( $page <= $args['range'] ) {
-				$min = 1;
-				$max = $args['range'] + 1;
-			} elseif ( $page >= ( $count - $ceil ) ) {
-				$min = $count - $args['range'];
-				$max = $count;
-			} elseif ( $page >= $args['range'] && $page < ( $count - $ceil ) ) {
-				$min = $page - $ceil;
-				$max = $page + $ceil;
-			}
-		} else {
-			$min = 1;
-			$max = $count;
-		}
-		
-		$output = '';
-		
-		$div_class = ( ! empty( $args['div_class'] ) ) ? ' class="post-pagination ' . $args['div_class'] . '"' : ' class="post-pagination"';
-		$output .= '<div' . $div_class . '>';
-		
-		if ( isset( $args['screen_reader_text'] ) ) {
-			$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>';
-		}
-		
-		$pagination_id = ( $args['pagination_id'] ) ? ' id="' . $args['pagination_id'] . '"' : '';
-		
-		$pagination_class = ( ! empty( $args['pagination_class'] ) ) ? $args['type'] . ' ' . $args['pagination_class'] : $args['type'];
-		$pagination_class = ' class="' . $pagination_class . '"';
-		
-		$output .= '<ul' . $pagination_id . $pagination_class . '>';
-		
-		$previous = intval( $page ) - 1;
-		$previous = esc_attr( get_pagenum_link( $previous ) );
-		if ( $previous && ( 1 != $page ) ) {
-			$output .= '<li class="previous"><a href="' . $previous . '" title="' . __( 'Previous page', 'issimple') . '">' . $args['previous_text'] . '</a></li>';
-		} else {
-			$output .= '<li class="previous disabled"><span>' . $args['previous_text'] . '</span></li>';
-		}
-		
-		$firstpage = esc_attr( get_pagenum_link( 1 ) );
-		if ( $firstpage && ( 1 != $page ) && ( 1 < $min ) ) 
-			$output .= '<li><a href="' . $firstpage . '" title="' . __( 'Go to first page', 'issimple') . '">' . 1 . '</a></li>';
-		
-		if ( ! empty( $min ) && ! empty( $max ) ) {
-			if ( ( $min - 1 ) > 1 )
-				$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
-			
-			for( $i = 1; $i <= $count; $i++ ) {
-				if ( $page == $i ) {
-					$output .= '<li class="active"><span class="active">' . $i . '</span></li>';
-				} elseif ( $i >= $min && $i <= $max ) {
-					$output .= sprintf( '<li><a href="%1$s" title="' . __( 'Go to page %2$d', 'issimple') . '">%2$d</a></li>', esc_attr( get_pagenum_link( $i ) ), $i );
-				}
-			}
-			
-			if ( ( $max + 1 ) < $count )
-				$output .= '<li class="dots disabled"><span>' . __( '&hellip;' ) . '</span></li>';
-		}
-		
-		$lastpage = esc_attr( get_pagenum_link( $count ) );
-		if ( $lastpage && ( $max < $count ) )
-			$output .= '<li><a href="' . $lastpage . '" title="' . __( 'Go to last page', 'issimple') . '">' . $count . '</a></li>';
-		
-		$next = intval( $page ) + 1;
-		$next = esc_attr( get_pagenum_link( $next ) );
-		if ( $next && ( $count != $page ) ) {
-			$output .= '<li class="next"><a href="' . $next . '" title="' . __( 'Next page', 'issimple') . '">' . $args['next_text'] . '</a></li>';
-		} else {
-			$output .= '<li class="next disabled"><span>' . $args['next_text'] . '</span></li>';
-		}
-		
-		$output .= '</ul></div>';
-		
-		if ( isset( $args['container'] ) ) {
-			$container_id = ( ! empty( $args['container_id'] ) ) ? ' id="' . $args['container_id'] . '"' : '';
-			$container_class = ( ! empty( $args['container_class'] ) ) ? ' class="' . $args['container_class'] . '"' : '';
-			
-			$output = '<' . $args['container'] . $container_id . $container_class . '>' . $output . '</' . $args['container'] . '>';
-		}
-		
-		if ( $args['echo'] ) {
-			echo $output;
-		} else {
-			return $output;
-		}
-	}
 }
 
 
@@ -500,7 +411,7 @@ function issimple_date_link() {
 
 
 /**
- * Link para os comentários
+ * Custom comment links
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -516,7 +427,7 @@ function issimple_comment_link() {
 
 
 /**
- * Criar resumos personalizados
+ * Custom excerpt with length and excerpt more tag to variables excerpts
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -537,8 +448,8 @@ function issimple_excerpt( $length_callback = '', $more_callback = '' ) {
 
 
 /**
- * Tamanho em palavras para os resumos personalizados.
- * Uso: issimple_excerpt( 'issimple_index' );
+ * Word's length to a custom excerpt.
+ * @uses issimple_excerpt( 'issimple_index' );
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -549,8 +460,8 @@ function issimple_index( $length ) {
 
 
 /**
- * Tamanho em palavras para os resumos personalizados do slider.
- * Uso: issimple_excerpt( 'issimple_length_slider' );
+ * Word's length to a custom excerpt in slider.
+ * @uses issimple_excerpt( 'issimple_length_slider' );
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -561,7 +472,7 @@ function issimple_length_slider( $lenght ) {
 
 
 /**
- * Cria link Ver Artigo personalizado para a postagem
+ * Custom general excerpt more tag
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -582,7 +493,7 @@ add_filter( 'excerpt_more', 'issimple_read_more' );
 
 
 /**
- * Navegação dos comentários
+ * Custom Comments Navigation
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
