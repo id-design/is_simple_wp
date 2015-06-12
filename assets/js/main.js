@@ -135,12 +135,16 @@
 		$window	 = $( window );
 		$body	 = $( document.body );
 		$header  = $( '#header' ).first();
-		$main = $( '#main' ).first();
-		$sidebar = $( '#sidebar' ).first();
+		$main = $( '#primary' ).first();
+		$sidebar = $( '#secondary' ).first();
 		$footer  = $( '#footer' ).first();
 		
 		navbar_resize();
 		$window.resize( navbar_resize );
+		
+		//resize_and_scroll();
+		//$window.scroll( resize_and_scroll );
+		//$window.resize( resize_and_scroll );
 		
 		// Ajustes para o lightbox
 		var content_id = $( 'article.page, article.post' ).attr( 'id' );
