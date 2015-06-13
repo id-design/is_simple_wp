@@ -188,6 +188,20 @@ article.hentry.has-post-thumbnail {
 	margin-right: 10px;
 }
 
+#main > .container-fluid > .row {
+	position: relative;
+}
+
+#vars {
+	top: 100px !important;
+}
+
+#secondary {
+	max-width: 400px;
+	position: absolute;
+	margin-left: 800px;
+}
+
 #wp-calendar caption,
 #wp-calendar thead th,
 #wp-calendar tbody,

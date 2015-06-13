@@ -42,7 +42,6 @@
 			return;
 		}
 		
-		$( 'body' ).append('<div id="vars"></div>');
 		$( '#vars' ).attr( 'style', 'position: fixed; top: 0; left: 0; z-index: 99999;' )
 			.append('<div id="windowPos"></div>')
 			.append('<div id="sidebarOps"></div>')
@@ -67,7 +66,7 @@
 				+ ' | ' +
 				'mainHeight = ' + mainHeight
 			);
-		
+		/*
 		if ( windowPos > 0 ) {
 		    $header.attr( 'style', 'position: fixed; top: 0; width: 100%; z-index: 9999;' );
 		    $main.attr( 'style', 'margin-top: ' + mainOffsetTop + 'px;' );
@@ -75,7 +74,7 @@
 			$header.removeAttr( 'style' );
 			$main.removeAttr( 'style' );
 		}
-		
+		*/
 		// Se a sidebar for maior que o tamanho da janela...
 		if ( mainHeight > windowHeight ) {
 			if ( scrollDown ) {
@@ -135,16 +134,26 @@
 		$window	 = $( window );
 		$body	 = $( document.body );
 		$header  = $( '#header' ).first();
-		$main = $( '#primary' ).first();
+		$main = $( '#main' ).first();
 		$sidebar = $( '#secondary' ).first();
 		$footer  = $( '#footer' ).first();
 		
 		navbar_resize();
 		$window.resize( navbar_resize );
-		
-		//resize_and_scroll();
-		//$window.scroll( resize_and_scroll );
-		//$window.resize( resize_and_scroll );
+		/*
+		$( '#secondary' ).affix( {
+			offset: {
+				top: 100,
+				bottom: function () {
+					return ( this.bottom = $( '#footer' ).height() );
+				}
+			}
+		});
+		*/
+		$( 'body' ).append('<div id="vars"></div>');
+		resize_and_scroll();
+		$window.scroll( resize_and_scroll );
+		$window.resize( resize_and_scroll );
 		
 		// Ajustes para o lightbox
 		var content_id = $( 'article.page, article.post' ).attr( 'id' );
