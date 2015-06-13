@@ -151,9 +151,7 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 
 /**
  * Convert simple tag links to Bootstrap Labels
- *
- * @package WordPress
- * @subpackage IS Simple
+ * 
  * @since IS Simple 1.0
  */
 function issimple_make_label_tags( $links ) {
@@ -164,3 +162,60 @@ function issimple_make_label_tags( $links ) {
 	return $links;
 }
 add_filter( 'term_links-post_tag', 'issimple_make_label_tags' );
+
+
+/**
+ * Custom comments loop adapted to Bootstrap
+ * 
+ * Inspired by the function odin_comments_loop (@link https://github.com/wpbrasil/odin/blob/master/inc/comments-loop.php),
+ * created by WordPress Brasil Group and with the licence GPLv2.
+ * 
+ * @since IS Simple 1.0
+ * 
+ * @param	object	$comment 	Comment object.
+ * @param	array	$args		Comment arguments.
+ * @param	int		$depth		Comment depth.
+ * 
+ * @return	void
+ */
+function issimple_bootstrap_comments_loop( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	
+	switch ( $comment->comment_type ) {
+		case 'pingback' :
+		case 'trackback' :
+			?>
+<li class="post pingback">
+	<p><?php _e( 'Pingback:', 'issimple' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'issimple' ), '<span class="edit-link">', '</span>' ); ?></p>
+			<?php
+			break;
+		default :
+			?>
+<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+	<article id="comment-<?php comment_ID(); ?>" class="comment panel panel-default">
+		<footer class="comment-meta panel-heading">
+			<div class="comment-author vcard">
+				<?php echo get_avatar( $comment, 72, '', '', array( 'class' => 'img-thumbnail img-circle' ) ) ?>
+				<?php printf( __( '%s <span class="says">says:</span>', 'issimple' ), sprintf( '<span class="fn">%s</span>', get_comment_author_link() ) ); ?>
+				<?php edit_comment_link( __( 'Edit', 'issimple' ), ' | <span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' ); ?>
+			</div><!-- .comment-author.vcard -->
+			<div class="comment-author vcard">
+				<?php echo sprintf( '%1$s<span class="fn">%2$s</span> %3$s <a href="%4$s"><time datetime="%5$s">%6$s %7$s </time></a> <span class="says"> %8$s</span>', get_avatar( $comment, 72, '', '', array( 'class' => 'img-thumbnail img-circle' ) ), get_comment_author_link(), __( 'in', 'issimple' ), esc_url( get_comment_link( $comment->comment_ID ) ), get_comment_time( 'c' ), get_comment_date(), __( 'at', 'issimple' ), get_comment_time(), __( 'said:', 'issimple' ) ); ?>
+				<?php edit_comment_link( __( 'Edit', 'issimple' ), '<span class="edit-link"> | ', '</span>' ); ?>
+			</div><!-- .comment-author.vcard -->
+			<?php if ( $comment->comment_approved == '0' ) : ?>
+				<div class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'issimple' ); ?></div>
+			<?php endif; ?>
+		</footer><!-- .comment-meta -->
+		<div class="panel-body">
+			<p class="comment-content"><?php comment_text(); ?></p>
+			<p class="reply">
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Respond', 'issimple' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			</p><!-- .reply -->
+		</div>
+	</article><!-- #comment-## -->
+			<?php
+			break;
+	}
+}
+

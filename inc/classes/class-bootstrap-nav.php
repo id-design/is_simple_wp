@@ -3,7 +3,7 @@
  * ISSimple_WP_Bootstrap_Nav_Walker class
  * 
  * A custom Wordpress nav walker to implement the Bootstrap 3 dropdown navigation using the Wordpress built in menu manager.
- * Inspired by the class twitter_bootstrap_nav_walker <https://github.com/twittem/wp-bootstrap-navwalker>,
+ * Inspired by the class twitter_bootstrap_nav_walker (@link https://github.com/twittem/wp-bootstrap-navwalker),
  * created by Edward McIntyre and with the licence GPLv2.
  * 
  * @package WordPress
