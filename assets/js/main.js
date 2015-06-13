@@ -26,7 +26,7 @@
 		headerHeight		= $header.height();
 		footerHeight		= $footer.height();
 		
-		mainOffsetTop		= $main.offset().top;
+		mainOffsetTop		= $( '#page-header' ).height() > 0 ? $( '#page-header' ).offset().top  : $main.offset().top;
 		mainHeight			= $main.height();
 		
 		sidebarOffsetTop	= $sidebar.offset().top;
@@ -76,7 +76,7 @@
 		}
 		*/
 		// Se a sidebar for maior que o tamanho da janela...
-		if ( mainHeight > windowHeight ) {
+		if ( sidebarHeight > windowHeight ) {
 			if ( scrollDown ) {
 				if ( top ) {
 					top = false;
@@ -127,6 +127,10 @@
 		
 		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() + 30 ) + 'px;' );
 	}
+    
+    function sidebar_affix() {
+        $sidebar.hasClass( 'affix' ).css( 'margin-left', $( '#primaty' ).width() );
+    }
 	
 	$( document ).ready( function() {
 		$wpadminbar = $( '#wpadminbar' ).first();
@@ -141,19 +145,22 @@
 		navbar_resize();
 		$window.resize( navbar_resize );
 		/*
-		$( '#secondary' ).affix( {
+		$sidebar.affix( {
 			offset: {
-				top: 100,
-				bottom: function () {
-					return ( this.bottom = $( '#footer' ).height() );
-				}
+				top: 180,
+				bottom: 50
 			}
-		});
+		} );
 		*/
-		$( 'body' ).append('<div id="vars"></div>');
-		resize_and_scroll();
-		$window.scroll( resize_and_scroll );
-		$window.resize( resize_and_scroll );
+		//var footerOffsetBottom = $footer.height();
+		//alert( mainOffsetBottom );
+		//$sidebar.attr( 'data-spy', 'affix' ).attr( 'data-offset-top', 60 ).attr( 'data-offset-bottom', footerOffsetBottom );
+		
+		//$window.scroll( sidebar_affix );
+		//$( 'body' ).append('<div id="vars"></div>');
+		//resize_and_scroll();
+		//$window.scroll( resize_and_scroll );
+		//$window.resize( resize_and_scroll );
 		
 		// Ajustes para o lightbox
 		var content_id = $( 'article.page, article.post' ).attr( 'id' );

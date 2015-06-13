@@ -189,7 +189,7 @@ article.hentry.has-post-thumbnail {
 }
 
 #main > .container-fluid > .row {
-	position: relative;
+	/*position: relative;*/
 }
 
 #vars {
@@ -198,8 +198,8 @@ article.hentry.has-post-thumbnail {
 
 #secondary {
 	max-width: 400px;
-	position: absolute;
-	margin-left: 800px;
+	/*position: absolute;
+	margin-left: 800px;*/
 }
 
 #wp-calendar caption,
