@@ -156,7 +156,7 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
  */
 function issimple_make_label_tags( $links ) {
 	for ( $i = 0; $i < count( $links ); $i++ ) {
-		$links[$i] = str_replace( '<a', '<a class="label label-default"', $links[$i]);
+		$links[$i] = str_replace( '<a', '<a class="label label-default"', $links[$i] );
 	}
 	
 	return $links;
@@ -195,27 +195,53 @@ function issimple_bootstrap_comments_loop( $comment, $args, $depth ) {
 	<article id="comment-<?php comment_ID(); ?>" class="comment panel panel-default">
 		<footer class="comment-meta panel-heading">
 			<div class="comment-author vcard">
-				<?php echo get_avatar( $comment, 72, '', '', array( 'class' => 'img-thumbnail img-circle' ) ) ?>
-				<?php printf( __( '%s <span class="says">says:</span>', 'issimple' ), sprintf( '<span class="fn">%s</span>', get_comment_author_link() ) ); ?>
+				<?php
+					printf( '%1$s<span class="fn">%2$s</span> %3$s <a href="%4$s"><time datetime="%5$s" title="%6$s">%7$s %8$s %9$s</time></a> %10$s',
+						get_avatar( $comment, 72, '', '', array( 'class' => 'img-thumbnail img-circle' ) ),
+						get_comment_author_link(),
+						__( 'in', 'issimple' ),
+						esc_url( get_comment_link( $comment->comment_ID ) ),
+						get_comment_time( 'c' ),
+						get_comment_time( 'l, ' . get_option( 'date_format' ) . ', H:i' ),
+						get_comment_date(),
+						__( 'at', 'issimple' ),
+						get_comment_time(),
+						__( '<span class="says">said:</span>', 'issimple' )
+					); ?>
 				<?php edit_comment_link( __( 'Edit', 'issimple' ), ' | <span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' ); ?>
 			</div><!-- .comment-author.vcard -->
-			<div class="comment-author vcard">
-				<?php echo sprintf( '%1$s<span class="fn">%2$s</span> %3$s <a href="%4$s"><time datetime="%5$s">%6$s %7$s </time></a> <span class="says"> %8$s</span>', get_avatar( $comment, 72, '', '', array( 'class' => 'img-thumbnail img-circle' ) ), get_comment_author_link(), __( 'in', 'issimple' ), esc_url( get_comment_link( $comment->comment_ID ) ), get_comment_time( 'c' ), get_comment_date(), __( 'at', 'issimple' ), get_comment_time(), __( 'said:', 'issimple' ) ); ?>
-				<?php edit_comment_link( __( 'Edit', 'issimple' ), '<span class="edit-link"> | ', '</span>' ); ?>
-			</div><!-- .comment-author.vcard -->
+
 			<?php if ( $comment->comment_approved == '0' ) : ?>
 				<div class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'issimple' ); ?></div>
 			<?php endif; ?>
 		</footer><!-- .comment-meta -->
+		
 		<div class="panel-body">
-			<p class="comment-content"><?php comment_text(); ?></p>
-			<p class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Respond', 'issimple' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</p><!-- .reply -->
+			<div class="comment-content"><?php comment_text(); ?></div>
+			<div class="reply">
+				<?php
+					comment_reply_link( array_merge( $args, array(
+						'reply_text'	=> __( 'Respond', 'issimple' ),
+						'depth'			=> $depth,
+						'max_depth'		=> $args['max_depth']
+					) ) );
+				?>
+			</div><!-- .reply -->
 		</div>
 	</article><!-- #comment-## -->
 			<?php
 			break;
 	}
 }
+
+
+/**
+ * Convert comment reply links to Bootstrap Button
+ * 
+ * @since IS Simple 1.0
+ */
+function issimple_make_btn_comment_reply_link( $link, $args, $comment, $post ) {
+	return preg_replace( '/comment-reply-link/', 'btn btn-default comment-reply-link', $link, 1 );
+}
+add_filter( 'comment_reply_link', 'issimple_make_btn_comment_reply_link', 10, 4 );
 

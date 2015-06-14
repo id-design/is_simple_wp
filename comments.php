@@ -63,15 +63,16 @@
 			'title_reply' => __( 'Leave your thoughts', 'issimple' ),
 			'comment_notes_after'	=> '',
 			'comment_field'			=> '<div class="comment-form-comment form-group"><label for="comment">' . __( 'Comment', 'issimple' ) . '</label> ' .
-									   '<textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea></div>',
+									   '<textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea></div>',
 			'fields'				=> apply_filters( 'comment_form_default_fields', array(
 				'author' => '<div class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'issimple' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-							'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40"' . $aria_req . ' /></div>',
+							'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40"' . $aria_req . ' /></div>',
 				'email'  => '<div class="comment-form-email form-group"><label for="email">' . __( 'Email', 'issimple' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-							'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="40" aria-describedby="email-notes"' . $aria_req . ' /></div>',
+							'<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="40" aria-describedby="email-notes"' . $aria_req . ' /></div>',
 				'url'    => '<div class="comment-form-url form-group"><label for="url">' . __( 'Website', 'issimple' ) . '</label> ' .
-							'<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="40" /></div>',
-			) )
+							'<input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="40" /></div>',
+			) ),
+			'class_submit'			=> 'submit btn btn-default',
 		) );
 	?>
 	

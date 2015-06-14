@@ -133,7 +133,10 @@ aside.widget,
 .entry-header,
 .post-featured-thumb,
 .entry-title,
-.entry-content {
+.entry-content,
+li.comment,
+.comment-author,
+.comment-content {
 	margin-bottom: 20px;
 }
 
@@ -225,6 +228,19 @@ article.hentry.has-post-thumbnail {
 	border-top: 1px solid #333;
 	padding-bottom: 15px;
 	padding-top: 15px;
+}
+
+.comments-list,
+.comments-list .children {
+	list-style: none;
+}
+
+.comments-list {
+	padding-left: 0;
+}
+
+.comment-author .avatar {
+	margin-right: 15px;
 }
 
 
