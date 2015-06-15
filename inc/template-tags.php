@@ -499,8 +499,8 @@ add_filter( 'excerpt_more', 'issimple_read_more' );
  * ----------------------------------------------------------------------------
  */
 function issimple_comment_nav() {
-	// Há comentários para navegação?
-	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+	// Are there comments to navigate through?
+	/*if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 		<nav class="nav comment-nav" role="navigation">
 			<h2 class="sr-only"><?php _e( 'Comment navigation', 'issimple' ); ?></h2>
 			<div class="nav-links">
@@ -515,7 +515,8 @@ function issimple_comment_nav() {
 				?>
 			</div><!-- .nav-links -->
 		</nav><!-- .comment-nav -->
-	<?php endif;
+	<?php endif;*/
+	paginate_comments_links();
 }
 
 

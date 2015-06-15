@@ -77,9 +77,6 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 		
 		$output = '';
 		
-		$div_class = ( ! empty( $args['div_class'] ) ) ? ' class="post-pagination ' . $args['div_class'] . '"' : ' class="post-pagination"';
-		$output .= '<div' . $div_class . '>';
-		
 		if ( isset( $args['screen_reader_text'] ) ) {
 			$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>';
 		}
@@ -131,7 +128,10 @@ function issimple_wp_bootstrap_pagination( $args = array() ) {
 			$output .= '<li class="next disabled"><span>' . $args['next_text'] . '</span></li>';
 		}
 		
-		$output .= '</ul></div>';
+		$output .= '</ul>';
+		
+		$div_class = ( ! empty( $args['div_class'] ) ) ? ' class="post-pagination ' . $args['div_class'] . '"' : ' class="post-pagination"';
+		$output = '<div' . $div_class . '>' . $output . '</div>';
 		
 		if ( isset( $args['container'] ) ) {
 			$container_id = ( ! empty( $args['container_id'] ) ) ? ' id="' . $args['container_id'] . '"' : '';
@@ -195,20 +195,23 @@ function issimple_bootstrap_comments_loop( $comment, $args, $depth ) {
 	<article id="comment-<?php comment_ID(); ?>" class="comment panel panel-default">
 		<footer class="comment-meta panel-heading">
 			<div class="comment-author vcard">
-				<?php
-					printf( '%1$s<span class="fn">%2$s</span> %3$s <a href="%4$s"><time datetime="%5$s" title="%6$s">%7$s %8$s %9$s</time></a> %10$s',
-						get_avatar( $comment, 72, '', '', array( 'class' => 'img-thumbnail img-circle' ) ),
-						get_comment_author_link(),
-						__( 'in', 'issimple' ),
-						esc_url( get_comment_link( $comment->comment_ID ) ),
-						get_comment_time( 'c' ),
-						get_comment_time( 'l, ' . get_option( 'date_format' ) . ', H:i' ),
-						get_comment_date(),
-						__( 'at', 'issimple' ),
-						get_comment_time(),
-						__( '<span class="says">said:</span>', 'issimple' )
-					); ?>
-				<?php edit_comment_link( __( 'Edit', 'issimple' ), ' | <span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' ); ?>
+				<?php echo get_avatar( $comment, 70, '', '', array( 'class' => 'img-thumbnail img-circle' ) ) ?>
+				<div class="comment-metadata">
+					<?php
+						printf( '<span class="fn">%1$s</span><br />%2$s <a href="%3$s"><time datetime="%4$s" title="%5$s">%6$s %7$s %8$s</time></a> %9$s',
+							get_comment_author_link(),
+							__( 'in', 'issimple' ),
+							esc_url( get_comment_link( $comment->comment_ID ) ),
+							get_comment_time( 'c' ),
+							get_comment_time( 'l, ' . get_option( 'date_format' ) . ', H:i' ),
+							get_comment_date(),
+							__( 'at', 'issimple' ),
+							get_comment_time(),
+							__( '<span class="says">said:</span>', 'issimple' )
+						); ?>
+				</div>
+				<?php edit_comment_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' ); ?>
+				<div class="clearfix"></div>
 			</div><!-- .comment-author.vcard -->
 
 			<?php if ( $comment->comment_approved == '0' ) : ?>

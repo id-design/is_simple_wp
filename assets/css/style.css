@@ -61,6 +61,7 @@
 
 .label-default .badge {
 	color: #777;
+	font-size: inherit;
 }
 
 .label-default[href]:hover .badge,
@@ -176,7 +177,8 @@ article.hentry.has-post-thumbnail {
 	padding-right: 20px;
 }
 
-.entry-title {
+.entry-title,
+.comments-title {
 	margin-top: 0;
 }
 
@@ -239,8 +241,22 @@ article.hentry.has-post-thumbnail {
 	padding-left: 0;
 }
 
+.comment-author .avatar,
+.comment-metadata {
+	float: left;
+}
+
 .comment-author .avatar {
 	margin-right: 15px;
+}
+
+.comment-metadata,
+.comment .edit-link {
+	margin-top: 15px;
+}
+
+.comment .edit-link {
+	float: right;
 }
 
 

@@ -41,7 +41,7 @@
 		if ( 900 > windowWidth ) {
 			return;
 		}
-		
+		/*
 		$( '#vars' ).attr( 'style', 'position: fixed; top: 0; left: 0; z-index: 99999;' )
 			.append('<div id="windowPos"></div>')
 			.append('<div id="sidebarOps"></div>')
@@ -66,7 +66,7 @@
 				+ ' | ' +
 				'mainHeight = ' + mainHeight
 			);
-		/*
+		
 		if ( windowPos > 0 ) {
 		    $header.attr( 'style', 'position: fixed; top: 0; width: 100%; z-index: 9999;' );
 		    $main.attr( 'style', 'margin-top: ' + mainOffsetTop + 'px;' );
