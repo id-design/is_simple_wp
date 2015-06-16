@@ -14,11 +14,15 @@
  * A custom WordPress numbered pagination function to fully implement the
  * Bootstrap 3.x pagination/pager style in a custom theme.
  * 
+ * @see wp_bootstrap_paginate_links()
  * @since IS Simple 1.0
+ * 
+ * @param	string|array	$args	Optional args. See wp_bootstrap_paginate_links().
+ * @return	string					Markup for pagination links.
  * ----------------------------------------------------------------------------
  */
 function wp_bootstrap_pagination_links( $args = array() ) {
-	// Sets the pagination args.
+	// Sets the pagination default args.
 	$defaults = array(
 		'container'				=> 'nav',
 		'container_id'			=> '',
@@ -50,7 +54,9 @@ function wp_bootstrap_pagination_links( $args = array() ) {
 			// Set up paginated links.
 			$links = wp_bootstrap_paginate_links( $args );
 		}
-	} else if ( 'comments' == $args['paginate_content'] ) {
+	}
+	
+	if ( 'comments' == $args['paginate_content'] ) {
 		global $wp_rewrite;
 		
 		if ( ! is_singular() || ! get_option( 'page_comments' ) ) return;
@@ -61,11 +67,12 @@ function wp_bootstrap_pagination_links( $args = array() ) {
 		$max_page = get_comment_pages_count();
 		
 		$defaults = array(
-			'base'			=> add_query_arg( 'cpage', '%#%' ),
-			'format'		=> '',
-			'total'			=> $max_page,
-			'current'		=> $page,
-			'add_fragment'	=> '#comments'
+			'base'					=> add_query_arg( 'cpage', '%#%' ),
+			'format'				=> '',
+			'total'					=> $max_page,
+			'current'				=> $page,
+			'screen_reader_text'	=> __( 'Comments navigation', 'issimple' ),
+			'add_fragment'			=> '#comments'
 		);
 		if ( $wp_rewrite->using_permalinks() )
 			$defaults['base'] = user_trailingslashit( trailingslashit( get_permalink() ) . $wp_rewrite->comments_pagination_base . '-%#%', 'commentpaged');
@@ -77,18 +84,25 @@ function wp_bootstrap_pagination_links( $args = array() ) {
 	
 	if ( empty( $links ) ) return;
 	
-	if ( isset( $args['screen_reader_text'] ) ) {
+	if ( ! empty( $args['screen_reader_text'] ) )
 		$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>' . $links;
+	
+	if ( false !== $args['div_class'] ) {
+		$div_class = array();
+		$div_class[] = 'pagination-content';
+		$div_class[] = ( ! empty( $args['div_class'] ) ? $args['div_class'] : '' );
+		$output = '<div class="' . esc_attr( join( ' ', $div_class ) ) . '">' . $output . '</div>';
 	}
 	
-	$div_class = ( ! empty( $args['div_class'] ) ) ? ' class="post-pagination ' . $args['div_class'] . '"' : ' class="post-pagination"';
-	$output = '<div' . $div_class . '>' . $output . '</div>';
-	
-	if ( isset( $args['container'] ) ) {
-		$container_id = ( ! empty( $args['container_id'] ) ) ? ' id="' . $args['container_id'] . '"' : '';
-		$container_class = ( ! empty( $args['container_class'] ) ) ? ' class="' . $args['container_class'] . '"' : '';
+	if ( false !== $args['container'] ) {
+		$container_atts = array();
+		$container_atts['id'] 	 = ( ! empty( $args['container_id'] ) ) ? $args['container_id'] : '';
+		$container_atts['class'] = ( ! empty( $args['container_class'] ) ) ? $args['container_class'] : '';
+		$container_atts['role']  = ( $args['container'] == 'nav' ) ? 'navigation' : '';
 		
-		$output = '<' . $args['container'] . $container_id . $container_class . '>' . $output . '</' . $args['container'] . '>';
+		$container_attributes = array2atts( $container_atts );
+		
+		$output = '<' . $args['container'] . $container_attributes . '>' . $output . '</' . $args['container'] . '>';
 	}
 	
 	if ( $args['echo'] ) {
@@ -99,6 +113,38 @@ function wp_bootstrap_pagination_links( $args = array() ) {
 }
 
 
+/**
+ * Retrieve paginated links for archive post/comment pages adapted to Bootstrap.
+ * 
+ * @see paginate_links()
+ * @since IS Simple 1.0
+ * 
+ * @param	string|array	$args {
+ * 		Optional. Array or string of arguments for generating paginated links for archives.
+ * 		
+ * 		@type	string	$base 				Base of the paginated url. Default empty.
+ * 		@type	string	$format				Format for the pagination structure. Default empty.
+ * 		@type	int		$total				The total amount of pages. Default is the value WP_Query's
+ * 											`max_num_pages` or 1.
+ * 		@type	int		$current			The current page number. Default is 'paged' query var or 1.
+ * 		@type	bool	$show_all			Whether to show all pages. Default false.
+ * 		@type	int		$end_size			How many numbers on either the start and the end list edges.
+ * 											Default 1.
+ * 		@type	int		$mid_size			How many numbers to either side of the current pages. Default 2.
+ * 		@type	bool	$prev_next			Whether to include the previous and next links in the list. Default true.
+ * 		@type	bool	$prev_text			The previous page text. Default '« Previous'.
+ * 		@type	bool	$next_text			The next page text. Default '« Previous'.
+ * 		@type	string	$type				Controls format of the returned value. Possible values are 'pagination',
+ * 											'array' and 'pager'. Default is 'pagination'.
+ * 		@type	array	$add_args			An array of query args to add. Default false.
+ * 		@type	string	$add_fragment		A string to append to each link. Default empty.
+ * 		@type	string	$pagination_id		A string to appear before the page number. Default empty.
+ * 		@type	string	$pagination_class 	A string to append after the page number. Default empty.
+ * 		@type	string	$before_page_number	A string to appear before the page number. Default empty.
+ * 		@type	string	$after_page_number	A string to append after the page number. Default empty.
+ * }
+ * @return	array|string	String of page links or array of page links.
+ */
 function wp_bootstrap_paginate_links( $args = '' ) {
 	global $wp_query, $wp_rewrite;
 
@@ -124,8 +170,8 @@ function wp_bootstrap_paginate_links( $args = '' ) {
 		'current'				=> $current,
 		'show_all'				=> false,
 		'prev_next'				=> true,
-		'prev_text'				=> __( '<i class="glyphicon glyphicon-chevron-left"></i> <span class="sr-only">Previous</span>', 'issimple' ),
-		'next_text'				=> __( '<span class="sr-only">Next</span> <i class="glyphicon glyphicon-chevron-right"></i>', 'issimple' ),
+		'prev_text'				=> '<i class="glyphicon glyphicon-chevron-left"></i> <span class="sr-only">' . __( 'Previous', 'issimple' ) . '</span>',
+		'next_text'				=> '<span class="sr-only">' . __( 'Next', 'issimple' ) . '</span> <i class="glyphicon glyphicon-chevron-right"></i>',
 		'end_size'				=> 1,
 		'mid_size'				=> 2,
 		'type'					=> 'pagination',
@@ -217,8 +263,8 @@ function wp_bootstrap_paginate_links( $args = '' ) {
 		endif;
 	endif;
 	
-	$pagination_id = ( ! empty( $args['pagination_id'] ) ) ? ' id="' . $args['pagination_id'] . '"' : '';
-	$pagination_class = ( ! empty( $args['pagination_class'] ) ) ? ' ' . $args['pagination_class'] : '';
+	$pagination_id = ( ! empty( $args['pagination_id'] ) ) ? ' id="' . esc_attr( $args['pagination_id'] ) . '"' : '';
+	$pagination_class = ( ! empty( $args['pagination_class'] ) ) ? ' ' . esc_attr( $args['pagination_class'] ) : '';
 	
 	switch ( $args['type'] ) {
 		case 'array' :
@@ -245,14 +291,14 @@ function wp_bootstrap_paginate_links( $args = '' ) {
  * 
  * @since IS Simple 1.0
  */
-function issimple_make_label_tags( $links ) {
+function wp_bootstrap_make_label_tags( $links ) {
 	for ( $i = 0; $i < count( $links ); $i++ ) {
 		$links[$i] = str_replace( '<a', '<a class="label label-default"', $links[$i] );
 	}
 	
 	return $links;
 }
-add_filter( 'term_links-post_tag', 'issimple_make_label_tags' );
+add_filter( 'term_links-post_tag', 'wp_bootstrap_make_label_tags' );
 
 
 /**
@@ -269,7 +315,7 @@ add_filter( 'term_links-post_tag', 'issimple_make_label_tags' );
  * 
  * @return	void
  */
-function issimple_bootstrap_comments_loop( $comment, $args, $depth ) {
+function wp_bootstrap_comments_loop( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	
 	switch ( $comment->comment_type ) {
@@ -334,8 +380,8 @@ function issimple_bootstrap_comments_loop( $comment, $args, $depth ) {
  * 
  * @since IS Simple 1.0
  */
-function issimple_make_btn_comment_reply_link( $link, $args, $comment, $post ) {
+function wp_bootstrap_make_btn_comment_reply_link( $link, $args, $comment, $post ) {
 	return preg_replace( '/comment-reply-link/', 'btn btn-default comment-reply-link', $link, 1 );
 }
-add_filter( 'comment_reply_link', 'issimple_make_btn_comment_reply_link', 10, 4 );
+add_filter( 'comment_reply_link', 'wp_bootstrap_make_btn_comment_reply_link', 10, 4 );
 

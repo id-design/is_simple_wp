@@ -368,14 +368,14 @@ add_action( 'get_header', 'enable_threaded_comments' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
+// Funções para algumas utilidades básicas no tema
+require_once INCLUDES_PATH . '/utilities.php';
 // Bootstrap functions
 require_once INCLUDES_PATH . '/bootstrap-functions.php';
 // Limpeza e otimização do tema
 require_once INCLUDES_PATH . '/cleanup.php';
 // Shortcodes úteis no tema
 require_once INCLUDES_PATH . '/shortcodes.php';
-// Funções para algumas utilidades básicas no tema
-require_once INCLUDES_PATH . '/utilities.php';
 // Funções exclusivas do tema
 require_once INCLUDES_PATH . '/template-tags.php';
 // Funções para incrementar o formulário de contato no tema ou post

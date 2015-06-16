@@ -31,6 +31,7 @@ function hex2rgb( $hex, $implode = true ) {
 	return $rgb;
 }
 
+
 /**
  * Converte cores do padrão rgb para hexadecimal
  * ----------------------------------------------------------------------------
@@ -44,6 +45,7 @@ function rgb2hex( $rgb ) {
 	return $hex;	// Retorna o valor de hex incluindo o símbolo (#)
 }
 
+
 /**
  * Converte variáveis de cores no padrão hexadecimal/alpha para rgba
  * ----------------------------------------------------------------------------
@@ -56,6 +58,28 @@ function hexalpha2rgba( $hexalpha ) {
 	
 	return $rgba;	// Retorna o valor de rgba separado por vírgulas
 }
+
+/**
+ * Convert array to element attributes
+ * 
+ * @param	array	$atts		Array where key is a attribute name and value is a attribute value
+ * @return	string	$attributes	Attributes optimized to element
+ * ----------------------------------------------------------------------------
+ */
+function array2atts( $atts = array() ) {
+	if ( empty( $atts ) ) return;
+	
+	$attributes = '';
+	foreach ( $atts as $attr => $value ) {
+		if ( ! empty( $value ) ) {
+			$value = ( 'href' === $attr || 'src' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+			$attributes .= ' ' . $attr . '="' . $value . '"';
+		}
+	}
+	
+	return $attributes;
+}
+
 
 /**
  * Função para leitura de diretórios

@@ -43,8 +43,7 @@
 		
 		<ol class="comments-list">
 			<?php // Comments list
-				wp_list_comments( array( 'callback' => 'issimple_bootstrap_comments_loop' ) );
-				//wp_list_comments();
+				wp_list_comments( array( 'callback' => 'wp_bootstrap_comments_loop' ) );
 			?>
 		</ol><!-- .comments-list -->
 		
