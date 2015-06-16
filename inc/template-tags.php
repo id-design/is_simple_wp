@@ -283,11 +283,12 @@ function issimple_post_pagination() {
  */
 function issimple_comments_pagination() {
 	wp_bootstrap_pagination_links( array(
-		'type'				=> 'pager',
-		'container_id'		=> 'comments-pagination',
-		'container_class'	=> 'panel panel-default',
-		'div_class'			=> 'panel-body',
-		'paginate_content'	=> 'comments'
+		'type'					=> 'pager',
+		'container_id'			=> 'comments-pagination',
+		'container_class'		=> 'panel panel-default',
+		'div_class'				=> 'panel-body',
+		'screen_reader_text'	=> __( 'Comments navigation', 'issimple' ),
+		'paginate_content'		=> 'comments'
 	) );
 	
 	echo '<!-- #comments-pagination -->';

@@ -9,7 +9,7 @@
 
 
 /**
- * Custom Bootstrap Links Pagination
+ * Custom Bootstrap Link Paginations
  * 
  * A custom WordPress numbered pagination function to fully implement the
  * Bootstrap 3.x pagination/pager style in a custom theme.
@@ -18,8 +18,6 @@
  * ----------------------------------------------------------------------------
  */
 function wp_bootstrap_pagination_links( $args = array() ) {
-	global $wp_rewrite;
-	
 	// Sets the pagination args.
 	$defaults = array(
 		'container'				=> 'nav',
@@ -52,9 +50,9 @@ function wp_bootstrap_pagination_links( $args = array() ) {
 			// Set up paginated links.
 			$links = wp_bootstrap_paginate_links( $args );
 		}
-	}
-	
-	if ( 'comments' == $args['paginate-content'] ) {
+	} else if ( 'comments' == $args['paginate_content'] ) {
+		global $wp_rewrite;
+		
 		if ( ! is_singular() || ! get_option( 'page_comments' ) ) return;
 		
 		$page = get_query_var('cpage');
