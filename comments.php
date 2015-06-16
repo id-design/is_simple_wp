@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		
-		<?php issimple_comment_nav(); ?>
+		<?php issimple_comments_pagination(); ?>
 		
 		<ol class="comments-list">
 			<?php // Comments list
@@ -48,7 +48,7 @@
 			?>
 		</ol><!-- .comments-list -->
 		
-		<?php issimple_comment_nav(); ?>
+		<?php issimple_comments_pagination(); ?>
 		
 	<?php endif; // have_comments ?>
 	

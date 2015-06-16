@@ -263,14 +263,34 @@ add_filter( 'get_the_archive_title', 'custom_archive_title' );
  * ----------------------------------------------------------------------------
  */
 function issimple_post_pagination() {
-	issimple_wp_bootstrap_pagination( array(
-		'type' => 'pager',
-		'container_id' => 'post-pagination',
-		'container_class' => 'panel panel-default',
-		'div_class' => 'panel-body'
+	wp_bootstrap_pagination_links( array(
+		'type'				=> 'pager',
+		'container_id'		=> 'post-pagination',
+		'container_class'	=> 'panel panel-default',
+		'div_class'			=> 'panel-body',
+		'paginate_content'	=> 'posts'
 	) );
 	
 	echo '<!-- #post-pagination -->';
+}
+
+
+/**
+ * Custom Comments Navigation
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_comments_pagination() {
+	wp_bootstrap_pagination_links( array(
+		'type'				=> 'pager',
+		'container_id'		=> 'comments-pagination',
+		'container_class'	=> 'panel panel-default',
+		'div_class'			=> 'panel-body',
+		'paginate_content'	=> 'comments'
+	) );
+	
+	echo '<!-- #comments-pagination -->';
 }
 
 
@@ -490,34 +510,6 @@ function issimple_read_more( $more ) {
 	return $tagmore;
 }
 add_filter( 'excerpt_more', 'issimple_read_more' );
-
-
-/**
- * Custom Comments Navigation
- * 
- * @since IS Simple 1.0
- * ----------------------------------------------------------------------------
- */
-function issimple_comment_nav() {
-	// Are there comments to navigate through?
-	/*if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-		<nav class="nav comment-nav" role="navigation">
-			<h2 class="sr-only"><?php _e( 'Comment navigation', 'issimple' ); ?></h2>
-			<div class="nav-links">
-				<?php
-					if ( $prev_link = get_previous_comments_link( __( 'Older comments', 'issimple' ) ) ) :
-						printf( '<div class="nav-previous">%s</div>', $prev_link );
-					endif;
-	
-					if ( $next_link = get_next_comments_link( __( 'Newer comments', 'issimple' ) ) ) :
-						printf( '<div class="nav-next">%s</div>', $next_link );
-					endif;
-				?>
-			</div><!-- .nav-links -->
-		</nav><!-- .comment-nav -->
-	<?php endif;*/
-	paginate_comments_links();
-}
 
 
 
