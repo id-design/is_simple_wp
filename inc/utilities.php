@@ -1,70 +1,97 @@
 <?php
 /**
- * Funções para algumas utilidades básicas no tema
+ * Functions for some basic utilities in the theme
  *
- * @package Estúdio Viking
- * @since 1.0
+ * @package WordPress
+ * @subpackage IS Simple
+ * @category Utilities
+ * @since IS Simple 1.0
  */
 
- 
+
 /**
- * Converte cores do padrão hexadecimal para rgb
- * ----------------------------------------------------------------------------
+ * Convert hexadecimal colors to RGB
+ * 
+ * @since IS Simple 1.0
+ * 
+ * @param	string	$hex		Hexadecimal color code
+ * @param	bool	$implode	If 'true', return string separed by commas. If 'false', return array( $r, $g, $b ).
+ * 								Default: 'true'
+ * @return	string/array		Hexadecimal color code converted to RGB
+ * ============================================================================
  */
 function hex2rgb( $hex, $implode = true ) {
 	$hex = str_replace( '#', '', $hex );
 	
-	if ( strlen( $hex ) == 3 ) :
+	if ( strlen( $hex ) == 3 ) {
 		$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
 		$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
 		$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
-	else :
+	} else {
 		$r = hexdec( substr( $hex, 0, 2 ) );
 		$g = hexdec( substr( $hex, 2, 2 ) );
 		$b = hexdec( substr( $hex, 4, 2 ) );
-	endif;
+	}
 	
 	$rgb = array( $r, $g, $b );
 	
-	if ( $implode === true ) $rgb = implode( ',', $rgb );	// Retorna o valor de rgb separado por vírgulas
+	// Return string separated by commas
+	if ( true === $implode ) $rgb = implode( ',', $rgb );
 	
 	return $rgb;
 }
 
 
 /**
- * Converte cores do padrão rgb para hexadecimal
- * ----------------------------------------------------------------------------
+ * Convert RGB colors to hexadecimal
+ * 
+ * @since IS Simple 1.0
+ * 
+ * @param	string/array	$rgb	RGB color code
+ * @param	bool			$dash	If 'true', start output string with '#'. Default: 'true'
+ * @return	string					RGB color code converted to hexadecimal
+ * ============================================================================
  */
-function rgb2hex( $rgb ) {
-	$hex  = '#';
+function rgb2hex( $rgb, $dash = true ) {
+	$rgb = ( is_array( $rgb ) ) ? $rgb : explode( ',', trim( $rgb ) );
+	
+	$hex = '';
+	$hex .= ( true === $dash ) ? '#' : '';	// Start output string with '#'.
 	$hex .= str_pad( dechex( $rgb[0] ), 2, '0', STR_PAD_LEFT );
 	$hex .= str_pad( dechex( $rgb[1] ), 2, '0', STR_PAD_LEFT );
 	$hex .= str_pad( dechex( $rgb[2] ), 2, '0', STR_PAD_LEFT );
 	
-	return $hex;	// Retorna o valor de hex incluindo o símbolo (#)
+	return $hex;
 }
 
 
 /**
- * Converte variáveis de cores no padrão hexadecimal/alpha para rgba
- * ----------------------------------------------------------------------------
+ * Convert hexadecimal/alpha colors to rgba
+ * 
+ * @since IS Simple 1.0
+ * 
+ * @param	array	$hexalpha	Array where $hexalpha['color'] is the hexadecimal color and
+ * 								$hexalpha['alpha'] is the opacity code
+ * @return	string				Hexadecial/alpha color array converted to rgba color code
+ * ============================================================================
  */
 function hexalpha2rgba( $hexalpha ) {
-	$hexalpha_color = $hexalpha['color'];
-	$hexalpha_color_rgb = hex2rgb( $hexalpha_color );
-	$hexalpha_alpha = $hexalpha['alpha'];
-	$rgba = $hexalpha_color_rgb . ',' . $hexalpha_alpha;
+	$hex = $hexalpha['color'];
+	$rgb = hex2rgb( $hex );
+	$alpha = $hexalpha['alpha'];
+	$rgba = $rgb . ',' . $alpha;
 	
-	return $rgba;	// Retorna o valor de rgba separado por vírgulas
+	return $rgba;	// Return string separated by commas
 }
 
 /**
  * Convert array to element attributes
  * 
- * @param	array	$atts		Array where key is a attribute name and value is a attribute value
- * @return	string	$attributes	Attributes optimized to element
- * ----------------------------------------------------------------------------
+ * @since IS Simple 1.0
+ * 
+ * @param	array	$atts	Array where key is a attribute name and value is a attribute value
+ * @return	string			String with attributes optimized to element
+ * ============================================================================
  */
 function array2atts( $atts = array() ) {
 	if ( empty( $atts ) ) return;
@@ -82,8 +109,36 @@ function array2atts( $atts = array() ) {
 
 
 /**
+ * Retrieve the meta thumbnail info
+ * 
+ * @since IS Simple 1.0
+ * 
+ * @param	int		$thumb_id	Thumbnail id
+ * @param	string	$meta		Meta thumbnail info wanted
+ * @return	string				String with attributes optimized to element
+ * ============================================================================
+ */
+function get_post_thumbnail_meta( $thumb_id, $meta ) {
+	$thumb = get_post( $thumb_id );
+	
+	$thumb = array(
+		'src'			=> $thumb->guid,
+		'href'			=> esc_url( get_permalink( $thumb->ID ) ),
+		'title'			=> $thumb->post_title,
+		'caption'		=> $thumb->post_excerpt,
+		'alt'			=> get_post_meta( $thumb->ID, '_wp_attachment_image_alt', true ),
+		'description'	=> $thumb->post_content
+	);
+	
+	return $thumb[$meta];
+}
+
+
+/**
  * Função para leitura de diretórios
- * ----------------------------------------------------------------------------
+ * 
+ * @since IS Simple 1.0
+ * ============================================================================
  */
 function issimple_readdir( $dir, $type = FALSE ) {
 	$files = array();

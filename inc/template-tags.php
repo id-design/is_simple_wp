@@ -130,14 +130,14 @@ add_filter( 'wp_nav_menu', 'add_role_navigation_to_nav_menu', 10, 2 );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function issimple_nav_description( $item_output, $item, $depth, $args ) {
+function add_nav_description( $item_output, $item, $depth, $args ) {
 	if ( 'header-menu' == $args->theme_location && $item->description ) :
-		$item_output = str_replace( $args->link_after . '</a>', '<div class="menu-item-desc">' . $item->description . '</div>' . $args->link_after . '</a>', $item_output );
+		$item_output = str_replace( $args->link_after . '</a>', $args->link_after . '<div class="menu-item-desc">' . $item->description . '</div>' . '</a>', $item_output );
 	endif;
 	
 	return $item_output;
 }
-add_filter( 'walker_nav_menu_start_el', 'issimple_nav_description', 10, 4 );
+add_filter( 'walker_nav_menu_start_el', 'add_nav_description', 10, 4 );
 
 
 /**
@@ -183,22 +183,27 @@ add_filter( 'nav_menu_item_id', '__return_false' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function issimple_content_search_form( $form_id = false, $form_class = false ) {
-	$search_form_id = ( false !== $form_id ) ? $form_id . '-search-form' : 'search-form';
-	$search_form_class = ( false !== $form_class ) ? ' class="' . $form_class . '"' : '';
+function issimple_content_search_form( $form_id = '', $form_class = '' ) {
+	$form_atts = array();
+	$form_atts['id'] = ( ! empty( $form_id ) ) ? $form_id . '-search-form' : 'search-form';
+	$form_atts['class'] = ( ! empty( $form_class ) ) ? $form_class : '';
+	
+	$search_form_atts = array2atts( $form_atts );
 	?>
 	
-	<form id="<?php echo $search_form_id; ?>"<?php echo $search_form_class; ?> method="get" action="<?php echo home_url( '/' ); ?>" role="search">
+	<form<?php echo $search_form_atts; ?> method="get" action="<?php echo home_url( '/' ); ?>" role="search">
 		<div class="form-group">
 			<label for="s" class="control-label sr-only"><?php _e( 'Search', 'issimple' ); ?></label>
 			<div class="input-group">
 				<input class="form-control" type="search" name="s" placeholder="<?php _e( 'Search', 'issimple' ); ?>">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="submit" role="button"><span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-default" type="submit" role="button">
+						<span class="sr-only"><?php _e( 'Search', 'issimple' ); ?></span> <span class="glyphicon glyphicon-search"></span>
+					</button>
 				</span>
 			</div>
 		</div>
-	</form><!-- #<?php echo $search_form_id; ?> -->
+	</form><!-- #<?php echo $form_atts['id']; ?> -->
 	
 	<?php
 }
@@ -257,7 +262,7 @@ add_filter( 'get_the_archive_title', 'custom_archive_title' );
 
 
 /**
- * Posts Pagination
+ * Custom Posts Pagination
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -276,7 +281,7 @@ function issimple_post_pagination() {
 
 
 /**
- * Custom Comments Navigation
+ * Custom Comments Pagination
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -296,29 +301,7 @@ function issimple_comments_pagination() {
 
 
 /**
- * Coleta informações da imagem destacada da postagem
- * 
- * @since IS Simple 1.0
- * ----------------------------------------------------------------------------
- */
-function issimple_get_thumb_meta( $thumbnail_id, $meta ) {
-	$thumb = get_post( $thumbnail_id );
-	
-	$thumb = array(
-		'alt'			=> get_post_meta( $thumb->ID, '_wp_attachment_image_alt', true ),
-		'caption'		=> $thumb->post_excerpt,
-		'description'	=> $thumb->post_content,
-		'href'			=> get_permalink( $thumb->ID ),
-		'src'			=> $thumb->guid,
-		'title'			=> $thumb->post_title
-	);
-	
-	return $thumb[$meta];
-}
-
-
-/**
- * Miniaturas personalizadas para as postagens
+ * Custom Featured Thumbnail
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -329,27 +312,29 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 	$thumb_link_full = wp_get_attachment_image_src( $thumb_id, 'full' );
 	$thumb_link_full = $thumb_link_full[0];
 	
-	$thumb_caption = issimple_get_thumb_meta( $thumb_id, 'caption' );
+	$thumb_caption = get_post_thumbnail_meta( $thumb_id, 'caption' );
 	
-	if ( has_post_thumbnail() ) :
-		?>
-		
+	$link_atts = array();
+	$link_atts['class'] = 'featured-link img-link';
+	$link_atts['title'] = get_the_title();
+	$link_atts['href'] = ( is_singular() ) ? $thumb_link_full : get_permalink();
+	$link_atts['data-lightbox'] = ( is_singular() ) ? 'post-' . get_the_ID() : '';
+	$link_atts['data-title'] = ( is_singular() ) ? $thumb_caption : '';
+	
+	$link_attributes = array2atts( $link_atts );
+	
+	if ( has_post_thumbnail() ) : ?>
 		<figure class="post-featured-thumb">
-			<a class="featured-link img-link"
-			   href="<?php if ( is_single() ) : echo $thumb_link_full; else : the_permalink(); endif; ?>"
-			   title="<?php the_title(); ?>"
-			   <?php if ( is_single() ) : ?>data-lightbox="post-<?php the_ID(); ?>" data-title="<?php echo $thumb_caption; ?>"<?php endif; ?>>
+			<a<?php echo $link_attributes; ?>>
 				<?php the_post_thumbnail( $size, array( 'class' => 'featured-img img-responsive', 'alt' => get_the_title() ) ); ?>
 			</a>
 		</figure><!-- .post-featured-thumb -->
-		
-		<?php
-	endif;
+	<?php endif;
 }
 
 
 /**
- * Detalhes personalizadas para as postagens
+ * Prints HTML with meta information
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
