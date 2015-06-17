@@ -132,7 +132,7 @@ add_filter( 'wp_nav_menu', 'add_role_navigation_to_nav_menu', 10, 2 );
  */
 function add_nav_description( $item_output, $item, $depth, $args ) {
 	if ( 'header-menu' == $args->theme_location && $item->description ) :
-		$item_output = str_replace( $args->link_after . '</a>', $args->link_after . '<div class="menu-item-desc">' . $item->description . '</div>' . '</a>', $item_output );
+		$item_output = str_replace( $args->link_after . '</a>', $args->link_after . '<div class="menu-item-desc"><div class="arrow"></div>' . $item->description . '</div>' . '</a>', $item_output );
 	endif;
 	
 	return $item_output;
