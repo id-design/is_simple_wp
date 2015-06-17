@@ -23,21 +23,13 @@
  */
 function wp_bootstrap_pagination_links( $args = array() ) {
 	// Sets the pagination default args.
-	$defaults = array(
-		'container'				=> 'nav',
-		'container_id'			=> '',
-		'container_class'		=> '',
-		'div_class'				=> '',
-		'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
+	$args = wp_parse_args( $args, array(
 		'paginate_content'		=> 'posts',
 		'type'					=> 'pagination',
 		'mid_size'				=> 2,
 		'echo'					=> true
-	);
+	) );
 	
-	$args = wp_parse_args( $args, $defaults );
-	
-	$output = '';
 	$links = '';
 	
 	if ( 'posts' == $args['paginate_content'] ) {
@@ -84,26 +76,8 @@ function wp_bootstrap_pagination_links( $args = array() ) {
 	
 	if ( empty( $links ) ) return;
 	
-	if ( ! empty( $args['screen_reader_text'] ) )
-		$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>' . $links;
-	
-	if ( false !== $args['div_class'] ) {
-		$div_class = array();
-		$div_class[] = 'pagination-content';
-		$div_class[] = ( ! empty( $args['div_class'] ) ? $args['div_class'] : '' );
-		$output = '<div class="' . esc_attr( join( ' ', $div_class ) ) . '">' . $output . '</div>';
-	}
-	
-	if ( false !== $args['container'] ) {
-		$container_atts = array();
-		$container_atts['id'] 	 = ( ! empty( $args['container_id'] ) ) ? $args['container_id'] : '';
-		$container_atts['class'] = ( ! empty( $args['container_class'] ) ) ? $args['container_class'] : '';
-		$container_atts['role']  = ( $args['container'] == 'nav' ) ? 'navigation' : '';
-		
-		$container_attributes = array2atts( $container_atts );
-		
-		$output = '<' . $args['container'] . $container_attributes . '>' . $output . '</' . $args['container'] . '>';
-	}
+	$output = '';
+	$output = wp_bootstrap_navigation_markup( $links, $args );
 	
 	if ( $args['echo'] ) {
 		echo $output;
@@ -124,6 +98,17 @@ function wp_bootstrap_pagination_links( $args = array() ) {
  * ============================================================================
  */
 function wp_bootstrap_navigation_markup( $links, $args = array() ) {
+	// Set default args...
+	$args = wp_parse_args( $args, array(
+		'container'				=> 'nav',
+		'container_id'			=> '',
+		'container_class'		=> '',
+		'div_class'				=> '',
+		'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
+	) );
+	
+	$output = '';
+	
 	if ( ! empty( $args['screen_reader_text'] ) )
 		$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>' . $links;
 	
@@ -144,6 +129,8 @@ function wp_bootstrap_navigation_markup( $links, $args = array() ) {
 		
 		$output = '<' . $args['container'] . $container_attributes . '>' . $output . '</' . $args['container'] . '>';
 	}
+	
+	return $output;
 }
 
 
