@@ -114,6 +114,40 @@ function wp_bootstrap_pagination_links( $args = array() ) {
 
 
 /**
+ * Wraps passed links in navigational markup in Bootstrap format
+ * 
+ * @since IS Simple 1.0
+ * 
+ * @param	string	$links	Navigational links.
+ * @param	array	$args	Optional. Custom class for nav element. Default: 'posts-navigation'.
+ * @return	string			Navigation template tag.
+ * ============================================================================
+ */
+function wp_bootstrap_navigation_markup( $links, $args = array() ) {
+	if ( ! empty( $args['screen_reader_text'] ) )
+		$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>' . $links;
+	
+	if ( false !== $args['div_class'] ) {
+		$div_class = array();
+		$div_class[] = 'pagination-content';
+		$div_class[] = ( ! empty( $args['div_class'] ) ? $args['div_class'] : '' );
+		$output = '<div class="' . esc_attr( join( ' ', $div_class ) ) . '">' . $output . '</div>';
+	}
+	
+	if ( false !== $args['container'] ) {
+		$container_atts = array();
+		$container_atts['id'] 	 = ( ! empty( $args['container_id'] ) ) ? $args['container_id'] : '';
+		$container_atts['class'] = ( ! empty( $args['container_class'] ) ) ? $args['container_class'] : '';
+		$container_atts['role']  = ( $args['container'] == 'nav' ) ? 'navigation' : '';
+		
+		$container_attributes = array2atts( $container_atts );
+		
+		$output = '<' . $args['container'] . $container_attributes . '>' . $output . '</' . $args['container'] . '>';
+	}
+}
+
+
+/**
  * Retrieve paginated links for archive post/comment pages adapted to Bootstrap.
  * 
  * @see paginate_links()

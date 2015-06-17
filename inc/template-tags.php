@@ -281,6 +281,25 @@ function issimple_post_pagination() {
 
 
 /**
+ * Custom Posts Navigation
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_post_navigation() {
+	wp_bootstrap_pagination_links( array(
+		'type'				=> 'pager',
+		'container_id'		=> 'post-navigation',
+		'container_class'	=> 'panel panel-default',
+		'div_class'			=> 'panel-body',
+		'paginate_content'	=> 'posts'
+	) );
+	
+	echo '<!-- #post-navigation -->';
+}
+
+
+/**
  * Custom Comments Pagination
  * 
  * @since IS Simple 1.0

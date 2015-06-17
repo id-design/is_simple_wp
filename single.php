@@ -31,6 +31,8 @@ get_header();
 							if ( comments_open() || get_comments_number() ) comments_template();
 							
 							// Previous/next post navigation.
+							issimple_post_navigation();
+							/*
 							the_post_navigation( array(
 								'next_text' => '<span class="meta-nav">' . __( 'Next', 'issimple' ) . '</span> ' .
 									'<span class="sr-only">' . __( 'Next post:', 'issimple' ) . '</span> ' .
@@ -40,6 +42,7 @@ get_header();
 									'<span class="post-title">%title</span>',
 							) );
 							?><!-- .post-navigation --><?php
+							*/
 						
 						// End the Loop
 						endwhile;
