@@ -9,132 +9,6 @@
 
 
 /**
- * Custom Bootstrap Link Paginations
- * 
- * A custom WordPress numbered pagination function to fully implement the
- * Bootstrap 3.x pagination/pager style in a custom theme.
- * 
- * @see wp_bootstrap_paginate_links()
- * @since IS Simple 1.0
- * 
- * @param	string|array	$args	Optional args. See wp_bootstrap_paginate_links().
- * @return	string					Markup for pagination links.
- * ----------------------------------------------------------------------------
- */
-function wp_bootstrap_pagination_links( $args = array() ) {
-	// Sets the pagination default args.
-	$args = wp_parse_args( $args, array(
-		'paginate_content'		=> 'posts',
-		'type'					=> 'pagination',
-		'mid_size'				=> 2,
-		'echo'					=> true
-	) );
-	
-	$links = '';
-	
-	if ( 'posts' == $args['paginate_content'] ) {
-		// Prevent show pagination number if Infinite Scroll of JetPack is active.
-		if ( isset( $_GET[ 'infinity' ] ) ) return;
-		
-		// Don't print empty markup if there's only one page.
-		if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
-			// Make sure we get a string back. Pagination is the next best thing.
-			if ( isset( $args['type'] ) && 'array' == $args['type'] ) {
-				$args['type'] = 'pagination';
-			}
-			
-			// Set up paginated links.
-			$links = wp_bootstrap_paginate_links( $args );
-		}
-	}
-	
-	if ( 'comments' == $args['paginate_content'] ) {
-		global $wp_rewrite;
-		
-		if ( ! is_singular() || ! get_option( 'page_comments' ) ) return;
-		
-		$page = get_query_var('cpage');
-		if ( ! $page ) $page = 1;
-		
-		$max_page = get_comment_pages_count();
-		
-		$defaults = array(
-			'base'					=> add_query_arg( 'cpage', '%#%' ),
-			'format'				=> '',
-			'total'					=> $max_page,
-			'current'				=> $page,
-			'screen_reader_text'	=> __( 'Comments navigation', 'issimple' ),
-			'add_fragment'			=> '#comments'
-		);
-		if ( $wp_rewrite->using_permalinks() )
-			$defaults['base'] = user_trailingslashit( trailingslashit( get_permalink() ) . $wp_rewrite->comments_pagination_base . '-%#%', 'commentpaged');
-		
-		$args = wp_parse_args( $args, $defaults );
-		
-		$links = wp_bootstrap_paginate_links( $args );
-	}
-	
-	if ( empty( $links ) ) return;
-	
-	$output = '';
-	$output = wp_bootstrap_navigation_markup( $links, $args );
-	
-	if ( $args['echo'] ) {
-		echo $output;
-	} else {
-		return $output;
-	}
-}
-
-
-/**
- * Wraps passed links in navigational markup in Bootstrap format
- * 
- * @since IS Simple 1.0
- * 
- * @param	string	$links	Navigational links.
- * @param	array	$args	Optional. Custom class for nav element. Default: 'posts-navigation'.
- * @return	string			Navigation template tag.
- * ============================================================================
- */
-function wp_bootstrap_navigation_markup( $links, $args = array() ) {
-	// Set default args...
-	$args = wp_parse_args( $args, array(
-		'container'				=> 'nav',
-		'container_id'			=> '',
-		'container_class'		=> '',
-		'div_class'				=> '',
-		'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
-	) );
-	
-	$output = '';
-	
-	if ( ! empty( $args['screen_reader_text'] ) )
-		$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>' . $links;
-	
-	if ( false !== $args['div_class'] ) {
-		$div_class = array();
-		$div_class[] = 'pagination-content';
-		$div_class[] = ( ! empty( $args['div_class'] ) ? $args['div_class'] : '' );
-		$output = '<div class="' . esc_attr( join( ' ', $div_class ) ) . '">' . $output . '</div>';
-	}
-	
-	if ( false !== $args['container'] ) {
-		$container_atts = array();
-		$container_atts['id'] 	 = ( ! empty( $args['container_id'] ) ) ? $args['container_id'] : '';
-		$container_atts['class'] = ( ! empty( $args['container_class'] ) ) ? $args['container_class'] : '';
-		$container_atts['role']  = ( $args['container'] == 'nav' ) ? 'navigation' : '';
-		
-		$container_attributes = array2atts( $container_atts );
-		
-		$output = '<' . $args['container'] . $container_attributes . '>' . $output . '</' . $args['container'] . '>';
-	}
-	
-	return $output;
-}
-
-
-/**
  * Retrieve paginated links for archive post/comment pages adapted to Bootstrap.
  * 
  * @see paginate_links()
@@ -304,6 +178,186 @@ function wp_bootstrap_paginate_links( $args = '' ) {
 	$output .= "\n</ul>\n";
 	
 	return $output;
+}
+
+
+/**
+ * Custom Bootstrap Link Paginations
+ * 
+ * A custom WordPress numbered pagination function to fully implement the
+ * Bootstrap 3.x pagination/pager style in a custom theme.
+ * 
+ * @see wp_bootstrap_paginate_links()
+ * @since IS Simple 1.0
+ * 
+ * @param	string|array	$args	Optional args. See wp_bootstrap_paginate_links().
+ * @return	string					Markup for pagination links.
+ * ----------------------------------------------------------------------------
+ */
+function wp_bootstrap_pagination_links( $args = array() ) {
+	// Sets the pagination default args.
+	$args = wp_parse_args( $args, array(
+		'paginate_content'		=> 'posts',
+		'type'					=> 'pagination',
+		'mid_size'				=> 2,
+		'echo'					=> true
+	) );
+	
+	$links = '';
+	
+	if ( 'posts' == $args['paginate_content'] ) {
+		// Prevent show pagination number if Infinite Scroll of JetPack is active.
+		if ( isset( $_GET[ 'infinity' ] ) ) return;
+		
+		// Don't print empty markup if there's only one page.
+		if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
+			// Make sure we get a string back. Pagination is the next best thing.
+			if ( isset( $args['type'] ) && 'array' == $args['type'] ) {
+				$args['type'] = 'pagination';
+			}
+			
+			// Set up paginated links.
+			$links = wp_bootstrap_paginate_links( $args );
+		}
+	}
+	
+	if ( 'comments' == $args['paginate_content'] ) {
+		global $wp_rewrite;
+		
+		if ( ! is_singular() || ! get_option( 'page_comments' ) ) return;
+		
+		$page = get_query_var('cpage');
+		if ( ! $page ) $page = 1;
+		
+		$max_page = get_comment_pages_count();
+		
+		$defaults = array(
+			'base'					=> add_query_arg( 'cpage', '%#%' ),
+			'format'				=> '',
+			'total'					=> $max_page,
+			'current'				=> $page,
+			'screen_reader_text'	=> __( 'Comments navigation', 'issimple' ),
+			'add_fragment'			=> '#comments'
+		);
+		if ( $wp_rewrite->using_permalinks() )
+			$defaults['base'] = user_trailingslashit( trailingslashit( get_permalink() ) . $wp_rewrite->comments_pagination_base . '-%#%', 'commentpaged');
+		
+		$args = wp_parse_args( $args, $defaults );
+		
+		$links = wp_bootstrap_paginate_links( $args );
+	}
+	
+	if ( empty( $links ) ) return;
+	
+	$output = '';
+	$output = wp_bootstrap_navigation_markup( $links, $args );
+	
+	if ( $args['echo'] ) {
+		echo $output;
+	} else {
+		return $output;
+	}
+}
+
+
+/**
+ * Wraps passed links in navigational markup in Bootstrap format
+ * 
+ * @since IS Simple 1.0
+ * 
+ * @param	string	$links	Navigational links.
+ * @param	array	$args	Optional. Custom class for nav element. Default: 'posts-navigation'.
+ * @return	string			Navigation template tag.
+ * ============================================================================
+ */
+function wp_bootstrap_navigation_markup( $links, $args = array() ) {
+	// Set default args...
+	$args = wp_parse_args( $args, array(
+		'container'				=> 'nav',
+		'container_id'			=> '',
+		'container_class'		=> '',
+		'div_class'				=> '',
+		'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
+	) );
+	
+	$output = '';
+	
+	if ( ! empty( $args['screen_reader_text'] ) )
+		$output .= '<h2 class="sr-only">' . $args['screen_reader_text'] . '</h2>' . $links;
+	
+	if ( false !== $args['div_class'] ) {
+		$div_class = array();
+		$div_class[] = 'pagination-content';
+		$div_class[] = ( ! empty( $args['div_class'] ) ? $args['div_class'] : '' );
+		$output = '<div class="' . esc_attr( join( ' ', $div_class ) ) . '">' . $output . '</div>';
+	}
+	
+	if ( false !== $args['container'] ) {
+		$container_atts = array();
+		$container_atts['id'] 	 = ( ! empty( $args['container_id'] ) ) ? $args['container_id'] : '';
+		$container_atts['class'] = ( ! empty( $args['container_class'] ) ) ? $args['container_class'] : '';
+		$container_atts['role']  = ( $args['container'] == 'nav' ) ? 'navigation' : '';
+		
+		$container_attributes = array2atts( $container_atts );
+		
+		$output = '<' . $args['container'] . $container_attributes . '>' . $output . '</' . $args['container'] . '>';
+	}
+	
+	return $output;
+}
+
+
+/**
+ * Return navigation to next/previous set of posts when applicable adapted to Bootstrap
+ *
+ * @since IS Simple 1.0
+ *
+ * @global	WP_Query	$wp_query	WordPress Query object.
+ *
+ * @param	array	$args {
+ * 		Optional. Default posts navigation arguments. Default empty array.
+ * 		
+ * 		@type	string	$prev_text				Anchor text to display in the previous posts link.
+ * 												Default 'Older posts'.
+ * 		@type	string	$next_text				Anchor text to display in the next posts link.
+ * 												Default 'Newer posts'.
+ * 		@type	string	$screen_reader_text		Screen reader text for nav element.
+ * 												Default 'Posts navigation'.
+ * }
+ * @return	string	Markup for posts links.
+ * ============================================================================
+ */
+function wp_bootstrap_posts_navigation( $args = array() ) {
+	$navigation = '';
+	
+	// Don't print empty markup if there's only one page.
+	if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
+		$args = wp_parse_args( $args, array(
+			'prev_text'				=> __( 'Older posts', 'issimple' ),
+			'next_text'				=> __( 'Newer posts', 'issimple' ),
+			'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
+			'echo'					=> true
+		) );
+
+		$next_link = get_previous_posts_link( $args['next_text'] );
+		$prev_link = get_next_posts_link( $args['prev_text'] );
+
+		if ( $prev_link ) {
+			$navigation .= '<div class="nav-previous">' . $prev_link . '</div>';
+		}
+
+		if ( $next_link ) {
+			$navigation .= '<div class="nav-next">' . $next_link . '</div>';
+		}
+
+		$navigation = wp_bootstrap_navigation_markup( $navigation, $args );
+	}
+	
+	if ( $args['echo'] ) {
+		echo $navigation;
+	} else {
+		return $navigation;
+	}
 }
 
 

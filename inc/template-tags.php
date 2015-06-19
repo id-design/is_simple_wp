@@ -287,15 +287,18 @@ function issimple_post_pagination() {
  * ----------------------------------------------------------------------------
  */
 function issimple_post_navigation() {
-	wp_bootstrap_pagination_links( array(
-		'type'				=> 'pager',
-		'container_id'		=> 'post-navigation',
-		'container_class'	=> 'panel panel-default',
-		'div_class'			=> 'panel-body',
-		'paginate_content'	=> 'posts'
+	the_post_navigation( array(
+	//wp_bootstrap_posts_navigation( array(
+		'next_text' => '<span class="meta-nav">' . __( 'Next', 'issimple' ) . '</span> ' .
+			'<span class="sr-only">' . __( 'Next post:', 'issimple' ) . '</span> ' .
+			'<span class="post-title">%title</span>',
+		'prev_text' => '<span class="meta-nav">' . __( 'Previous', 'issimple' ) . '</span> ' .
+			'<span class="sr-only">' . __( 'Previous post:', 'issimple' ) . '</span> ' .
+			'<span class="post-title">%title</span>',
 	) );
-	
-	echo '<!-- #post-navigation -->';
+	//echo '<pre>';
+	//print_r($GLOBALS['wp_query']);
+	//echo '</pre>';
 }
 
 
