@@ -132,6 +132,7 @@
 #page-header,
 article.hentry,
 aside.widget,
+#comments,
 #footer-widget-area {
 	margin-bottom: 30px;
 }
@@ -296,6 +297,84 @@ li:hover .menu-item-desc {
 
 .comment .edit-link {
 	float: right;
+}
+
+
+/**
+ * Post Navigation
+ * ----------------------------------------------------------------------------
+ */
+.post-navigation {
+	background-color: #fff;
+}
+
+.post-navigation .meta-nav,
+.post-navigation .post-title,
+.post-navigation .nav-next,
+.post-navigation .nav-previous {
+	position: relative;
+	z-index: 2;
+}
+
+.post-navigation span,
+.post-navigation a,
+.post-navigation a:before {
+	display: block;
+}
+
+.post-navigation a {
+	padding: 25px 50px;
+	text-decoration: none;
+}
+
+.post-navigation .nav-previous .post-title,
+.post-navigation .nav-next .post-title,
+.post-navigation .nav-previous a:hover .post-title,
+.post-navigation .nav-next a:hover .post-title,
+.post-navigation .nav-previous .meta-nav,
+.post-navigation .nav-next .meta-nav {
+	color: #fff;
+}
+
+.post-navigation a:before {
+	content: "";
+	background-color: #000;
+	background-color: rgba( 0, 0, 0, 0.4 );
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.post-navigation a:hover:before,
+.post-navigation a:focus:before {
+	opacity: 0.5;
+}
+
+.post-navigation .meta-nav {
+	text-transform: uppercase;
+}
+
+#primary .post-navigation .post-title {
+	margin: 0;
+	padding: 0;
+}
+
+.post-navigation .nav-next,
+.post-navigation .nav-previous {
+	background-position: center;
+	background-size: cover;
+}
+
+.post-navigation .nav-next .post-title,
+.post-navigation .nav-next .meta-nav {
+	text-align: right;
+}
+
+.post-navigation .meta-nav {
+	opacity: 0.8;
 }
 
 

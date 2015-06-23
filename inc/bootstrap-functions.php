@@ -271,6 +271,8 @@ function wp_bootstrap_pagination_links( $args = array() ) {
  * ============================================================================
  */
 function wp_bootstrap_navigation_markup( $links, $args = array() ) {
+	if ( empty( $links ) ) return;
+	
 	// Set default args...
 	$args = wp_parse_args( $args, array(
 		'container'				=> 'nav',
@@ -327,30 +329,22 @@ function wp_bootstrap_navigation_markup( $links, $args = array() ) {
  * @return	string	Markup for posts links.
  * ============================================================================
  */
-function wp_bootstrap_posts_navigation( $args = array() ) {
-	$navigation = '';
+function wp_bootstrap_post_navigation( $args = array() ) {
+	$args = wp_parse_args( $args, array(
+		'container_class'		=> 'post-navigation',
+		'prev_text'				=> '%title',
+		'next_text'				=> '%title',
+		'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
+		'echo'					=> true
+	) );
 	
-	// Don't print empty markup if there's only one page.
-	if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
-		$args = wp_parse_args( $args, array(
-			'prev_text'				=> __( 'Older posts', 'issimple' ),
-			'next_text'				=> __( 'Newer posts', 'issimple' ),
-			'screen_reader_text'	=> __( 'Posts navigation', 'issimple' ),
-			'echo'					=> true
-		) );
-
-		$next_link = get_previous_posts_link( $args['next_text'] );
-		$prev_link = get_next_posts_link( $args['prev_text'] );
-
-		if ( $prev_link ) {
-			$navigation .= '<div class="nav-previous">' . $prev_link . '</div>';
-		}
-
-		if ( $next_link ) {
-			$navigation .= '<div class="nav-next">' . $next_link . '</div>';
-		}
-
-		$navigation = wp_bootstrap_navigation_markup( $navigation, $args );
+	$navigation = '';
+	$prev = get_previous_post_link( '<div class="nav-previous">%link</div>', $args['prev_text'] );
+	$next = get_next_post_link( '<div class="nav-next">%link</div>', $args['next_text'] );
+	
+	// Only add markup if there's somewhere to navigate to.
+	if ( $prev || $next ) {
+		$navigation = wp_bootstrap_navigation_markup( $prev . $next, $args );
 	}
 	
 	if ( $args['echo'] ) {

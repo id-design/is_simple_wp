@@ -278,47 +278,6 @@ add_action( 'init', 'issimple_header_scripts');
 
 
 /**
- * Adiciona a imagem destacada dos artigos como background nos elementos
- * da navegação dos posts
- * 
- * @since IS Simple 1.0
- * ----------------------------------------------------------------------------
- */
-function issimple_post_nav_background() {
-	if ( ! is_single() ) return;
-	
-	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-	$next     = get_adjacent_post( false, '', false );
-	$css      = '';
-	
-	if ( is_attachment() && 'attachment' == $previous->post_type ) return;
-
-	if ( $previous &&  has_post_thumbnail( $previous->ID ) ) :
-		$prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $previous->ID ), 'post-size' );
-		$prevthumb = $prevthumb[0];
-		$css .= '
-			.post-navigation .nav-previous {
-				background-image: url(' . esc_url( $prevthumb ) . ');
-			}
-		';
-	endif; // $previous
-
-	if ( $next && has_post_thumbnail( $next->ID ) ) :
-		$nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), 'post-size' );
-		$nextthumb = $nextthumb[0];
-		$css .= '
-			.post-navigation .nav-next {
-				background-image: url(' . esc_url( $nextthumb ) . ');
-			}
-		';
-	endif; // $next
-
-	wp_add_inline_style( 'issimple_style', $css );
-}
-add_action( 'wp_enqueue_scripts', 'issimple_post_nav_background' );
-
-
-/**
  * Chamada para o slider
  * 
  * @since IS Simple 1.0

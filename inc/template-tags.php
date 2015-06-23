@@ -287,19 +287,58 @@ function issimple_post_pagination() {
  * ----------------------------------------------------------------------------
  */
 function issimple_post_navigation() {
-	the_post_navigation( array(
-	//wp_bootstrap_posts_navigation( array(
-		'next_text' => '<span class="meta-nav">' . __( 'Next', 'issimple' ) . '</span> ' .
-			'<span class="sr-only">' . __( 'Next post:', 'issimple' ) . '</span> ' .
-			'<span class="post-title">%title</span>',
+	wp_bootstrap_post_navigation( array(
 		'prev_text' => '<span class="meta-nav">' . __( 'Previous', 'issimple' ) . '</span> ' .
 			'<span class="sr-only">' . __( 'Previous post:', 'issimple' ) . '</span> ' .
-			'<span class="post-title">%title</span>',
+			'<span class="post-title h3">%title</span>',
+		'next_text' => '<span class="meta-nav">' . __( 'Next', 'issimple' ) . '</span> ' .
+			'<span class="sr-only">' . __( 'Next post:', 'issimple' ) . '</span> ' .
+			'<span class="post-title h3">%title</span>'
 	) );
-	//echo '<pre>';
-	//print_r($GLOBALS['wp_query']);
-	//echo '</pre>';
+	
+	echo '<!-- #post-navigation -->';
 }
+
+
+/**
+ * Adiciona a imagem destacada dos artigos como background nos elementos
+ * da navegação dos posts
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_post_nav_background() {
+	if ( ! is_single() ) return;
+	
+	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+	$next     = get_adjacent_post( false, '', false );
+	$css      = '';
+	
+	if ( is_attachment() && 'attachment' == $previous->post_type ) return;
+
+	if ( $previous &&  has_post_thumbnail( $previous->ID ) ) :
+		$prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $previous->ID ), 'post-size' );
+		$prevthumb = $prevthumb[0];
+		$css .= '
+			.post-navigation .nav-previous {
+				background-image: url(' . esc_url( $prevthumb ) . ');
+			}
+		';
+	endif; // $previous
+
+	if ( $next && has_post_thumbnail( $next->ID ) ) :
+		$nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), 'post-size' );
+		$nextthumb = $nextthumb[0];
+		$css .= '
+			.post-navigation .nav-next {
+				background-image: url(' . esc_url( $nextthumb ) . ');
+			}
+		';
+	endif; // $next
+
+	wp_add_inline_style( 'issimple_style', $css );
+}
+add_action( 'wp_enqueue_scripts', 'issimple_post_nav_background' );
 
 
 /**
