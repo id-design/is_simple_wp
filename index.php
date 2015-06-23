@@ -17,7 +17,7 @@
 get_header();
 ?>
 
-<?php if ( is_home() || is_front_page() || is_archive() ) : ?>
+<?php if ( ! is_singular() || ! is_front_page() ) : ?>
 	<header id="page-header">
 		<div class="container-fluid">
 			<div class="jumbotron">

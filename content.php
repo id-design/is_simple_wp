@@ -18,7 +18,7 @@
 			// Diplay post featured thumb
 			issimple_post_featured_thumb();
 			
-			if ( is_single() ) :
+			if ( is_singular() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
 			else :
 				?>
@@ -34,9 +34,12 @@
 	
 	</header><!-- .entry-header -->
 	
-	<?php if ( is_single() ) : ?>
+	<?php if ( is_singular() ) : ?>
 		<div class="entry-content">
-			<?php the_content(); ?>
+			<?php
+				the_content();
+				issimple_page_links();
+			?>
 		</div><!-- .entry-content -->
 	<?php else : ?>
 		<div class="entry-summary">

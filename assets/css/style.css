@@ -301,6 +301,20 @@ li:hover .menu-item-desc {
 
 
 /**
+ * Page Links
+ * ----------------------------------------------------------------------------
+ */
+.page-links {
+	text-align: center;
+}
+
+.page-links > span,
+.page-links > a {
+	margin: 0 5px;
+}
+
+
+/**
  * Post Navigation
  * ----------------------------------------------------------------------------
  */

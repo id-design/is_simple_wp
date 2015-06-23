@@ -448,6 +448,26 @@ function issimple_entry_footer() {
 
 
 /**
+ * Page links
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_page_links() {
+	wp_link_pages( array(
+		'before'      => '<hr /><div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'issimple' ) . '</span>',
+		'after'       => '</div>',
+		'link_before' => '<span>',
+		'link_after'  => '</span>',
+		'pagelink'    => '<span class="sr-only">' . __( 'Page', 'issimple' ) . ' </span>%',
+		'separator'   => '<span class="sr-only">, </span>',
+	) );
+	
+	echo '<!-- .page-links -->';
+}
+
+
+/**
  * Cria datas como links
  * 
  * @since IS Simple 1.0
