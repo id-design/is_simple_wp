@@ -1,9 +1,9 @@
 <?php
 /**
- * Template Name: Full Width Page
- *
+ * Template Name: Full Width Post
+ * 
  * Learn more: {@link https://developer.wordpress.org/themes/basics/page-templates/}
- *
+ * 
  * @package WordPress
  * @subpackage IS Simple
  * @since IS Simple 1.0
@@ -11,16 +11,6 @@
 
 get_header();
 ?>
-
-<?php if ( is_home() || is_front_page() || is_archive() ) : ?>
-	<header id="page-header">
-		<div class="container-fluid">
-			<div class="jumbotron">
-				<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1>
-			</div>
-		</div>
-	</header><!-- #page-header -->
-<?php endif; ?>
 
 <div id="main">
 	<div class="container-fluid">
@@ -57,6 +47,5 @@ get_header();
 			</div><!-- #primary -->
 
 <?php
-//get_sidebar();
 
 get_footer();
