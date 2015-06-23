@@ -429,16 +429,18 @@ function issimple_entry_footer() {
 			<?php if ( get_the_author_meta( 'description' ) ) get_template_part( 'author-info' ); ?>
 			
 			<p><?php _e( 'This post was written by ', 'issimple' ); the_author_posts_link(); _e( ' in ', 'issimple' ); issimple_date_link(); ?>.</p>
-			<p>
-				<?php if ( get_the_category() ) : ?>
+			
+			<?php if ( get_the_category() ) : ?>
+				<p>
 					<span class="glyphicon glyphicon-folder-open"></span> <?php _e( 'Categorised in: ', 'issimple' ); the_category( ', ' ); // Separed by commas ?>.
-				<?php endif; ?>
-			</p>
-			<p>
-				<?php if ( get_the_tags() ) : ?>
+				</p>
+			<?php endif; ?>
+			
+			<?php if ( get_the_tags() ) : ?>
+				<p>
 					<span class="glyphicon glyphicon-tags"></span> <?php the_tags( __( 'Tags: ', 'issimple' ), '' ); ?>
-				<?php endif; ?>
-			</p>
+				</p>
+			<?php endif; ?>
 		</footer><!-- .entry-footer -->
 		<?php
 	endif;
