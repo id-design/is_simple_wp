@@ -210,13 +210,40 @@ function issimple_content_search_form( $form_id = '', $form_class = '' ) {
 
 
 /**
+ * Page Header
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_page_header() {
+	if ( ! is_single() || ! is_front_page() ) : ?>
+		<header id="page-header">
+			<div class="container-fluid">
+				<div class="jumbotron">
+					<?php
+						if ( is_page() ) :
+							the_title( '<h1 class="entry-title page-title">', '</h1>' );
+							edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' );
+						else : ?>
+							<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1><?php
+						endif;
+					?>
+				</div>
+			</div>
+		</header><!-- #page-header --><?php
+	endif;
+}
+
+
+
+/**
  * Primary class based on page template
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_primary_class() {
-	if ( is_page_template( 'page-templates/full-width.php' ) ) :
+	if ( is_page_template( 'page-templates/full-width-post.php' ) || is_page_template( 'page-templates/full-width-page.php' ) ) :
 		echo 'col-md-12';
 	else:
 		echo 'col-sm-8 col-md-8';

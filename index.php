@@ -17,15 +17,7 @@
 get_header();
 ?>
 
-<?php if ( ! is_singular() || ! is_front_page() ) : ?>
-	<header id="page-header">
-		<div class="container-fluid">
-			<div class="jumbotron">
-				<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1>
-			</div>
-		</div>
-	</header><!-- #page-header -->
-<?php endif; ?>
+<?php issimple_page_header(); ?>
 
 <div id="main">
 	<div class="container-fluid">
