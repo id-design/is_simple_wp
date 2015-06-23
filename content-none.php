@@ -22,12 +22,12 @@
 		<?php elseif ( is_search() ) : ?>
 
 			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'issimple' ); ?></p>
-			<?php issimple_content_search_form( 'content' ); ?>
+			<p><?php issimple_content_search_form( 'content' ); ?></p>
 
 		<?php else : ?>
 
 			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'issimple' ); ?></p>
-			<?php issimple_content_search_form( 'content' ); ?>
+			<p><?php issimple_content_search_form( 'content' ); ?></p>
 
 		<?php endif; ?>
 		
