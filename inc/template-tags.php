@@ -288,6 +288,7 @@ function issimple_post_pagination() {
  */
 function issimple_post_navigation() {
 	wp_bootstrap_post_navigation( array(
+		'container_class' => 'post-navigation panel panel-default',
 		'prev_text' => '<span class="meta-nav">' . __( 'Previous', 'issimple' ) . '</span> ' .
 			'<span class="sr-only">' . __( 'Previous post:', 'issimple' ) . '</span> ' .
 			'<span class="post-title h3">%title</span>',
