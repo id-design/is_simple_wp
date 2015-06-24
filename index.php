@@ -15,9 +15,10 @@
  */
 
 get_header();
-?>
 
-<?php issimple_page_header(); ?>
+issimple_page_header();
+
+get_template_part( 'slider' ); ?>
 
 <div id="main">
 	<div class="container-fluid">
