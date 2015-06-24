@@ -16,9 +16,9 @@
 
 get_header();
 
-issimple_page_header();
+get_template_part( 'slider' );
 
-get_template_part( 'slider' ); ?>
+issimple_page_header(); ?>
 
 <div id="main">
 	<div class="container-fluid">

@@ -58,51 +58,61 @@ $slides = new WP_Query( $param );
 if ( $slides->post_count > 0 ) :
 	$slider_pause_hover = 'true';
 	
+	$figure_atts = array();
+	$figure_atts['class'] = 'cycle-slideshow hidden-xs';
+	$figure_atts['data-cycle-fx'] = 'scrollHorz';
+	$figure_atts['data-cycle-pause-on-hover'] = $slider_pause_hover;
+	$figure_atts['data-cycle-timeout'] = '4000';
+	$figure_atts['data-cycle-pager'] = '#cycle-pager';
+	$figure_atts['data-cycle-pager-template'] = '<a href=#><span class="glyphicon glyphicon-minus"></a>';
+	$figure_atts['data-cycle-prev'] = '#cycle-prev';
+	$figure_atts['data-cycle-next'] = '#cycle-next';
+	$figure_atts['data-cycle-slides'] = '> div';
+	$figure_attributes = array2atts( $figure_atts );
+	
 	?>
-	<section id="cycle-slider">
-		<figure class="cycle-slideshow"
-				data-cycle-fx="scrollHorz"
-				data-cycle-pause-on-hover="<?php echo $slider_pause_hover ?>"
-				data-cycle-timeout="4000"
-				data-cycle-pager="#slider-pager"
-				data-cycle-pager-template="<a href=#> &#9679; </a>"
-				data-cycle-prev="#prev"
-				data-cycle-next="#next"
-				data-cycle-slides="> div"><?php
+	<div id="cycle-slider">
+		<figure<?php echo $figure_attributes; ?>><?php
 			
 			while ( $slides->have_posts() ) : $slides->the_post();
-				$img        = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured-slider-size' );
-				$img_src    = $img[0];
 				$post_link  = get_permalink();
 				$post_title = get_the_title();
 				
 				?>
 				<div class="cycle-slide">
-					<a class="img-link" href="<?php echo $post_link ?>" title="<?php echo $post_title ?>">
-						<img src="<?php echo $img_src ?>" />
+					<a class="img-link" href="<?php echo $post_link; ?>" title="<?php echo $post_title; ?>">
+						<?php the_post_thumbnail( 'featured-slider-size', array( 'class' => 'featured-img img-responsive', 'alt' => $post_title ) ); ?>
 					</a>
 					
-					<figcaption class="slider-caption cycle-overlay container-fluid">
-						<h4 class="entry-title">
-							<a href="<?php echo $post_link ?>" title="<?php echo $post_title ?>">
-								<?php echo $post_title ?>
-							</a>
-						</h4>
-						<?php issimple_excerpt( 'issimple_length_slider' ); ?>
+					<figcaption class="cycle-caption hidden-xs hidden-sm">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
+									<h4 class="entry-title h2">
+										<a href="<?php echo $post_link; ?>" title="<?php echo $post_title; ?>">
+											<?php echo $post_title; ?>
+										</a>
+									</h4>
+									<div class="entry-summary">
+										<?php issimple_excerpt( 'issimple_length_slider', 'issimple_slider_read_more' ); ?>
+									</div>
+								</div>
+							</div>
+						</div>
 					</figcaption><!-- .slider-caption -->
 				</div><!-- .cycle-slide -->
 				<?php
 			endwhile;
 			
 			?>
-			<div id="slider-navigation" class="container-fluid">
-	            <a href="#" id="prev">◄</a>
-	            <span id="slider-pager"></span>
-	            <a href="#" id="next">►</a>
-	        </div><!-- #slider-navigation -->
+			<span class="cycle-navigation">
+	            <a href="#" id="cycle-prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	            <span id="cycle-pager"></span>
+	            <a href="#" id="cycle-next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	        </span><!-- #slider-navigation -->
 			
 		</figure>
-	</section><!-- #cycle-slider -->
+	</div><!-- #cycle-slider -->
 	<?php
 	
 endif;

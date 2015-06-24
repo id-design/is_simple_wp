@@ -214,6 +214,11 @@ article.hentry.has-post-thumbnail {
 	margin-right: 10px;
 }
 
+
+/**
+ * Header Menu Navigation
+ * ----------------------------------------------------------------------------
+ */
 .menu-item-desc {
 	background-color: #ddd;
 	color: #333;
@@ -248,6 +253,123 @@ li:hover .menu-item-desc {
 	left: 50%;
 }
 
+
+/**
+ * Slider
+ * ----------------------------------------------------------------------------
+ */
+#cycle-slider,
+.cycle-slideshow,
+.cycle-slide,
+.cycle-caption,
+#cycle-pager {
+	width: 100%;
+}
+
+.cycle-slideshow {
+	position: relative;
+}
+
+.cycle-caption,
+#cycle-pager,
+#cycle-prev,
+#cycle-next {
+	position: absolute;
+	z-index: 1029;
+}
+
+.cycle-caption {
+	bottom: 20%;
+	text-align: center;
+}
+
+#cycle-slider .entry-title a,
+#cycle-slider .entry-summary {
+	padding: 15px;
+}
+
+#cycle-slider .entry-title {
+	margin-bottom: 0;
+}
+
+#cycle-slider .entry-title a {
+	display: inline-block;
+	background-color: #337ab7;
+	background-color: rgba( 51, 124, 183, 0.8 );
+	color: #fff;
+	text-decoration: none;
+}
+
+#cycle-slider .entry-title a:hover {
+	color: #e8e8e8;
+}
+
+#cycle-slider .entry-summary {
+	background-color: #3c3c3c;
+	background-color: rgba( 60, 60, 60, 0.8 );
+	color: #fff;
+}
+
+@media ( min-width: 1200px ) {
+	#cycle-slider .entry-title {
+		font-size: 36px;
+	}
+	
+	#cycle-slider .entry-summary p {
+		font-size: 21px;
+		font-weight: 200;
+		margin-bottom: 15px;
+	}
+}
+
+#cycle-pager,
+#cycle-prev,
+#cycle-next {
+	display: block;
+	text-align: center;
+}
+
+#cycle-pager {
+	top: 0;
+}
+
+.cycle-navigation a {
+	font-size: 24px;
+	display: inline-block;
+}
+
+.cycle-navigation a:focus {
+	outline: none;
+}
+
+.cycle-pager-active {
+	color: #23527c;
+}
+
+.cycle-navigation > a > span {
+	top: 45%;
+}
+
+#cycle-prev,
+#cycle-next {
+	width: 2em;
+	height: 100%;
+	top: 0;
+}
+
+#cycle-prev {
+	left: 0;
+}
+
+#cycle-next {
+	right: 0;
+}
+
+
+/**
+ * Secondary
+ * ----------------------------------------------------------------------------
+ */
 #main > .container-fluid > .row {
 	/*position: relative;*/
 }
@@ -262,6 +384,11 @@ li:hover .menu-item-desc {
 	margin-left: 800px;*/
 }
 
+
+/**
+ * Widgets
+ * ----------------------------------------------------------------------------
+ */
 #wp-calendar caption,
 #wp-calendar thead th,
 #wp-calendar tbody,
@@ -274,6 +401,11 @@ li:hover .menu-item-desc {
 	text-transform: uppercase;
 }
 
+
+/**
+ * Footer
+ * ----------------------------------------------------------------------------
+ */
 #footer {
 	background-color: #222;
 	padding-top: 30px;
@@ -287,6 +419,11 @@ li:hover .menu-item-desc {
 	padding-top: 15px;
 }
 
+
+/**
+ * Comments
+ * ----------------------------------------------------------------------------
+ */
 .comments-list,
 .comments-list .children {
 	list-style: none;

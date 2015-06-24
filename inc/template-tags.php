@@ -421,6 +421,9 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 	
 	$thumb_caption = get_post_thumbnail_meta( $thumb_id, 'caption' );
 	
+	if ( is_page_template( 'page-templates/full-width-post.php' ) || is_page_template( 'page-templates/full-width-page.php' ) )
+		$size = 'featured-full-page-size';
+	
 	$link_atts = array();
 	$link_atts['class'] = 'featured-link img-link';
 	$link_atts['title'] = get_the_title();
@@ -602,7 +605,7 @@ function issimple_index( $length ) {
  * ----------------------------------------------------------------------------
  */
 function issimple_length_slider( $lenght ) {
-	return 10;
+	return 30;
 }
 
 
@@ -616,15 +619,35 @@ function issimple_read_more( $more ) {
 	global $post;
 	
 	$tagmore  = '...</p><p class="view-article">';
-	$tagmore .= '<a class="btn btn-info" ';
+	$tagmore .= '<a class="btn btn-default" ';
 	$tagmore .= 'href="' . get_permalink( $post->ID ) . '" ';
 	$tagmore .= 'title ="' . __( 'View post:', 'issimple' ) . ' ' . get_the_title() . '">';
-	$tagmore .= __( 'View post', 'issimple' );
+	$tagmore .= __( 'View more', 'issimple' );
 	$tagmore .= '</a>';
 	
 	return $tagmore;
 }
 add_filter( 'excerpt_more', 'issimple_read_more' );
+
+
+/**
+ * Custom slider excerpt more tag
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function issimple_slider_read_more( $more ) {
+	global $post;
+	
+	$tagmore  = '...</p><p class="view-article">';
+	$tagmore .= '<a class="btn btn-primary btn-lg" ';
+	$tagmore .= 'href="' . get_permalink( $post->ID ) . '" ';
+	$tagmore .= 'title ="' . __( 'View post:', 'issimple' ) . ' ' . get_the_title() . '">';
+	$tagmore .= __( 'View more', 'issimple' );
+	$tagmore .= '</a>';
+	
+	return $tagmore;
+}
 
 
 
