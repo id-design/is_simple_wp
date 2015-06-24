@@ -243,7 +243,7 @@ function issimple_page_header() {
 								printf( __( 'Search results for: %s', 'issimple' ), get_search_query() );  ?>
 							</h1><?php
 						else : ?>
-							<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1><?php
+							<h3 id="page-title" class="h1"><?php _e( 'Latest Posts', 'issimple' ); ?></h1><?php
 						endif;
 					?>
 				</div>

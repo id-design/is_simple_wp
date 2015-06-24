@@ -143,6 +143,11 @@
 	margin: 0 auto 20px;
 }
 
+
+/**
+ * Spacements and Paddings
+ * ----------------------------------------------------------------------------
+ */
 #main,
 #page-header,
 article.hentry,
@@ -152,19 +157,19 @@ aside.widget,
 	margin-bottom: 30px;
 }
 
+.single #main {
+	margin-top: 30px;
+}
+
 .entry-header,
 .post-featured-thumb,
 .entry-title,
 .entry-content,
 li.comment,
 .comment-author,
-.comment-content {
+.comment-content,
+#author-info {
 	margin-bottom: 20px;
-}
-
-
-.entry-footer {
-	padding: 20px;
 }
 
 #header-txt > * {
@@ -172,8 +177,15 @@ li.comment,
 	margin-bottom: 0;
 }
 
-#page-title {
+#page-title,
+.entry-title,
+.comments-title,
+.author-heading {
 	margin-top: 0;
+}
+
+.entry-footer {
+	padding: 20px;
 }
 
 article.hentry,
@@ -196,11 +208,6 @@ article.hentry.has-post-thumbnail {
 .entry-content {
 	padding-left: 20px;
 	padding-right: 20px;
-}
-
-.entry-title,
-.comments-title {
-	margin-top: 0;
 }
 
 .entry-meta {
@@ -544,6 +551,10 @@ li:hover .menu-item-desc {
 }
 
 
+/**
+ * Media Queries
+ * ----------------------------------------------------------------------------
+ */
 @media screen and ( max-width: 767px ) {
 	#main,
 	#page-header,
@@ -552,5 +563,9 @@ li:hover .menu-item-desc {
 	#footer-widget-area,
 	#footer .widget-area {
 		margin-bottom: 20px;
+	}
+	
+	.single #main {
+		margin-top: 20px;
 	}
 }
