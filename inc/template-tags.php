@@ -218,12 +218,30 @@ function issimple_content_search_form( $form_id = '', $form_class = '' ) {
 function issimple_page_header() {
 	if ( ! is_single() || ! is_front_page() ) : ?>
 		<header id="page-header">
-			<div class="container-fluid">
-				<div class="jumbotron">
+			<div class="jumbotron">
+				<div class="container-fluid">
 					<?php
 						if ( is_page() ) :
-							the_title( '<h1 class="entry-title page-title">', '</h1>' );
+							the_title( '<h1 id="page-title">', '</h1>' );
 							edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' );
+						elseif ( is_404() ) : ?>
+							<h1 id="page-title"><?php _e( 'Page not found', 'issimple' ); ?></h1><?php
+						elseif ( is_archive() ) :
+							the_archive_title( '<h1 id="page-title">', '</h1>' );
+							
+							if ( is_author() ) :
+								if ( get_the_author_meta( 'description' ) ) : ?>
+									<p id="author-bio">
+										<?php get_template_part( 'author-info' ); ?>
+									</p><!-- #author-bio --><?php
+								endif;
+							else:
+								the_archive_description( '<div class="taxonomy-description">', '</div>' );
+							endif;
+						elseif ( is_search() ) : ?>
+							<h1 id="page-title"><?php
+								printf( __( 'Search results for: %s', 'issimple' ), get_search_query() );  ?>
+							</h1><?php
 						else : ?>
 							<h1 id="page-title"><?php _e( 'Latest Posts', 'issimple' ); ?></h1><?php
 						endif;

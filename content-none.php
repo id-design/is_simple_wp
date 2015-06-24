@@ -7,10 +7,10 @@
  */
 ?>
 
-<article id="entry-not-found" <?php post_class( 'not-found no-results hentry' ); ?>>
+<article id="entry-not-found" class="not-found no-results hentry panel panel-default">
 	
 	<header class="entry-header">
-		<h1 class="entry-title"><?php _e( 'Nothing found', 'issimple' ); ?></h1>
+		<h3 class="entry-title"><?php _e( 'Nothing found', 'issimple' ); ?></h1>
 	</header><!-- .entry-header -->
 	
 	<section class="entry-content">

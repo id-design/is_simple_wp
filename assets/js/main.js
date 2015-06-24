@@ -125,7 +125,7 @@
 			}
 		}
 		
-		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() + 30 ) + 'px;' );
+		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() ) + 'px;' );
 	}
     
     function sidebar_affix() {
