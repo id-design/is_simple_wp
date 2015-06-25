@@ -177,10 +177,18 @@ li.comment,
 	margin-bottom: 0;
 }
 
-#page-title,
-.entry-title,
-.comments-title,
-.author-heading {
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child,
+.h1:first-child,
+.h2:first-child,
+.h3:first-child,
+.h4:first-child,
+.h5:first-child,
+.h6:first-child {
 	margin-top: 0;
 }
 
