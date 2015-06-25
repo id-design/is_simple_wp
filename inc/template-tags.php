@@ -573,6 +573,8 @@ function issimple_comment_link() {
 function issimple_excerpt( $length_callback = '', $more_callback = '' ) {
 	global $post;
 	
+	if ( empty( $more_callback ) ) $more_callback = 'issimple_read_more';
+	
     if ( function_exists( $length_callback ) ) {
     	add_filter( 'excerpt_length', $length_callback );
 	}
@@ -627,7 +629,6 @@ function issimple_read_more( $more ) {
 	
 	return $tagmore;
 }
-add_filter( 'excerpt_more', 'issimple_read_more' );
 
 
 /**
