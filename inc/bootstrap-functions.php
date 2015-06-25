@@ -406,7 +406,7 @@ function wp_bootstrap_comments_loop( $comment, $args, $depth ) {
 					<?php
 						printf( '<span class="fn">%1$s</span><br />%2$s <a href="%3$s"><time datetime="%4$s" title="%5$s">%6$s %7$s %8$s</time></a> %9$s',
 							get_comment_author_link(),
-							__( 'in', 'issimple' ),
+							__( 'In', 'issimple' ),
 							esc_url( get_comment_link( $comment->comment_ID ) ),
 							get_comment_time( 'c' ),
 							get_comment_time( 'l, ' . get_option( 'date_format' ) . ', H:i' ),

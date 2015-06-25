@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Estúdio Viking WordPress Theme v1.0\n"
-"POT-Creation-Date: 2015-05-08 14:05-0300\n"
-"PO-Revision-Date: 2015-05-08 14:05-0300\n"
-"Last-Translator: Ivanildo Dias <ivanildodias@estudioviking.com>\n"
+"POT-Creation-Date: 2015-06-24 20:31-0300\n"
+"PO-Revision-Date: 2015-06-24 20:31-0300\n"
+"Last-Translator: Ivanildo Dias <ivanildodiasdesigner@gmail.com>\n"
 "Language-Team: Ivanildo Dias <ivanildodias@estudioviking.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,70 +17,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:17
-msgid "Page not found"
-msgstr ""
-
-#: 404.php:22
+#: 404.php:24
 msgid "Sorry, nothing to display."
 msgstr ""
 
-#: 404.php:23
+#: 404.php:25
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr ""
 
-#: 404.php:26 content-none.php:34
+#: 404.php:28 content-none.php:34
 msgid "Return home?"
 msgstr ""
 
-#: author-info.php:12
+#: author-info.php:13
 msgid "Published by:"
 msgstr ""
 
-#: author-info.php:30
+#: author-info.php:31
 #, php-format
 msgid "View all posts by %s"
 msgstr ""
 
-#: comments.php:20
+#: comments.php:22
 msgid "Post is password protected. Enter the password to view any comments."
 msgstr ""
 
-#: comments.php:31 comments.php:64 inc/template-tags.php:295
+#: comments.php:35 comments.php:66 inc/template-tags.php:560
 msgid "Leave your thoughts"
 msgstr ""
 
-#: comments.php:31 inc/template-tags.php:296
+#: comments.php:35 inc/template-tags.php:561
 msgid "1 comment"
 msgstr ""
 
-#: comments.php:31 inc/template-tags.php:297
+#: comments.php:35 inc/template-tags.php:562
 #, php-format
 msgid "% comments"
 msgstr ""
 
-#: comments.php:32
+#: comments.php:36
 msgid "on"
 msgstr ""
 
-#: comments.php:55
+#: comments.php:57
 msgid "Comments are closed here."
 msgstr ""
 
-#: comments.php:66
-msgid "Comment"
-msgstr ""
-
-#: comments.php:69 inc/viking-contact-form.php:18
+#: comments.php:69 inc/issimple-contact-form.php:18
 msgid "Name"
 msgstr ""
 
-#: comments.php:71 inc/viking-contact-form.php:22
+#: comments.php:71 inc/issimple-contact-form.php:22
 msgid "Email"
 msgstr ""
 
 #: comments.php:73
 msgid "Website"
+msgstr ""
+
+#: comments.php:76
+msgid "Comment"
 msgstr ""
 
 #: content-none.php:13
@@ -105,55 +101,117 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: content-page.php:18 inc/template-tags.php:249 page-example.php:21
-msgid "Edit"
-msgstr ""
-
-#: content.php:48
-msgid "This post was written by "
-msgstr ""
-
-#: content.php:48
-msgid " in "
-msgstr ""
-
-#: content.php:49
-msgid "Categorised in: "
-msgstr ""
-
-#: content.php:50
-msgid "Tags: "
-msgstr ""
-
-#: footer.php:15
+#: footer.php:66
 msgid "All rights reserved."
 msgstr ""
 
-#: footer.php:17
+#: footer.php:68
 #, php-format
 msgid ""
-"Powered by <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">Estúdio Viking</"
-"a> on <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
+"Powered by <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">ID Design</a> "
+"on <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
 msgstr ""
 
-#: functions.php:65
+#: functions.php:123
 msgid "Header Menu"
 msgstr ""
 
-#: functions.php:66
+#: functions.php:124
 msgid "Social Menu"
 msgstr ""
 
-#: functions.php:112
-msgid "Widget Area"
+#: functions.php:177
+msgid "Sidebar Widget Area"
 msgstr ""
 
-#: functions.php:114
+#: functions.php:179 functions.php:190 functions.php:201 functions.php:212
 msgid "Add widgets here to appear in your sidebar."
 msgstr ""
 
-#: header.php:48
+#: functions.php:188
+msgid "Footer Widget Area 1"
+msgstr ""
+
+#: functions.php:199
+msgid "Footer Widget Area 2"
+msgstr ""
+
+#: functions.php:210
+msgid "Footer Widget Area 3"
+msgstr ""
+
+#: header.php:31
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:34
 msgid "Click on the button to display the menu."
+msgstr ""
+
+#: inc/bootstrap-functions.php:68 inc/template-tags.php:337
+msgid "Previous"
+msgstr ""
+
+#: inc/bootstrap-functions.php:69 inc/template-tags.php:340
+msgid "Next"
+msgstr ""
+
+#: inc/bootstrap-functions.php:115 inc/bootstrap-functions.php:117
+msgid "Previous page"
+msgstr ""
+
+#: inc/bootstrap-functions.php:135
+#, php-format
+msgid "<a href=\"%1$s\" title=\"Go to page %2$d\">%3$s%2$d%4$s</a>"
+msgstr ""
+
+#: inc/bootstrap-functions.php:140
+msgid "&hellip;"
+msgstr ""
+
+#: inc/bootstrap-functions.php:155 inc/bootstrap-functions.php:157
+msgid "Next page"
+msgstr ""
+
+#: inc/bootstrap-functions.php:239 inc/template-tags.php:402
+msgid "Comments navigation"
+msgstr ""
+
+#: inc/bootstrap-functions.php:282 inc/bootstrap-functions.php:337
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/bootstrap-functions.php:395
+msgid "Pingback:"
+msgstr ""
+
+#: inc/bootstrap-functions.php:395 inc/bootstrap-functions.php:419
+#: inc/template-tags.php:226 inc/template-tags.php:460
+msgid "Edit"
+msgstr ""
+
+#: inc/bootstrap-functions.php:409
+msgid "in"
+msgstr ""
+
+#: inc/bootstrap-functions.php:414
+msgid "at"
+msgstr ""
+
+#: inc/bootstrap-functions.php:416
+msgid "<span class=\"says\">said:</span>"
+msgstr ""
+
+#: inc/bootstrap-functions.php:424
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/bootstrap-functions.php:433
+msgid "Respond"
+msgstr ""
+
+#: inc/classes/class-bootstrap-nav.php:205
+msgid "Add a menu"
 msgstr ""
 
 #: inc/custom-header.php:52
@@ -161,136 +219,334 @@ msgctxt "header image description"
 msgid "Estúdio Viking Brand"
 msgstr ""
 
-#: inc/polylang-support.php:23
-msgid "Language Switcher"
-msgstr ""
-
-#: inc/polylang-support.php:42
-msgid "Choose the website language:"
-msgstr ""
-
-#: inc/template-tags.php:136
-#, php-format
-msgid "Posts in category: %s"
-msgstr ""
-
-#: inc/template-tags.php:138
-#, php-format
-msgid "Posts in tag: %s"
-msgstr ""
-
-#: inc/template-tags.php:140
-#, php-format
-msgid "Posts of the author: %s"
-msgstr ""
-
-#: inc/template-tags.php:142
-#, php-format
-msgid "Posts of the day: %s"
-msgstr ""
-
-#: inc/template-tags.php:144
-#, php-format
-msgid "Posts of the month: %s"
-msgstr ""
-
-#: inc/template-tags.php:146
-#, php-format
-msgid "Posts of the year: %s"
-msgstr ""
-
-#: inc/template-tags.php:162
-msgid "Previous page"
-msgstr ""
-
-#: inc/template-tags.php:163
-msgid "Next page"
-msgstr ""
-
-#: inc/template-tags.php:164
-msgid "Page"
-msgstr ""
-
-#: inc/template-tags.php:272 inc/template-tags.php:273
-#: inc/template-tags.php:274
-#, php-format
-msgid "Posts of %s"
-msgstr ""
-
-#: inc/template-tags.php:279
-#, php-format
-msgid "%s of %s of %s"
-msgstr ""
-
-#: inc/template-tags.php:378
-msgid "Comment navigation"
-msgstr ""
-
-#: inc/template-tags.php:381
-msgid "Older comments"
-msgstr ""
-
-#: inc/template-tags.php:385
-msgid "Newer comments"
-msgstr ""
-
-#: inc/viking-contact-form.php:19
+#: inc/issimple-contact-form.php:19
 msgid "Your name"
 msgstr ""
 
-#: inc/viking-contact-form.php:26
+#: inc/issimple-contact-form.php:26
 msgid "Subject"
 msgstr ""
 
-#: inc/viking-contact-form.php:27
+#: inc/issimple-contact-form.php:27
 msgid "What is the subject of the message?"
 msgstr ""
 
-#: inc/viking-contact-form.php:30
+#: inc/issimple-contact-form.php:30
 msgid "Message"
 msgstr ""
 
-#: inc/viking-contact-form.php:31
+#: inc/issimple-contact-form.php:31
 msgid "Enter your message here."
 msgstr ""
 
-#: inc/viking-contact-form.php:33
+#: inc/issimple-contact-form.php:33
 msgid "Send"
 msgstr ""
 
-#: inc/viking-contact-form.php:73
+#: inc/issimple-contact-form.php:73
 msgid "Thanks for contacting us, expect a response soon."
 msgstr ""
 
-#: inc/viking-contact-form.php:74
+#: inc/issimple-contact-form.php:74
 msgid "An unexpected error occurred. Try again later."
 msgstr ""
 
-#: index.php:20
-msgid "Latest Posts"
+#: inc/template-tags.php:196 inc/template-tags.php:198
+#: inc/template-tags.php:201 searchform.php:13 searchform.php:15
+#: searchform.php:17
+msgid "Search"
 msgstr ""
 
-#: search.php:16
+#: inc/template-tags.php:228
+msgid "Page not found"
+msgstr ""
+
+#: inc/template-tags.php:243
 #, php-format
 msgid "Search results for: %s"
 msgstr ""
 
-#: searchform.php:13 searchform.php:15
-msgid "Search"
+#: inc/template-tags.php:246
+msgid "Latest Posts"
 msgstr ""
 
-#: single.php:30
-msgid "Next"
+#: inc/template-tags.php:291
+#, php-format
+msgid "Posts in category: %s"
 msgstr ""
 
-#: single.php:31
+#: inc/template-tags.php:293
+#, php-format
+msgid "Posts in tag: %s"
+msgstr ""
+
+#: inc/template-tags.php:295
+#, php-format
+msgid "Posts of the author: %s"
+msgstr ""
+
+#: inc/template-tags.php:297
+#, php-format
+msgid "Posts of the day: %s"
+msgstr ""
+
+#: inc/template-tags.php:299
+#, php-format
+msgid "Posts of the month: %s"
+msgstr ""
+
+#: inc/template-tags.php:301
+#, php-format
+msgid "Posts of the year: %s"
+msgstr ""
+
+#: inc/template-tags.php:338
+msgid "Previous post:"
+msgstr ""
+
+#: inc/template-tags.php:341
 msgid "Next post:"
 msgstr ""
 
-#: single.php:33
-msgid "Previous"
+#: inc/template-tags.php:479
+msgid "This post was written by "
 msgstr ""
 
-#: single.php:34
-msgid "Previous post:"
+#: inc/template-tags.php:479
+msgid " in "
 msgstr ""
+
+#: inc/template-tags.php:483
+msgid "Categorised in: "
+msgstr ""
+
+#: inc/template-tags.php:489
+msgid "Tags: "
+msgstr ""
+
+#: inc/template-tags.php:506
+msgid "Pages:"
+msgstr ""
+
+#: inc/template-tags.php:510
+msgid "Page"
+msgstr ""
+
+#: inc/template-tags.php:537 inc/template-tags.php:538
+#: inc/template-tags.php:539
+#, php-format
+msgid "Posts of %s"
+msgstr ""
+
+#: inc/template-tags.php:544
+#, php-format
+msgid "%s of %s of %s"
+msgstr ""
+
+#: inc/template-tags.php:624 inc/template-tags.php:645
+msgid "View post:"
+msgstr ""
+
+#: inc/template-tags.php:625 inc/template-tags.php:646
+msgid "View more"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:15
+msgid "A monthly archive of your site&#8217;s Posts."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:16
+#: inc/widgets/class-widget-issimple-archives.php:24
+msgid "Archives"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:54
+msgid "Select Year"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:57
+msgid "Select Month"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:60
+msgid "Select Day"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:63
+msgid "Select Week"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:66
+msgid "Select Post"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:117
+#: inc/widgets/class-widget-issimple-calendar.php:45
+#: inc/widgets/class-widget-issimple-categories.php:117
+#: inc/widgets/class-widget-issimple-meta.php:66
+#: inc/widgets/class-widget-issimple-pages.php:88
+#: inc/widgets/class-widget-issimple-recent-comments.php:143
+#: inc/widgets/class-widget-issimple-recent-posts.php:125
+#: inc/widgets/class-widget-issimple-tag-cloud.php:69
+msgid "Title:"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:119
+#: inc/widgets/class-widget-issimple-categories.php:121
+msgid "Display as dropdown"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-archives.php:121
+#: inc/widgets/class-widget-issimple-categories.php:124
+msgid "Show post counts"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-calendar.php:15
+msgid "A calendar of your site&#8217;s Posts."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-calendar.php:16
+msgid "Calendar"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-categories.php:15
+msgid "A list or dropdown of categories."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-categories.php:16
+#: inc/widgets/class-widget-issimple-categories.php:22
+msgid "Categories"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-categories.php:47
+msgid "Select Category"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-categories.php:127
+msgid "Show hierarchy"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-meta.php:15
+msgid "Login, RSS, &amp; WordPress.org links."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-meta.php:16
+#: inc/widgets/class-widget-issimple-meta.php:22
+msgid "Meta"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-meta.php:32
+msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-meta.php:33
+msgid "Comments <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-meta.php:43
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-meta.php:44
+msgid ""
+"Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-meta.php:45
+msgctxt "meta widget link text"
+msgid "WordPress.org"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:15
+msgid "A list of your site&#8217;s Pages."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:16
+#: inc/widgets/class-widget-issimple-pages.php:30
+msgid "Pages"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:90
+msgid "Sort by:"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:92
+msgid "Page title"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:93
+msgid "Page order"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:94
+msgid "Page ID"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:98
+msgid "Exclude:"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-pages.php:100
+msgid "Page IDs, separated by commas."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-recent-comments.php:15
+msgid "Your site&#8217;s most recent comments."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-recent-comments.php:16
+#: inc/widgets/class-widget-issimple-recent-comments.php:70
+msgid "Recent Comments"
+msgstr ""
+
+#. translators: comments widget: 1: comment author, 2: post link
+#: inc/widgets/class-widget-issimple-recent-comments.php:108
+#, php-format
+msgctxt "widgets"
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-recent-comments.php:146
+msgid "Number of comments to show:"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-recent-posts.php:15
+msgid "Your site&#8217;s most recent Posts."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-recent-posts.php:16
+#: inc/widgets/class-widget-issimple-recent-posts.php:45
+msgid "Recent Posts"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-recent-posts.php:128
+msgid "Number of posts to show:"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-recent-posts.php:132
+msgid "Display post date?"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-tag-cloud.php:15
+msgid "A cloud of your most used tags."
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-tag-cloud.php:16
+msgid "Tag Cloud"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-tag-cloud.php:25
+msgid "Tags"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-tag-cloud.php:71
+msgid "Taxonomy:"
+msgstr ""
+
+#: inc/widgets/class-widget-issimple-tag-cloud.php:156
+#: inc/widgets/class-widget-issimple-tag-cloud.php:165
+#, php-format
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] ""
+msgstr[1] ""
