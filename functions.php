@@ -43,17 +43,17 @@ define( 'INCLUDES_URI', THEME_URI . '/inc' );
 
 
 /**
- * Configura o valor da largura do conteúdo baseado no design do tema
+ * Set the content width based on the theme's design and stylesheet.
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-if ( ! isset( $content_width ) ) $content_width = 770;	/* pixels */
+if ( ! isset( $content_width ) ) $content_width = 730;	/* pixels */
 
 function issimple_content_width() {
-	if ( is_page_template( 'full-width.php' ) ) :
+	if ( is_full_page_template() ) :
 		global $content_width;
-		$content_width = 1170;	/* pixels */
+		$content_width = 1130;	/* pixels */
 	endif;
 }
 add_action( 'template_redirect', 'issimple_content_width' );
@@ -86,24 +86,44 @@ require_once INCLUDES_PATH . '/widgets/class-widget-issimple-tag-cloud.php';
 
 if ( ! function_exists( 'issimple_setup' ) ) :
 /**
- * IS Simple Features Support
+ * Sets up theme defaults and registers support for various WordPress features.
+ * 
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_setup() {
-	// Language Support
+	/**
+	 * Make theme available for translation.
+	 * Translations can be filed in the /languages/ directory.
+	 * If you're building a theme based on twentyfifteen, use a find and replace
+	 * to change 'twentyfifteen' to the name of your theme in all the template files
+	 */
 	load_theme_textdomain( 'issimple', THEME_PATH . '/languages' );
 	
-	// Habilita RSS feed links de postagens e comentários para o <head>
+	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 	
-	// Enable tag <title> in wp_head
+	/**
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
 	add_theme_support( 'title-tag' );
 	
-	// Thumbnails Support
+	/**
+	 * Enable support for Post Thumbnails on posts and pages.
+	 * 
+	 * See: https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 */
     add_theme_support( 'post-thumbnails' );
-		// Large Thumbnail to Full Page Template
+		// Default Post Thumbnail size
+		set_post_thumbnail_size( 770, 300, true );
+		// Large Thumbnail to Full Page Templates
 		add_image_size( 'large-full-page', 1130, '', true );
 		// Large Thumbnail
 		add_image_size( 'large', 730, '', true );
@@ -111,14 +131,14 @@ function issimple_setup() {
 		add_image_size( 'medium', 500, '', true );
 		// Small Thumbnail
 		add_image_size( 'small', 250, '', true );
-		// Miniatura personalizada. Uso: the_post_thumbnail( 'featured-size' );
+		// Featured Thumbnail. Uses: the_post_thumbnail( 'featured-size' );
 		add_image_size( 'featured-size', 770, 300, true );
-		// Miniatura personalizada. Uso: the_post_thumbnail( 'full-page-size' );
+		// Featured Full Page Thumbnail. Uses: the_post_thumbnail( 'full-page-size' );
 		add_image_size( 'featured-full-page-size', 1200, 500, true );
-		// Miniatura personalizada. Uso: the_post_thumbnail( 'featured-slider-size' );
+		// Featured Slider Thumbnail. Uses: the_post_thumbnail( 'featured-slider-size' );
 		add_image_size( 'featured-slider-size', 1920, 500, true );
 	
-	// Register Nav Menus
+	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'header-menu' => __( 'Header Menu', 'issimple' ),
 		'social-menu' => __( 'Social Menu', 'issimple' ),
@@ -137,34 +157,44 @@ function issimple_setup() {
 		)
 	);
 	
-	// Post Formats Support
+	/**
+	 * Enable support for Post Formats.
+	 *
+	 * See: https://codex.wordpress.org/Post_Formats
+	 */
 	//add_theme_support( 'post-formats', array(
 	//	'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'
 	//) );
 	
-	// HTML5 Support
+	/**
+	 * Switch default core markup for comment-list, comment-form, search-form, gallery,
+	 * caption and widget to output valid HTML5.
+	 */
 	add_theme_support( 'html5', array(
 		'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widget'
 	) );
 	
-	// Set Custom Background Supporte
+	// Setup the WordPress core custom background feature.
 	add_theme_support( 'custom-background', array(
 		'default-color'			=> 'eee',
 		'default-attachment'	=> 'scroll'
 	) );
 
-	// Require to Custom Header Support
+	// Implement the Custom Header feature.
     require INCLUDES_PATH . '/custom-header.php';
 	
-	// Custom Editor Style
-	add_editor_style( array( 'css/editor-style.css', ) );
+	/**
+	 * This theme styles the visual editor to resemble the theme style,
+	 * specifically font, colors, icons, and column width.
+	 */
+	add_editor_style( array( 'assets/css/editor-style.css' ) );
 }
 endif; // issimple_setup
 add_action( 'after_setup_theme', 'issimple_setup' );
 
 
 /**
- * Registro da áreas de widgets
+ * Register widget area.
  * 
  * @since IS Simple 1.0
  * 
@@ -220,7 +250,7 @@ add_action( 'widgets_init', 'issimple_widgets_init' );
 
 
 /**
- * Print stylesheets in the tag <head>
+ * Enqueue styles.
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -245,7 +275,7 @@ add_action( 'wp_enqueue_scripts', 'issimple_styles' );
 
 
 /**
- * Print scripts
+ * Enqueue scripts.
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -278,7 +308,22 @@ add_action( 'init', 'issimple_header_scripts');
 
 
 /**
- * Chamada para o slider
+ * Return true if the post/page uses full width template.
+ * 
+ * @since IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
+function is_full_page_template() {
+	if ( is_page_template( 'page-templates/full-width-post.php' )
+		|| is_page_template( 'page-templates/full-width-page.php' ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Print slider.
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
@@ -289,25 +334,25 @@ function get_slider() {
 
 
 /**
- * Gravatar personalizado
- * Acesse em Configurações > Discussão
+ * Custom Gravatar.
+ * Setup in Settings > Discussion.
  * ----------------------------------------------------------------------------
- * Obs.: Não funciona com imagens em servidor local (wampserver, xamp, etc..).
- * Quando o tema estiver online irá funcionar.
+ * Obs.: Don't work in local server (wampserver, xamp, etc..).
+ * When the theme is online will work.
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_gravatar( $avatar_defaults ) {
 	$my_avatar = IMAGES_URI . '/gravatar.png';
-	$avatar_defaults[ $my_avatar ] = "Viking Gravatar";
+	$avatar_defaults[ $my_avatar ] = 'IS Simple Gravatar';
 	return $avatar_defaults;
 }
 add_filter( 'avatar_defaults', 'issimple_gravatar' );
 
 
 /**
- * Comentários 'Threaded'
+ * Threaded Comments.
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------

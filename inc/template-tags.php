@@ -261,7 +261,7 @@ function issimple_page_header() {
  * ----------------------------------------------------------------------------
  */
 function issimple_primary_class() {
-	if ( is_page_template( 'page-templates/full-width-post.php' ) || is_page_template( 'page-templates/full-width-page.php' ) ) :
+	if ( is_full_page_template() ) :
 		echo 'col-md-12';
 	else:
 		echo 'col-sm-8 col-md-8';
@@ -347,33 +347,35 @@ function issimple_post_navigation() {
 
 
 /**
- * Adiciona a imagem destacada dos artigos como background nos elementos
- * da navegação dos posts
+ * Add featured image as background image to post navigation elements.
  * 
  * @since IS Simple 1.0
+ * 
+ * @see wp_add_inline_style()
  * ----------------------------------------------------------------------------
  */
 function issimple_post_nav_background() {
 	if ( ! is_single() ) return;
 	
-	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-	$next     = get_adjacent_post( false, '', false );
-	$css      = '';
+	$prev = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+	$next = get_adjacent_post( false, '', false );
+	$size = ( is_full_page_template() ) ? 'featured-full-page-size' : 'featured-size';
+	$css  = '';
 	
-	if ( is_attachment() && 'attachment' == $previous->post_type ) return;
-
-	if ( $previous &&  has_post_thumbnail( $previous->ID ) ) :
-		$prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $previous->ID ), 'post-size' );
+	if ( is_attachment() && 'attachment' == $prev->post_type ) return;
+	
+	if ( $prev &&  has_post_thumbnail( $prev->ID ) ) :
+		$prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $prev->ID ), $size );
 		$prevthumb = $prevthumb[0];
 		$css .= '
 			.post-navigation .nav-previous {
 				background-image: url(' . esc_url( $prevthumb ) . ');
 			}
 		';
-	endif; // $previous
-
+	endif; // $prev
+	
 	if ( $next && has_post_thumbnail( $next->ID ) ) :
-		$nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), 'post-size' );
+		$nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), $size );
 		$nextthumb = $nextthumb[0];
 		$css .= '
 			.post-navigation .nav-next {
@@ -421,7 +423,7 @@ function issimple_post_featured_thumb( $size = 'featured-size' ) {
 	
 	$thumb_caption = get_post_thumbnail_meta( $thumb_id, 'caption' );
 	
-	if ( is_page_template( 'page-templates/full-width-post.php' ) || is_page_template( 'page-templates/full-width-page.php' ) )
+	if ( is_full_page_template() )
 		$size = 'featured-full-page-size';
 	
 	$link_atts = array();
