@@ -1,128 +1,95 @@
 <?php
 /**
- * Cabeçalho Personalizado para o tema
- *
- * @package Estúdio Viking
- * @since 1.0
+ * Custom Header functionality for Twenty Fifteen
+ * 
+ * @package WordPress
+ * @subpackage IS Simple
+ * @since IS Simple 1.0
  */
 
 
 /**
- * Configuração principal para cabeçalho personalizado no tema
+ * Set up the WordPress core custom header feature.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_custom_header_setup() {
-	add_theme_support( 'custom-header', array(
-		// Imagem e cor de texto padrão
-		//'default-image'          => $headers_uri . 'logo_header.png',
-		//'default-text-color'     => '000',
+	add_theme_support( 'custom-header', apply_filters( 'issimple_custom_header_args', array(
+		// Default image and text color
+		'default-image'          => '',
+		'default-text-color'     => '',
 		
-		// Tamanho padrão para as imagens
-		'width'                  => 340,
+		// Default image sizes
+		'width'                  => 2000,
 		'height'                 => 50,
 		
-		// Opções extras
-		'random-default'         => false,	// Cabeçalho aleatório
-		'flex-height'            => false,	// Altura flexível
-		'flex-width'             => true,	// Largura flexível
-		'header-text'            => true,	// Habilita suporte a personalização do texto
-		'uploads'                => true,	// Permite upload de imagens
+		// Extra options
+		'random-default'         => false,	// Random header images
+		'flex-height'            => false,
+		'flex-width'             => true,
+		'header-text'            => true,	// Enable text customization support
+		'uploads'                => true,	// Enable image uploads
 		
-		// Estilo que vai apareceer no head do site
+		// Funtion to show styles in <head> element
 		'wp-head-callback'       => 'issimple_header_style',
-	) );
+	) ) );
 	
 	/**
-	 * Pacote de imagens personalizadas para o cabeçalho
-	 * Remova os comentários para habilitar
+	 * Custom Images Pack to header
+	 * Remove comments to enable
 	 * ----------------------------------------------------------------------------
 	 */
 	
 	/**
-	 * Diretório dos cabeçalhos personalizados
-	 * %s é um placeholder para o diretório URI do tema.
+	 * Default custom headers packaged with the theme.
+	 * %s is a placeholder for the theme template directory URI.
 	 */
-	$headers_uri = '%s/img/headers/';
-	register_default_headers( array(
-		'logo_header' => array(
-			'url'           => $headers_uri . 'logo_header.png',
-			'thumbnail_url' => $headers_uri . 'logo_header-thumbnail.png',
-			'description'   => _x( 'Estúdio Viking Brand', 'header image description', 'issimple' )
-		),
-	) );
+	//$headers_uri = '%s/assets/img/headers/';
+	//register_default_headers( array(
+	//	'logo_header' => array(
+	//		'url'           => $headers_uri . 'bg_header.png',
+	//		'thumbnail_url' => $headers_uri . 'bg_header-thumbnail.png',
+	//		'description'   => _x( 'IS Simple Header', 'header image description', 'issimple' )
+	//	),
+	//) );
 }
 add_action( 'after_setup_theme', 'issimple_custom_header_setup', 11 );
 
 
 /**
- * Elementos que vão aparecer no head do site após personalização
- * na área de administração do cabeçalho personalizado do site.
+ * Style the header text displayed on the blog.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_header_style() {
 	$header_image = get_header_image();
-	$image_width_px  = get_custom_header()->width;
-	$image_width_rem  = ( $image_width_px / 10 );
-	$image_height_px  = get_custom_header()->height;
-	$image_height_rem = ( $image_height_px / 10 );
 	$text_color   = get_header_textcolor();
-
-	// Se chegarmos a este ponto, temos estilos personalizados.
+	
+	// If no custom options for text are set, let's bail.
+	if ( ! $text_color && empty( $header_image ) ) return;
+	
+	// If we get this far, we have custom styles. Let's do this.
 	?>
 	<style type="text/css" id="issimple-header-css">
 	<?php
-		// Se a imagem estiver sendo exibida...
+		// Has a Custom Header been added?
 		if ( ! empty( $header_image ) ) :
 	?>
-		#logo-header {
-			background: url(<?php header_image(); ?>) no-repeat center top;
-			-webkit-background-size: contain;
-			-moz-background-size:    contain;
-			-o-background-size:      contain;
-			background-size:         contain;
-			padding-top: <?php echo $image_height_px; ?>px;
-			padding-top: <?php echo $image_height_rem; ?>rem;
-			width: <?php echo $image_width_px; ?>px;
-			width: <?php echo $image_width_rem; ?>rem;
-			line-height: 0;
-			height: 0;
-			text-indent: -99999px;
-			display: block;
+		#fixed-nav-header {
+			background: url(<?php header_image(); ?>) no-repeat scroll top center;
+			background-size: 100% auto;
 		}
 	<?php endif;
 		
-		// Se o texto está sendo exibido...
+		// Has the text been visible?
 		if ( display_header_text() ) :
 	?>
 		#name a { color: #<?php echo esc_attr( $text_color ); ?>; }
 	<?php endif;
 		
-		// Se o texto e a imagem estiverem sendo exibidos...
-		if ( display_header_text() && ! empty( $header_image ) ) :
-	?>
-		
-	<?php endif;
-		
-		// Se apenas o texto estiver sendo exibido...
-		if ( display_header_text() && empty( $header_image ) ) :
-	?>
-		
-	<?php endif;
-		
-		// Se não estiver sendo exibida a imagem...
-		if ( empty( $header_image ) ) :
-	?>
-		#logo-header {
-			clip: rect(1px, 1px, 1px, 1px);
-			position: absolute !important;
-		}
-	<?php endif;
-		
-		// Se não estiver sendo exibida o texto...
+		// Has the text been hidden?
 		if ( ! display_header_text() ) :
 	?>
 		#header-txt {

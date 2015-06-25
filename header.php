@@ -37,8 +37,6 @@
 						<span class="icon-bar"></span>
 					</button>
 					
-					<a id="logo-header" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-					
 					<div id="header-txt">
 						<?php if ( is_home() || is_front_page() ) : ?>
 							<h1 id="name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
