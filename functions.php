@@ -322,6 +322,7 @@ function is_full_page_template() {
 	}
 }
 
+
 /**
  * Print slider.
  * 
@@ -365,6 +366,7 @@ function enable_threaded_comments() {
 	endif;
 }
 add_action( 'get_header', 'enable_threaded_comments' );
+
 
 /**
  * Inclusão de recursos ao tema

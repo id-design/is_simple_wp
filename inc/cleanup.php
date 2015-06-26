@@ -1,90 +1,94 @@
 <?php
 /**
- * Limpeza e otimização de filtros, actions e estilos que são ingetados
- * automaticamente no template
+ * Cleaning and optimization to filters, actions and styles that are automatically
+ * injected into the template
  * 
- * @package Estúdio Viking
- * @since 1.0
+ * @package WordPress
+ * @subpackage IS Simple
+ * @since IS Simple 1.0
  */
 
 
 /**
- * Limpeza e otimização do <head>
+ * Cleanup wp_head().
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_cleanup_head() {
-	// Feeds de categoria
+	// Category feeds.
 	//remove_action( 'wp_head', 'feed_links_extra', 3 );
 	
-	// Feeds de Postagens e Comentários
+	// Post and Comment feeds.
 	//remove_action( 'wp_head', 'feed_links', 2 );
 	
-	// Mostra os links para os Really Simple Discovery service endpoint, EditURI link
+	// EditURI link.
 	remove_action( 'wp_head', 'rsd_link' );
 	
-	// Mostra o link para o arquivo manifest do Windows Live Writer
+	// Windows live writer.
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 	
-	// Index link
+	// Index link.
 	remove_action( 'wp_head', 'index_rel_link' );
 	
-	// Previous link
+	// Previous link.
 	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
 	
-	// Start link
+	// Start link.
 	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 	
-	// Mostra links relacionado para as postagens adjacentes a postagem atual
+	// Links for adjacent posts.
 	remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 	
-	// Canonical
+	// Canonical.
 	//remove_action( 'wp_head', 'rel_canonical' );
 	
-	// Shortlink
+	// Shortlink.
 	//remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+	
+	// WP version.
+	remove_action( 'wp_head', 'wp_generator' );
 }
 add_action( 'init', 'issimple_cleanup_head' );
 
 
 /**
- * Filtros adicionais
+ * Additional Filters.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-// Remove meta tag generator do <head>
+//Remove WP version from RSS.
 add_filter( 'the_generator', '__return_false' );
 
-// Remove barra de administração
+// Remove Admin Bar.
 //add_filter( 'show_admin_bar', '__return_false' );
 
-// Permite que Shortcodes sejam executados nos resumos (apenas para resumos manuais)
+// Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
 add_filter( 'the_excerpt', 'do_shortcode' );
 
-// Permite shortcodes nos widgets de texto
+// Allows Shortcodes in Dynamic Sidebar.
 add_filter( 'widget_text', 'do_shortcode' );
 
-// Remove tags <p> automáticas nos widgets de texto
+// Remove <p> tags in Dynamic Sidebars (better!)
 add_filter( 'widget_text', 'shortcode_unautop' );
 
 
 /**
- * Removendo Filtros
+ * Removing Filters.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-// Remove completamente tags <p> automáticas dos resumos de postagem
+// Remove <p> tags in Post Excerpts
 //remove_filter( 'the_excerpt', 'wpautop' );
 
 
 /**
- * Remove estilos injetados para comentários recentes no wp_head()
+ * Remove injected CSS for recent comments widget.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function issimple_remove_wp_widget_recent_comments_style() {
@@ -95,9 +99,9 @@ add_filter( 'wp_head', 'issimple_remove_wp_widget_recent_comments_style', 1);
 
 
 /**
- * Remove estilos injetados a partir de comentários recentes no wp_head()
+ * Remove injected CSS from recent comments widget.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function my_remove_recent_comments_style() {
@@ -110,9 +114,9 @@ add_action( 'widgets_init', 'my_remove_recent_comments_style' );
 
 
 /**
- * Remove 'text/css' dos links de folhas de estilo no head
+ * Remove 'text/css' from enqueued stylesheets.
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function my_style_remove( $tag ) {
@@ -122,29 +126,29 @@ add_filter( 'style_loader_tag', 'my_style_remove' );
 
 
 /**
- * Remove as dimensões de largura e altura das miniaturas
- * que evitam imagens fluidas em the_thumbnail
+ * Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
 function remove_img_dimensions( $html ) {
-	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html);
+	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
 }
 add_filter( 'post_thumbnail_html', 'remove_img_dimensions', 10 );
 add_filter( 'image_send_to_editor', 'remove_img_dimensions', 10 );
 
 
 /**
- * Remove valores invalidos do atributo "rel" na lista de categorias
+ * Remove invalid values to 'rel' attribute in Category Lists
  * 
- * @since Estúdio Viking 1.0
+ * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-function remove_category_rel_from_category_list( $thelist ) {
-    return str_replace( 'rel="category tag"', 'rel="tag"', $thelist );
+function remove_category_rel_from_category_list( $text ) {
+    return str_replace( 'rel="category tag"', 'rel="tag"', $text );
 }
 add_filter( 'the_category', 'remove_category_rel_from_category_list' );
+add_filter( 'wp_list_categories', 'remove_category_rel_from_category_list' );
 
 
 
