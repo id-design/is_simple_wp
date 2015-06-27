@@ -386,3 +386,5 @@ require_once INCLUDES_PATH . '/shortcodes.php';
 require_once INCLUDES_PATH . '/template-tags.php';
 // Funções para incrementar o formulário de contato no tema ou post
 require_once INCLUDES_PATH . '/issimple-contact-form.php';
+// Theme Options.
+require_once INCLUDES_PATH . '/theme-options.php';

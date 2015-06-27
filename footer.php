@@ -62,12 +62,12 @@
 					</div><!-- #footer-widget-area -->
 					<div id="copyright" class="row">
 						<div class="col-md-12">
-							<p>
-								&copy; <?php echo date( 'Y' ) . ' ' . do_shortcode( '[home-link]' ) . ' - ' . __( 'All rights reserved.', 'issimple' ) . ' ' .
+							<p><?php global $issimple_options; echo $issimple_options['issimple_options_footer_text']; ?>
+								<!-- &copy; <?php echo date( 'Y' ) . ' ' . do_shortcode( '[home-link]' ) . ' - ' . __( 'All rights reserved.', 'issimple' ) . ' ' .
 								sprintf(
 									__( 'Powered by <a href="%s" rel="nofollow" target="_blank">ID Design</a> on <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'issimple' ),
 									'https://github.com/id-design/is_simple_wp',
-									'http://wordpress.org/' ); ?>
+									'http://wordpress.org/' ); ?> -->
 							</p>
 						</div>
 					</div><!-- #copyright -->
