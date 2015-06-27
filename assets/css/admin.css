@@ -1,0 +1,114 @@
+/* =Gallery styles.
+-------------------------------------------------------------- */
+
+.issimple-gallery-images .image,
+.issimple-gallery-images .add,
+.issimple-gallery-images .wc-metabox-sortable-placeholder {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: none repeat scroll 0 0 #F7F7F7;
+	border: 1px solid #D5D5D5;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	cursor: move;
+	float: left;
+	height: 150px;
+	margin: 9px 9px 0 0;
+	overflow: hidden;
+	position: relative;
+	width: 150px;
+}
+
+.issimple-gallery-images img {
+	height: 150px;
+	width: 150px;
+}
+
+.issimple-gallery-images .wc-metabox-sortable-placeholder {
+	border: 4px dashed #ddd;
+}
+
+.issimple-form-table .description {
+	display: block;
+}
+
+
+/* =Image upload
+-------------------------------------------------------------- */
+
+.issimple-upload-image {
+	position: relative;
+	width: 150px;
+}
+
+.issimple-upload-image .preview {
+	display: block;
+	float: none;
+	margin-bottom: 5px;
+}
+
+.issimple-upload-image .default-image {
+	display: none;
+}
+
+/* =Image and Plupload common
+-------------------------------------------------------------- */
+
+.issimple-gallery-images .image .actions,
+.issimple-upload-image .actions {
+	display: none;
+	padding: 2px;
+	position: absolute;
+	margin: 0;
+	right: 0;
+	top: 0;
+}
+
+.issimple-gallery-images .image:hover > .actions,
+.issimple-upload-image:hover > .actions {
+	display: block;
+}
+
+.issimple-gallery-images .image .actions li,
+.issimple-upload-image .actions li {
+	background: #eee;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	float: right;
+	margin: 0 0 0 2px;
+	padding: 1px;
+	text-align: center;
+}
+
+.issimple-gallery-images .image .actions li:hover,
+.issimple-upload-image .actions li:hover {
+	background: #ddd;
+}
+
+.issimple-gallery-images .image .actions li a,
+.issimple-upload-image .actions li a {
+	text-decoration: none;
+}
+
+.issimple-gallery-images .image .actions li a:hover,
+.issimple-upload-image .actions li a:hover {
+	text-decoration: none;
+}
+
+.issimple-gallery-images .image .actions .delete,
+.issimple-upload-image .actions .delete {
+	color: #d00;
+}
+
+/* =Separator
+-------------------------------------------------------------- */
+
+.issimple-metabox-separator {
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #dfdfdf;
+	display: block;
+}

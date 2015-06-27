@@ -7,12 +7,70 @@
  * @since IS Simple 1.0
  */
 
+
+require_once get_template_directory() . '/inc/classes/class-theme-options.php';
+
+function issimple_theme_options() {
+	$settings = new ISSimple_Theme_Options(
+		'issimple-settings',		// Slug/ID of the Settings Page (Required)
+		'IS Simple Theme Settings',	// Settings page name (Required)
+		'manage_options'			// Page capability (Optional) [default is manage_options]
+	);
+	
+	$settings->set_tabs( array(
+		array(
+			'id' => 'issimple_general_options',					// Slug/ID of the Settings tab (Required)
+			'title' => __( 'General Settings', 'issimple' ),	// Settings tab title (Required)
+		),
+		array(
+			'id' => 'issimple_style_options',					// Slug/ID of the Settings tab (Required)
+			'title' => __( 'Style Settings', 'issimple' ),	// Settings tab title (Required)
+		)
+	) );
+	
+	$default_footer_text = sprintf(
+		__( '&copy; %1$d %2$s - %3$s %4$s %5$s %6$s %7$s.', 'issimple' ),
+		date( 'Y' ),
+		do_shortcode( '[home-link]' ),
+		__( 'All rights reserved.', 'issimple' ),
+		__( 'Powered by', 'issimple' ),
+		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
+			'https://github.com/id-design/is_simple_wp',
+			'ID Design' ),
+		__( 'on', 'issimple' ),
+		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
+			'http://wordpress.org/',
+			'WordPress' )
+	);
+		
+	$settings->set_fields( array(
+		'issimple_general_fields_section' => array(											// Slug/ID of the section (Required)
+			'tab'   => 'issimple_general_options',											// Tab ID/Slug (Required)
+			'title' => __( 'General options to customize IS Simple WP Theme.', 'issimple' ),	// Section title (Required)
+			'fields' => array(																// Section fields (Required)
+				// Footer text.
+				array(
+					'id'          => 'issimple_options_footer_text',				// Required
+					'label'       => __( 'Footer Text', 'issimple' ),				// Required
+					'type'        => 'textarea',									// Required
+					'attributes'  => array(											// Optional (html input elements)
+						//'placeholder' => __( 'Some text here!' )
+					),
+					'default'  => $default_footer_text,									// Optional
+					'description' => __( 'Type your custom copyright text displayed on footer', 'issimple' )	// Optional
+				)
+			)
+		)
+	) );
+}
+add_action( 'init', 'issimple_theme_options', 1 );
+
 /**
  * Adiciona o menu de personalização do tema
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- */
+ *//*
 function issimple_options_menu_pages() {
 	// Menu de Opções Gerais
 	add_theme_page(
@@ -33,7 +91,7 @@ function issimple_options_menu_pages() {
 		'edit_theme_options',							// Capacidade
 		'issimple_style_options_page',						// Termo único do sub-menu
 		'issimple_style_options_page_screen'					// Função de exibição
-	);*/
+	);*//*
 }
 add_action( 'admin_menu', 'issimple_options_menu_pages' );
 
@@ -43,7 +101,7 @@ add_action( 'admin_menu', 'issimple_options_menu_pages' );
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- */
+ *//*
 function issimple_options_init(){
 	// Registro das configurações
 	register_setting(
@@ -55,7 +113,7 @@ function issimple_options_init(){
 	/**
 	 * Seção de Opções Gerais
 	 * ----------------------------------------------------------------------------
-	 */
+	 *//*
 	add_settings_section(
 		'issimple_general_options_page_section',			// Id
 		__( 'General Options', 'issimple' ),	// Título
@@ -98,7 +156,7 @@ add_action( 'admin_init', 'issimple_options_init' );
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- */
+ *//*
 function issimple_general_settings_section_callback( $arg ) {
 	echo $output = '<p>' . __( 'General options to customize IS Simple theme.', 'issimple' ) . '</p>';
 }
@@ -109,7 +167,7 @@ function issimple_general_settings_section_callback( $arg ) {
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- */
+ *//*
 function issimple_textarea_field_render( $args ) {
 	global $issimple_options;
 	
@@ -147,7 +205,7 @@ function issimple_textarea_field_render( $args ) {
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- */
+ *//*
 function issimple_general_options_page_screen() {
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -184,14 +242,14 @@ function issimple_general_options_page_screen() {
  * 
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
- */
+ *//*
 function issimple_style_options_page_screen() {
 	echo 'Style Page';
 }
 
 /**
  * Sanitize and validate input. Accepts an array, return a sanitized array.
- */
+ *//*
 function issimple_options_validate( $input ) {
 	global $select_options, $radio_options;
 
@@ -217,7 +275,8 @@ function issimple_options_validate( $input ) {
 	$input['sometextarea'] = wp_filter_post_kses( $input['sometextarea'] );
 
 	return $input;
-}
+}*/
 
 
-$issimple_options = get_option( 'issimple_theme_options' );
+$issimple_options = get_option( 'issimple_general_options' );
+$issimple_style_options = get_option( 'issimple_style_options' );
