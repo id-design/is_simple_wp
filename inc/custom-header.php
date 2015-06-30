@@ -77,7 +77,7 @@ function issimple_header_style() {
 		// Has a Custom Header been added?
 		if ( ! empty( $header_image ) ) :
 	?>
-		#fixed-nav-header {
+		#nav-header {
 			background: url(<?php header_image(); ?>) no-repeat scroll top center;
 			background-size: 100% auto;
 		}

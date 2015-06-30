@@ -134,7 +134,7 @@
 	
 	$( document ).ready( function() {
 		$wpadminbar = $( '#wpadminbar' ).first();
-		$fixed_navbar_header = $( '#fixed-nav-header' ).first();
+		$fixed_navbar_header = $( '#nav-header' ).first();
 		$window	 = $( window );
 		$body	 = $( document.body );
 		$header  = $( '#header' ).first();
