@@ -1,22 +1,35 @@
 <?php
 /**
  * Options to customize IS Simple Wordpress Theme.
- * 
- * @package WordPress
- * @subpackage IS Simple
- * @since IS Simple 1.0
+ *
+ * @package		WordPress
+ * @subpackage	IS Simple
+ * @since		IS Simple 1.0
  */
 
 
+/**
+ * Require Theme Options Class
+ *
+ * @since	IS Simple 1.0
+ */
 require_once get_template_directory() . '/inc/classes/class-theme-options.php';
 
+
+if ( ! function_exists( 'issimple_theme_options' ) ) :
+/**
+ * IS Simple Theme Options Setup
+ *
+ * @since	IS Simple 1.0
+ * ----------------------------------------------------------------------------
+ */
 function issimple_theme_options() {
 	$settings = new ISSimple_Theme_Options(
-		'issimple-settings',		// Slug/ID of the Settings Page (Required)
-		'IS Simple Theme Settings',	// Settings page name (Required)
-		'manage_options'			// Page capability (Optional) [default is manage_options]
+		'issimple-settings',			// Slug/ID of the Settings Page (Required)
+		'IS Simple Theme Settings',		// Settings page name (Required)
+		'manage_options'				// Page capability (Optional) [default is manage_options]
 	);
-	
+
 	$settings->set_tabs( array(
 		array(
 			'id' => 'issimple_general_options',					// Slug/ID of the Settings tab (Required)
@@ -27,7 +40,7 @@ function issimple_theme_options() {
 			'title' => __( 'Style Settings', 'issimple' ),	// Settings tab title (Required)
 		)
 	) );
-	
+
 	$default_footer_text = sprintf(
 		__( '&copy; %1$d %2$s - %3$s %4$s %5$s %6$s %7$s.', 'issimple' ),
 		date( 'Y' ),
@@ -42,65 +55,95 @@ function issimple_theme_options() {
 			'http://wordpress.org/',
 			'WordPress' )
 	);
-		
+
 	$settings->set_fields( array(
-		'issimple_general_fields_section' => array(											// Slug/ID of the section (Required)
-			'tab'   => 'issimple_general_options',											// Tab ID/Slug (Required)
-			'title' => __( 'General options to customize IS Simple WP Theme.', 'issimple' ),	// Section title (Required)
-			'fields' => array(																// Section fields (Required)
+		'issimple_general_fields_section' => array(													// Slug/ID of the section (Required)
+			'tab'		=> 'issimple_general_options',												// Tab ID/Slug (Required)
+			'title'		=> __( 'General options to customize IS Simple WP Theme.', 'issimple' ),	// Section title (Required)
+			'fields'	=> array(																	// Section fields (Required)
 				// Footer text.
 				array(
-					'id'          => 'issimple_options_footer_text',				// Required
-					'label'       => __( 'Footer Text', 'issimple' ),				// Required
-					'type'        => 'textarea',									// Required
-					'attributes'  => array(											// Optional (html input elements)
-						//'placeholder' => __( 'Some text here!' )
-					),
-					'default'  => $default_footer_text,									// Optional
-					'description' => __( 'Type your custom copyright text displayed on footer', 'issimple' )	// Optional
+					'id'			=> 'issimple_options_footer_text',
+					'label'			=> __( 'Footer Text', 'issimple' ),
+					'type'			=> 'textarea',
+					'default'		=> $default_footer_text,
+					'description'	=> __( 'Type the copyright text appears in the footer.', 'issimple' )
 				)
 			)
 		),
-		'issimple_style_fields_section' => array(											// Slug/ID of the section (Required)
-			'tab'   => 'issimple_style_options',											// Tab ID/Slug (Required)
-			'title' => __( 'Style options to customize IS Simple WP Theme.', 'issimple' ),	// Section title (Required)
-			'fields' => array(																// Section fields (Required)
-				// Footer text.
+		'issimple_style_fields_section' => array(													// Slug/ID of the section (Required)
+			'tab'		=> 'issimple_style_options',												// Tab ID/Slug (Required)
+			'title'		=> __( 'Style options to customize IS Simple WP Theme.', 'issimple' ),		// Section title (Required)
+			'fields'	=> array(																	// Section fields (Required)
+				// Header Navbar Style
 				array(
-					'id'          => 'issimple_header_navbar_style',				// Required
-					'label'       => __( 'Header Navbar Style', 'issimple' ),				// Required
-					'type'        => 'select',									// Required
-					'attributes'  => array(											// Optional (html input elements)
-						//'placeholder' => __( 'Some text here!' )
+					'id'			=> 'issimple_header_navbar_style',
+					'label'			=> __( 'Header Navbar Style', 'issimple' ),
+					'type'			=> 'select',
+					'default'		=> 'navbar-inverse',
+					'options'		=> array(
+						'navbar-default' => __( 'Navbar Default', 'issimple' ),
+						'navbar-inverse' => __( 'Navbar Inverse', 'issimple' )
 					),
-					'default'  => 'navbar-inverse',									// Optional
-					'options' => array(
-						'navbar-default' => 'Navbar Default',
-						'navbar-inverse' => 'Navbar Inverse'
+					'description'	=> __( 'Select the Header Navbar Style you want.', 'issimple' )
+				),
+				// Header Navbar Fixing
+				array(
+					'id'			=> 'issimple_header_navbar_fixing',
+					'label'			=> __( 'Header Navbar Fixing', 'issimple' ),
+					'type'			=> 'select',
+					'default'		=> 'navbar-fixed-top',
+					'options'		=> array(
+						'none'				=> __( 'None', 'issimple' ),
+						'navbar-static-top'	=> __( 'Navbar Static Top', 'issimple' ),
+						'navbar-fixed-top'	=> __( 'Navbar Fixed Top', 'issimple' )
 					),
-					'description' => __( 'Type your custom copyright text displayed on footer', 'issimple' )	// Optional
+					'description'	=> __( 'Select the Header Navbar Fixing you want.', 'issimple' )
 				)
 			)
 		)
 	) );
 }
+endif; // issimple_theme_options
 add_action( 'init', 'issimple_theme_options', 1 );
 
 
 /**
- * Bootstrap type navbar to header navigation
+ * Bootstrap Navbar Style to header navigation
  *
  * @since	IS Simple 1.0
  *
- * @return	string	Bootstrap Navbar Type Class
+ * @return	string	Bootstrap Navbar Style Class
  */
 function bootstrap_header_navbar_style() {
 	global $issimple_style_options;
-	
+
 	$navbar_style = $issimple_style_options['issimple_header_navbar_style'];
-	$navbar_style = ( isset( $navbar_style ) ) ? $navbar_style : 'navbar-inverse';
-	
+	$navbar_style = ( isset( $navbar_style ) ) ? esc_attr( $navbar_style ) : 'navbar-inverse';
+
 	return apply_filters( 'issimple_header_navbar_style', $navbar_style );
+}
+
+
+/**
+ * Bootstrap Navbar Fixing to header navigation
+ *
+ * @since	IS Simple 1.0
+ *
+ * @return	string	Bootstrap Navbar Fixing Class
+ */
+function bootstrap_header_navbar_fixing() {
+	global $issimple_style_options;
+
+	$navbar_fixing = $issimple_fixing_options['issimple_header_navbar_fixing'];
+
+	if ( isset( $navbar_fixing ) ) {
+		$navbar_fixing =  ( $navbar_fixing != 'none' ) ? esc_attr( $navbar_fixing ) : '';
+	} else {
+		$navbar_fixing = 'navbar-fixed-top';
+	}
+
+	return apply_filters( 'issimple_header_navbar_fixing', $navbar_fixing );
 }
 
 

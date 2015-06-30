@@ -111,6 +111,24 @@ add_filter( 'body_class', 'add_slug_to_body_class' );
 
 
 /**
+ * Bootstrap Navbar Classes to header navigation
+ *
+ * @since IS Simple 1.0
+ *
+ * @return	string	Bootstrap Navbar Classes
+ */
+function issimple_header_navbar_classes() {
+	$classes = array();
+	$classes[] = 'navbar';
+	$classes[] = bootstrap_header_navbar_style();
+	$classes[] = bootstrap_header_navbar_fixing();
+	$classes = ' class="' . join( ' ', $classes ) . '"';
+
+	echo apply_filters( 'issimple_header_navbar_classes', $classes );
+}
+
+
+/**
  * Add attribute 'role="navigation"' to Nav Menus
  * 
  * @since IS Simple 1.0

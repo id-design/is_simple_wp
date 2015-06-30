@@ -26,7 +26,7 @@
 	</head>
 	<body <?php body_class(); ?>>
 		
-		<nav id="fixed-nav-header" class="navbar navbar-inverse navbar-fixed-top">
+		<nav id="fixed-nav-header"<?php issimple_header_navbar_classes(); ?>>
 			<header id="header" class="container-fluid" role="banner">
 				<a class="sr-only" href="#content" title="<?php esc_attr_e( 'Skip to content', 'issimple' ); ?>"><?php _e( 'Skip to content', 'issimple' ); ?></a>
 				<hgroup id="brand" class="navbar-header">
