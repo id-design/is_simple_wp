@@ -60,10 +60,49 @@ function issimple_theme_options() {
 					'description' => __( 'Type your custom copyright text displayed on footer', 'issimple' )	// Optional
 				)
 			)
+		),
+		'issimple_style_fields_section' => array(											// Slug/ID of the section (Required)
+			'tab'   => 'issimple_style_options',											// Tab ID/Slug (Required)
+			'title' => __( 'Style options to customize IS Simple WP Theme.', 'issimple' ),	// Section title (Required)
+			'fields' => array(																// Section fields (Required)
+				// Footer text.
+				array(
+					'id'          => 'issimple_header_navbar_style',				// Required
+					'label'       => __( 'Header Navbar Style', 'issimple' ),				// Required
+					'type'        => 'select',									// Required
+					'attributes'  => array(											// Optional (html input elements)
+						//'placeholder' => __( 'Some text here!' )
+					),
+					'default'  => 'navbar-inverse',									// Optional
+					'options' => array(
+						'navbar-default' => 'Navbar Default',
+						'navbar-inverse' => 'Navbar Inverse'
+					),
+					'description' => __( 'Type your custom copyright text displayed on footer', 'issimple' )	// Optional
+				)
+			)
 		)
 	) );
 }
 add_action( 'init', 'issimple_theme_options', 1 );
+
+
+/**
+ * Bootstrap type navbar to header navigation
+ *
+ * @since	IS Simple 1.0
+ *
+ * @return	string	Bootstrap Navbar Type Class
+ */
+function bootstrap_header_navbar_style() {
+	global $issimple_style_options;
+	
+	$navbar_style = $issimple_style_options['issimple_header_navbar_style'];
+	$navbar_style = ( isset( $navbar_style ) ) ? $navbar_style : 'navbar-inverse';
+	
+	return apply_filters( 'issimple_header_navbar_style', $navbar_style );
+}
+
 
 /**
  * Adiciona o menu de personalização do tema
