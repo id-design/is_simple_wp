@@ -177,6 +177,10 @@ li.comment,
 	margin-bottom: 0;
 }
 
+#nav-header.navbar {
+	margin-bottom: 0;
+}
+
 h1:first-child,
 h2:first-child,
 h3:first-child,
@@ -563,6 +567,12 @@ li:hover .menu-item-desc {
  * Media Queries
  * ----------------------------------------------------------------------------
  */
+@media screen and ( max-width: 599px ) {
+	.navbar-fixed-top {
+		position: absolute;
+	}
+}
+
 @media screen and ( max-width: 767px ) {
 	#main,
 	#page-header,

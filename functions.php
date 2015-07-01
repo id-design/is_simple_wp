@@ -378,6 +378,8 @@ add_action( 'get_header', 'enable_threaded_comments' );
 require_once INCLUDES_PATH . '/utilities.php';
 // Bootstrap functions
 require_once INCLUDES_PATH . '/bootstrap-functions.php';
+// Theme Options.
+require_once INCLUDES_PATH . '/theme-options.php';
 // Limpeza e otimização do tema
 require_once INCLUDES_PATH . '/cleanup.php';
 // Shortcodes úteis no tema
@@ -386,5 +388,3 @@ require_once INCLUDES_PATH . '/shortcodes.php';
 require_once INCLUDES_PATH . '/template-tags.php';
 // Funções para incrementar o formulário de contato no tema ou post
 require_once INCLUDES_PATH . '/issimple-contact-form.php';
-// Theme Options.
-require_once INCLUDES_PATH . '/theme-options.php';

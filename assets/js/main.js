@@ -117,15 +117,17 @@
 	}
 	
 	function navbar_resize() {
-		if ( $wpadminbar.height() ) {
-			$fixed_navbar_header.attr( 'style', 'top: ' + $wpadminbar.height() + 'px;' );
-			
-			if ( 600 >= $window.width() ) {
-				$fixed_navbar_header.attr( 'style', 'position: absolute; top: ' + $wpadminbar.height() + 'px;' );
+		if ( $navbar_header.hasClass( 'navbar-fixed-top' ) ) {
+			if ( $wpadminbar.height() ) {
+				$navbar_header.attr( 'style', 'top: ' + $wpadminbar.height() + 'px;' );
+
+				if ( 600 >= $window.width() ) {
+					$navbar_header.attr( 'style', 'top: ' + $wpadminbar.height() + 'px;' );
+				}
 			}
+
+			$body.attr( 'style', 'padding-top: ' + ( $navbar_header.height() ) + 'px;' );
 		}
-		
-		$body.attr( 'style', 'padding-top: ' + ( $fixed_navbar_header.height() ) + 'px;' );
 	}
     
     function sidebar_affix() {
@@ -134,7 +136,7 @@
 	
 	$( document ).ready( function() {
 		$wpadminbar = $( '#wpadminbar' ).first();
-		$fixed_navbar_header = $( '#nav-header' ).first();
+		$navbar_header = $( '#nav-header' ).first();
 		$window	 = $( window );
 		$body	 = $( document.body );
 		$header  = $( '#header' ).first();

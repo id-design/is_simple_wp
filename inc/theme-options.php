@@ -119,7 +119,7 @@ function bootstrap_header_navbar_style() {
 	global $issimple_style_options;
 
 	$navbar_style = $issimple_style_options['issimple_header_navbar_style'];
-	$navbar_style = ( isset( $navbar_style ) ) ? esc_attr( $navbar_style ) : 'navbar-inverse';
+	$navbar_style = ( isset( $navbar_style ) ) ? sanitize_html_class( $navbar_style ) : 'navbar-inverse';
 
 	return apply_filters( 'issimple_header_navbar_style', $navbar_style );
 }
@@ -135,10 +135,10 @@ function bootstrap_header_navbar_style() {
 function bootstrap_header_navbar_fixing() {
 	global $issimple_style_options;
 
-	$navbar_fixing = $issimple_fixing_options['issimple_header_navbar_fixing'];
+	$navbar_fixing = $issimple_style_options['issimple_header_navbar_fixing'];
 
 	if ( isset( $navbar_fixing ) ) {
-		$navbar_fixing =  ( $navbar_fixing != 'none' ) ? esc_attr( $navbar_fixing ) : '';
+		$navbar_fixing =  ( $navbar_fixing != 'none' ) ? sanitize_html_class( $navbar_fixing ) : '';
 	} else {
 		$navbar_fixing = 'navbar-fixed-top';
 	}

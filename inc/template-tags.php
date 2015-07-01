@@ -122,7 +122,7 @@ function issimple_header_navbar_classes() {
 	$classes[] = 'navbar';
 	$classes[] = bootstrap_header_navbar_style();
 	$classes[] = bootstrap_header_navbar_fixing();
-	$classes = ' class="' . join( ' ', $classes ) . '"';
+	$classes = ' class="' . join( ' ', array_filter( $classes ) ) . '"';
 
 	echo apply_filters( 'issimple_header_navbar_classes', $classes );
 }
