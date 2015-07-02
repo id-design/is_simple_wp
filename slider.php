@@ -2,64 +2,68 @@
 /**
  * The template for displaying slider
  *
- * @package WordPress
- * @subpackage IS Simple
- * @since IS Simple 1.0
+ * @package		WordPress
+ * @subpackage	IS Simple
+ * @since		IS Simple 1.0
  */
 
-$param = array( 'tag'				=> 'featured',
-				'posts_per_page'	=> 5,
-				'post_status'		=> 'publish',
-				'orderby'			=> 'date',
-				'order'				=> 'DESC',
-				'meta_key'			=> '_thumbnail_id'
-				);
+// Set default parrameters to new WP_Query object
+$param = array(
+	'tag'				=> 'featured',
+	'posts_per_page'	=> 5,
+	'post_status'		=> 'publish',
+	'orderby'			=> 'date',
+	'order'				=> 'DESC',
+	'meta_key'			=> '_thumbnail_id'
+);
 
-$obj_query = $wp_query->get_queried_object();
+// Currently-queried Object.
+$obj_query = get_queried_object();
 
 if ( is_tag() ) :
 	$tag_slug = $obj_query->slug;
-	$param[ 'tag_slug__and' ] = $tag_slug;
+	$param['tag_slug__and'] = $tag_slug;
 endif;
 
 if ( is_category() ) :
 	$cat_slug = $obj_query->slug;
-	$param[ 'category_name' ] = $cat_slug;
+	$param['category_name'] = $cat_slug;
 endif;
 
 if ( is_date() ) :
 	$day_num	= get_the_date( 'j' );;
 	$month_num	= get_the_date( 'n' );;
 	$year_num	= get_the_date( 'Y' );;
-	
+
 	if ( is_day() )
 		$date_param = array(
 			'day'	=> $day_num,
 			'month'	=> $month_num,
 			'year'	=> $year_num
 		);
-	
+
 	if ( is_month() )
 		$date_param = array(
 			'month'	=> $month_num,
 			'year'	=> $year_num
 		);
-	
+
 	if ( is_year() )
 		$date_param = array(
 			'year'	=> $year_num
 		);
-	
-	$param[ 'date_query' ] = array( $date_param );
+
+	$param['date_query'] = array( $date_param );
 endif;
 
 if ( is_search() ) $param['s'] = get_search_query();
 
+// Creates a new WP_Query object with defined parameters 
 $slides = new WP_Query( $param );
 
 if ( $slides->post_count > 0 ) :
 	$slider_pause_hover = 'true';
-	
+
 	$figure_atts = array();
 	$figure_atts['class'] = 'cycle-slideshow hidden-xs';
 	$figure_atts['data-cycle-fx'] = 'scrollHorz';
@@ -71,14 +75,14 @@ if ( $slides->post_count > 0 ) :
 	$figure_atts['data-cycle-next'] = '#cycle-next';
 	$figure_atts['data-cycle-slides'] = '> div';
 	$figure_attributes = array2atts( $figure_atts );
-	
+
 	?>
 	<div id="cycle-slider">
 		<figure<?php echo $figure_attributes; ?>><?php
 			
 			while ( $slides->have_posts() ) : $slides->the_post();
-				$post_link  = get_permalink();
-				$post_title = get_the_title();
+				$post_link  = esc_url( get_permalink() );
+				$post_title = esc_attr( get_the_title() );
 				
 				?>
 				<div class="cycle-slide">
@@ -105,7 +109,6 @@ if ( $slides->post_count > 0 ) :
 				</div><!-- .cycle-slide -->
 				<?php
 			endwhile;
-			
 			?>
 			<span class="cycle-navigation">
 	            <a href="#" id="cycle-prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -119,4 +122,5 @@ if ( $slides->post_count > 0 ) :
 	
 endif;
 
+// Restores the $post global to the current post in the main query.
 wp_reset_postdata();
