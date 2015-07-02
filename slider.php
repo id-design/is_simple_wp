@@ -53,6 +53,8 @@ if ( is_date() ) :
 	$param[ 'date_query' ] = array( $date_param );
 endif;
 
+if ( is_search() ) $param['s'] = get_search_query();
+
 $slides = new WP_Query( $param );
 
 if ( $slides->post_count > 0 ) :
