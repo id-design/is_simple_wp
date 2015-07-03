@@ -45,6 +45,7 @@ function issimple_theme_options() {
 		)
 	) );
 
+	// Default Footer Copyright Text
 	$default_footer_text = sprintf(
 		__( '&copy; %1$d %2$s - %3$s %4$s %5$s %6$s %7$s.', 'issimple' ),
 		date( 'Y' ),
@@ -60,6 +61,7 @@ function issimple_theme_options() {
 			'WordPress' )
 	);
 
+	// Post Tag Array
 	$tags = get_tags();
 	$array_tags = array();
 	$array_tags['none'] = __( 'None', 'issimple' );
@@ -67,6 +69,13 @@ function issimple_theme_options() {
 		$array_tags[ $tag->term_id ] = ucfirst( $tag->name );
 	}
 
+	// Slider FX
+	$slider_fx = array(
+		'none'			=> __( 'None', 'issimple' ),
+		'fade'			=> 'Fade',
+		'fadeout'		=> 'Fade Out',
+		'scrollHorz'	=> 'Scroll Horizontal'
+	);
 
 	$settings->set_fields( array(
 		'issimple_general_fields_section' => array(													// Slug/ID of the section (Required)
@@ -125,6 +134,23 @@ function issimple_theme_options() {
 					'type'			=> 'select',
 					'options'		=> $array_tags,
 					'description'	=> __( 'Select the Post Tag to show in slider.', 'issimple' )
+				),
+				// Slider FX
+				array(
+					'id'			=> 'slider_fx',
+					'label'			=> __( 'Slider FX', 'issimple' ),
+					'type'			=> 'select',
+					'default'		=> 'scrollHorz',
+					'options'		=> $slider_fx,
+					'description'	=> __( 'Select the transition that you want for slider.', 'issimple' )
+				),
+				// Pause on hover
+				array(
+					'id'			=> 'pause_on_hover',
+					'label'			=> __( 'Pause on hover', 'issimple' ),
+					'type'			=> 'checkbox',
+					'default'		=> 0,
+					'description'	=> __( 'Pause the slideshow when the mouse moves over it.', 'issimple' )
 				)
 			)
 		)

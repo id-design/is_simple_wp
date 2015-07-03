@@ -64,12 +64,10 @@ if ( is_search() ) $param['s'] = get_search_query();
 $slides = new WP_Query( $param );
 
 if ( $slides->post_count > 0 ) :
-	$slider_pause_hover = 'true';
-
 	$figure_atts = array();
 	$figure_atts['class'] = 'cycle-slideshow hidden-xs';
-	$figure_atts['data-cycle-fx'] = 'scrollHorz';
-	$figure_atts['data-cycle-pause-on-hover'] = $slider_pause_hover;
+	$figure_atts['data-cycle-fx'] = issimple_get_slider_option( 'slider_fx' );
+	$figure_atts['data-cycle-pause-on-hover'] = ( issimple_get_slider_option( 'pause_on_hover' ) ) ? 'true' : '';
 	$figure_atts['data-cycle-timeout'] = '4000';
 	$figure_atts['data-cycle-pager'] = '#cycle-pager';
 	$figure_atts['data-cycle-pager-template'] = '<a href=#><span class="glyphicon glyphicon-minus"></a>';
