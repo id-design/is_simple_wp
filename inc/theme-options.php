@@ -32,12 +32,16 @@ function issimple_theme_options() {
 
 	$settings->set_tabs( array(
 		array(
-			'id' => 'issimple_general_options',					// Slug/ID of the Settings tab (Required)
-			'title' => __( 'General Settings', 'issimple' ),	// Settings tab title (Required)
+			'id'	=> 'issimple_general_options',					// Slug/ID of the Settings tab (Required)
+			'title'	=> __( 'General Settings', 'issimple' ),		// Settings tab title (Required)
 		),
 		array(
-			'id' => 'issimple_style_options',					// Slug/ID of the Settings tab (Required)
-			'title' => __( 'Style Settings', 'issimple' ),	// Settings tab title (Required)
+			'id' 	=> 'issimple_style_options',					// Slug/ID of the Settings tab (Required)
+			'title'	=> __( 'Style Settings', 'issimple' ),			// Settings tab title (Required)
+		),
+		array(
+			'id' 	=> 'issimple_slider_options',					// Slug/ID of the Settings tab (Required)
+			'title'	=> __( 'Slider Settings', 'issimple' ),			// Settings tab title (Required)
 		)
 	) );
 
@@ -55,6 +59,13 @@ function issimple_theme_options() {
 			'http://wordpress.org/',
 			'WordPress' )
 	);
+
+	$tags = get_tags();
+	$array_tags = array();
+	foreach ( $tags as $tag ) {
+		$array_tags[ $tag->term_id ] = $tag->name;
+	}
+
 
 	$settings->set_fields( array(
 		'issimple_general_fields_section' => array(													// Slug/ID of the section (Required)
@@ -99,6 +110,23 @@ function issimple_theme_options() {
 						'navbar-fixed-top'	=> __( 'Navbar Fixed Top', 'issimple' )
 					),
 					'description'	=> __( 'Select the Header Navbar Fixing you want.', 'issimple' )
+				)
+			)
+		),
+		'issimple_slider_fields_section' => array(													// Slug/ID of the section (Required)
+			'tab'		=> 'issimple_slider_options',												// Tab ID/Slug (Required)
+			'title'		=> __( 'Slider options to customize IS Simple WP Theme.', 'issimple' ),		// Section title (Required)
+			'fields'	=> array(																	// Section fields (Required)
+				// Header Navbar Style
+				array(
+					'id'			=> 'issimple_slider_tags',
+					'label'			=> __( 'Slider Tags', 'issimple' ),
+					'type'			=> 'select',
+					//'attributes'	=> array(
+					//	'multiple' => 'multiple'
+					//),
+					'options'		=> $array_tags,
+					'description'	=> __( 'Select the Tags to show in slider.', 'issimple' )
 				)
 			)
 		)
@@ -362,3 +390,4 @@ function issimple_options_validate( $input ) {
 
 $issimple_options = get_option( 'issimple_general_options' );
 $issimple_style_options = get_option( 'issimple_style_options' );
+$issimple_slider_options = get_option( 'issimple_slider_options' );

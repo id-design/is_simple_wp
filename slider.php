@@ -7,9 +7,13 @@
  * @since		IS Simple 1.0
  */
 
-// Set default parrameters to new WP_Query object
+/**
+ * Set default parrameters to new WP_Query object
+ */
+global $issimple_slider_options;
+
 $param = array(
-	'tag'				=> 'featured',
+	'tag__in'			=> $issimple_slider_options['issimple_slider_tags'],
 	'posts_per_page'	=> 5,
 	'post_status'		=> 'publish',
 	'orderby'			=> 'date',
