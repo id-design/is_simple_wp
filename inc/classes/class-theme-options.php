@@ -440,7 +440,6 @@ class ISSimple_Theme_Options {
 
 		// Displays the description.
 		if ( $args['description'] ) {
-			$html .= sprintf( '<label for="%s"> %s</label>', $id, $args['description'] );
 			$html .= sprintf( '<label for="%s">%s</label>', $id, $args['description'] );
 		}
 
