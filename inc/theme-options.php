@@ -62,8 +62,9 @@ function issimple_theme_options() {
 
 	$tags = get_tags();
 	$array_tags = array();
+	$array_tags['none'] = __( 'None', 'issimple' );
 	foreach ( $tags as $tag ) {
-		$array_tags[ $tag->term_id ] = $tag->name;
+		$array_tags[ $tag->term_id ] = ucfirst( $tag->name );
 	}
 
 
@@ -74,7 +75,7 @@ function issimple_theme_options() {
 			'fields'	=> array(																	// Section fields (Required)
 				// Footer text.
 				array(
-					'id'			=> 'issimple_options_footer_text',
+					'id'			=> 'footer_text',
 					'label'			=> __( 'Footer Text', 'issimple' ),
 					'type'			=> 'textarea',
 					'default'		=> $default_footer_text,
@@ -88,7 +89,7 @@ function issimple_theme_options() {
 			'fields'	=> array(																	// Section fields (Required)
 				// Header Navbar Style
 				array(
-					'id'			=> 'issimple_header_navbar_style',
+					'id'			=> 'header_navbar_style',
 					'label'			=> __( 'Header Navbar Style', 'issimple' ),
 					'type'			=> 'select',
 					'default'		=> 'navbar-inverse',
@@ -100,7 +101,7 @@ function issimple_theme_options() {
 				),
 				// Header Navbar Fixing
 				array(
-					'id'			=> 'issimple_header_navbar_fixing',
+					'id'			=> 'header_navbar_fixing',
 					'label'			=> __( 'Header Navbar Fixing', 'issimple' ),
 					'type'			=> 'select',
 					'default'		=> 'navbar-fixed-top',
@@ -117,16 +118,13 @@ function issimple_theme_options() {
 			'tab'		=> 'issimple_slider_options',												// Tab ID/Slug (Required)
 			'title'		=> __( 'Slider options to customize IS Simple WP Theme.', 'issimple' ),		// Section title (Required)
 			'fields'	=> array(																	// Section fields (Required)
-				// Header Navbar Style
+				// Slider Tag
 				array(
-					'id'			=> 'issimple_slider_tags',
-					'label'			=> __( 'Slider Tags', 'issimple' ),
+					'id'			=> 'slider_tag',
+					'label'			=> __( 'Slider Tag', 'issimple' ),
 					'type'			=> 'select',
-					//'attributes'	=> array(
-					//	'multiple' => 'multiple'
-					//),
 					'options'		=> $array_tags,
-					'description'	=> __( 'Select the Tags to show in slider.', 'issimple' )
+					'description'	=> __( 'Select the Post Tag to show in slider.', 'issimple' )
 				)
 			)
 		)
@@ -137,6 +135,45 @@ add_action( 'init', 'issimple_theme_options', 1 );
 
 
 /**
+ * Get custom general theme option
+ *
+ * @since	IS Simple 1.0
+ *
+ * @return	string/bool/array	Term required
+ */
+function issimple_get_option( $id ) {
+	global $issimple_options;
+	return $issimple_options[ $id ];
+}
+
+
+/**
+ * Get custom style theme option
+ *
+ * @since	IS Simple 1.0
+ *
+ * @return	string/bool/array	Term required
+ */
+function issimple_get_style_option( $id ) {
+	global $issimple_style_options;
+	return $issimple_style_options[ $id ];
+}
+
+
+/**
+ * Get custom slider theme option
+ *
+ * @since	IS Simple 1.0
+ *
+ * @return	string/bool/array	Term required
+ */
+function issimple_get_slider_option( $id ) {
+	global $issimple_slider_options;
+	return $issimple_slider_options[ $id ];
+}
+
+
+/**
  * Bootstrap Navbar Style to header navigation
  *
  * @since	IS Simple 1.0
@@ -144,9 +181,7 @@ add_action( 'init', 'issimple_theme_options', 1 );
  * @return	string	Bootstrap Navbar Style Class
  */
 function bootstrap_header_navbar_style() {
-	global $issimple_style_options;
-
-	$navbar_style = $issimple_style_options['issimple_header_navbar_style'];
+	$navbar_style = issimple_get_style_option( 'header_navbar_style' );
 	$navbar_style = ( isset( $navbar_style ) ) ? sanitize_html_class( $navbar_style ) : 'navbar-inverse';
 
 	return apply_filters( 'issimple_header_navbar_style', $navbar_style );
@@ -161,9 +196,7 @@ function bootstrap_header_navbar_style() {
  * @return	string	Bootstrap Navbar Fixing Class
  */
 function bootstrap_header_navbar_fixing() {
-	global $issimple_style_options;
-
-	$navbar_fixing = $issimple_style_options['issimple_header_navbar_fixing'];
+	$navbar_fixing = issimple_get_style_option( 'header_navbar_fixing' );
 
 	if ( isset( $navbar_fixing ) ) {
 		$navbar_fixing =  ( $navbar_fixing != 'none' ) ? sanitize_html_class( $navbar_fixing ) : '';

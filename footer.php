@@ -62,11 +62,7 @@
 					</div><!-- #footer-widget-area -->
 					<div id="copyright" class="row">
 						<div class="col-md-12">
-							<p>
-								<?php global $issimple_options;
-									echo $issimple_options['issimple_options_footer_text'];
-								?>
-							</p>
+							<p><?php echo issimple_get_option( 'footer_text' ); ?></p>
 						</div>
 					</div><!-- #copyright -->
 				</div>
