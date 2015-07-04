@@ -144,6 +144,20 @@ function issimple_theme_options() {
 					'options'		=> $slider_fx,
 					'description'	=> __( 'Select the transition that you want for slider.', 'issimple' )
 				),
+				// Slider Timeout
+				array(
+					'id'			=> 'slider_timeout',
+					'label'			=> __( 'Slider Timeout', 'issimple' ),
+					'type'			=> 'input',
+					'default'		=> 4000,
+					'description'	=> __( 'Set the time between slide transitions in milliseconds.', 'issimple' ),
+					'attributes'	=> array(
+						'type'	=> 'number',
+						'min'	=> 1000,
+						'max'	=> 10000,
+						'step'	=> 500
+					)
+				),
 				// Pause on hover
 				array(
 					'id'			=> 'pause_on_hover',
