@@ -39,7 +39,7 @@
 					
 					<div id="header-txt">
 						<?php if ( is_home() || is_front_page() ) : ?>
-							<h1 id="name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							<h1 id="name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php _e( 'Go to home page?', 'issimple' ); ?>" rel="home"><span><?php bloginfo( 'name' ); ?></span></a></h1>
 							<h2 id="desc" class="sr-only"><?php bloginfo( 'description' ); ?></h2>
 						<?php else : ?>
 							<p id="name" class="h1"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></p>

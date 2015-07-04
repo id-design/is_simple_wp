@@ -92,7 +92,7 @@ function issimple_header_style() {
 		// Has the text been hidden?
 		if ( ! display_header_text() ) :
 	?>
-		#header-txt {
+		#header-txt span {
 			clip: rect(1px, 1px, 1px, 1px);
 			position: absolute !important;
 		}

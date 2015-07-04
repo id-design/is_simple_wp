@@ -573,7 +573,7 @@ class ISSimple_Theme_Options {
 			$image = $image[0];
 		}
 
-		$html .= sprintf( '<input id="%1$s" name="%2$s[%1$s]" type="hidden" class="image" value="%3$s" /><img src="%4$s" class="preview" style="height: 150px; width: 150px;" alt="" /><input id="%1$s-button" class="button" type="button" value="%5$s" /><ul class="actions"><li><a href="#" class="delete" title="%6$s"><span class="dashicons dashicons-no"></span></a></li></ul>', $id, $tab, $current, $image, __( 'Select image', 'issimple' ), __( 'Remove image', 'issimple' ) );
+		$html .= sprintf( '<input id="%1$s" name="%2$s[%1$s]" type="hidden" class="image" value="%3$s" /><img src="%4$s" class="preview" style="max-height: 150px; max-width: 150px;" alt="" /><input id="%1$s-button" class="button" type="button" value="%5$s" /><ul class="actions"><li><a href="#" class="delete" title="%6$s"><span class="dashicons dashicons-no"></span></a></li></ul>', $id, $tab, $current, $image, __( 'Select image', 'issimple' ), __( 'Remove image', 'issimple' ) );
 
 		$html .= '<br class="clear" />';
 		$html .= '</div>';

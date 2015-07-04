@@ -82,7 +82,14 @@ function issimple_theme_options() {
 			'tab'		=> 'issimple_general_options',												// Tab ID/Slug (Required)
 			'title'		=> __( 'General options to customize IS Simple WP Theme.', 'issimple' ),	// Section title (Required)
 			'fields'	=> array(																	// Section fields (Required)
-				// Footer text.
+				// Header Logo.
+				array(
+					'id'			=> 'header_logo',
+					'label'			=> __( 'Header Logo', 'issimple' ),
+					'type'			=> 'image',
+					'description'	=> __( 'Select the logo to show in header.', 'issimple' )
+				),
+				// Footer Text.
 				array(
 					'id'			=> 'footer_text',
 					'label'			=> __( 'Footer Text', 'issimple' ),
@@ -96,7 +103,7 @@ function issimple_theme_options() {
 			'tab'		=> 'issimple_style_options',												// Tab ID/Slug (Required)
 			'title'		=> __( 'Style options to customize IS Simple WP Theme.', 'issimple' ),		// Section title (Required)
 			'fields'	=> array(																	// Section fields (Required)
-				// Header Navbar Style
+				// Header Navbar Style.
 				array(
 					'id'			=> 'header_navbar_style',
 					'label'			=> __( 'Header Navbar Style', 'issimple' ),
@@ -108,7 +115,7 @@ function issimple_theme_options() {
 					),
 					'description'	=> __( 'Select the Header Navbar Style you want.', 'issimple' )
 				),
-				// Header Navbar Fixing
+				// Header Navbar Fixing.
 				array(
 					'id'			=> 'header_navbar_fixing',
 					'label'			=> __( 'Header Navbar Fixing', 'issimple' ),
@@ -127,7 +134,7 @@ function issimple_theme_options() {
 			'tab'		=> 'issimple_slider_options',												// Tab ID/Slug (Required)
 			'title'		=> __( 'Slider options to customize IS Simple WP Theme.', 'issimple' ),		// Section title (Required)
 			'fields'	=> array(																	// Section fields (Required)
-				// Slider Tag
+				// Slider Tag.
 				array(
 					'id'			=> 'slider_tag',
 					'label'			=> __( 'Slider Tag', 'issimple' ),
@@ -135,7 +142,7 @@ function issimple_theme_options() {
 					'options'		=> $array_tags,
 					'description'	=> __( 'Select the Post Tag to show in slider.', 'issimple' )
 				),
-				// Slider FX
+				// Slider FX.
 				array(
 					'id'			=> 'slider_fx',
 					'label'			=> __( 'Slider FX', 'issimple' ),
@@ -144,7 +151,7 @@ function issimple_theme_options() {
 					'options'		=> $slider_fx,
 					'description'	=> __( 'Select the transition that you want for slider.', 'issimple' )
 				),
-				// Slider Timeout
+				// Slider Timeout.
 				array(
 					'id'			=> 'slider_timeout',
 					'label'			=> __( 'Slider Timeout', 'issimple' ),
@@ -158,7 +165,7 @@ function issimple_theme_options() {
 						'step'	=> 500
 					)
 				),
-				// Pause on hover
+				// Pause on hover.
 				array(
 					'id'			=> 'pause_on_hover',
 					'label'			=> __( 'Pause on hover', 'issimple' ),
@@ -246,6 +253,32 @@ function bootstrap_header_navbar_fixing() {
 
 	return apply_filters( 'issimple_header_navbar_fixing', $navbar_fixing );
 }
+
+
+/**
+ * Show header logo
+ *
+ * @since	IS Simple 1.0
+ */
+function issimple_header_logo() {
+	$logo_id	= issimple_get_option( 'header_logo' );
+
+	if ( ! isset( $logo_id ) ) return;
+
+	$logo_atts	= wp_get_attachment_image_src( $logo_id );
+	$logo_src	= $logo_atts[0];
+	$logo_width	= $logo_atts[1];
+
+	?>
+	<style type="text/css" id="issimple-header-logo-css">
+		#name a {
+			background: url( "<?php echo $logo_src; ?>" ) no-repeat 15px center; 
+			padding-left: <?php echo 25 + $logo_width ?>px;
+		}
+	</style>
+	<?php
+}
+add_action( 'wp_head', 'issimple_header_logo' );
 
 
 /**
