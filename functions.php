@@ -38,6 +38,8 @@ define( 'ICONS_PATH', ASSETS_PATH . '/icon' );
 define( 'ICONS_URI', ASSETS_URI . '/icon' );
 define( 'SCRIPT_PATH', ASSETS_PATH . '/js' );
 define( 'SCRIPT_URI', ASSETS_URI . '/js' );
+define( 'CORE_PATH', THEME_PATH . '/core' );
+define( 'CORE_URI', THEME_URI . '/core' );
 define( 'INCLUDES_PATH', THEME_PATH . '/inc' );
 define( 'INCLUDES_URI', THEME_URI . '/inc' );
 
@@ -65,7 +67,7 @@ add_action( 'template_redirect', 'issimple_content_width' );
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-require_once INCLUDES_PATH . '/classes/class-bootstrap-nav.php';
+require_once CORE_PATH . '/classes/class-bootstrap-nav.php';
 
 
 /**
@@ -74,14 +76,14 @@ require_once INCLUDES_PATH . '/classes/class-bootstrap-nav.php';
  * @since IS Simple 1.0
  * ----------------------------------------------------------------------------
  */
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-recent-posts.php';
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-recent-comments.php';
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-categories.php';
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-pages.php';
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-archives.php';
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-meta.php';
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-calendar.php';
-require_once INCLUDES_PATH . '/widgets/class-widget-issimple-tag-cloud.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-recent-posts.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-recent-comments.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-categories.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-pages.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-archives.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-meta.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-calendar.php';
+require_once CORE_PATH . '/widgets/class-widget-issimple-tag-cloud.php';
 
 
 if ( ! function_exists( 'issimple_setup' ) ) :
@@ -377,13 +379,13 @@ add_action( 'get_header', 'enable_threaded_comments' );
 // Funções para algumas utilidades básicas no tema
 require_once INCLUDES_PATH . '/utilities.php';
 // Bootstrap functions
-require_once INCLUDES_PATH . '/bootstrap-functions.php';
+require_once CORE_PATH . '/bootstrap-functions.php';
 // Theme Options.
 require_once INCLUDES_PATH . '/theme-options.php';
 // Limpeza e otimização do tema
 require_once INCLUDES_PATH . '/cleanup.php';
 // Shortcodes úteis no tema
-require_once INCLUDES_PATH . '/shortcodes.php';
+require_once CORE_PATH . '/shortcodes.php';
 // Funções exclusivas do tema
 require_once INCLUDES_PATH . '/template-tags.php';
 // Funções para incrementar o formulário de contato no tema ou post

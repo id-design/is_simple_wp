@@ -13,7 +13,7 @@
  *
  * @since	IS Simple 1.0
  */
-require_once get_template_directory() . '/inc/classes/class-theme-options.php';
+require_once get_template_directory() . '/core/classes/class-theme-options.php';
 
 
 if ( ! function_exists( 'issimple_theme_options' ) ) :
