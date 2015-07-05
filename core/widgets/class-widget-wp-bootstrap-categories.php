@@ -9,7 +9,7 @@
  * @category Widget
  * @since IS Simple 1.0
  */
-class WP_Bootstrap_Categories extends WP_Widget {
+class WP_Bootstrap_Categories extends WP_Widget_Categories {
 
 	public function __construct() {
 		parent::__construct();
