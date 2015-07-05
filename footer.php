@@ -62,7 +62,7 @@
 					</div><!-- #footer-widget-area -->
 					<div id="copyright" class="row">
 						<div class="col-md-12">
-							<p><?php echo issimple_get_option( 'footer_text' ); ?></p>
+							<p><?php issimple_footer_text(); ?></p>
 						</div>
 					</div><!-- #copyright -->
 				</div>

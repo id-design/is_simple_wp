@@ -46,19 +46,8 @@ function issimple_theme_options() {
 	) );
 
 	// Default Footer Copyright Text
-	$default_footer_text = sprintf(
-		__( '&copy; %1$d %2$s - %3$s %4$s %5$s %6$s %7$s.', 'issimple' ),
-		date( 'Y' ),
-		do_shortcode( '[home-link]' ),
-		__( 'All rights reserved.', 'issimple' ),
-		__( 'Powered by', 'issimple' ),
-		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
-			'https://github.com/id-design/is_simple_wp',
-			'ID Design' ),
-		__( 'on', 'issimple' ),
-		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
-			'http://wordpress.org/',
-			'WordPress' )
+	$default_footer_text = sprintf( '&copy; %1$d %2$s - %3$s',
+		date( 'Y' ), '[home-link]', __( 'All rights reserved.', 'issimple' )
 	);
 
 	// Post Tag Array
@@ -182,7 +171,7 @@ add_action( 'init', 'issimple_theme_options', 1 );
 
 
 /**
- * Get custom general theme option
+ * Get custom general theme option.
  *
  * @since	IS Simple 1.0
  *
@@ -195,7 +184,7 @@ function issimple_get_option( $id ) {
 
 
 /**
- * Get custom style theme option
+ * Get custom style theme option.
  *
  * @since	IS Simple 1.0
  *
@@ -208,7 +197,7 @@ function issimple_get_style_option( $id ) {
 
 
 /**
- * Get custom slider theme option
+ * Get custom slider theme option.
  *
  * @since	IS Simple 1.0
  *
@@ -221,7 +210,7 @@ function issimple_get_slider_option( $id ) {
 
 
 /**
- * Bootstrap Navbar Style to header navigation
+ * Bootstrap Navbar Style to header navigation.
  *
  * @since	IS Simple 1.0
  *
@@ -236,11 +225,11 @@ function bootstrap_header_navbar_style() {
 
 
 /**
- * Bootstrap Navbar Fixing to header navigation
+ * Bootstrap Navbar Fixing to header navigation.
  *
  * @since	IS Simple 1.0
  *
- * @return	string	Bootstrap Navbar Fixing Class
+ * @return	string	Bootstrap Navbar Fixing Class.
  */
 function bootstrap_header_navbar_fixing() {
 	$navbar_fixing = issimple_get_style_option( 'header_navbar_fixing' );
@@ -256,18 +245,18 @@ function bootstrap_header_navbar_fixing() {
 
 
 /**
- * Show header logo
+ * Show header logo.
  *
  * @since	IS Simple 1.0
  */
 function issimple_header_logo() {
 	$logo_id	= issimple_get_option( 'header_logo' );
 
-	if ( ! isset( $logo_id ) ) return;
-
 	$logo_atts	= wp_get_attachment_image_src( $logo_id );
 	$logo_src	= $logo_atts[0];
 	$logo_width	= $logo_atts[1];
+
+	if ( empty( $logo_src ) ) return;
 
 	?>
 	<style type="text/css" id="issimple-header-logo-css">
@@ -279,6 +268,28 @@ function issimple_header_logo() {
 	<?php
 }
 add_action( 'wp_head', 'issimple_header_logo' );
+
+
+/**
+ * Echo custom footer text.
+ *
+ * @since	IS Simple 1.0
+ */
+function issimple_footer_text() {
+	$footer_text = sprintf( '%1$s %2$s %3$s %4$s %5$s.',
+		issimple_get_option( 'footer_text' ),
+		__( 'Powered by', 'issimple' ),
+		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
+			'https://github.com/id-design/is_simple_wp',
+			'ID Design' ),
+		__( 'on', 'issimple' ),
+		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
+			'http://wordpress.org/',
+			'WordPress' )
+	);
+
+	echo do_shortcode( $footer_text );
+}
 
 
 /**
