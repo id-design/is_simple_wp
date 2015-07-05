@@ -22,7 +22,7 @@
 								if ( is_active_sidebar( 'footer-widget-area-1' ) ) :
 									dynamic_sidebar( 'footer-widget-area-1' );
 								else :
-									the_widget( 'ISSimple_Calendar', array(), array(
+									the_widget( 'WP_Bootstrap_Calendar', array(), array(
 										'before_widget'	=> '<aside class="widget panel panel-default widget_tag_cloud">',
 										'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
 										'after_title'	=> '</h3></div>',
@@ -36,7 +36,7 @@
 								if ( is_active_sidebar( 'footer-widget-area-2' ) ) :
 									dynamic_sidebar( 'footer-widget-area-2' );
 								else :
-									the_widget( 'ISSimple_Pages', array(), array(
+									the_widget( 'WP_Bootstrap_Pages', array(), array(
 										'before_widget'	=> '<aside class="widget panel panel-default widget_tag_cloud">',
 										'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
 										'after_title'	=> '</h3></div>',
@@ -50,7 +50,7 @@
 								if ( is_active_sidebar( 'footer-widget-area-3' ) ) :
 									dynamic_sidebar( 'footer-widget-area-3' );
 								else :
-									the_widget( 'ISSimple_Meta', array(), array(
+									the_widget( 'WP_Bootstrap_Meta', array(), array(
 										'before_widget'	=> '<aside class="widget panel panel-default widget_tag_cloud">',
 										'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
 										'after_title'	=> '</h3></div>',
