@@ -2,7 +2,7 @@
 /**
  * WP_Bootstrap_Calendar class.
  *
- * Calendar adapted to Bootstrap.
+ * Widget Calendar adapted to Bootstrap.
  *
  * @package WordPress
  * @subpackage IS Simple

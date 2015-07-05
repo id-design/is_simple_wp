@@ -1,15 +1,15 @@
 <?php
 /**
- * ISSimple_Categories class.
+ * WP_Bootstrap_Categories class.
  *
- * Categories adapted to IS Simple.
+ * Widget Categories adapted to Bootstrap.
  *
  * @package WordPress
  * @subpackage IS Simple
  * @category Widget
  * @since IS Simple 1.0
  */
-class ISSimple_Categories extends WP_Widget {
+class WP_Bootstrap_Categories extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array( 'classname' => 'widget_categories', 'description' => __( "A list or dropdown of categories." ) );
@@ -95,50 +95,17 @@ class ISSimple_Categories extends WP_Widget {
 
 		echo $args['after_widget'];
 	}
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['count'] = !empty($new_instance['count']) ? 1 : 0;
-		$instance['hierarchical'] = !empty($new_instance['hierarchical']) ? 1 : 0;
-		$instance['dropdown'] = !empty($new_instance['dropdown']) ? 1 : 0;
-
-		return $instance;
-	}
-
-	public function form( $instance ) {
-		//Defaults
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
-		$title = esc_attr( $instance['title'] );
-		$count = isset($instance['count']) ? (bool) $instance['count'] :false;
-		$hierarchical = isset( $instance['hierarchical'] ) ? (bool) $instance['hierarchical'] : false;
-		$dropdown = isset( $instance['dropdown'] ) ? (bool) $instance['dropdown'] : false;
-?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-
-		<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>"<?php checked( $dropdown ); ?> />
-		<label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e( 'Display as dropdown' ); ?></label><br />
-
-		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>"<?php checked( $count ); ?> />
-		<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show post counts' ); ?></label><br />
-
-		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('hierarchical'); ?>" name="<?php echo $this->get_field_name('hierarchical'); ?>"<?php checked( $hierarchical ); ?> />
-		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy' ); ?></label></p>
-<?php
-	}
-
 }
 
 
 /**
- * Register the IS Simple Categories Widget.
+ * Register the WP Bootstrap Categories Widget.
  *
  * @return void
  */
-function issimple_categories_widget() {
-	register_widget( 'ISSimple_Categories' );
+function wp_bootstrap_categories_widget() {
+	register_widget( 'WP_Bootstrap_Categories' );
 }
 
-add_action( 'widgets_init', 'issimple_categories_widget' );
+add_action( 'widgets_init', 'wp_bootstrap_categories_widget' );
 

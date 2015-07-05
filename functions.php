@@ -78,9 +78,9 @@ require_once CORE_PATH . '/classes/class-bootstrap-nav.php';
  */
 require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-archives.php';
 require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-calendar.php';
+require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-categories.php';
 require_once CORE_PATH . '/widgets/class-widget-issimple-recent-posts.php';
 require_once CORE_PATH . '/widgets/class-widget-issimple-recent-comments.php';
-require_once CORE_PATH . '/widgets/class-widget-issimple-categories.php';
 require_once CORE_PATH . '/widgets/class-widget-issimple-pages.php';
 require_once CORE_PATH . '/widgets/class-widget-issimple-meta.php';
 require_once CORE_PATH . '/widgets/class-widget-issimple-tag-cloud.php';
