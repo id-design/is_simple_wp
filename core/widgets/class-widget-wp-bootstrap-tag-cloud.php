@@ -1,23 +1,23 @@
 <?php
 /**
- * ISSimple_Tag_Cloud class.
+ * WP_Bootstrap_Tag_Cloud class.
  *
- * Tag Cloud adapted to IS Simple.
+ * Widget Tag Cloud adapted to Bootstrap.
  *
  * @package WordPress
  * @subpackage IS Simple
  * @category Widget
  * @since IS Simple 1.0
  */
-class ISSimple_Tag_Cloud extends WP_Widget {
+class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 
 	public function __construct() {
-		$widget_ops = array( 'description' => __( "A cloud of your most used tags.") );
-		parent::__construct('tag_cloud', __('Tag Cloud'), $widget_ops);
+		parent::__construct();
 	}
 
 	public function widget( $args, $instance ) {
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
+		$badge = $instance['badge'];
 		if ( !empty($instance['title']) ) {
 			$title = $instance['title'];
 		} else {
@@ -48,8 +48,8 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 		 *
 		 * @param array $current_taxonomy The taxonomy to use in the tag cloud. Default 'tags'.
 		 */
-		$this->issimple_wp_tag_cloud( apply_filters( 'widget_tag_cloud_args', array(
-			'taxonomy' => $current_taxonomy, 'badge' => 1
+		$this->wp_bootstrap_wp_tag_cloud( apply_filters( 'widget_tag_cloud_args', array(
+			'taxonomy' => $current_taxonomy, 'badge' => $badge
 		) ) );
 
 		echo "</div>\n";
@@ -60,11 +60,15 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 		$instance = array();
 		$instance['title'] = strip_tags(stripslashes($new_instance['title']));
 		$instance['taxonomy'] = stripslashes($new_instance['taxonomy']);
+		$instance['label'] = stripslashes($new_instance['label']);
+		$instance['badge'] = stripslashes($new_instance['badge']);
 		return $instance;
 	}
 
 	public function form( $instance ) {
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
+		$label = isset($instance['label']) ? (bool) $instance['label'] :true;
+		$badge = isset($instance['badge']) ? (bool) $instance['badge'] :true;
 ?>
 	<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
 	<input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php if (isset ( $instance['title'])) {echo esc_attr( $instance['title'] );} ?>" /></p>
@@ -77,7 +81,11 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 	?>
 		<option value="<?php echo esc_attr($taxonomy) ?>" <?php selected($taxonomy, $current_taxonomy) ?>><?php echo $tax->labels->name; ?></option>
 	<?php endforeach; ?>
-	</select></p><?php
+	</select></p>
+	<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('label'); ?>" name="<?php echo $this->get_field_name('label'); ?>"<?php checked( $label ); ?> />
+	<label for="<?php echo $this->get_field_id('label'); ?>"><?php _e( 'Show as Bootstrap Labels' ); ?></label></p>
+	<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('badge'); ?>" name="<?php echo $this->get_field_name('badge'); ?>"<?php checked( $badge ); ?> />
+	<label for="<?php echo $this->get_field_id('badge'); ?>"><?php _e( 'Show post counts' ); ?></label></p><?php
 	}
 
 	public function _get_current_taxonomy($instance) {
@@ -87,9 +95,9 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 		return 'post_tag';
 	}
 	
-	public function issimple_wp_tag_cloud( $args = '' ) {
+	public function wp_bootstrap_wp_tag_cloud( $args = '' ) {
 		$defaults = array(
-			'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 45, 'badge' => 0,
+			'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 45,
 			'format' => 'flat', 'separator' => "\n", 'orderby' => 'name', 'order' => 'ASC',
 			'exclude' => '', 'include' => '', 'link' => 'view', 'taxonomy' => 'post_tag', 'post_type' => '', 'echo' => true
 		);
@@ -112,7 +120,7 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 			$tags[ $key ]->id = $tag->term_id;
 		}
 	
-		$return = $this->issimple_wp_generate_tag_cloud( $tags, $args ); // Here's where those top tags get sorted according to $args
+		$return = $this->wp_bootstrap_wp_generate_tag_cloud( $tags, $args ); // Here's where those top tags get sorted according to $args
 	
 		/**
 		 * Filter the tag cloud output.
@@ -122,7 +130,7 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 		 * @param string $return HTML output of the tag cloud.
 		 * @param array  $args   An array of tag cloud arguments.
 		 */
-		$return = apply_filters( 'issimple_wp_tag_cloud', $return, $args );
+		$return = apply_filters( 'wp_bootstrap_wp_tag_cloud', $return, $args );
 	
 		if ( 'array' == $args['format'] || empty($args['echo']) )
 			return $return;
@@ -130,9 +138,9 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 		echo $return;
 	}
 	
-	public function issimple_wp_generate_tag_cloud( $tags, $args = '' ) {
+	public function wp_bootstrap_wp_generate_tag_cloud( $tags, $args = '' ) {
 		$defaults = array(
-			'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 0, 'badge' => 0,
+			'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 0, 'badge' => true, 'label' => true,
 			'format' => 'flat', 'separator' => "\n", 'orderby' => 'name', 'order' => 'ASC',
 			'topic_count_text' => null, 'topic_count_text_callback' => null,
 			'topic_count_scale_callback' => 'default_topic_count_scale', 'filter' => 1,
@@ -232,9 +240,13 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 				$title_attribute = call_user_func( $args['topic_count_text_callback'], $real_count, $tag, $args );
 			}
 			
-			if ( $args['badge'] ) {
-				$a[] = "<a href='$tag_link' class='tag-link-$tag_id label label-default label-has-badge' title='" . esc_attr( $title_attribute ) . "'>$tag_name <span class='badge'>"
-					. number_format_i18n( $real_count ) . "</span></a>";
+			
+			$label_style = 'default';
+			$label_style = apply_filters( 'wp_bootstrap_tag_cloud_widget_label_style', $label_style );
+			$label_has_badge_class = ( $args['badge'] ) ? ' label-has-badge' : '';
+			$badge = ( $args['badge'] ) ? ' <span class="badge">' . number_format_i18n( $real_count ) . '</span>' : '';
+			if ( $args['label'] ) {
+				$a[] = "<a href='$tag_link' class='tag-link-$tag_id label label-" . $label_style . $label_has_badge_class . "' title='" . esc_attr( $title_attribute ) . "'>$tag_name" . $badge . "</a>";
 			} else {
 				$a[] = "<a href='$tag_link' class='tag-link-$tag_id' title='" . esc_attr( $title_attribute ) . "' style='font-size: " .
 					str_replace( ',', '.', ( $args['smallest'] + ( ( $count - $min_count ) * $font_step ) ) )
@@ -283,13 +295,13 @@ class ISSimple_Tag_Cloud extends WP_Widget {
 
 
 /**
- * Register the IS Simple Tag Cloud Widget.
+ * Register the WP Bootstrap Tag Cloud Widget.
  *
  * @return void
  */
-function issimple_tag_cloud_widget() {
-	register_widget( 'ISSimple_Tag_Cloud' );
+function wp_bootstrap_tag_cloud_widget() {
+	register_widget( 'WP_Bootstrap_Tag_Cloud' );
 }
 
-add_action( 'widgets_init', 'issimple_tag_cloud_widget' );
+add_action( 'widgets_init', 'wp_bootstrap_tag_cloud_widget' );
 

@@ -81,9 +81,9 @@ require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-calendar.php';
 require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-categories.php';
 require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-meta.php';
 require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-pages.php';
-require_once CORE_PATH . '/widgets/class-widget-issimple-recent-posts.php';
-require_once CORE_PATH . '/widgets/class-widget-issimple-recent-comments.php';
-require_once CORE_PATH . '/widgets/class-widget-issimple-tag-cloud.php';
+require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-recent-comments.php';
+require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-recent-posts.php';
+require_once CORE_PATH . '/widgets/class-widget-wp-bootstrap-tag-cloud.php';
 
 
 if ( ! function_exists( 'issimple_setup' ) ) :
