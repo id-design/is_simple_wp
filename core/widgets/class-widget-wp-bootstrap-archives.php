@@ -1,19 +1,18 @@
 <?php
 /**
- * ISSimple_Archives class.
+ * WP_Bootstrap_Archives class.
  *
- * Archives adapted to IS Simple.
+ * Widget Archives adapted to Bootstrap.
  *
  * @package WordPress
  * @subpackage IS Simple
  * @category Widget
  * @since IS Simple 1.0
  */
-class ISSimple_Archives extends WP_Widget {
+class WP_Bootstrap_Archives extends WP_Widget_Archives {
 
 	public function __construct() {
-		$widget_ops = array('classname' => 'widget_archive', 'description' => __( 'A monthly archive of your site&#8217;s Posts.') );
-		parent::__construct('archives', __('Archives'), $widget_ops);
+		parent::__construct();
 	}
 
 	public function widget( $args, $instance ) {
@@ -31,7 +30,7 @@ class ISSimple_Archives extends WP_Widget {
 		if ( $d ) {
 			$dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
 ?>
-		<label class="screen-reader-text" for="<?php echo esc_attr( $dropdown_id ); ?>"><?php echo $title; ?></label>
+		<label class="sr-only" for="<?php echo esc_attr( $dropdown_id ); ?>"><?php echo $title; ?></label>
 		<select id="<?php echo esc_attr( $dropdown_id ); ?>" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
 			<?php
 			/**
@@ -97,42 +96,17 @@ class ISSimple_Archives extends WP_Widget {
 
 		echo $args['after_widget'];
 	}
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['count'] = $new_instance['count'] ? 1 : 0;
-		$instance['dropdown'] = $new_instance['dropdown'] ? 1 : 0;
-
-		return $instance;
-	}
-
-	public function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
-		$title = strip_tags($instance['title']);
-		$count = $instance['count'] ? 'checked="checked"' : '';
-		$dropdown = $instance['dropdown'] ? 'checked="checked"' : '';
-?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-		<p>
-			<input class="checkbox" type="checkbox" <?php echo $dropdown; ?> id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>" /> <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e('Display as dropdown'); ?></label>
-			<br/>
-			<input class="checkbox" type="checkbox" <?php echo $count; ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts'); ?></label>
-		</p>
-<?php
-	}
 }
 
 
 /**
- * Register the IS Simple Archives Widget.
+ * Register the WP Bootstrap Archives Widget.
  *
  * @return void
  */
-function issimple_archives_widget() {
-	register_widget( 'ISSimple_Archives' );
+function wp_bootstrap_archives_widget() {
+	register_widget( 'WP_Bootstrap_Archives' );
 }
 
-add_action( 'widgets_init', 'issimple_archives_widget' );
+add_action( 'widgets_init', 'wp_bootstrap_archives_widget' );
 

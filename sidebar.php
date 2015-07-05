@@ -32,19 +32,19 @@
 				if ( is_active_sidebar( 'sidebar-widget-area' ) ) :
 					dynamic_sidebar( 'sidebar-widget-area' );
 				else :
-					the_widget( 'ISSimple_Recent_Posts', array( 'number' => 10 ), array(
+					the_widget( 'WP_Bootstrap_Recent_Posts', array( 'number' => 10 ), array(
 						'before_widget'	=> '<aside class="widget panel panel-default widget_recent_entries">',
 						'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
 						'after_title'	=> '</h3></div>',
 						'after_widget'	=> '</aside>'
 					) );
-					the_widget( 'ISSimple_Archives', array( 'count' => 0 ), array(
+					the_widget( 'WP_Bootstrap_Archives', array( 'count' => 0 ), array(
 						'before_widget'	=> '<aside class="widget panel panel-default widget_archive">',
 						'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
 						'after_title'	=> '</h3></div>',
 						'after_widget'	=> '</aside>'
 					) );
-					the_widget( 'ISSimple_Tag_Cloud', array(), array(
+					the_widget( 'WP_Bootstrap_Tag_Cloud', array(), array(
 						'before_widget'	=> '<aside class="widget panel panel-default widget_tag_cloud">',
 						'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
 						'after_title'	=> '</h3></div>',
