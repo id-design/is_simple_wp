@@ -37,7 +37,7 @@ class WP_Bootstrap_Calendar extends WP_Widget_Calendar {
 function wp_bootstrap_get_calendar( $calendar_output ) {
 	$table_class = 'table table-hover';
 
-	return str_replace( '<table', '<table class="' . apply_filters( 'wp_bootstrap_calendar_widget_table_class', $table_class ) . '">', $calendar_output );
+	return str_replace( '<table', '<table class="' . apply_filters( 'wp_bootstrap_calendar_widget_table_class', $table_class ) . '"', $calendar_output );
 }
 
 add_filter( 'get_calendar', 'wp_bootstrap_get_calendar' );
