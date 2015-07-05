@@ -12,8 +12,7 @@
 class WP_Bootstrap_Categories extends WP_Widget {
 
 	public function __construct() {
-		$widget_ops = array( 'classname' => 'widget_categories', 'description' => __( "A list or dropdown of categories." ) );
-		parent::__construct('categories', __('Categories'), $widget_ops);
+		parent::__construct();
 	}
 
 	public function widget( $args, $instance ) {
