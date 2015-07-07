@@ -44,7 +44,7 @@
 						'after_title'	=> '</h3></div>',
 						'after_widget'	=> '</aside>'
 					) );
-					the_widget( 'WP_Bootstrap_Tag_Cloud', array(), array(
+					the_widget( 'WP_Bootstrap_Tag_Cloud', array( 'label' => 1, 'badge' => 1 ), array(
 						'before_widget'	=> '<aside class="widget panel panel-default widget_tag_cloud">',
 						'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
 						'after_title'	=> '</h3></div>',

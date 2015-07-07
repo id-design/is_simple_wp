@@ -17,7 +17,8 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 
 	public function widget( $args, $instance ) {
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
-		$badge = $instance['badge'];
+		$label = ! empty( $instance['label'] ) ? '1' : '0';
+		$badge = ! empty( $instance['badge'] ) ? '1' : '0';
 		if ( !empty($instance['title']) ) {
 			$title = $instance['title'];
 		} else {
@@ -28,6 +29,7 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 				$title = $tax->labels->name;
 			}
 		}
+		echo '<pre>' . $current_taxonomy . ', ' . $label . ', ' . $badge . ', ' . print_r($instance) . '</pre>';
 
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
@@ -49,7 +51,7 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 		 * @param array $current_taxonomy The taxonomy to use in the tag cloud. Default 'tags'.
 		 */
 		$this->wp_bootstrap_wp_tag_cloud( apply_filters( 'widget_tag_cloud_args', array(
-			'taxonomy' => $current_taxonomy, 'badge' => $badge
+			'taxonomy' => $current_taxonomy, 'label' => $label, 'badge' => $badge
 		) ) );
 
 		echo "</div>\n";
@@ -60,8 +62,8 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 		$instance = array();
 		$instance['title'] = strip_tags(stripslashes($new_instance['title']));
 		$instance['taxonomy'] = stripslashes($new_instance['taxonomy']);
-		$instance['label'] = stripslashes($new_instance['label']);
-		$instance['badge'] = stripslashes($new_instance['badge']);
+		$instance['label'] = !empty($new_instance['label']) ? 1 : 0;
+		$instance['badge'] = !empty($new_instance['badge']) ? 1 : 0;
 		return $instance;
 	}
 
@@ -69,6 +71,7 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
 		$label = isset($instance['label']) ? (bool) $instance['label'] :true;
 		$badge = isset($instance['badge']) ? (bool) $instance['badge'] :true;
+		echo '<pre>' . print_r($instance) . '</pre>';
 ?>
 	<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
 	<input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php if (isset ( $instance['title'])) {echo esc_attr( $instance['title'] );} ?>" /></p>
@@ -83,8 +86,9 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 	<?php endforeach; ?>
 	</select></p>
 	<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('label'); ?>" name="<?php echo $this->get_field_name('label'); ?>"<?php checked( $label ); ?> />
-	<label for="<?php echo $this->get_field_id('label'); ?>"><?php _e( 'Show as Bootstrap Labels' ); ?></label></p>
-	<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('badge'); ?>" name="<?php echo $this->get_field_name('badge'); ?>"<?php checked( $badge ); ?> />
+	<label for="<?php echo $this->get_field_id('label'); ?>"><?php _e( 'Show as Bootstrap Labels', 'issimple' ); ?></label><br />
+
+	<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('badge'); ?>" name="<?php echo $this->get_field_name('badge'); ?>"<?php checked( $badge ); ?> />
 	<label for="<?php echo $this->get_field_id('badge'); ?>"><?php _e( 'Show post counts' ); ?></label></p><?php
 	}
 
@@ -241,11 +245,12 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget_Tag_Cloud {
 			}
 			
 			
-			$label_style = 'default';
-			$label_style = apply_filters( 'wp_bootstrap_tag_cloud_widget_label_style', $label_style );
-			$label_has_badge_class = ( $args['badge'] ) ? ' label-has-badge' : '';
-			$badge = ( $args['badge'] ) ? ' <span class="badge">' . number_format_i18n( $real_count ) . '</span>' : '';
 			if ( $args['label'] ) {
+				$label_style = 'default';
+				$label_style = apply_filters( 'wp_bootstrap_tag_cloud_widget_label_style', $label_style );
+				$label_has_badge_class = ( $args['badge'] ) ? ' label-has-badge' : '';
+				$badge = ( $args['badge'] ) ? ' <span class="badge">' . number_format_i18n( $real_count ) . '</span>' : '';
+
 				$a[] = "<a href='$tag_link' class='tag-link-$tag_id label label-" . $label_style . $label_has_badge_class . "' title='" . esc_attr( $title_attribute ) . "'>$tag_name" . $badge . "</a>";
 			} else {
 				$a[] = "<a href='$tag_link' class='tag-link-$tag_id' title='" . esc_attr( $title_attribute ) . "' style='font-size: " .
