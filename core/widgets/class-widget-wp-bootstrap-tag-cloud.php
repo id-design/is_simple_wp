@@ -12,33 +12,39 @@
 class WP_Bootstrap_Tag_Cloud extends WP_Widget {
 
 	public function __construct() {
-		$widget_ops = array( 'classname' => 'widget_tag_cloud', 'description' => __( "A cloud of your most used tags.") );
-		parent::__construct('tag_cloud', __('Tag Cloud'), $widget_ops);
+		$widget_ops = array( 'description' => __( "A cloud of your most used tags adapted to Bootstrap.") );
+		parent::__construct('wp_bootstrap_tag_cloud', __('WP Bootstrap Tag Cloud'), $widget_ops);
 	}
 
 	public function widget( $args, $instance ) {
-		$current_taxonomy = $this->_get_current_taxonomy($instance);
+		$current_taxonomy = $this->_get_current_taxonomy( $instance );
 		$label = ! empty( $instance['label'] ) ? '1' : '0';
 		$badge = ! empty( $instance['badge'] ) ? '1' : '0';
-		if ( !empty($instance['title']) ) {
+		
+		if ( ! empty( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
 			if ( 'post_tag' == $current_taxonomy ) {
-				$title = __('Tags');
+				$title = __( 'Tags' );
 			} else {
-				$tax = get_taxonomy($current_taxonomy);
+				$tax = get_taxonomy( $current_taxonomy );
 				$title = $tax->labels->name;
 			}
 		}
-		echo '<pre>' . $current_taxonomy . ', ' . $label . ', ' . $badge . ', ' . print_r($instance) . '</pre>';
+		
+		echo '<pre>';
+		print_r($instance);
+		echo '</pre>';
 
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		echo $args['before_widget'];
+		
 		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
+		
 		echo '<div class="tagcloud panel-body">';
 
 		/**
@@ -60,47 +66,49 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'label' => 1, 'badge' => 1 ) );
-		$instance['title'] = strip_tags(stripslashes($new_instance['title']));
-		$instance['taxonomy'] = stripslashes($new_instance['taxonomy']);
-		$instance['label'] = $new_instance['label'] ? 1 : 0;
-		$instance['badge'] = $new_instance['badge'] ? 1 : 0;
+		$instance = $old_instance;
+		$instance['title'] = strip_tags( stripslashes( $new_instance['title'] ) );
+		$instance['taxonomy'] = stripslashes( $new_instance['taxonomy'] );
+		$instance['label'] = ! empty( $new_instance['label'] ) ? 1 : 0;
+		$instance['badge'] = ! empty( $new_instance['badge'] ) ? 1 : 0;
+		
 		return $instance;
 	}
 
 	public function form( $instance ) {
-		//Defaults
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'label' => 1, 'badge' => 1 ) );
+		$instance = wp_parse_args( ( array ) $instance, array( 'title' => '' ) );
 		$title = esc_attr( $instance['title'] );
-		$current_taxonomy = $this->_get_current_taxonomy($instance);
-		$label = $instance['label'] ? 'checked="checked"' : '';
-		$badge = $instance['badge'] ? 'checked="checked"' : '';
-		echo '<pre>' . print_r($instance) . '</pre>';
-?>
-	<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
-	<input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" /></p>
-	
-	<p><label for="<?php echo $this->get_field_id('taxonomy'); ?>"><?php _e('Taxonomy:') ?></label>
-	<select class="widefat" id="<?php echo $this->get_field_id('taxonomy'); ?>" name="<?php echo $this->get_field_name('taxonomy'); ?>">
-	<?php foreach ( get_taxonomies() as $taxonomy ) :
-				$tax = get_taxonomy($taxonomy);
-				if ( !$tax->show_tagcloud || empty($tax->labels->name) )
-					continue;
+		$current_taxonomy = $this->_get_current_taxonomy( $instance );
+		$label = isset( $instance['label'] ) ? ( bool ) $instance['label'] : true;
+		$badge = isset( $instance['badge'] ) ? ( bool ) $instance['badge'] : true;
+		echo '<pre>';
+		print_r( $_POST );
+		echo '</pre>';
 	?>
-		<option value="<?php echo esc_attr($taxonomy) ?>" <?php selected($taxonomy, $current_taxonomy) ?>><?php echo $tax->labels->name; ?></option>
-	<?php endforeach; ?>
-	</select></p>
-	
-	<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('label'); ?>" name="<?php echo $this->get_field_name('label'); ?>"<?php echo $label; ?> />
-	<label for="<?php echo $this->get_field_id('label'); ?>"><?php _e( 'Show as Bootstrap Labels', 'issimple' ); ?></label><br />
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ) ?></label>
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $title; ?>" /></p>
 
-	<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('badge'); ?>" name="<?php echo $this->get_field_name('badge'); ?>"<?php echo $badge; ?> />
-	<label for="<?php echo $this->get_field_id('badge'); ?>"><?php _e( 'Show post counts' ); ?></label></p><?php
+		<p><label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><?php _e( 'Taxonomy:' ) ?></label>
+		<select class="widefat" id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>">
+		<?php foreach ( get_taxonomies() as $taxonomy ) :
+					$tax = get_taxonomy( $taxonomy );
+					if ( ! $tax->show_tagcloud || empty( $tax->labels->name ) )
+						continue;
+		?>
+			<option value="<?php echo esc_attr( $taxonomy ) ?>" <?php selected( $taxonomy, $current_taxonomy ) ?>><?php echo $tax->labels->name; ?></option>
+		<?php endforeach; ?>
+		</select></p>
+		
+		<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id( 'label' ); ?>" name="<?php echo $this->get_field_name( 'label' ); ?>"<?php checked( $label ); ?> />
+		<label for="<?php echo $this->get_field_id( 'label' ); ?>"><?php _e( 'Show as Bootstrap labels', 'issimple' ); ?></label><br />
+	
+		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id( 'badge' ); ?>" name="<?php echo $this->get_field_name( 'badge' ); ?>"<?php checked( $badge ); ?> />
+		<label for="<?php echo $this->get_field_id( 'badge' ); ?>"><?php _e( 'Show post counts' ); ?></label></p>
+	<?php
 	}
 
-	public function _get_current_taxonomy($instance) {
-		if ( !empty($instance['taxonomy']) && taxonomy_exists($instance['taxonomy']) )
+	public function _get_current_taxonomy( $instance ) {
+		if ( ! empty( $instance['taxonomy'] ) && taxonomy_exists( $instance['taxonomy'] ) )
 			return $instance['taxonomy'];
 
 		return 'post_tag';
@@ -143,7 +151,7 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget {
 		 */
 		$return = apply_filters( 'wp_bootstrap_wp_tag_cloud', $return, $args );
 	
-		if ( 'array' == $args['format'] || empty($args['echo']) )
+		if ( 'array' == $args['format'] || empty($args['echo'] ) )
 			return $return;
 	
 		echo $return;
@@ -222,7 +230,7 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget {
 	
 		$counts = array();
 		$real_counts = array(); // For the alt tag
-		foreach ( (array) $tags as $key => $tag ) {
+		foreach ( ( array ) $tags as $key => $tag ) {
 			$real_counts[ $key ] = $tag->count;
 			$counts[ $key ] = call_user_func( $args['topic_count_scale_callback'], $tag->count );
 		}
