@@ -271,6 +271,37 @@ class ISSimple_Theme_Options {
 	}
 
 	/**
+	 * Set all default options.
+	 *
+	 * @return void
+	 */
+	public function set_all_defaults() {
+		
+		$defaults = array();
+
+		foreach ( $this->fields as $section => $items ) {
+			foreach ( $items['fields'] as $option ) {
+
+				$tab = $items['tab'];
+				$id = $option['id'];
+				$default = isset( $option['default'] ) ? $option['default'] : '';
+
+				if ( isset( $default ) ) {
+					$defaults[ $tab ][ $id ] = $default;
+				}
+			}
+		}
+
+		foreach ( $this->tabs as $tab ) {
+			$options = get_option( $tab['id'] );
+
+			if ( empty( $options ) && isset( $defaults ) ) {
+				add_option( $tab['id'], $defaults[ $tab['id'] ] );
+			}
+		}
+	}
+
+	/**
 	 * Get Option.
 	 *
 	 * @param  string $tab     Tab that the option belongs
@@ -287,7 +318,6 @@ class ISSimple_Theme_Options {
 		}
 
 		return $default;
-
 	}
 
 	/**
