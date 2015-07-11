@@ -24,10 +24,16 @@ if ( ! function_exists( 'issimple_theme_options' ) ) :
  * ----------------------------------------------------------------------------
  */
 function issimple_theme_options() {
+
+	$theme				= wp_get_theme();
+	$theme_name			= $theme->get( 'Name' );
+	$theme_tags			= $theme->get( 'Tags' );
+	$theme_screenshot	= $theme->get_screenshot();
+
 	$settings = new ISSimple_Theme_Options(
-		'issimple-settings',			// Slug/ID of the Settings Page (Required)
-		'IS Simple Theme Settings',		// Settings page name (Required)
-		'manage_options'				// Page capability (Optional) [default is manage_options]
+		'issimple-settings',										// Slug/ID of the Settings Page (Required)
+		sprintf( __( '%s Settings', 'issimple' ), $theme_name ),	// Settings page name (Required)
+		'manage_options'											// Page capability (Optional) [default is manage_options]
 	);
 
 	$settings->set_tabs( array(
@@ -67,10 +73,10 @@ function issimple_theme_options() {
 	);
 
 	$settings->set_fields( array(
-		'issimple_general_fields_section' => array(													// Slug/ID of the section (Required)
-			'tab'		=> 'issimple_general_options',												// Tab ID/Slug (Required)
-			'title'		=> __( 'General options to customize IS Simple WP Theme.', 'issimple' ),	// Section title (Required)
-			'fields'	=> array(																	// Section fields (Required)
+		'issimple_general_fields_section' => array(																// Slug/ID of the section (Required)
+			'tab'		=> 'issimple_general_options',															// Tab ID/Slug (Required)
+			'title'		=> sprintf( __( 'General options to customize %s Theme.', 'issimple' ), $theme_name ),	// Section title (Required)
+			'fields'	=> array(																				// Section fields (Required)
 				// Header Logo.
 				array(
 					'id'			=> 'header_logo',
@@ -88,10 +94,10 @@ function issimple_theme_options() {
 				)
 			)
 		),
-		'issimple_style_fields_section' => array(													// Slug/ID of the section (Required)
-			'tab'		=> 'issimple_style_options',												// Tab ID/Slug (Required)
-			'title'		=> __( 'Style options to customize IS Simple WP Theme.', 'issimple' ),		// Section title (Required)
-			'fields'	=> array(																	// Section fields (Required)
+		'issimple_style_fields_section' => array(																// Slug/ID of the section (Required)
+			'tab'		=> 'issimple_style_options',															// Tab ID/Slug (Required)
+			'title'		=> sprintf( __( 'Style options to customize %s Theme.', 'issimple' ), $theme_name ),	// Section title (Required)
+			'fields'	=> array(																				// Section fields (Required)
 				// Header Navbar Style.
 				array(
 					'id'			=> 'header_navbar_style',
@@ -119,10 +125,10 @@ function issimple_theme_options() {
 				)
 			)
 		),
-		'issimple_slider_fields_section' => array(													// Slug/ID of the section (Required)
-			'tab'		=> 'issimple_slider_options',												// Tab ID/Slug (Required)
-			'title'		=> __( 'Slider options to customize IS Simple WP Theme.', 'issimple' ),		// Section title (Required)
-			'fields'	=> array(																	// Section fields (Required)
+		'issimple_slider_fields_section' => array(																// Slug/ID of the section (Required)
+			'tab'		=> 'issimple_slider_options',															// Tab ID/Slug (Required)
+			'title'		=> sprintf( __( 'Slider options to customize %s Theme.', 'issimple' ), $theme_name ),	// Section title (Required)
+			'fields'	=> array(																				// Section fields (Required)
 				// Slider Tag.
 				array(
 					'id'			=> 'slider_tag',
@@ -280,11 +286,11 @@ function issimple_footer_text() {
 	$footer_text = sprintf( '%1$s %2$s %3$s %4$s %5$s.',
 		issimple_get_option( 'footer_text' ),
 		__( 'Powered by', 'issimple' ),
-		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
+		sprintf( '<a href="%s" rel="nofollow" target="_blank">%s</a>',
 			'https://github.com/id-design/is_simple_wp',
 			'ID Design' ),
 		__( 'on', 'issimple' ),
-		sprintf( __( '<a href="%s" rel="nofollow" target="_blank">%s</a>', 'issimple' ),
+		sprintf( '<a href="%s" rel="nofollow" target="_blank">%s</a>',
 			'http://wordpress.org/',
 			'WordPress' )
 	);

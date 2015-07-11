@@ -204,49 +204,41 @@ add_action( 'after_setup_theme', 'issimple_setup' );
  * ----------------------------------------------------------------------------
  */
 function issimple_widgets_init() {
+	// Define default args.
+	$defaults = array(
+		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
+		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
+		'after_title'	=> '</h3></div>',
+		'after_widget'	=> '</aside>'
+	);
+	
 	// Define Sidebar Widget Area
-	register_sidebar( array(
+	register_sidebar( wp_parse_args( array(
 		'name'			=> __( 'Sidebar Widget Area', 'issimple' ),
 		'id'			=> 'sidebar-widget-area',
-		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
-		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
-		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
-		'after_title'	=> '</h3></div>',
-		'after_widget'	=> '</aside>'
-	) );
+		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' )
+	), $defaults ) );
 	
 	// Define Footer Widget Area 1
-	register_sidebar( array(
+	register_sidebar( wp_parse_args( array(
 		'name'			=> __( 'Footer Widget Area 1', 'issimple' ),
 		'id'			=> 'footer-widget-area-1',
-		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
-		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
-		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
-		'after_title'	=> '</h3></div>',
-		'after_widget'	=> '</aside>'
-	) );
+		'description'	=> __( 'Add widgets here to appear in your footer widget area 1.', 'issimple' )
+	), $defaults ) );
 	
 	// Define Footer Widget Area 2
-	register_sidebar( array(
+	register_sidebar( wp_parse_args( array(
 		'name'			=> __( 'Footer Widget Area 2', 'issimple' ),
 		'id'			=> 'footer-widget-area-2',
-		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
-		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
-		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
-		'after_title'	=> '</h3></div>',
-		'after_widget'	=> '</aside>'
-	) );
+		'description'	=> __( 'Add widgets here to appear in your footer widget area 2.', 'issimple' )
+	), $defaults ) );
 	
 	// Define Footer Widget Area 3
-	register_sidebar( array(
+	register_sidebar( wp_parse_args( array(
 		'name'			=> __( 'Footer Widget Area 3', 'issimple' ),
 		'id'			=> 'footer-widget-area-3',
-		'description'	=> __( 'Add widgets here to appear in your sidebar.', 'issimple' ),
-		'before_widget'	=> '<aside id="%1$s" class="widget panel panel-default %2$s">',
-		'before_title'	=> '<div class="panel-heading"><h3 class="widget-title panel-title">',
-		'after_title'	=> '</h3></div>',
-		'after_widget'	=> '</aside>'
-	) );
+		'description'	=> __( 'Add widgets here to appear in your footer widget area 3.', 'issimple' )
+	), $defaults ) );
 }
 add_action( 'widgets_init', 'issimple_widgets_init' );
 
