@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: IS Simple WordPress Theme v1.0\n"
-"POT-Creation-Date: 2015-06-24 20:54-0300\n"
+"POT-Creation-Date: 2015-07-10 21:12-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ivanildo Dias <ivanildodiasdesigner@gmail.com>\n"
 "Language-Team: Ivanildo Dias <ivanildodiasdesigner@gmail.com>\n"
@@ -46,20 +46,20 @@ msgstr ""
 "Este artigo é protegido por senha. Para ver os comentários, a senha deve ser "
 "digitada."
 
-#: ../comments.php:35 ../comments.php:66 ../inc/template-tags.php:560
+#: ../comments.php:35 ../comments.php:66 ../inc/template-tags.php:580
 msgid "Leave your thoughts"
 msgstr "Deixe seus comentários"
 
-#: ../comments.php:35 ../inc/template-tags.php:561
+#: ../comments.php:35 ../inc/template-tags.php:581
 msgid "1 comment"
 msgstr "1 comentário"
 
-#: ../comments.php:35 ../inc/template-tags.php:562
+#: ../comments.php:35 ../inc/template-tags.php:582
 #, php-format
 msgid "% comments"
 msgstr "% comentários"
 
-#: ../comments.php:36
+#: ../comments.php:36 ../inc/theme-options.php:292
 msgid "on"
 msgstr "em"
 
@@ -110,48 +110,250 @@ msgstr ""
 "Parece que não pudemos encontrar o que você está procurando. Talvez a "
 "pesquisa possa ajudar."
 
-#: ../footer.php:66
-msgid "All rights reserved."
-msgstr "Todos os direitos reservados."
+#: ../core/bootstrap-functions.php:68 ../inc/template-tags.php:355
+msgid "Previous"
+msgstr "Anterior"
 
-#: ../footer.php:68
+#: ../core/bootstrap-functions.php:69 ../inc/template-tags.php:358
+msgid "Next"
+msgstr "Próximo"
+
+#: ../core/bootstrap-functions.php:115 ../core/bootstrap-functions.php:117
+msgid "Previous page"
+msgstr "Página anterior"
+
+#: ../core/bootstrap-functions.php:135
 #, php-format
-msgid ""
-"Powered by <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">ID Design</a> "
-"on <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
-msgstr ""
-"Desenvolvido por <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">ID "
-"Design</a> em <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</"
-"a>."
+msgid "<a href=\"%1$s\" title=\"Go to page %2$d\">%3$s%2$d%4$s</a>"
+msgstr "<a href=\"%1$s\" title=\"Ir para a página %2$d\">%3$s%2$d%4$s</a>"
 
-#: ../functions.php:123
+#: ../core/bootstrap-functions.php:140
+msgid "&hellip;"
+msgstr "&hellip;"
+
+#: ../core/bootstrap-functions.php:155 ../core/bootstrap-functions.php:157
+msgid "Next page"
+msgstr "Próxima página"
+
+#: ../core/bootstrap-functions.php:239 ../inc/template-tags.php:422
+msgid "Comments navigation"
+msgstr "Navegação de comentários"
+
+#: ../core/bootstrap-functions.php:282 ../core/bootstrap-functions.php:337
+msgid "Posts navigation"
+msgstr "Navegação de artigos"
+
+#: ../core/bootstrap-functions.php:395
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: ../core/bootstrap-functions.php:395 ../core/bootstrap-functions.php:419
+#: ../inc/template-tags.php:244 ../inc/template-tags.php:480
+msgid "Edit"
+msgstr "Editar"
+
+#: ../core/bootstrap-functions.php:409
+msgid "In"
+msgstr "Em"
+
+#: ../core/bootstrap-functions.php:414
+msgid "at"
+msgstr "às"
+
+#: ../core/bootstrap-functions.php:416
+msgid "<span class=\"says\">said:</span>"
+msgstr "<span class=\"says\">disse:</span>"
+
+#: ../core/bootstrap-functions.php:424
+msgid "Your comment is awaiting moderation."
+msgstr "Seu comentário está esperando por moderação."
+
+#: ../core/bootstrap-functions.php:433
+msgid "Respond"
+msgstr "Responder"
+
+#: ../core/classes/class-bootstrap-nav.php:199
+msgid "Add a menu"
+msgstr "Adicionar um menu"
+
+#: ../core/classes/class-theme-options.php:93
+#: ../core/classes/class-theme-options.php:655
+msgid "Add images in gallery"
+msgstr "Adicionar imagens na galeria"
+
+#: ../core/classes/class-theme-options.php:94
+msgid "Add in gallery"
+msgstr "Adicionar na galeria"
+
+#: ../core/classes/class-theme-options.php:95
+#: ../core/classes/class-theme-options.php:606
+#: ../core/classes/class-theme-options.php:644
+msgid "Remove image"
+msgstr "Remover imagem"
+
+#: ../core/classes/class-theme-options.php:96
+msgid "Choose a file"
+msgstr "Escolher um arquivo"
+
+#: ../core/classes/class-theme-options.php:97
+msgid "Add file"
+msgstr "Adicionar arquivo"
+
+#: ../core/classes/class-theme-options.php:572
+msgid "Select file"
+msgstr "Selecionar Arquivo"
+
+#: ../core/classes/class-theme-options.php:606
+msgid "Select image"
+msgstr "Selecionar imagem"
+
+#: ../core/widgets/class-widget-wp-bootstrap-archives.php:23
+msgid "Archives"
+msgstr "Arquivos"
+
+#: ../core/widgets/class-widget-wp-bootstrap-archives.php:53
+msgid "Select Year"
+msgstr ""
+
+#: ../core/widgets/class-widget-wp-bootstrap-archives.php:56
+msgid "Select Month"
+msgstr ""
+
+#: ../core/widgets/class-widget-wp-bootstrap-archives.php:59
+msgid "Select Day"
+msgstr ""
+
+#: ../core/widgets/class-widget-wp-bootstrap-archives.php:62
+msgid "Select Week"
+msgstr ""
+
+#: ../core/widgets/class-widget-wp-bootstrap-archives.php:65
+msgid "Select Post"
+msgstr ""
+
+#: ../core/widgets/class-widget-wp-bootstrap-categories.php:21
+msgid "Categories"
+msgstr "Categorias"
+
+#: ../core/widgets/class-widget-wp-bootstrap-categories.php:47
+msgid "Select Category"
+msgstr "Selecionar uma categoria"
+
+#: ../core/widgets/class-widget-wp-bootstrap-meta.php:21
+msgid "Meta"
+msgstr "Meta"
+
+#: ../core/widgets/class-widget-wp-bootstrap-meta.php:31
+msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr "Posts <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+
+#: ../core/widgets/class-widget-wp-bootstrap-meta.php:32
+msgid "Comments <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> dos comentários"
+
+#: ../core/widgets/class-widget-wp-bootstrap-meta.php:42
+msgid "https://wordpress.org/"
+msgstr "https://WordPress.org/"
+
+#: ../core/widgets/class-widget-wp-bootstrap-meta.php:44
+msgctxt "meta widget link text"
+msgid "WordPress.org"
+msgstr "WordPress.org"
+
+#: ../core/widgets/class-widget-wp-bootstrap-pages.php:29
+msgid "Pages"
+msgstr "Páginas"
+
+#: ../core/widgets/class-widget-wp-bootstrap-recent-comments.php:39
+msgid "Recent Comments"
+msgstr "Comentários Recentes"
+
+#. translators: comments widget: 1: comment author, 2: post link
+#: ../core/widgets/class-widget-wp-bootstrap-recent-comments.php:77
+#, php-format
+msgctxt "widgets"
+msgid "%1$s on %2$s"
+msgstr "%1$s em %2$s"
+
+#: ../core/widgets/class-widget-wp-bootstrap-recent-posts.php:39
+msgid "Recent Posts"
+msgstr "Postagens Recentes"
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:15
+msgid "A cloud of your most used tags adapted to Bootstrap."
+msgstr "Uma nuvem com as tags mais usadas adaptada para o Bootstrap."
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:16
+msgid "WP Bootstrap Tag Cloud"
+msgstr "Nuvem de Tags do WP Bootstrap"
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:28
+msgid "Tags"
+msgstr "Tags:"
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:88
+msgid "Title:"
+msgstr "Título:"
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:91
+msgid "Taxonomy:"
+msgstr "Taxonomia:"
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:103
+msgid "Show as Bootstrap labels"
+msgstr "Mostrar como labels do Bootstrap"
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:106
+msgid "Show post counts"
+msgstr "Mostrar número de posts"
+
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:183
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:192
+#, php-format
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../functions.php:145
 msgid "Header Menu"
 msgstr "Menu do cabeçalho"
 
-#: ../functions.php:124
+#: ../functions.php:146
 msgid "Social Menu"
 msgstr "Menu Social"
 
-#: ../functions.php:177
+#: ../functions.php:217
 msgid "Sidebar Widget Area"
 msgstr "Área de Widgets da Barra Lateral"
 
-#: ../functions.php:179 ../functions.php:190 ../functions.php:201
-#: ../functions.php:212
+#: ../functions.php:219
 msgid "Add widgets here to appear in your sidebar."
 msgstr "Adicione widgets aqui para aparecer em sua barra lateral."
 
-#: ../functions.php:188
+#: ../functions.php:224
 msgid "Footer Widget Area 1"
 msgstr "Área de Widgets do Rodapé 1"
 
-#: ../functions.php:199
+#: ../functions.php:226
+msgid "Add widgets here to appear in your footer widget area 1."
+msgstr "Adicione widgets aqui para aparecer em sua área de widget do rodapé 1."
+
+#: ../functions.php:231
 msgid "Footer Widget Area 2"
 msgstr "Área de Widgets do Rodapé 2"
 
-#: ../functions.php:210
+#: ../functions.php:233
+msgid "Add widgets here to appear in your footer widget area 2."
+msgstr "Adicione widgets aqui para aparecer em sua área de widget do rodapé 2."
+
+#: ../functions.php:238
 msgid "Footer Widget Area 3"
 msgstr "Área de Widgets do Rodapé 3"
+
+#: ../functions.php:240
+msgid "Add widgets here to appear in your footer widget area 3."
+msgstr "Adicione widgets aqui para aparecer em sua área de widget do rodapé 3."
 
 #: ../header.php:31
 msgid "Skip to content"
@@ -161,76 +363,9 @@ msgstr "Pular para o conteúdo"
 msgid "Click on the button to display the menu."
 msgstr "Clique no botão para exibir o menu."
 
-#: ../inc/bootstrap-functions.php:68 ../inc/template-tags.php:337
-msgid "Previous"
-msgstr "Anterior"
-
-#: ../inc/bootstrap-functions.php:69 ../inc/template-tags.php:340
-msgid "Next"
-msgstr "Próximo"
-
-#: ../inc/bootstrap-functions.php:115 ../inc/bootstrap-functions.php:117
-msgid "Previous page"
-msgstr "Página anterior"
-
-#: ../inc/bootstrap-functions.php:135
-#, php-format
-msgid "<a href=\"%1$s\" title=\"Go to page %2$d\">%3$s%2$d%4$s</a>"
-msgstr "<a href=\"%1$s\" title=\"Ir para a página %2$d\">%3$s%2$d%4$s</a>"
-
-#: ../inc/bootstrap-functions.php:140
-msgid "&hellip;"
-msgstr "&hellip;"
-
-#: ../inc/bootstrap-functions.php:155 ../inc/bootstrap-functions.php:157
-msgid "Next page"
-msgstr "Próxima página"
-
-#: ../inc/bootstrap-functions.php:239 ../inc/template-tags.php:402
-msgid "Comments navigation"
-msgstr "Navegação de comentários"
-
-#: ../inc/bootstrap-functions.php:282 ../inc/bootstrap-functions.php:337
-msgid "Posts navigation"
-msgstr "Navegação de artigos"
-
-#: ../inc/bootstrap-functions.php:395
-msgid "Pingback:"
-msgstr "Pingback:"
-
-#: ../inc/bootstrap-functions.php:395 ../inc/bootstrap-functions.php:419
-#: ../inc/template-tags.php:226 ../inc/template-tags.php:460
-msgid "Edit"
-msgstr "Editar"
-
-#: ../inc/bootstrap-functions.php:409
-msgid "In"
-msgstr "Em"
-
-#: ../inc/bootstrap-functions.php:414
-msgid "at"
-msgstr "às"
-
-#: ../inc/bootstrap-functions.php:416
-msgid "<span class=\"says\">said:</span>"
-msgstr "<span class=\"says\">disse:</span>"
-
-#: ../inc/bootstrap-functions.php:424
-msgid "Your comment is awaiting moderation."
-msgstr "Seu comentário está esperando por moderação."
-
-#: ../inc/bootstrap-functions.php:433
-msgid "Respond"
-msgstr "Responder"
-
-#: ../inc/classes/class-bootstrap-nav.php:205
-msgid "Add a menu"
-msgstr "Adicionar um menu"
-
-#: ../inc/custom-header.php:52
-msgctxt "header image description"
-msgid "Estúdio Viking Brand"
-msgstr "Marca do Estúdio Viking"
+#: ../header.php:42
+msgid "Go to home page?"
+msgstr "Ir para página principal?"
 
 #: ../inc/issimple-contact-form.php:19
 msgid "Your name"
@@ -264,301 +399,315 @@ msgstr "Obrigado por entrar em contato conosco, aguarde uma resposta em breve."
 msgid "An unexpected error occurred. Try again later."
 msgstr "Ocorreu um erro inesperado. Tente novamente mais tarde."
 
-#: ../inc/template-tags.php:196 ../inc/template-tags.php:198
-#: ../inc/template-tags.php:201 ../searchform.php:13 ../searchform.php:15
+#: ../inc/template-tags.php:214 ../inc/template-tags.php:216
+#: ../inc/template-tags.php:219 ../searchform.php:13 ../searchform.php:15
 #: ../searchform.php:17
 msgid "Search"
 msgstr "Pesquisar"
 
-#: ../inc/template-tags.php:228
+#: ../inc/template-tags.php:246
 msgid "Page not found"
 msgstr "Página não encontrada"
 
-#: ../inc/template-tags.php:243
+#: ../inc/template-tags.php:261
 #, php-format
 msgid "Search results for: %s"
 msgstr "Resultados da pesquisa para: %s"
 
-#: ../inc/template-tags.php:246
+#: ../inc/template-tags.php:264
 msgid "Latest Posts"
 msgstr "Últimos Artigos"
 
-#: ../inc/template-tags.php:291
+#: ../inc/template-tags.php:309
 #, php-format
 msgid "Posts in category: %s"
 msgstr "Artigos na categoria: %s"
 
-#: ../inc/template-tags.php:293
+#: ../inc/template-tags.php:311
 #, php-format
 msgid "Posts in tag: %s"
 msgstr "Artigos na tag: %s"
 
-#: ../inc/template-tags.php:295
+#: ../inc/template-tags.php:313
 #, php-format
 msgid "Posts of the author: %s"
 msgstr "Artigos do autor: %s"
 
-#: ../inc/template-tags.php:297
+#: ../inc/template-tags.php:315
 #, php-format
 msgid "Posts of the day: %s"
 msgstr "Artigos do dia: %s"
 
-#: ../inc/template-tags.php:299
+#: ../inc/template-tags.php:317
 #, php-format
 msgid "Posts of the month: %s"
 msgstr "Artigos do mês: %s"
 
-#: ../inc/template-tags.php:301
+#: ../inc/template-tags.php:319
 #, php-format
 msgid "Posts of the year: %s"
 msgstr "Artigos do ano: %s"
 
-#: ../inc/template-tags.php:338
+#: ../inc/template-tags.php:356
 msgid "Previous post:"
 msgstr "Artigo anterior:"
 
-#: ../inc/template-tags.php:341
+#: ../inc/template-tags.php:359
 msgid "Next post:"
 msgstr "Próximo artigo:"
 
-#: ../inc/template-tags.php:479
+#: ../inc/template-tags.php:499
 msgid "This post was written by "
 msgstr "Este artigo foi escrito por "
 
-#: ../inc/template-tags.php:479
+#: ../inc/template-tags.php:499
 msgid " in "
 msgstr " em "
 
-#: ../inc/template-tags.php:483
+#: ../inc/template-tags.php:503
 msgid "Categorised in: "
 msgstr "Categorizado em: "
 
-#: ../inc/template-tags.php:489
+#: ../inc/template-tags.php:509
 msgid "Tags: "
 msgstr "Tags: "
 
-#: ../inc/template-tags.php:506
+#: ../inc/template-tags.php:526
 msgid "Pages:"
 msgstr "Páginas:"
 
-#: ../inc/template-tags.php:510
+#: ../inc/template-tags.php:530
 msgid "Page"
 msgstr "Página"
 
-#: ../inc/template-tags.php:537 ../inc/template-tags.php:538
-#: ../inc/template-tags.php:539
+#: ../inc/template-tags.php:557 ../inc/template-tags.php:558
+#: ../inc/template-tags.php:559
 #, php-format
 msgid "Posts of %s"
 msgstr "Artigos de %s"
 
-#: ../inc/template-tags.php:544
+#: ../inc/template-tags.php:564
 #, php-format
 msgid "%s of %s of %s"
 msgstr "%s de %s de %s"
 
-#: ../inc/template-tags.php:624 ../inc/template-tags.php:645
+#: ../inc/template-tags.php:646 ../inc/template-tags.php:666
 msgid "View post:"
 msgstr "Ver o artigo:"
 
-#: ../inc/template-tags.php:625 ../inc/template-tags.php:646
+#: ../inc/template-tags.php:647 ../inc/template-tags.php:667
 msgid "View more"
 msgstr "Ver mais"
 
-#: ../inc/widgets/class-widget-issimple-archives.php:15
-msgid "A monthly archive of your site&#8217;s Posts."
-msgstr "Um arquivo mensal dos posts de seu site "
-
-#: ../inc/widgets/class-widget-issimple-archives.php:16
-#: ../inc/widgets/class-widget-issimple-archives.php:24
-msgid "Archives"
-msgstr "Arquivos"
-
-#: ../inc/widgets/class-widget-issimple-archives.php:54
-msgid "Select Year"
-msgstr ""
-
-#: ../inc/widgets/class-widget-issimple-archives.php:57
-msgid "Select Month"
-msgstr ""
-
-#: ../inc/widgets/class-widget-issimple-archives.php:60
-msgid "Select Day"
-msgstr ""
-
-#: ../inc/widgets/class-widget-issimple-archives.php:63
-msgid "Select Week"
-msgstr ""
-
-#: ../inc/widgets/class-widget-issimple-archives.php:66
-msgid "Select Post"
-msgstr ""
-
-#: ../inc/widgets/class-widget-issimple-archives.php:117
-#: ../inc/widgets/class-widget-issimple-calendar.php:45
-#: ../inc/widgets/class-widget-issimple-categories.php:117
-#: ../inc/widgets/class-widget-issimple-meta.php:66
-#: ../inc/widgets/class-widget-issimple-pages.php:88
-#: ../inc/widgets/class-widget-issimple-recent-comments.php:143
-#: ../inc/widgets/class-widget-issimple-recent-posts.php:125
-#: ../inc/widgets/class-widget-issimple-tag-cloud.php:69
-msgid "Title:"
-msgstr "Título:"
-
-#: ../inc/widgets/class-widget-issimple-archives.php:119
-#: ../inc/widgets/class-widget-issimple-categories.php:121
-msgid "Display as dropdown"
-msgstr "Mostrar como lista suspensa"
-
-#: ../inc/widgets/class-widget-issimple-archives.php:121
-#: ../inc/widgets/class-widget-issimple-categories.php:124
-msgid "Show post counts"
-msgstr "Mostrar número de posts"
-
-#: ../inc/widgets/class-widget-issimple-calendar.php:15
-msgid "A calendar of your site&#8217;s Posts."
-msgstr "Um calendário de posts de seu site. "
-
-#: ../inc/widgets/class-widget-issimple-calendar.php:16
-msgid "Calendar"
-msgstr "Agenda"
-
-#: ../inc/widgets/class-widget-issimple-categories.php:15
-msgid "A list or dropdown of categories."
-msgstr "Uma lista ou menu suspenso de categorias. "
-
-#: ../inc/widgets/class-widget-issimple-categories.php:16
-#: ../inc/widgets/class-widget-issimple-categories.php:22
-msgid "Categories"
-msgstr "Categorias"
-
-#: ../inc/widgets/class-widget-issimple-categories.php:47
-msgid "Select Category"
-msgstr "Selecionar uma categoria"
-
-#: ../inc/widgets/class-widget-issimple-categories.php:127
-msgid "Show hierarchy"
-msgstr "Mostrar hierarquia"
-
-#: ../inc/widgets/class-widget-issimple-meta.php:15
-msgid "Login, RSS, &amp; WordPress.org links."
-msgstr "Links para login, RSS e WordPress.org. "
-
-#: ../inc/widgets/class-widget-issimple-meta.php:16
-#: ../inc/widgets/class-widget-issimple-meta.php:22
-msgid "Meta"
-msgstr "Meta"
-
-#: ../inc/widgets/class-widget-issimple-meta.php:32
-msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
-msgstr "Posts <abbr title=\"Really Simple Syndication\">RSS</abbr>"
-
-#: ../inc/widgets/class-widget-issimple-meta.php:33
-msgid "Comments <abbr title=\"Really Simple Syndication\">RSS</abbr>"
-msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> dos comentários"
-
-#: ../inc/widgets/class-widget-issimple-meta.php:43
-msgid "https://wordpress.org/"
-msgstr "https://WordPress.org/"
-
-#: ../inc/widgets/class-widget-issimple-meta.php:45
-msgctxt "meta widget link text"
-msgid "WordPress.org"
-msgstr "WordPress.org"
-
-#: ../inc/widgets/class-widget-issimple-pages.php:15
-msgid "A list of your site&#8217;s Pages."
-msgstr "Uma lista das páginas do seu site."
-
-#: ../inc/widgets/class-widget-issimple-pages.php:16
-#: ../inc/widgets/class-widget-issimple-pages.php:30
-msgid "Pages"
-msgstr "Páginas"
-
-#: ../inc/widgets/class-widget-issimple-pages.php:90
-msgid "Sort by:"
-msgstr "Ordenar por:"
-
-#: ../inc/widgets/class-widget-issimple-pages.php:92
-msgid "Page title"
-msgstr "Título da página"
-
-#: ../inc/widgets/class-widget-issimple-pages.php:93
-msgid "Page order"
-msgstr "Ordem das páginas"
-
-#: ../inc/widgets/class-widget-issimple-pages.php:94
-msgid "Page ID"
-msgstr "ID da página"
-
-#: ../inc/widgets/class-widget-issimple-pages.php:98
-msgid "Exclude:"
-msgstr "Excluir :"
-
-#: ../inc/widgets/class-widget-issimple-pages.php:100
-msgid "Page IDs, separated by commas."
-msgstr "IDs de página, separados por vírgulas."
-
-#: ../inc/widgets/class-widget-issimple-recent-comments.php:15
-msgid "Your site&#8217;s most recent comments."
-msgstr "Os comentários mais recentes do seu site."
-
-#: ../inc/widgets/class-widget-issimple-recent-comments.php:16
-#: ../inc/widgets/class-widget-issimple-recent-comments.php:70
-msgid "Recent Comments"
-msgstr "Comentários Recentes"
-
-#. translators: comments widget: 1: comment author, 2: post link
-#: ../inc/widgets/class-widget-issimple-recent-comments.php:108
+#: ../inc/theme-options.php:35
 #, php-format
-msgctxt "widgets"
-msgid "%1$s on %2$s"
-msgstr "%1$s em %2$s"
+msgid "%s Settings"
+msgstr "%s Configurações"
 
-#: ../inc/widgets/class-widget-issimple-recent-comments.php:146
-msgid "Number of comments to show:"
-msgstr "Número de comentários para mostrar:"
+#: ../inc/theme-options.php:42
+msgid "General Settings"
+msgstr "Configurações Gerais"
 
-#: ../inc/widgets/class-widget-issimple-recent-posts.php:15
-msgid "Your site&#8217;s most recent Posts."
-msgstr "Postagens mais recentes do seu site."
+#: ../inc/theme-options.php:46
+msgid "Style Settings"
+msgstr "Configuração de Estilo"
 
-#: ../inc/widgets/class-widget-issimple-recent-posts.php:16
-#: ../inc/widgets/class-widget-issimple-recent-posts.php:45
-msgid "Recent Posts"
-msgstr "Postagens Recentes"
+#: ../inc/theme-options.php:50
+msgid "Slider Settings"
+msgstr "Configurações do Slider"
 
-#: ../inc/widgets/class-widget-issimple-recent-posts.php:128
-msgid "Number of posts to show:"
-msgstr "Número de posts para exibir:"
+#: ../inc/theme-options.php:56
+msgid "All rights reserved."
+msgstr "Todos os direitos reservados."
 
-#: ../inc/widgets/class-widget-issimple-recent-posts.php:132
-msgid "Display post date?"
-msgstr "Exibir data da postagem?"
+#: ../inc/theme-options.php:62 ../inc/theme-options.php:69
+#: ../inc/theme-options.php:120
+msgid "None"
+msgstr "Nenhum"
 
-#: ../inc/widgets/class-widget-issimple-tag-cloud.php:15
-msgid "A cloud of your most used tags."
-msgstr "Uma nuvem com as tags mais usadas."
-
-#: ../inc/widgets/class-widget-issimple-tag-cloud.php:16
-msgid "Tag Cloud"
-msgstr "Nuvem de Tags"
-
-#: ../inc/widgets/class-widget-issimple-tag-cloud.php:25
-#, fuzzy
-msgid "Tags"
-msgstr "Tags: "
-
-#: ../inc/widgets/class-widget-issimple-tag-cloud.php:71
-msgid "Taxonomy:"
-msgstr "Taxonomia:"
-
-#: ../inc/widgets/class-widget-issimple-tag-cloud.php:156
-#: ../inc/widgets/class-widget-issimple-tag-cloud.php:165
+#: ../inc/theme-options.php:78
 #, php-format
-msgid "%s topic"
-msgid_plural "%s topics"
-msgstr[0] ""
-msgstr[1] ""
+msgid "General options to customize %s Theme."
+msgstr "Opções gerais para personalizar o tema %s."
+
+#: ../inc/theme-options.php:83
+msgid "Header Logo"
+msgstr "Logo do cabeçalho"
+
+#: ../inc/theme-options.php:85
+msgid "Select the logo to show in header."
+msgstr "Selecione o logo para mostrar no cabeçalho."
+
+#: ../inc/theme-options.php:90
+msgid "Footer Text"
+msgstr "Texto do Rodapé"
+
+#: ../inc/theme-options.php:93
+msgid "Type the copyright text appears in the footer."
+msgstr "Digite o texto de direitos autorais exibido no rodapé."
+
+#: ../inc/theme-options.php:99
+#, php-format
+msgid "Style options to customize %s Theme."
+msgstr "Opções de estilo para personaliza o tema %s."
+
+#: ../inc/theme-options.php:104
+msgid "Header Navbar Style"
+msgstr "Estilo da barra de navegação do cabeçalho"
+
+#: ../inc/theme-options.php:108
+msgid "Navbar Default"
+msgstr ""
+
+#: ../inc/theme-options.php:109
+msgid "Navbar Inverse"
+msgstr ""
+
+#: ../inc/theme-options.php:111
+msgid "Select the Header Navbar Style you want."
+msgstr "Selecione o estilo desejado para a barra de navegação do cabeçalho."
+
+#: ../inc/theme-options.php:116
+msgid "Header Navbar Fixing"
+msgstr "Fixação da barra de navegação do cabeçalho"
+
+#: ../inc/theme-options.php:121
+msgid "Navbar Static Top"
+msgstr ""
+
+#: ../inc/theme-options.php:122
+msgid "Navbar Fixed Top"
+msgstr ""
+
+#: ../inc/theme-options.php:124
+msgid "Select the Header Navbar Fixing you want."
+msgstr "Selecione a fixação que deseja para a barra de navegação do cabeçalho."
+
+#: ../inc/theme-options.php:130
+#, php-format
+msgid "Slider options to customize %s Theme."
+msgstr "Opções da apresentação de slides para personalizar o tema %s."
+
+#: ../inc/theme-options.php:135
+msgid "Slider Tag"
+msgstr "Tag da apresentação de slides"
+
+#: ../inc/theme-options.php:139
+msgid "Select the Post Tag to show in slider."
+msgstr "Selecione a Tag para mostrar na apresentação de slides."
+
+#: ../inc/theme-options.php:144
+msgid "Slider FX"
+msgstr "Efeito de transição"
+
+#: ../inc/theme-options.php:148
+msgid "Select the transition that you want for slider."
+msgstr "Selecione a transição desejada para a apresentação de slides."
+
+#: ../inc/theme-options.php:153
+msgid "Slider Timeout"
+msgstr "Tempo de transição da apresentação de slides"
+
+#: ../inc/theme-options.php:156
+msgid "Set the time between slide transitions in milliseconds."
+msgstr "Defina o tempo entre as transições de slide em milissegundos."
+
+#: ../inc/theme-options.php:167
+msgid "Pause on hover"
+msgstr "Pausar em hover"
+
+#: ../inc/theme-options.php:170
+msgid "Pause the slideshow when the mouse moves over it."
+msgstr "Pause a apresentação de slides enquanto o mouse se move sobre ela."
+
+#: ../inc/theme-options.php:288
+msgid "Powered by"
+msgstr "Desenvolvido por"
+
+#~ msgid "General options to customize IS Simple WP Theme."
+#~ msgstr "Opções gerais para personalizar o tema IS Simple WP."
+
+#~ msgid "Style options to customize IS Simple WP Theme."
+#~ msgstr "Opções de estilo para personaliza o tema IS Simple WP."
+
+#~ msgid "Slider options to customize IS Simple WP Theme."
+#~ msgstr ""
+#~ "Opções da apresentação de slides para personalizar o tema IS Simple WP."
+
+#~ msgid ""
+#~ "Powered by <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">ID Design</"
+#~ "a> on <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
+#~ msgstr ""
+#~ "Desenvolvido por <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">ID "
+#~ "Design</a> em <a href=\"%s\" rel=\"nofollow\" target=\"_blank"
+#~ "\">WordPress</a>."
+
+#~ msgctxt "header image description"
+#~ msgid "Estúdio Viking Brand"
+#~ msgstr "Marca do Estúdio Viking"
+
+#~ msgid "A monthly archive of your site&#8217;s Posts."
+#~ msgstr "Um arquivo mensal dos posts de seu site "
+
+#~ msgid "Display as dropdown"
+#~ msgstr "Mostrar como lista suspensa"
+
+#~ msgid "A calendar of your site&#8217;s Posts."
+#~ msgstr "Um calendário de posts de seu site. "
+
+#~ msgid "Calendar"
+#~ msgstr "Agenda"
+
+#~ msgid "A list or dropdown of categories."
+#~ msgstr "Uma lista ou menu suspenso de categorias. "
+
+#~ msgid "Show hierarchy"
+#~ msgstr "Mostrar hierarquia"
+
+#~ msgid "Login, RSS, &amp; WordPress.org links."
+#~ msgstr "Links para login, RSS e WordPress.org. "
+
+#~ msgid "A list of your site&#8217;s Pages."
+#~ msgstr "Uma lista das páginas do seu site."
+
+#~ msgid "Sort by:"
+#~ msgstr "Ordenar por:"
+
+#~ msgid "Page title"
+#~ msgstr "Título da página"
+
+#~ msgid "Page order"
+#~ msgstr "Ordem das páginas"
+
+#~ msgid "Page ID"
+#~ msgstr "ID da página"
+
+#~ msgid "Exclude:"
+#~ msgstr "Excluir :"
+
+#~ msgid "Page IDs, separated by commas."
+#~ msgstr "IDs de página, separados por vírgulas."
+
+#~ msgid "Your site&#8217;s most recent comments."
+#~ msgstr "Os comentários mais recentes do seu site."
+
+#~ msgid "Number of comments to show:"
+#~ msgstr "Número de comentários para mostrar:"
+
+#~ msgid "Your site&#8217;s most recent Posts."
+#~ msgstr "Postagens mais recentes do seu site."
+
+#~ msgid "Number of posts to show:"
+#~ msgstr "Número de posts para exibir:"
+
+#~ msgid "Display post date?"
+#~ msgstr "Exibir data da postagem?"
+
+#~ msgid "A cloud of your most used tags."
+#~ msgstr "Uma nuvem com as tags mais usadas."
+
+#~ msgid "Tag Cloud"
+#~ msgstr "Nuvem de Tags"
 
 #~ msgid ""
 #~ "Powered by <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">Estúdio "
@@ -796,9 +945,6 @@ msgstr[1] ""
 #~ msgid "This is a title"
 #~ msgstr "Este artigo foi escrito por "
 
-#~ msgid "General Settings"
-#~ msgstr "Configurações Gerais"
-
 #, fuzzy
 #~ msgid "Styling Options"
 #~ msgstr "Opções do Slider"
@@ -928,9 +1074,6 @@ msgstr[1] ""
 
 #~ msgid "(Edit)"
 #~ msgstr "(Editar)"
-
-#~ msgid "Powered by"
-#~ msgstr "Desenvolvido por"
 
 #~ msgid "HTML5 Blank Custom Post"
 #~ msgstr "HTML5 Blank Custom Post"
