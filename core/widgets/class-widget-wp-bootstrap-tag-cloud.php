@@ -31,10 +31,6 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget {
 				$title = $tax->labels->name;
 			}
 		}
-		
-		echo '<pre>';
-		print_r($instance);
-		echo '</pre>';
 
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
