@@ -4,10 +4,10 @@
  *
  * The area of the page that contains both current comments
  * and the comment form.
- * 
- * @package WordPress
- * @subpackage IS Simple
- * @since IS Simple 1.0
+ *
+ * @package		WordPress
+ * @subpackage	IS Simple
+ * @since		IS Simple 1.0
  */
 ?>
 
@@ -18,65 +18,75 @@
 		 * we will return early without loading the comments.
 		 */
 		if ( post_password_required() ) : ?>
-			
 	<p class="comments-protected"><?php _e( 'Post is password protected. Enter the password to view any comments.', 'issimple' ); ?></p>
 </div><!-- #comments --><?php
-			
+
 			return;
 		endif;
 	?>
-	
+
 	<?php if ( have_comments() ) : ?>
-		
+
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<h2 class="comments-title">
 					<?php
-						comments_number( __( 'Leave your thoughts', 'issimple' ), __( '1 comment', 'issimple' ), __( '% comments', 'issimple' ) );
-						echo ' ' . __( 'on', 'issimple' ) . ' <span>&quot;' . get_the_title() . '&quot;</span>';
+						printf( '%s %s <span>&quot;%s&quot;</span>',
+							get_comments_number_text( __( 'Leave your thoughts', 'issimple' ), __( '1 comment', 'issimple' ), __( '% comments', 'issimple' ) ),
+							__( 'on', 'issimple' ),
+							get_the_title()
+						);
 					?>
 				</h2>
 			</div>
 		</div>
-		
+
 		<?php issimple_comments_pagination(); ?>
-		
+
 		<ol class="comments-list">
 			<?php // Comments list
 				wp_list_comments( array( 'callback' => 'wp_bootstrap_comments_loop' ) );
 			?>
 		</ol><!-- .comments-list -->
-		
+
 		<?php issimple_comments_pagination(); ?>
-		
+
 	<?php endif; // have_comments ?>
-	
+
 	<?php // If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
 		<p class="no-comments"><?php _e( 'Comments are closed here.', 'issimple' ); ?></p>
 	<?php endif; ?>
-	
+
 	<?php // Comment form
+		ob_start();
 		$commenter 	= wp_get_current_commenter();
 		$req 		= get_option( 'require_name_email' );
 		$aria_req 	= ( $req ? " aria-required='true'" : '' );
-		
+		$html_req 	= ( $req ? " required='required'" : '' );
+		$span_req	= ( $req ? ' <span class="required">*</span>' : '' );
+
 		comment_form( array(
-			'title_reply' => __( 'Leave your thoughts', 'issimple' ),
+			'title_reply' 			=> __( 'Leave your thoughts', 'issimple' ),
 			'comment_notes_after'	=> '',
 			'fields'				=> apply_filters( 'comment_form_default_fields', array(
-				'author' => '<div class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'issimple' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-							'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40"' . $aria_req . ' /></div>',
-				'email'  => '<div class="comment-form-email form-group"><label for="email">' . __( 'Email', 'issimple' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-							'<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="40" aria-describedby="email-notes"' . $aria_req . ' /></div>',
+				'author' => '<div class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'issimple' ) . $span_req . '</label> ' .
+							'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40"' . $aria_req . $html_req . ' /></div>',
+				'email'  => '<div class="comment-form-email form-group"><label for="email">' . __( 'Email', 'issimple' ) . $span_req . '</label> ' .
+							'<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="40" aria-describedby="email-notes"' . $aria_req . $html_req . ' /></div>',
 				'url'    => '<div class="comment-form-url form-group"><label for="url">' . __( 'Website', 'issimple' ) . '</label> ' .
 							'<input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="40" /></div>',
 			) ),
-			'comment_field'			=> '<div class="comment-form-comment form-group"><label for="comment">' . __( 'Comment', 'issimple' ) . '</label> ' .
-									   '<textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea></div>',
+			'comment_field'			=> '<div class="comment-form-comment form-group"><label for="comment">' . __( 'Comment', 'issimple' ) . ' <span class="required">*</span></label> ' .
+									   '<textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea></div>',
 			'class_submit'			=> 'submit btn btn-default',
 		) );
+
+		$comment_form = ob_get_contents();
+		ob_end_clean();
+
+		echo str_replace( 'novalidate', '', $comment_form );
 	?>
-	
+
 </div><!-- #comments -->
