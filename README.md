@@ -29,7 +29,7 @@ Envie a pasta **"is_simple_wp"** para a pasta de temas padrão do **WordPress (w
 O **IS Simple WP** é um projeto **Open Source**. Qualquer pessoa pode ajudar a melhorá-lo contribuindo com as suas opiniões, sugestões ou reportando erros!
 
 Para contribuir basta clicar no botão **Fork**, criar um *Branch*, arrumar o código e enviá-lo com um **Pull Request**.
-Reporte erros ou faça suas sugestões utilizando o [Issues](https://github.com/id-design/is_simple_wp/issues)
+Reporte erros ou faça suas sugestões utilizando o [Issues](https://github.com/id-design/is_simple_wp/issues). Verifique também as **Issues abertas** e ajude a corrigir os problemas.
 
 ## Copyright e Licença
 &copy; Copyright 2013 - 2015 | **[ID Design](https://github.com/id-design)**.
