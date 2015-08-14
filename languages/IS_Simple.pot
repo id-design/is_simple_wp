@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Estúdio Viking WordPress Theme v1.0\n"
-"POT-Creation-Date: 2015-07-10 21:12-0300\n"
-"PO-Revision-Date: 2015-07-10 21:12-0300\n"
+"POT-Creation-Date: 2015-08-14 17:29-0300\n"
+"PO-Revision-Date: 2015-08-14 17:29-0300\n"
 "Last-Translator: Ivanildo Dias <ivanildodiasdesigner@gmail.com>\n"
 "Language-Team: Ivanildo Dias <ivanildodias@estudioviking.com>\n"
 "MIME-Version: 1.0\n"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "View all posts by %s"
 msgstr ""
 
-#: comments.php:22
+#: comments.php:21
 msgid "Post is password protected. Enter the password to view any comments."
 msgstr ""
 
-#: comments.php:35 comments.php:66 inc/template-tags.php:580
+#: comments.php:35 comments.php:71 inc/template-tags.php:580
 msgid "Leave your thoughts"
 msgstr ""
 
@@ -59,23 +59,23 @@ msgstr ""
 msgid "on"
 msgstr ""
 
-#: comments.php:57
+#: comments.php:59
 msgid "Comments are closed here."
 msgstr ""
 
-#: comments.php:69 inc/issimple-contact-form.php:18
+#: comments.php:74 inc/issimple-contact-form.php:18
 msgid "Name"
 msgstr ""
 
-#: comments.php:71 inc/issimple-contact-form.php:22
+#: comments.php:76 inc/issimple-contact-form.php:22
 msgid "Email"
 msgstr ""
 
-#: comments.php:73
+#: comments.php:78
 msgid "Website"
 msgstr ""
 
-#: comments.php:76
+#: comments.php:81
 msgid "Comment"
 msgstr ""
 
@@ -264,7 +264,6 @@ msgstr ""
 msgid "Recent Comments"
 msgstr ""
 
-#. translators: comments widget: 1: comment author, 2: post link
 #: core/widgets/class-widget-wp-bootstrap-recent-comments.php:77
 #, php-format
 msgctxt "widgets"
@@ -287,24 +286,24 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:88
+#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:84
 msgid "Title:"
 msgstr ""
 
-#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:91
+#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:87
 msgid "Taxonomy:"
 msgstr ""
 
-#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:103
+#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:99
 msgid "Show as Bootstrap labels"
 msgstr ""
 
-#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:106
+#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:102
 msgid "Show post counts"
 msgstr ""
 
-#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:183
-#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:192
+#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:179
+#: core/widgets/class-widget-wp-bootstrap-tag-cloud.php:188
 #, php-format
 msgid "%s topic"
 msgid_plural "%s topics"
@@ -501,15 +500,15 @@ msgid "%s Settings"
 msgstr ""
 
 #: inc/theme-options.php:42
-msgid "General Settings"
+msgid "General"
 msgstr ""
 
 #: inc/theme-options.php:46
-msgid "Style Settings"
+msgid "Style"
 msgstr ""
 
 #: inc/theme-options.php:50
-msgid "Slider Settings"
+msgid "Slider"
 msgstr ""
 
 #: inc/theme-options.php:56

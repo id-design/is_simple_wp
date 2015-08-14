@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: IS Simple WordPress Theme v1.0\n"
-"POT-Creation-Date: 2015-07-10 21:12-0300\n"
+"POT-Creation-Date: 2015-08-14 17:11-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ivanildo Dias <ivanildodiasdesigner@gmail.com>\n"
 "Language-Team: Ivanildo Dias <ivanildodiasdesigner@gmail.com>\n"
@@ -40,13 +40,13 @@ msgstr "Publicado por:"
 msgid "View all posts by %s"
 msgstr "Ver todos os artigos de %s"
 
-#: ../comments.php:22
+#: ../comments.php:21
 msgid "Post is password protected. Enter the password to view any comments."
 msgstr ""
 "Este artigo é protegido por senha. Para ver os comentários, a senha deve ser "
 "digitada."
 
-#: ../comments.php:35 ../comments.php:66 ../inc/template-tags.php:580
+#: ../comments.php:35 ../comments.php:71 ../inc/template-tags.php:580
 msgid "Leave your thoughts"
 msgstr "Deixe seus comentários"
 
@@ -63,23 +63,23 @@ msgstr "% comentários"
 msgid "on"
 msgstr "em"
 
-#: ../comments.php:57
+#: ../comments.php:59
 msgid "Comments are closed here."
 msgstr "Comentários estão fechados."
 
-#: ../comments.php:69 ../inc/issimple-contact-form.php:18
+#: ../comments.php:74 ../inc/issimple-contact-form.php:18
 msgid "Name"
 msgstr "Nome"
 
-#: ../comments.php:71 ../inc/issimple-contact-form.php:22
+#: ../comments.php:76 ../inc/issimple-contact-form.php:22
 msgid "Email"
 msgstr "E-mail"
 
-#: ../comments.php:73
+#: ../comments.php:78
 msgid "Website"
 msgstr "Site"
 
-#: ../comments.php:76
+#: ../comments.php:81
 msgid "Comment"
 msgstr "Comentário"
 
@@ -268,7 +268,6 @@ msgstr "Páginas"
 msgid "Recent Comments"
 msgstr "Comentários Recentes"
 
-#. translators: comments widget: 1: comment author, 2: post link
 #: ../core/widgets/class-widget-wp-bootstrap-recent-comments.php:77
 #, php-format
 msgctxt "widgets"
@@ -291,24 +290,24 @@ msgstr "Nuvem de Tags do WP Bootstrap"
 msgid "Tags"
 msgstr "Tags:"
 
-#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:88
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:84
 msgid "Title:"
 msgstr "Título:"
 
-#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:91
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:87
 msgid "Taxonomy:"
 msgstr "Taxonomia:"
 
-#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:103
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:99
 msgid "Show as Bootstrap labels"
 msgstr "Mostrar como labels do Bootstrap"
 
-#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:106
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:102
 msgid "Show post counts"
 msgstr "Mostrar número de posts"
 
-#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:183
-#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:192
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:179
+#: ../core/widgets/class-widget-wp-bootstrap-tag-cloud.php:188
 #, php-format
 msgid "%s topic"
 msgid_plural "%s topics"
@@ -502,19 +501,19 @@ msgstr "Ver mais"
 #: ../inc/theme-options.php:35
 #, php-format
 msgid "%s Settings"
-msgstr "%s Configurações"
+msgstr "%s - Configurações"
 
 #: ../inc/theme-options.php:42
-msgid "General Settings"
-msgstr "Configurações Gerais"
+msgid "General"
+msgstr "Geral"
 
 #: ../inc/theme-options.php:46
-msgid "Style Settings"
-msgstr "Configuração de Estilo"
+msgid "Style"
+msgstr "Estilo"
 
 #: ../inc/theme-options.php:50
-msgid "Slider Settings"
-msgstr "Configurações do Slider"
+msgid "Slider"
+msgstr "Slider"
 
 #: ../inc/theme-options.php:56
 msgid "All rights reserved."
@@ -623,6 +622,15 @@ msgstr "Pause a apresentação de slides enquanto o mouse se move sobre ela."
 #: ../inc/theme-options.php:288
 msgid "Powered by"
 msgstr "Desenvolvido por"
+
+#~ msgid "General Settings"
+#~ msgstr "Configurações Gerais"
+
+#~ msgid "Style Settings"
+#~ msgstr "Configuração de Estilo"
+
+#~ msgid "Slider Settings"
+#~ msgstr "Configurações do Slider"
 
 #~ msgid "General options to customize IS Simple WP Theme."
 #~ msgstr "Opções gerais para personalizar o tema IS Simple WP."
