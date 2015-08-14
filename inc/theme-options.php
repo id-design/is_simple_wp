@@ -39,15 +39,15 @@ function issimple_theme_options() {
 	$settings->set_tabs( array(
 		array(
 			'id'	=> 'issimple_general_options',					// Slug/ID of the Settings tab (Required)
-			'title'	=> __( 'General Settings', 'issimple' ),		// Settings tab title (Required)
+			'title'	=> __( 'General', 'issimple' ),					// Settings tab title (Required)
 		),
 		array(
 			'id' 	=> 'issimple_style_options',					// Slug/ID of the Settings tab (Required)
-			'title'	=> __( 'Style Settings', 'issimple' ),			// Settings tab title (Required)
+			'title'	=> __( 'Style', 'issimple' ),					// Settings tab title (Required)
 		),
 		array(
 			'id' 	=> 'issimple_slider_options',					// Slug/ID of the Settings tab (Required)
-			'title'	=> __( 'Slider Settings', 'issimple' ),			// Settings tab title (Required)
+			'title'	=> __( 'Slider', 'issimple' ),					// Settings tab title (Required)
 		)
 	) );
 
