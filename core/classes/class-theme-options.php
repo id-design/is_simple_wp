@@ -295,7 +295,7 @@ class ISSimple_Theme_Options {
 		foreach ( $this->tabs as $tab ) {
 			$options = get_option( $tab['id'] );
 
-			if ( empty( $options ) && isset( $defaults ) ) {
+			if ( empty( $options ) && isset( $defaults[ $tab['id'] ] ) ) {
 				add_option( $tab['id'], $defaults[ $tab['id'] ] );
 			}
 		}
