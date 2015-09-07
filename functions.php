@@ -363,6 +363,20 @@ add_action( 'get_header', 'enable_threaded_comments' );
 
 
 /**
+ * Query WooCommerce activation
+ * 
+ * @since IS Simple 1.0
+ *
+ * @return boolean
+ */
+if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+    function is_woocommerce_activated() {
+        return class_exists( 'woocommerce' ) ? true : false;
+    }
+}
+
+
+/**
  * Inclusão de recursos ao tema
  * 
  * @since IS Simple 1.0
@@ -370,15 +384,29 @@ add_action( 'get_header', 'enable_threaded_comments' );
  */
 // Funções para algumas utilidades básicas no tema
 require_once INCLUDES_PATH . '/utilities.php';
+
 // Bootstrap functions
 require_once CORE_PATH . '/bootstrap-functions.php';
+
 // Theme Options.
 require_once INCLUDES_PATH . '/theme-options.php';
+
 // Limpeza e otimização do tema
 require_once INCLUDES_PATH . '/cleanup.php';
+
 // Shortcodes úteis no tema
 require_once CORE_PATH . '/shortcodes.php';
+
 // Funções exclusivas do tema
 require_once INCLUDES_PATH . '/template-tags.php';
+
 // Funções para incrementar o formulário de contato no tema ou post
 require_once INCLUDES_PATH . '/issimple-contact-form.php';
+
+// WooCommerce compatibility files.
+if ( is_woocommerce_activated() ) {
+    add_theme_support( 'woocommerce' );
+    //require INCLUDES_PATH . '/woocommerce/hooks.php';
+    //require INCLUDES_PATH . '/woocommerce/functions.php';
+    //require INCLUDES_PATH . '/woocommerce/template-tags.php'; 
+}
