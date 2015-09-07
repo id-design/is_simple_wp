@@ -10,6 +10,17 @@
  */
 
 
+
+/**
+ * Homepage Control Support
+ * 
+ * Learn more: {@link http://wordpress.org/plugins/homepage-control/}
+ * 
+ * @since IS Simple 1.0
+ */
+require_once INCLUDES_PATH . '/homepage-control/homepage-control.php';
+
+
 /**
  * Custom Favicon
  * 
@@ -30,7 +41,7 @@ function custom_favicon(){
 	$favicons .= '<!-- Favicon Other Browses -->';
 	$favicons .= '<link rel="shortcut icon" type="image/png" href="' . $favicon . '" />';
 	
-	$favicons .='<!-- Favicon Apple -->';
+	$favicons .= '<!-- Favicon Apple -->';
 	
 	for ( $i = 0; $i < $apple_icons_count; $i++ ) :
 		$size = ( $apple_icons_size[$i] == '' ) ? '' : ' sizes="' . $apple_icons_size[$i] . '"';
@@ -234,17 +245,19 @@ function issimple_content_search_form( $form_id = '', $form_class = '' ) {
  * ----------------------------------------------------------------------------
  */
 function issimple_page_header() {
+	if ( is_front_page() || is_home() ) get_template_part( 'slider' );
+	
 	if ( ! is_single() || ! is_front_page() ) : ?>
 		<header id="page-header">
 			<div class="jumbotron">
 				<div class="container-fluid">
 					<?php
-						if ( is_page() ) :
+						if ( is_page() ) {
 							the_title( '<h1 id="page-title">', '</h1>' );
 							edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' );
-						elseif ( is_404() ) : ?>
-							<h1 id="page-title"><?php _e( 'Page not found', 'issimple' ); ?></h1><?php
-						elseif ( is_archive() ) :
+						} elseif ( is_404() ) {
+							echo '<h1 id="page-title">' . __( 'Page not found', 'issimple' ) . '</h1>';
+						} elseif ( is_archive() ) {
 							the_archive_title( '<h1 id="page-title">', '</h1>' );
 							
 							if ( is_author() ) :
@@ -256,18 +269,18 @@ function issimple_page_header() {
 							else:
 								the_archive_description( '<div class="taxonomy-description">', '</div>' );
 							endif;
-						elseif ( is_search() ) : ?>
-							<h1 id="page-title"><?php
-								printf( __( 'Search results for: %s', 'issimple' ), get_search_query() );  ?>
-							</h1><?php
-						else : ?>
-							<h3 id="page-title" class="h1"><?php _e( 'Latest Posts', 'issimple' ); ?></h1><?php
-						endif;
+						} elseif ( is_search() ) {
+							echo '<h1 id="page-title">';
+							printf( __( 'Search results for: %s', 'issimple' ), get_search_query() );
+							echo '</h1>';
+						} else {
+							echo '<h3 id="page-title" class="h1">' . __( 'Latest Posts', 'issimple' ) . '</h1>';
+						}
 					?>
 				</div>
 			</div>
-		</header><!-- #page-header --><?php
-	endif;
+		</header><!-- #page-header -->
+	<?php endif;
 }
 
 

@@ -16,8 +16,6 @@
 
 get_header();
 
-get_template_part( 'slider' );
-
 issimple_page_header(); ?>
 
 <div id="main">
