@@ -311,12 +311,73 @@ class WP_Bootstrap_Tag_Cloud extends WP_Widget {
 
 
 /**
+ * Tag cloud widget class ajusted
+ *
+ * @package WordPress
+ * @subpackage IS Simple
+ * @category Widget
+ * @since IS Simple 1.0
+ */
+class WP_Widget_Adjusted_Tag_Cloud extends WP_Widget_Tag_Cloud {
+
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
+     * @param array $args
+     * @param array $instance
+     */
+    public function widget( $args, $instance ) {
+        $current_taxonomy = $this->_get_current_taxonomy($instance);
+        if ( !empty($instance['title']) ) {
+            $title = $instance['title'];
+        } else {
+            if ( 'post_tag' == $current_taxonomy ) {
+                $title = __('Tags');
+            } else {
+                $tax = get_taxonomy($current_taxonomy);
+                $title = $tax->labels->name;
+            }
+        }
+
+        /** This filter is documented in wp-includes/default-widgets.php */
+        $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+
+        echo $args['before_widget'];
+        if ( $title ) {
+            echo $args['before_title'] . $title . $args['after_title'];
+        }
+        echo '<div class="tagcloud panel-body">';
+
+        /**
+         * Filter the taxonomy used in the Tag Cloud widget.
+         *
+         * @since 2.8.0
+         * @since 3.0.0 Added taxonomy drop-down.
+         *
+         * @see wp_tag_cloud()
+         *
+         * @param array $current_taxonomy The taxonomy to use in the tag cloud. Default 'tags'.
+         */
+        wp_tag_cloud( apply_filters( 'widget_tag_cloud_args', array(
+            'taxonomy' => $current_taxonomy
+        ) ) );
+
+        echo "</div>\n";
+        echo $args['after_widget'];
+    }
+}
+
+
+/**
  * Register the WP Bootstrap Tag Cloud Widget.
  *
  * @return void
  */
 function wp_bootstrap_tag_cloud_widget() {
 	register_widget( 'WP_Bootstrap_Tag_Cloud' );
+    register_widget( 'WP_Widget_Adjusted_Tag_Cloud' );
 }
 
 add_action( 'widgets_init', 'wp_bootstrap_tag_cloud_widget' );
