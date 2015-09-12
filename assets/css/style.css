@@ -389,8 +389,9 @@ li:hover .menu-item-desc {
  * Secondary
  * ----------------------------------------------------------------------------
  */
+/*
 #main > .container-fluid > .row {
-	/*position: relative;*/
+	position: relative;
 }
 
 #vars {
@@ -399,9 +400,10 @@ li:hover .menu-item-desc {
 
 #secondary {
 	max-width: 400px;
-	/*position: absolute;
-	margin-left: 800px;*/
+	position: absolute;
+	margin-left: 800px;
 }
+*/
 
 
 /**

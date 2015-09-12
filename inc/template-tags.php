@@ -247,14 +247,18 @@ function issimple_content_search_form( $form_id = '', $form_class = '' ) {
 function issimple_page_header() {
 	if ( is_front_page() || is_home() ) get_template_part( 'slider' );
 	
-	if ( ! is_single() || ! is_front_page() ) : ?>
+	if ( ! is_single() ) : ?>
 		<header id="page-header">
 			<div class="jumbotron">
 				<div class="container-fluid">
 					<?php
 						if ( is_page() ) {
-							the_title( '<h1 id="page-title">', '</h1>' );
-							edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' );
+							if ( is_front_page() ) {
+								edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' );
+							} else {
+								the_title( '<h1 id="page-title">', '</h1>' );
+								edit_post_link( __( 'Edit', 'issimple' ), '<span class="edit-link"><span class="glyphicon glyphicon-pencil"></span> ', '</span>' );
+							}
 						} elseif ( is_404() ) {
 							echo '<h1 id="page-title">' . __( 'Page not found', 'issimple' ) . '</h1>';
 						} elseif ( is_archive() ) {

@@ -309,7 +309,8 @@ add_action( 'init', 'issimple_header_scripts');
  */
 function is_full_page_template() {
 	if ( is_page_template( 'page-templates/full-width-post.php' )
-		|| is_page_template( 'page-templates/full-width-page.php' ) ) {
+		|| is_page_template( 'page-templates/full-width-page.php' )
+		|| is_page_template( 'page-templates/home-page.php' ) ) {
 		return true;
 	} else {
 		return false;
