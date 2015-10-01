@@ -66,6 +66,7 @@
 		$aria_req 	= ( $req ? " aria-required='true'" : '' );
 		$html_req 	= ( $req ? " required='required'" : '' );
 		$span_req	= ( $req ? ' <span class="required">*</span>' : '' );
+		$html5		= current_theme_supports( 'html5', 'comment-form' ) ? true : false;
 
 		comment_form( array(
 			'title_reply' 			=> __( 'Leave your thoughts', 'issimple' ),
