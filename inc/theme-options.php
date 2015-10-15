@@ -180,10 +180,19 @@ add_action( 'init', 'issimple_theme_options', 1 );
 
 
 /**
+ * Define Global Vars.
+ */
+$issimple_options = get_option( 'issimple_general_options' );
+$issimple_style_options = get_option( 'issimple_style_options' );
+$issimple_slider_options = get_option( 'issimple_slider_options' );
+
+
+/**
  * Get custom general theme option.
  *
  * @since	IS Simple 1.0
  *
+ * @param	string	$id			The option id to output.
  * @return	string/bool/array	Term required
  */
 function issimple_get_option( $id ) {
@@ -197,6 +206,7 @@ function issimple_get_option( $id ) {
  *
  * @since	IS Simple 1.0
  *
+ * @param	string	$id			The option id to output.
  * @return	string/bool/array	Term required
  */
 function issimple_get_style_option( $id ) {
@@ -210,6 +220,7 @@ function issimple_get_style_option( $id ) {
  *
  * @since	IS Simple 1.0
  *
+ * @param	string	$id			The option id to output.
  * @return	string/bool/array	Term required
  */
 function issimple_get_slider_option( $id ) {
@@ -258,7 +269,6 @@ function bootstrap_header_navbar_fixing() {
  */
 function issimple_header_logo() {
 	$logo_id	= issimple_get_option( 'header_logo' );
-
 	$logo_atts	= wp_get_attachment_image_src( $logo_id );
 	$logo_src	= $logo_atts[0];
 	$logo_width	= $logo_atts[1];
@@ -297,8 +307,3 @@ function issimple_footer_text() {
 
 	echo do_shortcode( $footer_text );
 }
-
-
-$issimple_options = get_option( 'issimple_general_options' );
-$issimple_style_options = get_option( 'issimple_style_options' );
-$issimple_slider_options = get_option( 'issimple_slider_options' );
