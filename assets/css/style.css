@@ -23,7 +23,67 @@
 }
 
 .bg-default {
-	background-color: #e8e8e8;
+	background-color: #f5f5f5;
+}
+
+.bg-primary a,
+.panel-primary .panel-heading a {
+	color: #a4d5ff;
+}
+
+.bg-primary a:focus,
+.bg-primary a:hover,
+.panel-primary .panel-heading a:focus,
+.panel-primary .panel-heading a:hover {
+	color: #2faece;
+}
+
+.bg-success a,
+.panel-success .panel-heading a {
+	color: #5cb85c;
+}
+
+.bg-success a:focus,
+.bg-success a:hover,
+.panel-success .panel-heading a:focus,
+.panel-success .panel-heading a:hover {
+	color: #449d44;
+}
+
+.bg-info a,
+.panel-info .panel-heading a {
+	color: #51aac4;
+}
+
+.bg-info a:focus,
+.bg-info a:hover,
+.panel-info .panel-heading a:focus,
+.panel-info .panel-heading a:hover {
+	color: #41899e;
+}
+
+.bg-warning a,
+.panel-warning .panel-heading a {
+	color: #f0ad4e;
+}
+
+.bg-warning a:focus,
+.bg-warning a:hover,
+.panel-warning .panel-heading a:focus,
+.panel-warning .panel-heading a:hover {
+	color: #ec971f;
+}
+
+.bg-danger a,
+.panel-danger .panel-heading a {
+	color: #d9534f;
+}
+
+.bg-danger a:focus,
+.bg-danger a:hover,
+.panel-danger .panel-heading a:focus,
+.panel-danger .panel-heading a:hover {
+	color: #c9302c;
 }
 
 .panel .nav > li {
@@ -57,11 +117,17 @@
 
 .label .badge {
 	background-color: #fff;
+	font-size: inherit;
 }
 
 .label-default .badge {
 	color: #777;
-	font-size: inherit;
+}
+
+.label[href],
+.label[href]:hover,
+.label[href]:focus {
+	color: #fff;
 }
 
 .label-default[href]:hover .badge,
@@ -466,6 +532,10 @@ li:hover .menu-item-desc {
 .comment-metadata,
 .comment .edit-link {
 	margin-top: 15px;
+}
+
+.comment .fn .glyphicon {
+	margin-right: 0.3em;
 }
 
 .comment .edit-link {

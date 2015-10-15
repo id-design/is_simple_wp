@@ -398,14 +398,18 @@ function wp_bootstrap_comments_loop( $comment, $args, $depth ) {
 		default :
 			?>
 <li id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-	<article id="comment-<?php comment_ID(); ?>" class="comment panel panel-default">
+	<?php
+		$panel_type = ( get_comment_author() === get_the_author() ) ? 'primary' : 'default';
+	?>
+	<article id="comment-<?php comment_ID(); ?>" class="comment panel panel-<?php echo $panel_type ?>">
 		<footer class="comment-meta panel-heading">
 			<div class="comment-author vcard">
 				<?php echo get_avatar( $comment, 70, '', '', array( 'class' => 'img-thumbnail img-circle' ) ) ?>
 				<div class="comment-metadata">
 					<?php
-						printf( '<span class="fn">%1$s</span><br />%2$s <a href="%3$s"><time datetime="%4$s" title="%5$s">%6$s %7$s %8$s</time></a> %9$s',
-							get_comment_author_link(),
+						$author_link = ( get_comment_author() === get_the_author() ) ? '<span class="glyphicon glyphicon-user"></span> ' . get_comment_author_link() : get_comment_author_link();
+						printf( '<b class="fn">%1$s</b><br />%2$s <a href="%3$s"><time datetime="%4$s" title="%5$s">%6$s %7$s %8$s</time></a> %9$s',
+							$author_link,
 							__( 'In', 'issimple' ),
 							esc_url( get_comment_link( $comment->comment_ID ) ),
 							get_comment_time( 'c' ),
@@ -432,7 +436,8 @@ function wp_bootstrap_comments_loop( $comment, $args, $depth ) {
 					comment_reply_link( array_merge( $args, array(
 						'reply_text'	=> __( 'Respond', 'issimple' ),
 						'depth'			=> $depth,
-						'max_depth'		=> $args['max_depth']
+						'max_depth'		=> $args['max_depth'],
+						'panel_type'	=> $panel_type
 					) ) );
 				?>
 			</div><!-- .reply -->
@@ -450,7 +455,7 @@ function wp_bootstrap_comments_loop( $comment, $args, $depth ) {
  * @since IS Simple 1.0
  */
 function wp_bootstrap_make_btn_comment_reply_link( $link, $args, $comment, $post ) {
-	return preg_replace( '/comment-reply-link/', 'btn btn-default comment-reply-link', $link, 1 );
+	return preg_replace( '/comment-reply-link/', 'btn btn-' . $args['panel_type'] . ' comment-reply-link', $link, 1 );
 }
 add_filter( 'comment_reply_link', 'wp_bootstrap_make_btn_comment_reply_link', 10, 4 );
 
