@@ -6,6 +6,151 @@
 
 
 /**
+ * WordPress Core
+ * ============================================================================
+ */
+.alignnone {
+	margin: 5px 20px 10px 0;
+}
+
+.aligncenter, div.aligncenter {
+	display: block;
+	margin: 5px auto 10px;
+}
+
+.alignright {
+	float: right;
+	margin: 5px 0 10px 20px;
+}
+
+.alignleft {
+	float: left;
+	margin: 5px 20px 10px 0;
+}
+
+a.alignright {
+	float: right;
+	margin: 5px 0 10px 20px;
+}
+
+a.alignnone {
+	margin: 5px 20px 10px 0;
+}
+
+a.alignleft {
+	float: left;
+	margin: 5px 20px 10px 0;
+}
+
+a.aligncenter {
+	display: block;
+	margin: 5px auto 10px;
+}
+
+.wp-caption {
+	text-align: center;
+}
+
+.wp-caption.alignnone {
+	margin: 5px 20px 10px 0;
+}
+
+.wp-caption.alignleft {
+	margin: 5px 20px 10px 0;
+}
+
+.wp-caption.alignright {
+	margin: 5px 0 10px 20px;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	margin: 0;
+	padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875 rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+.gallery-item {
+	display: inline-block;
+	padding: 1.79104477%;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	color: #707070;
+	color: rgba(51, 51, 51, 0.7);
+	display: block;
+	font-size: 12px;
+	font-size: 1.2rem;
+	line-height: 1.5;
+	padding: 0.5em 0;
+}
+
+
+/**
  * Bootstrap Adjustments
  * ============================================================================
  */
@@ -16,10 +161,6 @@
 .container .jumbotron,
 .container-fluid .jumbotron {
 	padding: 40px 30px;
-}
-
-.jumbotron {
-	background-color: #ddd;
 }
 
 .bg-default {
@@ -186,27 +327,13 @@
  * ============================================================================
  */
 *:last-child {
-	margin-bottom: 0 !important;
+	margin-bottom: 0;
 }
 
-.img-link {
-	display: block;
+a[href$=".jpg"],
+a[href$=".png"],
+a[href$=".gif"] {
 	overflow: hidden;
-}
-
-.alignleft {
-	float: left;
-	margin: 0 20px 10px 0;
-}
-
-.alignright {
-	float: right;
-	margin: 0 0 10px 20px;
-}
-
-.aligncenter {
-	display: block;
-	margin: 0 auto 20px;
 }
 
 

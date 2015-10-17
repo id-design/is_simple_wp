@@ -178,7 +178,7 @@ function issimple_setup() {
 	
 	// Setup the WordPress core custom background feature.
 	add_theme_support( 'custom-background', array(
-		'default-color'			=> 'eee',
+		'default-color'			=> 'fff',
 		'default-attachment'	=> 'scroll'
 	) );
 
