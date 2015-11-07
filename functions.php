@@ -404,6 +404,9 @@ require_once INCLUDES_PATH . '/template-tags.php';
 // Funções para incrementar o formulário de contato no tema ou post
 require_once INCLUDES_PATH . '/issimple-contact-form.php';
 
+// Customizer additions
+require get_template_directory() . '/inc/customizer.php';
+
 // WooCommerce compatibility files.
 if ( is_woocommerce_activated() ) {
     add_theme_support( 'woocommerce' );
